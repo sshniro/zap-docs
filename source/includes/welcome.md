@@ -46,7 +46,7 @@ arguments are shown. View API catalogue to see all the parameters and socpe of e
 </aside>
 
 <aside class="warning">
-Do not use any unathorized pages
+Do not use on unauthorized pages.
 </aside>
 
 First step
@@ -63,6 +63,10 @@ $ <ZAP_HOME>./zap.sh
 Go to the ZAP [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and download the installer specific to the operating system.
 
 After extracting the bundle you can start zap by issuing the following command.
+
+<aside class="notice">
+ZAP requires java to run.
+</aside>
 
 Second step
 ---------------
@@ -96,6 +100,7 @@ $ curl "http://localhost:8500/JSON/spider/view/status/?zapapiformat=JSON&scanId=
 ```
 
 The scan is a async request.To view the scan status. You can view the results via via issuing the following command.
+
 ``` shell
 $ curl "http://localhost:8500/JSON/core/view/alerts/?zapapiformat=JSON&baseurl=http://localhost:8080/Danial/login&start=&count="
 ```

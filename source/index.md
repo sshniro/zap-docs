@@ -1,5 +1,5 @@
 ---
-title: ZAP API documentation
+title: ZAP API Docs
 
 language_tabs:
   - shell

@@ -22,11 +22,21 @@ Basics on the API request
 $ curl 'https://zap/v1/coverage/sandbox/stop_areas' -H 'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'
 ```
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
-desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+ZAP provides an Application Programming Interface (API) which allows you to interact with ZAP programmatically.
+
+The API is available in the following formats.
+
+- JSON 
+- HTML
+- XML
+
+A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
+or via the host and port ZAP is listening on, eg [http://localhost:8080/].
+
+By default only the machine ZAP is running on is able to access the API. You can allow other machines, that are able to use ZAP as a proxy, 
+access to the API. The API is configured using the Options API screen.
+
+The API provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will increase the functionality available via the APi.
 
 <aside class="success">
     Tadaaa!
@@ -61,26 +71,33 @@ Justo eget magna fermentum iaculis eu non diam.
 Perform Active Scan
 -------------------
 
-Feugiat nibh sed pulvinar proin. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Eget aliquet nibh 
-praesent tristique. Mauris in aliquam sem fringilla ut. Sit amet mattis vulputate enim nulla aliquet porttitor lacus luctus. 
-Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Amet nisl suscipit adipiscing bibendum. Sit amet risus nullam eget felis. 
-Sed odio morbi quis commodo odio aenean sed adipiscing diam. Nullam eget felis eget nunc lobortis.
+Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets.
+
+Active scanning is an attack on those targets. You should NOT use it on web applications that you do not own.
+
+In order to facilitate identifying ZAP traffic and Web Application Firewall exceptions, ZAP is accompanied by a script "AddZapHeader.js" which can be used to add a specific header to all traffic that passes through or originates from ZAP. eg: X-ZAP-Initiator: 3
+
+It should be noted that active scanning can only find certain types of vulnerabilities. Logical vulnerabilities, such as broken access control, will not be found by any active or automated vulnerability scanning. Manual penetration testing should always be performed in addition to active scanning to find all types of vulnerabilities.
 
 Perform AJAX Scan
 -------------------
 
-Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Sociis natoque penatibus et magnis dis parturient montes. Accumsan lacus vel facilisis volutpat est velit.
+ZAP by default passively scans all HTTP messages (requests and responses) sent to the web application being tested. Passive scanning does not change the requests nor the responses in any way and is therefore safe to use. Scanning is performed in a background thread to ensure that it does not slow down the exploration of an application.
 
-Volutpat est velit egestas dui id ornare. In arcu cursus euismod quis viverra nibh. Cursus eget nunc scelerisque viverra mauris 
-in aliquam sem fringilla. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Duis at tellus at urna.
+The (main) behaviour of the passive scanner can be configured using the Options Passive Scanner Screen.
 
-Using scripts
+Passive scanning can also be used for automatically adding tags and raising alerts for potential issues. A set of rules for automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags screen.
+
+The alerts raised by passive scanners can be configured using the Options Passive Scan Rules screen.
+
+
+Using Spider
 -------------------
 
-Morbi tristique senectus et netus. Sed id semper risus in. Convallis tellus id interdum velit laoreet id donec ultrices tincidunt. 
-Vitae congue mauris rhoncus aenean vel elit scelerisque. Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. 
-Id donec ultrices tincidunt arcu non sodales neque. Viverra nibh cras pulvinar mattis nunc sed. Morbi tristique senectus et netus et. 
-Donec enim diam vulputate ut pharetra sit amet.
+The spider is a tool that is used to automatically discover new resources (URLs) on a particular Site. It begins with a list of URLs to visit, called the seeds, which depends on how the Spider is started. The Spider then visits these URLs, it identifies all the hyperlinks in the page and adds them to the list of URLs to visit and the process continues recursively as long as new resources are found.
 
+The Spider can configured and started using the Spider dialogue.
+
+During the processing of an URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. It currently has the following behavior when processing types of responses:
 
 
