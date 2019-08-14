@@ -1,4 +1,4 @@
-<a name="some_examples"></a>Examples
+<a name="some_examples"></a>Examples (In Progress)
 =========================================
 
 Nunc lobortis mattis aliquam faucibus purus in massa tempor nec. Quis blandit turpis cursus in hac. Duis tristique 
@@ -100,4 +100,11 @@ The Spider can configured and started using the Spider dialogue.
 
 During the processing of an URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. It currently has the following behavior when processing types of responses:
 
+
+Perform Authentication
+-------------------
+
+Vitae turpis massa sed elementum tempus egestas sed sed risus. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
+Tincidunt tortor aliquam nulla facilisi cras. Tristique senectus et netus et malesuada fames. Feugiat scelerisque varius morbi enim. 
+Justo eget magna fermentum iaculis eu non diam. 
 

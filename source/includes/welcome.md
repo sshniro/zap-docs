@@ -46,7 +46,7 @@ arguments are shown. View API catalogue to see all the parameters and socpe of e
 </aside>
 
 <aside class="warning">
-Do not use on unauthorized pages.
+Do not use on unauthorized pages. Use ZAP on a website only if you have permissions to perform testing on it!
 </aside>
 
 First step
@@ -55,7 +55,7 @@ First step
 
 ``` shell
 # Option: 1, using "headless" mode
-$ <ZAP_HOME>./zap.sh -daemon
+$ <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
 # Option: 2, using normal mode
 $ <ZAP_HOME>./zap.sh
 ```
@@ -64,21 +64,35 @@ Go to the ZAP [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and
 
 After extracting the bundle you can start zap by issuing the following command.
 
+The API key must be specified on all API 'actions' and some 'other' operations. The API key is used to prevent malicious sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely isolated environment.
+
 <aside class="notice">
-ZAP requires java to run.
+ZAP requires Java to run.
 </aside>
 
 Second step
 ---------------
 
-If you have a website to scan then obtain a publicly accessible URL/IP. Or set up the following site to crawl.
+```
+npm install juicehsop
+```
 
+If you have a website to scan then obtain a publicly accessible URL/IP. For quick start guide we will be using OWASP Juice shop.
+
+
+OWASP Juice Shop is probably the most modern and sophisticated insecure web application! It can be used in security trainings, 
+awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten 
+along with many other security flaws found in real-world applications!
+
+Set up Juice shop with the following commands.
+
+![juice-shop](../images/juice-shop.png)
 
 Third step
 ---------------
 ``` shell
 # In a curl way, with only the required parameters
-$ curl "http://localhost:8500/JSON/spider/action/scan/?zapapiformat=JSON&url=http://localhost:8080/Danial/login&contextName=
+$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=68u5tu85j34dc4g3ushdp847ku&zapapiformat=JSON&url=http://localhost:3000=&contextName="
 ```
 
 
@@ -87,16 +101,13 @@ Use the site url/ip and replace the url in the curl
 
 The spider(s) explore the site. They dont actually do any scanning.
 The passive scan rules examine all of the requests and responses flowing through ZAP and report the issues they can spot.
-The active scan rules dont bother with the things the passive scan rules look for. They also wont explore a site.
-If you just try running the active scan rules without exploring a site (either manually or using the spiders) then they wont find anything because there will be nothing to work on.
-We try to keep things separate for flexibility, while providing packaged options like the Quick Scan and Baseline scan for those people who want them.
 
 
 Fourth Step
 --------------
 ``` shell
 # In a curl way, with only the required parameters
-$ curl "http://localhost:8500/JSON/spider/view/status/?zapapiformat=JSON&scanId=<scan id>"
+$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=68u5tu85j34dc4g3ushdp847ku&scanId=<scan id>"
 ```
 
 The scan is a async request.To view the scan status. You can view the results via via issuing the following command.
@@ -105,6 +116,7 @@ The scan is a async request.To view the scan status. You can view the results vi
 $ curl "http://localhost:8500/JSON/core/view/alerts/?zapapiformat=JSON&baseurl=http://localhost:8080/Danial/login&start=&count="
 ```
 
+![alerts](../images/alert1.png)
 
 <a name="about_data"></a>About the Results
 --------------
