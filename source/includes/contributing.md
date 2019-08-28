@@ -54,9 +54,10 @@ This style guide provides a set of editorial guidelines for anyone writing docum
 instead of passive voice (in which the grammatical subject of the sentence is the person or thing being acted upon), though there are exceptions.
 
     Example:
-    - Recommended: Send a query to the service. The server sends an acknowledgment.
 
-    - Not recommended: The service is queried, and an acknowledgment is sent.
+    - Recommended: Send a query to the scan service. The zap sends the status of the scanning process.
+
+    - Not recommended: The scan service is queried, and an status is sent.
 
 * In general, use second person in your docs rather than first person—"you" (sometimes implicit) instead of "we."
 
@@ -119,7 +120,7 @@ Put \``backticks`\` around the following symbols when used in text:
 
 Use three backticks to open and close a code block. Specify the programming language after the first backtick group.
 
-### Links in Markdown
+## Open API Spec Guide
 
 
 
