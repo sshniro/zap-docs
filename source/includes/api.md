@@ -1,7 +1,7 @@
 API Catalogue (In Progress)
 ==============
 
-Following will be replace by auto generated docs from Open API specs
+Following will be replaced by auto generated docs from Open API specs
 
 Scan API
 ------------

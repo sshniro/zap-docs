@@ -14,7 +14,8 @@ toc_footers:
 includes:
   - welcome
   - examples
-  - api
+  - contributing
+  - apis
 
 search: true
 ---
