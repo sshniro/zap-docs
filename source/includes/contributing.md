@@ -2,7 +2,7 @@
 =========================================
 
 Contributions are welcome in all the following forms which improves the quality and content of the documentation.
-The source files for all Cloud Foundry docs are hosted on Github. The repository is available at [https://github.com/sshniro/zapdocs](https://github.com/sshniro/zapdocs).
+The source files for the ZAP API documentation is hosted in Github. The repository is available at [https://github.com/sshniro/zapdocs](https://github.com/sshniro/zapdocs).
 The source files are in `Markdown`/`HTML`/`embedded Ruby` (html.md.erb) format.
 
 If you use Github, the most direct and effective way to contribute to the docs is to submit a pull request or raise an 
@@ -10,15 +10,16 @@ issue in the Github repository containing the docs content that you want to chan
 
 **1. Creating Example Guides/ High-level API Docs**
 
-    Create high level docs on how to use the 
+    Create high level docs on how to use the APIs to perform any action/view with ZAP.
     
 **2. REST API documentation**
 
-    Rest API is documented using the Open API specification. 
+    Rest API is documented using the Open API specification. The specification could be improved enhacing the description of 
+    parameters/ results/ data types etc.
 
 **3. Feature Documentation**
 
-    Feature documentation is avaiable in the Github wiki
+    Feature documentation of the ZAP is avaiable in the Github wiki.
 
 <aside class="notice">
 The ZAP documentation is shaped by the docs as code philosophy.
@@ -118,7 +119,7 @@ Put \``backticks`\` around the following symbols when used in text:
 
 **Code block**                                              
 
-Use three backticks to open and close a code block. Specify the programming language after the first backtick group.
+Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.
 
 ## Open API Spec Guide
 

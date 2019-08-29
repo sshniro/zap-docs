@@ -26,7 +26,7 @@ ZAP provides the following features:
 
 Have a look at the examples below to learn how to use them.
 
-Quick Start Guide
+Quick Setup Guide
 ---------------
 
 ### Basic penetration test
@@ -49,7 +49,7 @@ arguments are shown. View API catalogue to see all the parameters and socpe of e
 Do not use on unauthorized pages. Use ZAP on a website only if you have permissions to perform testing on it!
 </aside>
 
-First step
+Setup OWASP ZAP
 ---------------
 > 2 ways to start zap
 
@@ -70,7 +70,7 @@ The API key must be specified on all API 'actions' and some 'other' operations. 
 ZAP requires Java to run.
 </aside>
 
-Second step
+Configure Testing Application
 ---------------
 
 ```
@@ -92,44 +92,6 @@ Set up Juice shop with the following commands in the right column. Then visit `h
 
 
 ![juice-shop](../images/juice-shop.png)
-
-Third step
----------------
-``` shell
-# Start the spider scan 
-$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=68u5tu85j34dc4g3ushdp847ku&zapapiformat=JSON&url=http://localhost:3000=&contextName="
-```
-
-The spider(s) explore the site. They don't actually do any scanning.
-The passive scan rules examine all of the requests and responses flowing through ZAP and report the issues they can spot.
-The spider API will return the scan ID as the response. 
-
-
-Fourth Step
---------------
-``` shell
-# To view the scan status
-$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=68u5tu85j34dc4g3ushdp847ku&scanId=<scan id>"
-```
-
-The scan is a async request.To view the scan status. 
-
-The alerts for the passive scan can be obtained via issuing the following commands.
-
-``` shell
-$ curl "http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&apikey=68u5tu85j34dc4g3ushdp847ku&baseurl=http://localhost:3000&start=&count="
-```
-
-![alerts](../images/alert1.png)
-
-<a name="about_data"></a>About the Results
---------------
-
-The results can be obtained via multiple formats.
-
-- HTML
-- XML
-- JSON 
 
 
 Getting help
