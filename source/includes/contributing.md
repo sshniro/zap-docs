@@ -1,33 +1,55 @@
-<a name="some_examples"></a>Contribution
+<a name="contribution"></a>Contributions Welcome!
 =========================================
 
 Contributions are welcome in all the following forms which improves the quality and content of the documentation.
-The source files for the ZAP API documentation is hosted in Github. The repository is available at [https://github.com/sshniro/zapdocs](https://github.com/sshniro/zapdocs).
-The source files are in `Markdown`/`HTML`/`embedded Ruby` (html.md.erb) format.
+
+## Ways to Contribute
+
+There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.
+
+**1. Creating High-level API Docs**
+
+    Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
+    The source files for the ZAP API documentation is hosted in Github. The repository is available at [Github](https://github.com/sshniro/zapdocs).
+    The source files are in `Markdown` (md) format.
+    
+**2. REST API Documentation**
+
+    Rest API is documented using the Open API specification. The specification could be improved enhacing the description of 
+    parameters/ results/ data types etc. The open API specification is avaiable in [Github](https://github.com/sshniro/zapdocs).
+
+**3. Feature Documentation**
+
+    Feature documentation of the ZAP is avaiable in the [Github wiki](https://github.com/sshniro/zapdocs).
+
+
+## How to Contribute
+
+There are 2 different workflows which you can use to make changes. Use what you are most comfortable with!
+
+**1. "Edit Me on Github" Option**
+    
+    You can edit the documentation in the browser via navigating to the relevant source file.
+    This workflow is recommended for minor changes, For example correcting typos/spelling/grammer etc.
+    For extensive changes, please use the local setup and editing option.
+
+**2. Local Setup and Editing**
+    
+    You can edit the documentation in the browser via navigating to the relevan source file.
+    This workflow is recommended for minor changes, For example correcting typos/spelling/grammer etc.
+    For extensive changes, please use the local setup and editing option.
 
 If you use Github, the most direct and effective way to contribute to the docs is to submit a pull request or raise an 
 issue in the Github repository containing the docs content that you want to change.
 
-**1. Creating Example Guides/ High-level API Docs**
-
-    Create high level docs on how to use the APIs to perform any action/view with ZAP.
-    
-**2. REST API documentation**
-
-    Rest API is documented using the Open API specification. The specification could be improved enhacing the description of 
-    parameters/ results/ data types etc.
-
-**3. Feature Documentation**
-
-    Feature documentation of the ZAP is avaiable in the Github wiki.
 
 <aside class="notice">
 The ZAP documentation is shaped by the docs as code philosophy.
-
+<br>
 The API documentation (this document) is built from the master branch of ZapDocs using Slate.
 </aside>
 
-## Environment Setup
+## Local Setup for API Docs
 
 ZAP uses git for its code repository. 
 To submit a documentation update, use the following steps:
@@ -44,11 +66,11 @@ To submit a documentation update, use the following steps:
         
 **5. To start the server:** `$ bundle exec middleman server`
 
-## Guidelines
+## Documentation Style
 
 This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.
 
-## Language and Grammar
+### Language and Grammar
  
 
 * In general, use active voice (in which the grammatical subject of the sentence is the person or thing performing the action) 
@@ -80,7 +102,7 @@ there is no need to point who is better than the rest of us.
     - Recommended: tasks.insert: Creates a new task on the specified task list.
     - Not recommended: tasks.insert: Create a new task on the specified task list.
 
-## Principles of Good Style
+### Principles of Good Style
 
 * Check the spelling and grammar in your contributions. Most editors include a spell checker or have an available spell-checking plugin.
 
@@ -93,7 +115,7 @@ Use bullet lists when appropriate.
 
 * Provide context. Don't use abbreviations without explaining them. Don't mention non zap contents without linking to them.
  
-## Formatting
+### Formatting
 
 * For sections (Titles), use the following capitalization rules: Capitalization of the first word, and all other words, 
 except for closed-class words.
@@ -106,7 +128,7 @@ except for closed-class words.
 The API docs are created using the markdown files. This section explains the primary differences between standard Markdown rules 
 and the Markdown rules that ZAP documentation uses.
 
-### Writing code
+#### Writing code
 
 **Inline Code**
 
@@ -120,11 +142,4 @@ Put \``backticks`\` around the following symbols when used in text:
 **Code block**                                              
 
 Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.
-
-## Open API Spec Guide
-
-
-
-
-
 

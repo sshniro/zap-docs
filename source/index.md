@@ -15,7 +15,6 @@ includes:
   - welcome
   - examples
   - contributing
-  - apis
 
 search: true
 ---

@@ -1,4 +1,4 @@
-<a name="some_examples"></a>Examples (In Progress)
+<a name="some_examples"></a>Examples
 =========================================
 
 Nunc lobortis mattis aliquam faucibus purus in massa tempor nec. Quis blandit turpis cursus in hac. Duis tristique 
