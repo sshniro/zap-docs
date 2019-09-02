@@ -1,4 +1,4 @@
-<a name="some_examples"></a>Examples
+<a name="examples"></a>Examples
 =========================================
 
 Nunc lobortis mattis aliquam faucibus purus in massa tempor nec. Quis blandit turpis cursus in hac. Duis tristique 
@@ -15,41 +15,7 @@ You will have to use your own token with the examples below.
 </aside>
 
 
-Basics on the API request
--------------------------
-``` shell
-# Web is too shiny: JSON, urlencode and curl forever!
-$ curl 'https://zap/v1/coverage/sandbox/stop_areas' -H 'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'
-```
 
-ZAP provides an Application Programming Interface (API) which allows you to interact with ZAP programmatically.
-
-The API is available in the following formats.
-
-- JSON 
-- HTML
-- XML
-
-A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
-or via the host and port ZAP is listening on, eg [http://localhost:8080/].
-
-By default only the machine ZAP is running on is able to access the API. You can allow other machines, that are able to use ZAP as a proxy, 
-access to the API. The API is configured using the Options API screen.
-
-The API provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will increase the functionality available via the APi.
-
-<aside class="success">
-    Tadaaa!
-    </br>
-     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-    </br>
-</aside>
-
-
-<aside class="notice">
-This chapter shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
-arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
-</aside>
 
 
 Using Spider

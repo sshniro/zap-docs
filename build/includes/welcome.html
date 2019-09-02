@@ -32,48 +32,70 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="getting-started">Getting Started</h1>
+        <h1 id="getting-started"><a name="welcome"></a>Getting Started</h1>
 
 <h2 id="overview">Overview</h2>
 
-<p>Welcome to the ZAP API Documentation! The OWASP Zed Attack Proxy (<strong>ZAP</strong>) is one of the world&rsquo;s most popular free security 
-tools and is actively maintained by hundreds of international volunteers. It can help you automatically find security 
+<p>Welcome to the ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
+is one of the world&rsquo;s most popular free security tools and is actively maintained by hundreds of international volunteers. It can help you automatically find security 
 vulnerabilities in your web applications while you are developing and testing your applications. It&rsquo;s also an excellent 
-tool for experienced pentesters to use for manual security testing.</p>
+tool for experienced pentesters to use for manual security testing. ZAP also has an extremely powerful API that allows you 
+to do nearly everything that possible via the desktop interface.</p>
 
-<p>Aside from the desktop application, ZAP has an extremely powerful API that allows us to do nearly everything that possible via the desktop interface.
-This document provides example use cases &amp; API definition for OWASP ZAP. You can view code examples in the dark area to 
+<p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
 incorrect, please check the GitHub issues for existing known issues or create a new issue.</p>
 
-<p>ZAP provides the following features:</p>
+<p>Following are some of the features provided by ZAP:</p>
 
 <ul>
-<li>Intercepting Proxy</li>
-<li>Automated Scanner</li>
+<li>Active Scanner</li>
 <li>Passive Scanner</li>
 <li>Brute Force Scanner</li>
 <li>Fuzzer</li>
 <li>Port Scanner</li>
 <li>Spider</li>
 <li>Web Sockets</li>
-<li>REST API</li>
+<li>Ajax Spider</li>
 </ul>
 
-<p>Have a look at the examples below to learn how to use ZAP.</p>
+<p>Have a look at the examples below to learn how to use each of these features via ZAP API.</p>
 
 <h2 id="documentation-structure">Documentation Structure</h2>
 
-<p>The API documentation is divided in to four main parts. Getting started guide provides</p>
-
-<h3 id="section-summary">Section Summary</h3>
+<p>The API documentation is divided in to four main parts. Following shows the summary of each main section.</p>
 
 <ul>
-<li><strong>Getting Started:</strong> This section provides introduction to ZAP and installation guide to setup ZAP for testing.</li>
-<li><strong>Examples:</strong> Contains high-level examples on how to use ZAP APIs to perform specified actions.</li>
-<li><strong>Contributions:</strong> Guidelines and instruction on how to contribute to ZAPs documentations</li>
-<li><strong>API Catalogue:</strong> Contains Open API definitions for ZAP APIs. </li>
+<li><a href="#welcome"><strong>Getting Started:</strong></a> This section provides introduction to ZAP and installation guide to setup ZAP for testing.</li>
+<li><a href="#examples"><strong>Examples:</strong></a> Contains high-level examples on how to use ZAP APIs to perform specified actions.</li>
+<li><a href="#contribution"><strong>Contributions:</strong></a> Guidelines and instruction on how to contribute to ZAPs documentations</li>
+<li><a href="#api_catalogue"><strong>API Catalogue:</strong></a> Contains Open API definitions for ZAP APIs. </li>
 </ul>
+
+<h2 id="basics-on-the-api-request">Basics on the API request</h2>
+
+<p>ZAP provides an Application Programming Interface (API) which allows you to interact with ZAP programmatically.</p>
+
+<p>The API is available in the following formats.</p>
+
+<ul>
+<li>JSON </li>
+<li>HTML</li>
+<li>XML</li>
+</ul>
+
+<p>A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
+or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. By default only the 
+machine ZAP is running on is able to access the API. You can allow other machines, that are able to use ZAP as a proxy, 
+access to the API. The API is configured using the Options API screen.</p>
+
+<p>The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will 
+increase the functionality/scope available via the APIs.</p>
+
+<aside class="notice">
+The examples shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
+arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
+</aside>
 
 <h2 id="quick-setup-guide">Quick Setup Guide</h2>
 
@@ -87,17 +109,13 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 </code></pre>
 
 <p>The quick setup guide focuses on setting up <em>ZAP</em> and a testing application. If you have already setup ZAP then Jump to 
-specific example to experiment with specific features. To install ZAP, go to the ZAP 
+specific <a href="#examples">example</a> to experiment with specific features. To install ZAP, go to the ZAP 
 <a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
 operating system. After extracting the bundle you can start zap by issuing the following command.</p>
 
 <p>The API key must be specified on all API &lsquo;actions&rsquo; and some &#39;other&rsquo; operations. The API key is used to prevent malicious 
 sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
 isolated environment.</p>
-
-<aside class="notice">
-ZAP requires Java to run.
-</aside>
 
 <h2 id="configure-testing-application">Configure Testing Application</h2>
 <pre class="highlight plaintext"><code>$ git clone https://github.com/bkimminich/juice-shop.git
@@ -106,11 +124,7 @@ $ npm install
 $ npm start
 </code></pre>
 
-<p>If you have a website to scan then obtain a publicly accessible URL/IP. For quick start guide we will be using OWASP Juice shop.</p>
-
-<aside class="warning">
-Do not use on unauthorized pages. Use ZAP on a website only if you have permissions to perform testing on it!
-</aside>
+<p>If you have a website to scan then obtain a publicly accessible URL/IP. For the example guides we will be using OWASP Juice shop.</p>
 
 <p>OWASP Juice Shop is a modern and sophisticated insecure web application! It can be used in security trainings, 
 awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten 
@@ -118,16 +132,19 @@ along with many other security flaws found in real-world applications!</p>
 
 <p>Set up Juice shop with the following commands in the right column. Then visit <code class="prettyprint">http://localhost:3000</code> to access the OWASP Juice shop.</p>
 
+<aside class="warning">
+Do not use on unauthorized ZAP pages. Use ZAP on a websites only if you have permissions to perform testing on it!
+</aside>
+
 <p><img alt="juice-shop" src="../images/juice-shop.png" /></p>
 
 <h2 id="getting-help">Getting help</h2>
 
 <p>All available functions are documented in <a href="#interface">API Catalogue</a></p>
 
-<p>A developer mailing list is available to ask questions or feature request: <a href="mailto:https://groups.google.com/d/forum/zaproxy-develop">https://groups.google.com/d/forum/zaproxy-develop</a></p>
+<p>A developer mailing list is available to ask questions or feature request: https://groups.google.com/d/forum/zaproxy-develop</p>
 
-<p>In order to report bug and make feature requests please use our github zap project
-<a href="https://github.com/zaproxy/zaproxy/issues">https://github.com/zaproxy/zaproxy/issues</a>.</p>
+<p>In order to report bug and make feature requests please use our github <a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
 
 <p>Stay tuned on twitter <a href="https://twitter.com/zaproxy">@zaproxy</a>.</p>
 
