@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <link rel="icon" href="favicon.ico" />
+
+    <link href="../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="../stylesheets/navio.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="../javascripts/all_nosearch.js" type="text/javascript"></script>
+
+  </head>
+
+  <body class="includes includes_contributing">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="../images/logo.png" alt="Logo" />
+      <div id="toc">
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="contributions-welcome"><a name="contribution"></a>Contributions Welcome!</h1>
+
+<p>Contributions are welcome in all the following forms which improves the quality and content of the documentation.</p>
+
+<h2 id="ways-to-contribute">Ways to Contribute</h2>
+
+<p>There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
+
+<p><strong>1. Creating High-level API Docs</strong></p>
+
+<p>Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
+    The source files for the ZAP API documentation is hosted in Github. The repository is available at <a href="https://github.com/sshniro/zapdocs">Github</a>.
+    The source files are in <code class="prettyprint">Markdown</code> (md) format.</p>
+
+<p><strong>2. REST API Documentation</strong></p>
+
+<p>Rest API is documented using the Open API specification. The specification could be improved by enhacing the description of 
+    parameters/ results/ data types etc. The open API specification is avaiable in <a href="https://github.com/sshniro/zap-docs/blob/master/openapi.yaml">Github</a>.</p>
+
+<p><strong>3. Feature Documentation</strong></p>
+
+<p>Feature documentation of the ZAP is avaiable in the <a href="https://github.com/sshniro/zapdocs">Github wiki</a>.</p>
+
+<h2 id="how-to-contribute">How to Contribute</h2>
+
+<p>The ZAP API documentation is developed according to the <a href="https://www.writethedocs.org/guide/docs-as-code/">docs as code</a> philosophy.
+The most direct and effective way to contribute to the docs is to submit a pull request(PR) or raise an 
+issue in the Github repository containing the docs content that you want to change.</p>
+
+<p>There are 2 different workflows which you can use to make changes or PRs. Use what you are most comfortable with!</p>
+
+<p><strong>1. &ldquo;Edit this File on Github&rdquo; Option</strong></p>
+
+<p>You can edit the documentation in the browser via navigating to the relevant source file and clicking the edit this file button.
+This workflow is recommended for minor changes, For example correcting typos/spellings/grammar etc.
+For extensive changes, please use the local setup and editing option.</p>
+
+<p><strong>2. Local Setup and Editing</strong></p>
+
+<p>You can fork the repository in Github and submit the changes via pull requests. Please see the local setup for API docs
+section to setup and render the docs locally.</p>
+
+<aside class="notice">
+The API documentation (this document) is built from the master branch of ZapDocs using Slate.
+</aside>
+
+<h2 id="local-setup-for-api-docs">Local Setup for API Docs</h2>
+
+<p>ZAP uses git for its code repository. 
+To submit a documentation update, use the following steps:</p>
+
+<p><strong>1. Clone the ZAP Docs repository:</strong> 
+    <code class="prettyprint">git clone https://github.com/sshniro/zapdocs.git</code></p>
+
+<p><strong>2. Navigate to the cloned repository:</strong> 
+    <code class="prettyprint">cd zapdocs</code></p>
+
+<p><strong>3. Use the following guide to install <a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></strong></p>
+
+<p><strong>4. To install the dependencies:</strong> <code class="prettyprint">$ bundle install</code></p>
+
+<p><strong>5. To start the server:</strong> <code class="prettyprint">$ bundle exec middleman server</code></p>
+
+<h2 id="documentation-style">Documentation Style</h2>
+
+<p>This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.</p>
+
+<h3 id="language-and-grammar">Language and Grammar</h3>
+
+<ul>
+<li><p>In general, use active voice (in which the grammatical subject of the sentence is the person or thing performing the action) 
+instead of passive voice (in which the grammatical subject of the sentence is the person or thing being acted upon), though there are exceptions.</p>
+
+<p>Example:</p>
+
+<ul>
+<li>Recommended: Send a query to the scan service. The zap sends the status of the scanning process.</li>
+<li>Not recommended: The scan service is queried, and an status is sent.</li>
+</ul></li>
+<li><p>In general, use second person in your docs rather than first person—&quot;you&quot; (sometimes implicit) instead of &ldquo;we.&rdquo;</p></li>
+<li><p>The documentation should be neutral, without judgements, opinions. Make sure you do not favor anyone, our community is great as a whole, 
+there is no need to point who is better than the rest of us.</p></li>
+<li><p>When referencing a hypothetical person, such as “a user with a session cookie”, gender-neutral pronouns (they/their/them) should be used. For example, instead of:</p>
+
+<ul>
+<li>he or she, use they</li>
+<li>him or her, use them</li>
+<li>his or her, use their</li>
+<li>his or hers, use theirs</li>
+<li>himself or herself, use themselves</li>
+</ul></li>
+<li><p>Please use appropriate, informative, rather formal language.</p></li>
+<li><p>When you&rsquo;re writing reference documentation for a method, phrase the main method description in terms of what it does 
+(&ldquo;Gets,&rdquo; &ldquo;Lists,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Searches&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;List,&rdquo; &ldquo;Create,&rdquo; &ldquo;Search&rdquo;).</p>
+
+<ul>
+<li>Recommended: tasks.insert: Creates a new task on the specified task list.</li>
+<li>Not recommended: tasks.insert: Create a new task on the specified task list.</li>
+</ul></li>
+</ul>
+
+<h3 id="principles-of-good-style">Principles of Good Style</h3>
+
+<ul>
+<li><p>Check the spelling and grammar in your contributions. Most editors include a spell checker or have an available spell-checking plugin.</p></li>
+<li><p>Avoid disclaimers, opinions, and value judgements. Words like &ldquo;easily&rdquo;, &ldquo;just&rdquo;, and &ldquo;simple&rdquo; are loaded with assumptions. 
+Something might seem easy to you, but be difficult for another person. Try to avoid these whenever possible.</p></li>
+<li><p>Use simple, to the point sentences without complicated jargon. Compound sentences, chains of clauses, and location-specific 
+idioms can make text hard to understand and translate. If a sentence can be split in two, it probably should. Avoid semicolons. 
+Use bullet lists when appropriate.</p></li>
+<li><p>Provide context. Don&rsquo;t use abbreviations without explaining them. Don&rsquo;t mention non zap contents without linking to them.</p></li>
+</ul>
+
+<h3 id="formatting">Formatting</h3>
+
+<ul>
+<li><p>For sections (Titles), use the following capitalization rules: Capitalization of the first word, and all other words, 
+except for closed-class words.</p>
+
+<ul>
+<li>Example - The Spider Tutorial with APIs</li>
+</ul></li>
+</ul>
+
+<h2 id="markdown-syntax">Markdown Syntax</h2>
+
+<p>The API docs are created using the markdown files. This section explains the primary differences between standard Markdown rules 
+and the Markdown rules that ZAP documentation uses.</p>
+
+<h4 id="writing-code">Writing code</h4>
+
+<p><strong>Inline Code</strong></p>
+
+<p>Put `<code class="prettyprint">backticks</code>` around the following symbols when used in text:</p>
+
+<ul>
+<li>Argument names: <code class="prettyprint">input</code>, <code class="prettyprint">x</code>, <code class="prettyprint">tensor</code></li>
+<li>Returned tensor names: <code class="prettyprint">output</code>, <code class="prettyprint">idx</code>, <code class="prettyprint">out</code></li>
+<li>Data types: <code class="prettyprint">json</code>, <code class="prettyprint">xml</code>, <code class="prettyprint">html</code></li>
+<li>File name: <code class="prettyprint">test.py</code>, <code class="prettyprint">/path-to-your-data/xml/example-name</code></li>
+</ul>
+
+<p><strong>Code block</strong>                                              </p>
+
+<p>Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
