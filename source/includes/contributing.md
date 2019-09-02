@@ -15,8 +15,8 @@ There are many ways you can contribute to OWASP ZAP, both as a user and as a dev
     
 **2. REST API Documentation**
 
-    Rest API is documented using the Open API specification. The specification could be improved enhacing the description of 
-    parameters/ results/ data types etc. The open API specification is avaiable in [Github](https://github.com/sshniro/zapdocs).
+    Rest API is documented using the Open API specification. The specification could be improved by enhacing the description of 
+    parameters/ results/ data types etc. The open API specification is avaiable in [Github](https://github.com/sshniro/zap-docs/blob/master/openapi.yaml).
 
 **3. Feature Documentation**
 
@@ -25,27 +25,25 @@ There are many ways you can contribute to OWASP ZAP, both as a user and as a dev
 
 ## How to Contribute
 
-There are 2 different workflows which you can use to make changes. Use what you are most comfortable with!
+The ZAP API documentation is shaped by the [docs as code](https://www.writethedocs.org/guide/docs-as-code/) philosophy.
+The most direct and effective way to contribute to the docs is to submit a pull request(PR) or raise an 
+issue in the Github repository containing the docs content that you want to change.
 
-**1. "Edit Me on Github" Option**
+There are 2 different workflows which you can use to make changes or PRs. Use what you are most comfortable with!
+
+**1. "Edit this File on Github" Option**
     
-    You can edit the documentation in the browser via navigating to the relevant source file.
-    This workflow is recommended for minor changes, For example correcting typos/spelling/grammer etc.
-    For extensive changes, please use the local setup and editing option.
+You can edit the documentation in the browser via navigating to the relevant source file and clicking the edit this file button.
+This workflow is recommended for minor changes, For example correcting typos/spellings/grammar etc.
+For extensive changes, please use the local setup and editing option.
 
 **2. Local Setup and Editing**
     
-    You can edit the documentation in the browser via navigating to the relevan source file.
-    This workflow is recommended for minor changes, For example correcting typos/spelling/grammer etc.
-    For extensive changes, please use the local setup and editing option.
-
-If you use Github, the most direct and effective way to contribute to the docs is to submit a pull request or raise an 
-issue in the Github repository containing the docs content that you want to change.
+You can fork the repository in Github and submit the changes via pull requests. Please see the local setup for API docs
+section to setup and render the docs locally.
 
 
 <aside class="notice">
-The ZAP documentation is shaped by the docs as code philosophy.
-<br>
 The API documentation (this document) is built from the master branch of ZapDocs using Slate.
 </aside>
 
@@ -81,6 +79,7 @@ instead of passive voice (in which the grammatical subject of the sentence is th
     - Recommended: Send a query to the scan service. The zap sends the status of the scanning process.
 
     - Not recommended: The scan service is queried, and an status is sent.
+
 
 * In general, use second person in your docs rather than first person—"you" (sometimes implicit) instead of "we."
 
