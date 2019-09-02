@@ -45,6 +45,13 @@ The API provides access to most of the core ZAP features such as the active scan
     </br>
 </aside>
 
+
+<aside class="notice">
+This chapter shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
+arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
+</aside>
+
+
 Using Spider
 -------------------
 

@@ -25,7 +25,7 @@ There are many ways you can contribute to OWASP ZAP, both as a user and as a dev
 
 ## How to Contribute
 
-The ZAP API documentation is shaped by the [docs as code](https://www.writethedocs.org/guide/docs-as-code/) philosophy.
+The ZAP API documentation is developed according to the [docs as code](https://www.writethedocs.org/guide/docs-as-code/) philosophy.
 The most direct and effective way to contribute to the docs is to submit a pull request(PR) or raise an 
 issue in the Github repository containing the docs content that you want to change.
 
