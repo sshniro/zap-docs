@@ -39,8 +39,8 @@ For extensive changes, please use the local setup and editing option.
 
 **2. Local Setup and Editing**
     
-You can fork the repository in Github and submit the changes via pull requests. Please see the local setup for API docs
-section to setup and render the docs locally.
+You can fork the repository in Github and submit the changes via [pull requests](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork). 
+Please see the local setup for API docs section to setup and render the docs locally.
 
 
 <aside class="notice">

@@ -5,8 +5,8 @@ Overview
 --------
 
 Welcome to the ZAP API Documentation! The [OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (**ZAP**) 
-is one of the world's most popular free security tools and is actively maintained by hundreds of international volunteers. It can help you automatically find security 
-vulnerabilities in your web applications while you are developing and testing your applications. It's also an excellent 
+is one of the world's most popular free security tools which lets you automatically find security 
+vulnerabilities in your web applications. while you are developing and testing your applications. It's also an excellent 
 tool for experienced pentesters to use for manual security testing. ZAP also has an extremely powerful API that allows you 
 to do nearly everything that possible via the desktop interface.
 
@@ -42,8 +42,6 @@ The API documentation is divided in to four main parts. Following shows the summ
 Basics on the API request
 -------------------------
 
-ZAP provides an Application Programming Interface (API) which allows you to interact with ZAP programmatically.
-
 The API is available in the following formats.
 
 - JSON 
@@ -52,7 +50,7 @@ The API is available in the following formats.
 
 A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
 or via the host and port ZAP is listening on, eg [http://localhost:8080/](http://localhost:8080/). By default only the 
-machine ZAP is running on is able to access the API. You can allow other machines, that are able to use ZAP as a proxy, 
+machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
 access to the API. The API is configured using the Options API screen.
 
 The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will 
