@@ -41,7 +41,7 @@ Basics on the API request
 -------------------------
 
 The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
-will increase the functionality/scope available via the APIs. The API is available through GET and POST endpoints. 
+will increase the functionality/scope available via the APIs. The API is available via GET and POST endpoints. 
 The response of the API request is available in one of the following formats.
 
 - JSON 
@@ -49,9 +49,10 @@ The response of the API request is available in one of the following formats.
 - XML
 
 If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
-This web UI is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg [http://localhost:8080/](http://localhost:8080/). 
-By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
-access to the API. The API is configured using the Options API screen.
+This web UI is available via the URL [http://zap/](http://zap/) when you are proxying via ZAP, or via the host and port ZAP 
+is listening on, eg [http://localhost:8080/](http://localhost:8080/). By default only the machine ZAP is running on is able 
+to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, access to the API. The API is configured 
+using the Options API screen.
 
 <aside class="notice">
 The API key must be specified on all API 'actions' and some 'other' operations. The API key is used to prevent malicious 
@@ -68,7 +69,7 @@ Quick Setup Guide
 ``` shell
 # Option: 1, using "headless" mode
 $ <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
-# Option: 2, using normal mode
+# Option: 2, using normal/ Desktop interface mode
 $ <ZAP_HOME>./zap.sh
 ```
 
@@ -77,10 +78,10 @@ specific [example](#examples) to experiment with specific features. To install Z
 [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and download the installer specific to the 
 operating system. After extracting the bundle you can start zap by issuing the following command.
 
-The API key must be specified on all API 'actions' and some 'other' operations. The API key is used to prevent malicious 
-sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
-isolated environment.
+The API key must be specified on all API `actions` and some `other` operations. The API key is used to prevent malicious 
+sites from accessing the ZAP API. 
 
+If you are running the desktop interface then the API key can be obtained via navigating to the following tab: `Tools -> Options -> API`
 
 Setup Testing Web-Application
 ---------------
@@ -93,7 +94,7 @@ It can be deployed as a Google App Engine application. A public instance is runn
 
 
 <aside class="warning">
-Do not use on unauthorized ZAP pages. Use ZAP on a websites only if you have permissions to perform testing on it!
+Do not use ZAP on unauthorized pages. Use ZAP on websites only if you have permissions to perform testing on it!
 </aside>
 
 Getting help

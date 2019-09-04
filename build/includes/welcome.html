@@ -74,7 +74,7 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 <h2 id="basics-on-the-api-request">Basics on the API request</h2>
 
 <p>The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
-will increase the functionality/scope available via the APIs. The API is available through GET and POST endpoints. 
+will increase the functionality/scope available via the APIs. The API is available via GET and POST endpoints. 
 The response of the API request is available in one of the following formats.</p>
 
 <ul>
@@ -84,9 +84,10 @@ The response of the API request is available in one of the following formats.</p
 </ul>
 
 <p>If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
-This web UI is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. 
-By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
-access to the API. The API is configured using the Options API screen.</p>
+This web UI is available via the URL <a href="http://zap/">http://zap/</a> when you are proxying via ZAP, or via the host and port ZAP 
+is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. By default only the machine ZAP is running on is able 
+to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, access to the API. The API is configured 
+using the Options API screen.</p>
 
 <aside class="notice">
 The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. The API key is used to prevent malicious 
@@ -101,7 +102,7 @@ isolated environment.
 </blockquote>
 <pre class="highlight shell"><code><span class="c"># Option: 1, using "headless" mode</span>
 <span class="gp">$ </span>&lt;ZAP_HOME&gt;./zap.sh -daemon -config api.key<span class="o">=</span>change-me-9203935709
-<span class="c"># Option: 2, using normal mode</span>
+<span class="c"># Option: 2, using normal/ Desktop interface mode</span>
 <span class="gp">$ </span>&lt;ZAP_HOME&gt;./zap.sh
 </code></pre>
 
@@ -110,9 +111,10 @@ specific <a href="#examples">example</a> to experiment with specific features. T
 <a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
 operating system. After extracting the bundle you can start zap by issuing the following command.</p>
 
-<p>The API key must be specified on all API &#39;actions&rsquo; and some &#39;other&rsquo; operations. The API key is used to prevent malicious 
-sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
-isolated environment.</p>
+<p>The API key must be specified on all API <code class="prettyprint">actions</code> and some <code class="prettyprint">other</code> operations. The API key is used to prevent malicious 
+sites from accessing the ZAP API. </p>
+
+<p>If you are running the desktop interface then the API key can be obtained via navigating to the following tab: <code class="prettyprint">Tools -&gt; Options -&gt; API</code></p>
 
 <h2 id="setup-testing-web-application">Setup Testing Web-Application</h2>
 
@@ -123,7 +125,7 @@ Google&rsquo;s Firing Range.</p>
 It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
 
 <aside class="warning">
-Do not use on unauthorized ZAP pages. Use ZAP on a websites only if you have permissions to perform testing on it!
+Do not use ZAP on unauthorized pages. Use ZAP on websites only if you have permissions to perform testing on it!
 </aside>
 
 <h2 id="getting-help">Getting help</h2>

@@ -25,10 +25,9 @@ Each response type is processed differently in ZAP.
 $ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&zapapiformat=JSON&url=http://localhost:3000=&contextName="
 ```
 
-The spider(s) explore the site and don't actually do any scanning. The [passive scan](#passive_scan) rules examine all of 
-the requests and responses flowing through ZAP and report the issues they can spot.
-
-The spider API will return the scan ID as the response.
+The Spider(s) explore the site and don't actually do any scanning. The [passive scan](#passive_scan) rules examine all of 
+the requests and responses flowing through ZAP and report the issues they can spot. The scan ID will be returned as a response 
+after triggering the Spider.
 
 
 ### View Status
