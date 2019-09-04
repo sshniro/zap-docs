@@ -38,8 +38,7 @@
 
 <p>Welcome to the ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
 is one of the world&rsquo;s most popular free security tools which lets you automatically find security 
-vulnerabilities in your web applications. while you are developing and testing your applications. It&rsquo;s also an excellent 
-tool for experienced pentesters to use for manual security testing. ZAP also has an extremely powerful API that allows you 
+vulnerabilities in your web applications. It&rsquo;s also an excellent tool for experienced pentesters to use for manual security testing. ZAP also has an extremely powerful API that allows you 
 to do nearly everything that possible via the desktop interface.</p>
 
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
@@ -67,7 +66,7 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 
 <ul>
 <li><a href="#welcome"><strong>Getting Started:</strong></a> This section provides introduction to ZAP and installation guide to setup ZAP for testing.</li>
-<li><a href="#examples"><strong>Examples:</strong></a> Contains high-level examples on how to use ZAP APIs to perform specified actions.</li>
+<li><a href="#examples"><strong>Examples:</strong></a> Contains high-level examples on how to use ZAP APIs to perform specific actions.</li>
 <li><a href="#contribution"><strong>Contributions:</strong></a> Guidelines and instruction on how to contribute to ZAPs documentations</li>
 <li><a href="#api_catalogue"><strong>API Catalogue:</strong></a> Contains Open API definitions for ZAP APIs. </li>
 </ul>
@@ -91,8 +90,9 @@ access to the API. The API is configured using the Options API screen.</p>
 increase the functionality/scope available via the APIs.</p>
 
 <aside class="notice">
-The examples shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
-arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
+The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. The API key is used to prevent malicious 
+sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
+isolated environment.
 </aside>
 
 <h2 id="quick-setup-guide">Quick Setup Guide</h2>
@@ -111,36 +111,26 @@ specific <a href="#examples">example</a> to experiment with specific features. T
 <a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
 operating system. After extracting the bundle you can start zap by issuing the following command.</p>
 
-<p>The API key must be specified on all API &lsquo;actions&rsquo; and some &#39;other&rsquo; operations. The API key is used to prevent malicious 
+<p>The API key must be specified on all API &#39;actions&rsquo; and some &#39;other&rsquo; operations. The API key is used to prevent malicious 
 sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
 isolated environment.</p>
 
 <h2 id="configure-testing-application">Configure Testing Application</h2>
-<pre class="highlight plaintext"><code>$ git clone https://github.com/bkimminich/juice-shop.git
-$ cd juice-shop 
-$ npm install
-$ npm start
-</code></pre>
 
 <p>If you have a website to scan then obtain a publicly accessible URL/IP. For the example guides we will be using OWASP Juice shop.</p>
 
-<p>OWASP Juice Shop is a modern and sophisticated insecure web application! It can be used in security trainings, 
-awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten 
-along with many other security flaws found in real-world applications!</p>
-
-<p>Set up Juice shop with the following commands in the right column. Then visit <code class="prettyprint">http://localhost:3000</code> to access the OWASP Juice shop.</p>
+<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for an array of vulnerabilities.
+It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
 
 <aside class="warning">
 Do not use on unauthorized ZAP pages. Use ZAP on a websites only if you have permissions to perform testing on it!
 </aside>
 
-<p><img alt="juice-shop" src="../images/juice-shop.png" /></p>
-
 <h2 id="getting-help">Getting help</h2>
 
 <p>All available functions are documented in <a href="#interface">API Catalogue</a></p>
 
-<p>A developer mailing list is available to ask questions or feature request: https://groups.google.com/d/forum/zaproxy-develop</p>
+<p>A developer <a href="https://groups.google.com/d/forum/zaproxy-develop">forum</a> is available to ask questions or feature request.</p>
 
 <p>In order to report bug and make feature requests please use our github <a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
 
