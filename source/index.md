@@ -3,8 +3,9 @@ title: ZAP API Docs
 
 language_tabs:
   - shell
-  - python
   - java
+  - python
+  - ruby
 
 toc_footers:
   - <a href='https://www.zaproxy.org/'>zap org</a>

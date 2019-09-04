@@ -1,8 +1,10 @@
 ---
 title: ZAP API
 language_tabs:
-  - ruby: Ruby
+  - shell: Shell
+  - java: Java
   - python: Python
+  - ruby: Ruby
 toc_footers: []
 includes: []
 search: false
@@ -12,7 +14,6 @@ headingLevel: 2
 ---
 
 <a name="api_catalogue"></a>API Catalogue
-=========================================
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -47,20 +48,28 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/alert/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/alert/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/alert/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -76,6 +85,23 @@ r = requests.get('http://zap/JSON/alert/view/alert/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/alert/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -117,20 +143,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/alerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/alerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/alerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -146,6 +180,23 @@ r = requests.get('http://zap/JSON/alert/view/alerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/alerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -190,20 +241,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/alertsSummary/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/alertsSummary/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/alertsSummary/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -219,6 +278,23 @@ r = requests.get('http://zap/JSON/alert/view/alertsSummary/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/alertsSummary/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -260,20 +336,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/numberOfAlerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/numberOfAlerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/numberOfAlerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -289,6 +373,23 @@ r = requests.get('http://zap/JSON/alert/view/numberOfAlerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/numberOfAlerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -331,20 +432,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/alertsByRisk/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/alertsByRisk/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/alertsByRisk/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -360,6 +469,23 @@ r = requests.get('http://zap/JSON/alert/view/alertsByRisk/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/alertsByRisk/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -402,20 +528,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/view/alertCountsByRisk/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/view/alertCountsByRisk/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/view/alertCountsByRisk/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -431,6 +565,23 @@ r = requests.get('http://zap/JSON/alert/view/alertCountsByRisk/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/view/alertCountsByRisk/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -473,20 +624,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/action/deleteAllAlerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/action/deleteAllAlerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/action/deleteAllAlerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -502,6 +661,23 @@ r = requests.get('http://zap/JSON/alert/action/deleteAllAlerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/action/deleteAllAlerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -537,21 +713,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/alert/action/deleteAlert/?id=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/alert/action/deleteAlert/?id=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/alert/action/deleteAlert/',
-  params: {
-  'id' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -567,6 +750,24 @@ r = requests.get('http://zap/JSON/alert/action/deleteAlert/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/alert/action/deleteAlert/',
+  params: {
+  'id' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -610,20 +811,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/acsrf/view/optionTokensNames/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/acsrf/view/optionTokensNames/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/acsrf/view/optionTokensNames/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -639,6 +848,23 @@ r = requests.get('http://zap/JSON/acsrf/view/optionTokensNames/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/acsrf/view/optionTokensNames/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -674,21 +900,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/acsrf/action/addOptionToken/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/acsrf/action/addOptionToken/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/acsrf/action/addOptionToken/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -704,6 +937,24 @@ r = requests.get('http://zap/JSON/acsrf/action/addOptionToken/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/acsrf/action/addOptionToken/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -745,21 +996,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/acsrf/action/removeOptionToken/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/acsrf/action/removeOptionToken/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/acsrf/action/removeOptionToken/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -775,6 +1033,24 @@ r = requests.get('http://zap/JSON/acsrf/action/removeOptionToken/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/acsrf/action/removeOptionToken/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -816,21 +1092,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/acsrf/other/genForm/?hrefId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/acsrf/other/genForm/?hrefId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/acsrf/other/genForm/',
-  params: {
-  'hrefId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -846,6 +1129,24 @@ r = requests.get('http://zap/OTHER/acsrf/other/genForm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/acsrf/other/genForm/',
+  params: {
+  'hrefId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -889,20 +1190,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/view/scanOnlyInScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/view/scanOnlyInScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/view/scanOnlyInScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -918,6 +1227,23 @@ r = requests.get('http://zap/JSON/pscan/view/scanOnlyInScope/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/view/scanOnlyInScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -953,20 +1279,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/view/recordsToScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/view/recordsToScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/view/recordsToScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -982,6 +1316,23 @@ r = requests.get('http://zap/JSON/pscan/view/recordsToScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/view/recordsToScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1017,20 +1368,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/view/scanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/view/scanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/view/scanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1046,6 +1405,23 @@ r = requests.get('http://zap/JSON/pscan/view/scanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/view/scanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1081,20 +1457,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/view/currentRule/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/view/currentRule/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/view/currentRule/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1110,6 +1494,23 @@ r = requests.get('http://zap/JSON/pscan/view/currentRule/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/view/currentRule/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1145,20 +1546,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/view/maxAlertsPerRule/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/view/maxAlertsPerRule/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/view/maxAlertsPerRule/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1174,6 +1583,23 @@ r = requests.get('http://zap/JSON/pscan/view/maxAlertsPerRule/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/view/maxAlertsPerRule/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1209,21 +1635,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/setEnabled/?enabled=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/setEnabled/?enabled=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/setEnabled/',
-  params: {
-  'enabled' => 'boolean'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1239,6 +1672,24 @@ r = requests.get('http://zap/JSON/pscan/action/setEnabled/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/setEnabled/',
+  params: {
+  'enabled' => 'boolean'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1280,21 +1731,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/setScanOnlyInScope/?onlyInScope=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/setScanOnlyInScope/?onlyInScope=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/setScanOnlyInScope/',
-  params: {
-  'onlyInScope' => 'boolean'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1310,6 +1768,24 @@ r = requests.get('http://zap/JSON/pscan/action/setScanOnlyInScope/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/setScanOnlyInScope/',
+  params: {
+  'onlyInScope' => 'boolean'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1351,20 +1827,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/enableAllScanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/enableAllScanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/enableAllScanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1380,6 +1864,23 @@ r = requests.get('http://zap/JSON/pscan/action/enableAllScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/enableAllScanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1415,20 +1916,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/disableAllScanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/disableAllScanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/disableAllScanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1444,6 +1953,23 @@ r = requests.get('http://zap/JSON/pscan/action/disableAllScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/disableAllScanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1479,21 +2005,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/enableScanners/?ids=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/enableScanners/?ids=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/enableScanners/',
-  params: {
-  'ids' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1509,6 +2042,24 @@ r = requests.get('http://zap/JSON/pscan/action/enableScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/enableScanners/',
+  params: {
+  'ids' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1550,21 +2101,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/disableScanners/?ids=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/disableScanners/?ids=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/disableScanners/',
-  params: {
-  'ids' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1580,6 +2138,24 @@ r = requests.get('http://zap/JSON/pscan/action/disableScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/disableScanners/',
+  params: {
+  'ids' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1621,6 +2197,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/setScannerAlertThreshold/?id=0&alertThreshold=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/setScannerAlertThreshold/?id=0&alertThreshold=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/pscan/action/setScannerAlertThreshold/', params={
+  'id': '0',  'alertThreshold': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -1637,21 +2253,6 @@ result = RestClient.get 'http://zap/JSON/pscan/action/setScannerAlertThreshold/'
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/pscan/action/setScannerAlertThreshold/', params={
-  'id': '0',  'alertThreshold': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -1694,21 +2295,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/pscan/action/setMaxAlertsPerRule/?maxAlerts=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/pscan/action/setMaxAlertsPerRule/?maxAlerts=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/pscan/action/setMaxAlertsPerRule/',
-  params: {
-  'maxAlerts' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1724,6 +2332,24 @@ r = requests.get('http://zap/JSON/pscan/action/setMaxAlertsPerRule/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/pscan/action/setMaxAlertsPerRule/',
+  params: {
+  'maxAlerts' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1767,21 +2393,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/urlsByUrlRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/urlsByUrlRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/urlsByUrlRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1797,6 +2430,24 @@ r = requests.get('http://zap/JSON/search/view/urlsByUrlRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/urlsByUrlRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1841,21 +2492,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/urlsByRequestRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/urlsByRequestRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/urlsByRequestRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1871,6 +2529,24 @@ r = requests.get('http://zap/JSON/search/view/urlsByRequestRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/urlsByRequestRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1915,21 +2591,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/urlsByResponseRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/urlsByResponseRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/urlsByResponseRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -1945,6 +2628,24 @@ r = requests.get('http://zap/JSON/search/view/urlsByResponseRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/urlsByResponseRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1989,21 +2690,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/urlsByHeaderRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/urlsByHeaderRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/urlsByHeaderRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2019,6 +2727,24 @@ r = requests.get('http://zap/JSON/search/view/urlsByHeaderRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/urlsByHeaderRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2063,21 +2789,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/messagesByUrlRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/messagesByUrlRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/messagesByUrlRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2093,6 +2826,24 @@ r = requests.get('http://zap/JSON/search/view/messagesByUrlRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/messagesByUrlRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2137,21 +2888,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/messagesByRequestRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/messagesByRequestRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/messagesByRequestRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2167,6 +2925,24 @@ r = requests.get('http://zap/JSON/search/view/messagesByRequestRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/messagesByRequestRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2211,21 +2987,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/messagesByResponseRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/messagesByResponseRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/messagesByResponseRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2241,6 +3024,24 @@ r = requests.get('http://zap/JSON/search/view/messagesByResponseRegex/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/messagesByResponseRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2285,21 +3086,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/search/view/messagesByHeaderRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/search/view/messagesByHeaderRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/search/view/messagesByHeaderRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2315,6 +3123,24 @@ r = requests.get('http://zap/JSON/search/view/messagesByHeaderRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/search/view/messagesByHeaderRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2359,21 +3185,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/search/other/harByUrlRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/search/other/harByUrlRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/search/other/harByUrlRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2389,6 +3222,24 @@ r = requests.get('http://zap/OTHER/search/other/harByUrlRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/search/other/harByUrlRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2433,21 +3284,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/search/other/harByRequestRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/search/other/harByRequestRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/search/other/harByRequestRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2463,6 +3321,24 @@ r = requests.get('http://zap/OTHER/search/other/harByRequestRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/search/other/harByRequestRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2507,21 +3383,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/search/other/harByResponseRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/search/other/harByResponseRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/search/other/harByResponseRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2537,6 +3420,24 @@ r = requests.get('http://zap/OTHER/search/other/harByResponseRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/search/other/harByResponseRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2581,21 +3482,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/search/other/harByHeaderRegex/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/search/other/harByHeaderRegex/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/search/other/harByHeaderRegex/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2611,6 +3519,24 @@ r = requests.get('http://zap/OTHER/search/other/harByHeaderRegex/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/search/other/harByHeaderRegex/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2657,20 +3583,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/latestVersionNumber/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/latestVersionNumber/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/latestVersionNumber/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2686,6 +3620,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/latestVersionNumber/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/latestVersionNumber/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2721,20 +3672,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/isLatestVersion/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/isLatestVersion/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/isLatestVersion/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2750,6 +3709,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/isLatestVersion/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/isLatestVersion/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2785,20 +3761,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/installedAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/installedAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/installedAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2814,6 +3798,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/installedAddons/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/installedAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2849,20 +3850,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/localAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/localAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/localAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2878,6 +3887,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/localAddons/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/localAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2913,20 +3939,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/newAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/newAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/newAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -2942,6 +3976,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/newAddons/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/newAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -2977,20 +4028,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/updatedAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/updatedAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/updatedAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3006,6 +4065,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/updatedAddons/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/updatedAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3041,20 +4117,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/marketplaceAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/marketplaceAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/marketplaceAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3070,6 +4154,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/marketplaceAddons/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/marketplaceAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3105,20 +4206,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionAddonDirectories/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionAddonDirectories/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionAddonDirectories/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3134,6 +4243,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionAddonDirectories/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionAddonDirectories/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3167,20 +4293,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionDayLastChecked/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionDayLastChecked/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastChecked/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3196,6 +4330,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionDayLastChecked/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastChecked/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3229,20 +4380,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionDayLastInstallWarned/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionDayLastInstallWarned/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastInstallWarned/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3258,6 +4417,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionDayLastInstallWarned/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastInstallWarned/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3291,20 +4467,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionDayLastUpdateWarned/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionDayLastUpdateWarned/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastUpdateWarned/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3320,6 +4504,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionDayLastUpdateWarned/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDayLastUpdateWarned/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3353,20 +4554,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionDownloadDirectory/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionDownloadDirectory/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDownloadDirectory/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3382,6 +4591,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionDownloadDirectory/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDownloadDirectory/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3415,20 +4641,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionCheckAddonUpdates/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionCheckAddonUpdates/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionCheckAddonUpdates/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3444,6 +4678,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionCheckAddonUpdates/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionCheckAddonUpdates/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3477,20 +4728,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionCheckOnStart/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionCheckOnStart/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionCheckOnStart/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3506,6 +4765,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionCheckOnStart/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionCheckOnStart/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3539,20 +4815,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionDownloadNewRelease/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionDownloadNewRelease/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDownloadNewRelease/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3568,6 +4852,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionDownloadNewRelease/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionDownloadNewRelease/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3601,20 +4902,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionInstallAddonUpdates/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionInstallAddonUpdates/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionInstallAddonUpdates/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3630,6 +4939,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionInstallAddonUpdates/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionInstallAddonUpdates/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3663,20 +4989,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionInstallScannerRules/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionInstallScannerRules/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionInstallScannerRules/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3692,6 +5026,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionInstallScannerRules/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionInstallScannerRules/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3725,20 +5076,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionReportAlphaAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionReportAlphaAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportAlphaAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3754,6 +5113,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionReportAlphaAddons/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportAlphaAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3787,20 +5163,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionReportBetaAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionReportBetaAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportBetaAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3816,6 +5200,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionReportBetaAddons/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportBetaAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3849,20 +5250,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/view/optionReportReleaseAddons/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/view/optionReportReleaseAddons/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportReleaseAddons/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3878,6 +5287,23 @@ r = requests.get('http://zap/JSON/autoupdate/view/optionReportReleaseAddons/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/view/optionReportReleaseAddons/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3911,20 +5337,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/downloadLatestRelease/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/downloadLatestRelease/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/downloadLatestRelease/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -3940,6 +5374,23 @@ r = requests.get('http://zap/JSON/autoupdate/action/downloadLatestRelease/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/downloadLatestRelease/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -3975,21 +5426,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/installAddon/?id=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/installAddon/?id=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/installAddon/',
-  params: {
-  'id' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4005,6 +5463,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/installAddon/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/installAddon/',
+  params: {
+  'id' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4046,21 +5522,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/installLocalAddon/?file=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/installLocalAddon/?file=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/installLocalAddon/',
-  params: {
-  'file' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4076,6 +5559,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/installLocalAddon/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/installLocalAddon/',
+  params: {
+  'file' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4115,21 +5616,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/uninstallAddon/?id=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/uninstallAddon/?id=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/uninstallAddon/',
-  params: {
-  'id' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4145,6 +5653,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/uninstallAddon/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/uninstallAddon/',
+  params: {
+  'id' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4186,21 +5712,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionCheckAddonUpdates/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionCheckAddonUpdates/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionCheckAddonUpdates/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4216,6 +5749,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionCheckAddonUpdates/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionCheckAddonUpdates/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4255,21 +5806,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionCheckOnStart/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionCheckOnStart/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionCheckOnStart/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4285,6 +5843,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionCheckOnStart/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionCheckOnStart/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4324,21 +5900,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionDownloadNewRelease/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionDownloadNewRelease/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionDownloadNewRelease/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4354,6 +5937,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionDownloadNewRelease/
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionDownloadNewRelease/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4393,21 +5994,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionInstallAddonUpdates/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionInstallAddonUpdates/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionInstallAddonUpdates/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4423,6 +6031,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionInstallAddonUpdates
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionInstallAddonUpdates/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4462,21 +6088,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionInstallScannerRules/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionInstallScannerRules/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionInstallScannerRules/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4492,6 +6125,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionInstallScannerRules
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionInstallScannerRules/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4531,21 +6182,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionReportAlphaAddons/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionReportAlphaAddons/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportAlphaAddons/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4561,6 +6219,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionReportAlphaAddons/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportAlphaAddons/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4600,21 +6276,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionReportBetaAddons/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionReportBetaAddons/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportBetaAddons/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4630,6 +6313,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionReportBetaAddons/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportBetaAddons/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4669,21 +6370,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/autoupdate/action/setOptionReportReleaseAddons/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/autoupdate/action/setOptionReportReleaseAddons/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportReleaseAddons/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4699,6 +6407,24 @@ r = requests.get('http://zap/JSON/autoupdate/action/setOptionReportReleaseAddons
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/autoupdate/action/setOptionReportReleaseAddons/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4740,20 +6466,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/status/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/status/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/status/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4769,6 +6503,23 @@ r = requests.get('http://zap/JSON/spider/view/status/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/status/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4808,20 +6559,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/results/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/results/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/results/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4837,6 +6596,23 @@ r = requests.get('http://zap/JSON/spider/view/results/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/results/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4876,21 +6652,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/fullResults/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/fullResults/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/fullResults/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4906,6 +6689,24 @@ r = requests.get('http://zap/JSON/spider/view/fullResults/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/fullResults/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -4945,20 +6746,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/scans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/scans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/scans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -4974,6 +6783,23 @@ r = requests.get('http://zap/JSON/spider/view/scans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/scans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5007,20 +6833,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/excludedFromScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/excludedFromScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/excludedFromScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5036,6 +6870,23 @@ r = requests.get('http://zap/JSON/spider/view/excludedFromScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/excludedFromScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5071,20 +6922,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/allUrls/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/allUrls/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/allUrls/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5100,6 +6959,23 @@ r = requests.get('http://zap/JSON/spider/view/allUrls/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/allUrls/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5135,20 +7011,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/addedNodes/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/addedNodes/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/addedNodes/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5164,6 +7048,23 @@ r = requests.get('http://zap/JSON/spider/view/addedNodes/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/addedNodes/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5205,20 +7106,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/domainsAlwaysInScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/domainsAlwaysInScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/domainsAlwaysInScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5234,6 +7143,23 @@ r = requests.get('http://zap/JSON/spider/view/domainsAlwaysInScope/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/domainsAlwaysInScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5269,20 +7195,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionDomainsAlwaysInScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionDomainsAlwaysInScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionDomainsAlwaysInScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5298,6 +7232,23 @@ r = requests.get('http://zap/JSON/spider/view/optionDomainsAlwaysInScope/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionDomainsAlwaysInScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5333,20 +7284,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionDomainsAlwaysInScopeEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionDomainsAlwaysInScopeEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionDomainsAlwaysInScopeEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5362,6 +7321,23 @@ r = requests.get('http://zap/JSON/spider/view/optionDomainsAlwaysInScopeEnabled/
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionDomainsAlwaysInScopeEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5397,20 +7373,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionHandleParameters/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionHandleParameters/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionHandleParameters/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5426,6 +7410,23 @@ r = requests.get('http://zap/JSON/spider/view/optionHandleParameters/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionHandleParameters/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5459,20 +7460,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionMaxChildren/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionMaxChildren/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionMaxChildren/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5488,6 +7497,23 @@ r = requests.get('http://zap/JSON/spider/view/optionMaxChildren/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionMaxChildren/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5523,20 +7549,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionMaxDepth/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionMaxDepth/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionMaxDepth/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5552,6 +7586,23 @@ r = requests.get('http://zap/JSON/spider/view/optionMaxDepth/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionMaxDepth/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5587,20 +7638,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionMaxDuration/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionMaxDuration/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionMaxDuration/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5616,6 +7675,23 @@ r = requests.get('http://zap/JSON/spider/view/optionMaxDuration/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionMaxDuration/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5649,20 +7725,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionMaxParseSizeBytes/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionMaxParseSizeBytes/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionMaxParseSizeBytes/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5678,6 +7762,23 @@ r = requests.get('http://zap/JSON/spider/view/optionMaxParseSizeBytes/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionMaxParseSizeBytes/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5713,20 +7814,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionMaxScansInUI/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionMaxScansInUI/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionMaxScansInUI/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5742,6 +7851,23 @@ r = requests.get('http://zap/JSON/spider/view/optionMaxScansInUI/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionMaxScansInUI/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5775,20 +7901,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionRequestWaitTime/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionRequestWaitTime/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionRequestWaitTime/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5804,6 +7938,23 @@ r = requests.get('http://zap/JSON/spider/view/optionRequestWaitTime/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionRequestWaitTime/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5837,20 +7988,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5866,6 +8025,23 @@ r = requests.get('http://zap/JSON/spider/view/optionScope/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5899,20 +8075,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionScopeText/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionScopeText/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionScopeText/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5928,6 +8112,23 @@ r = requests.get('http://zap/JSON/spider/view/optionScopeText/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionScopeText/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -5961,20 +8162,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionSkipURLString/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionSkipURLString/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionSkipURLString/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -5990,6 +8199,23 @@ r = requests.get('http://zap/JSON/spider/view/optionSkipURLString/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionSkipURLString/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6023,20 +8249,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionThreadCount/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionThreadCount/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionThreadCount/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6052,6 +8286,23 @@ r = requests.get('http://zap/JSON/spider/view/optionThreadCount/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionThreadCount/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6085,20 +8336,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionUserAgent/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionUserAgent/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionUserAgent/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6114,6 +8373,23 @@ r = requests.get('http://zap/JSON/spider/view/optionUserAgent/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionUserAgent/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6147,20 +8423,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionAcceptCookies/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionAcceptCookies/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionAcceptCookies/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6176,6 +8460,23 @@ r = requests.get('http://zap/JSON/spider/view/optionAcceptCookies/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionAcceptCookies/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6211,20 +8512,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionHandleODataParametersVisited/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionHandleODataParametersVisited/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionHandleODataParametersVisited/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6240,6 +8549,23 @@ r = requests.get('http://zap/JSON/spider/view/optionHandleODataParametersVisited
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionHandleODataParametersVisited/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6273,20 +8599,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionParseComments/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionParseComments/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionParseComments/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6302,6 +8636,23 @@ r = requests.get('http://zap/JSON/spider/view/optionParseComments/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionParseComments/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6335,20 +8686,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionParseGit/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionParseGit/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionParseGit/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6364,6 +8723,23 @@ r = requests.get('http://zap/JSON/spider/view/optionParseGit/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionParseGit/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6397,20 +8773,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionParseRobotsTxt/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionParseRobotsTxt/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionParseRobotsTxt/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6426,6 +8810,23 @@ r = requests.get('http://zap/JSON/spider/view/optionParseRobotsTxt/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionParseRobotsTxt/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6459,20 +8860,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionParseSVNEntries/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionParseSVNEntries/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionParseSVNEntries/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6488,6 +8897,23 @@ r = requests.get('http://zap/JSON/spider/view/optionParseSVNEntries/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionParseSVNEntries/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6521,20 +8947,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionParseSitemapXml/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionParseSitemapXml/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionParseSitemapXml/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6550,6 +8984,23 @@ r = requests.get('http://zap/JSON/spider/view/optionParseSitemapXml/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionParseSitemapXml/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6583,20 +9034,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionPostForm/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionPostForm/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionPostForm/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6612,6 +9071,23 @@ r = requests.get('http://zap/JSON/spider/view/optionPostForm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionPostForm/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6645,20 +9121,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionProcessForm/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionProcessForm/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionProcessForm/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6674,6 +9158,23 @@ r = requests.get('http://zap/JSON/spider/view/optionProcessForm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionProcessForm/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6707,20 +9208,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionSendRefererHeader/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionSendRefererHeader/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionSendRefererHeader/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6736,6 +9245,23 @@ r = requests.get('http://zap/JSON/spider/view/optionSendRefererHeader/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionSendRefererHeader/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6771,20 +9297,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/view/optionShowAdvancedDialog/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/view/optionShowAdvancedDialog/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/view/optionShowAdvancedDialog/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6800,6 +9334,23 @@ r = requests.get('http://zap/JSON/spider/view/optionShowAdvancedDialog/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/view/optionShowAdvancedDialog/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6833,20 +9384,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/scan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/scan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/scan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -6862,6 +9421,23 @@ r = requests.get('http://zap/JSON/spider/action/scan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/scan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -6907,6 +9483,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/scanAsUser/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/scanAsUser/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/spider/action/scanAsUser/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -6923,21 +9539,6 @@ result = RestClient.get 'http://zap/JSON/spider/action/scanAsUser/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/spider/action/scanAsUser/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -6984,21 +9585,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/pause/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/pause/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/pause/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7014,6 +9622,24 @@ r = requests.get('http://zap/JSON/spider/action/pause/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/pause/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7053,21 +9679,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/resume/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/resume/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/resume/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7083,6 +9716,24 @@ r = requests.get('http://zap/JSON/spider/action/resume/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/resume/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7122,20 +9773,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/stop/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/stop/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/stop/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7151,6 +9810,23 @@ r = requests.get('http://zap/JSON/spider/action/stop/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/stop/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7190,21 +9866,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/removeScan/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/removeScan/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/removeScan/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7220,6 +9903,24 @@ r = requests.get('http://zap/JSON/spider/action/removeScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/removeScan/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7259,20 +9960,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/pauseAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/pauseAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/pauseAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7288,6 +9997,23 @@ r = requests.get('http://zap/JSON/spider/action/pauseAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/pauseAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7321,20 +10047,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/resumeAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/resumeAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/resumeAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7350,6 +10084,23 @@ r = requests.get('http://zap/JSON/spider/action/resumeAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/resumeAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7383,20 +10134,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/stopAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/stopAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/stopAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7412,6 +10171,23 @@ r = requests.get('http://zap/JSON/spider/action/stopAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/stopAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7445,20 +10221,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/removeAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/removeAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/removeAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7474,6 +10258,23 @@ r = requests.get('http://zap/JSON/spider/action/removeAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/removeAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7507,20 +10308,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/clearExcludedFromScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/clearExcludedFromScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/clearExcludedFromScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7536,6 +10345,23 @@ r = requests.get('http://zap/JSON/spider/action/clearExcludedFromScan/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/clearExcludedFromScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7571,21 +10397,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/excludeFromScan/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/excludeFromScan/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/excludeFromScan/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7601,6 +10434,24 @@ r = requests.get('http://zap/JSON/spider/action/excludeFromScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/excludeFromScan/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7642,21 +10493,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/addDomainAlwaysInScope/?value=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/addDomainAlwaysInScope/?value=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/addDomainAlwaysInScope/',
-  params: {
-  'value' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7672,6 +10530,24 @@ r = requests.get('http://zap/JSON/spider/action/addDomainAlwaysInScope/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/addDomainAlwaysInScope/',
+  params: {
+  'value' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7715,21 +10591,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/modifyDomainAlwaysInScope/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/modifyDomainAlwaysInScope/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/modifyDomainAlwaysInScope/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7745,6 +10628,24 @@ r = requests.get('http://zap/JSON/spider/action/modifyDomainAlwaysInScope/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/modifyDomainAlwaysInScope/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7789,21 +10690,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/removeDomainAlwaysInScope/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/removeDomainAlwaysInScope/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/removeDomainAlwaysInScope/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7819,6 +10727,24 @@ r = requests.get('http://zap/JSON/spider/action/removeDomainAlwaysInScope/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/removeDomainAlwaysInScope/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7860,20 +10786,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/enableAllDomainsAlwaysInScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/enableAllDomainsAlwaysInScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/enableAllDomainsAlwaysInScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7889,6 +10823,23 @@ r = requests.get('http://zap/JSON/spider/action/enableAllDomainsAlwaysInScope/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/enableAllDomainsAlwaysInScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7924,20 +10875,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/disableAllDomainsAlwaysInScope/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/disableAllDomainsAlwaysInScope/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/disableAllDomainsAlwaysInScope/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -7953,6 +10912,23 @@ r = requests.get('http://zap/JSON/spider/action/disableAllDomainsAlwaysInScope/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/disableAllDomainsAlwaysInScope/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -7988,21 +10964,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionHandleParameters/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionHandleParameters/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionHandleParameters/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8018,6 +11001,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionHandleParameters/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionHandleParameters/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8057,21 +11058,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionScopeString/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionScopeString/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionScopeString/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8087,6 +11095,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionScopeString/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionScopeString/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8128,21 +11154,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionSkipURLString/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionSkipURLString/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionSkipURLString/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8158,6 +11191,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionSkipURLString/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionSkipURLString/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8197,21 +11248,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionUserAgent/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionUserAgent/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionUserAgent/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8227,6 +11285,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionUserAgent/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionUserAgent/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8266,21 +11342,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionAcceptCookies/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionAcceptCookies/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionAcceptCookies/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8296,6 +11379,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionAcceptCookies/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionAcceptCookies/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8337,21 +11438,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionHandleODataParametersVisited/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionHandleODataParametersVisited/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionHandleODataParametersVisited/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8367,6 +11475,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionHandleODataParametersVi
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionHandleODataParametersVisited/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8406,21 +11532,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionMaxChildren/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionMaxChildren/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxChildren/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8436,6 +11569,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionMaxChildren/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxChildren/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8477,21 +11628,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionMaxDepth/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionMaxDepth/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxDepth/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8507,6 +11665,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionMaxDepth/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxDepth/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8548,21 +11724,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionMaxDuration/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionMaxDuration/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxDuration/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8578,6 +11761,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionMaxDuration/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxDuration/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8617,21 +11818,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionMaxParseSizeBytes/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionMaxParseSizeBytes/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxParseSizeBytes/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8647,6 +11855,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionMaxParseSizeBytes/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxParseSizeBytes/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8688,21 +11914,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionMaxScansInUI/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionMaxScansInUI/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxScansInUI/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8718,6 +11951,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionMaxScansInUI/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionMaxScansInUI/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8757,21 +12008,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionParseComments/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionParseComments/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseComments/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8787,6 +12045,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionParseComments/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseComments/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8826,21 +12102,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionParseGit/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionParseGit/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseGit/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8856,6 +12139,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionParseGit/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseGit/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8895,21 +12196,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionParseRobotsTxt/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionParseRobotsTxt/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseRobotsTxt/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8925,6 +12233,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionParseRobotsTxt/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseRobotsTxt/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -8964,21 +12290,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionParseSVNEntries/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionParseSVNEntries/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseSVNEntries/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -8994,6 +12327,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionParseSVNEntries/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseSVNEntries/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9033,21 +12384,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionParseSitemapXml/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionParseSitemapXml/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseSitemapXml/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9063,6 +12421,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionParseSitemapXml/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionParseSitemapXml/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9102,21 +12478,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionPostForm/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionPostForm/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionPostForm/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9132,6 +12515,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionPostForm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionPostForm/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9171,21 +12572,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionProcessForm/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionProcessForm/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionProcessForm/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9201,6 +12609,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionProcessForm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionProcessForm/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9240,21 +12666,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionRequestWaitTime/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionRequestWaitTime/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionRequestWaitTime/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9270,6 +12703,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionRequestWaitTime/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionRequestWaitTime/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9309,21 +12760,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionSendRefererHeader/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionSendRefererHeader/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionSendRefererHeader/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9339,6 +12797,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionSendRefererHeader/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionSendRefererHeader/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9380,21 +12856,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionShowAdvancedDialog/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionShowAdvancedDialog/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionShowAdvancedDialog/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9410,6 +12893,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionShowAdvancedDialog/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionShowAdvancedDialog/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9449,21 +12950,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/spider/action/setOptionThreadCount/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/spider/action/setOptionThreadCount/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/spider/action/setOptionThreadCount/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9479,6 +12987,24 @@ r = requests.get('http://zap/JSON/spider/action/setOptionThreadCount/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/spider/action/setOptionThreadCount/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9520,20 +13046,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/hosts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/hosts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/hosts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9549,6 +13083,23 @@ r = requests.get('http://zap/JSON/core/view/hosts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/hosts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9584,20 +13135,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/sites/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/sites/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/sites/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9613,6 +13172,23 @@ r = requests.get('http://zap/JSON/core/view/sites/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/sites/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9648,20 +13224,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/urls/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/urls/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/urls/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9677,6 +13261,23 @@ r = requests.get('http://zap/JSON/core/view/urls/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/urls/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9718,20 +13319,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/childNodes/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/childNodes/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/childNodes/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9747,6 +13356,23 @@ r = requests.get('http://zap/JSON/core/view/childNodes/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/childNodes/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9788,21 +13414,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/message/?id=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/message/?id=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/message/',
-  params: {
-  'id' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9818,6 +13451,24 @@ r = requests.get('http://zap/JSON/core/view/message/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/message/',
+  params: {
+  'id' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9859,20 +13510,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/messages/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/messages/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/messages/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9888,6 +13547,23 @@ r = requests.get('http://zap/JSON/core/view/messages/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/messages/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -9931,21 +13607,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/messagesById/?ids=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/messagesById/?ids=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/messagesById/',
-  params: {
-  'ids' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -9961,6 +13644,24 @@ r = requests.get('http://zap/JSON/core/view/messagesById/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/messagesById/',
+  params: {
+  'ids' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10002,20 +13703,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/numberOfMessages/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/numberOfMessages/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/numberOfMessages/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10031,6 +13740,23 @@ r = requests.get('http://zap/JSON/core/view/numberOfMessages/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/numberOfMessages/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10072,20 +13798,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/mode/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/mode/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/mode/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10101,6 +13835,23 @@ r = requests.get('http://zap/JSON/core/view/mode/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/mode/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10136,20 +13887,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/version/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/version/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/version/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10165,6 +13924,23 @@ r = requests.get('http://zap/JSON/core/view/version/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/version/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10200,20 +13976,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/excludedFromProxy/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/excludedFromProxy/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/excludedFromProxy/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10229,6 +14013,23 @@ r = requests.get('http://zap/JSON/core/view/excludedFromProxy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/excludedFromProxy/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10264,20 +14065,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/homeDirectory/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/homeDirectory/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/homeDirectory/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10293,6 +14102,23 @@ r = requests.get('http://zap/JSON/core/view/homeDirectory/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/homeDirectory/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10326,20 +14152,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/sessionLocation/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/sessionLocation/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/sessionLocation/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10355,6 +14189,23 @@ r = requests.get('http://zap/JSON/core/view/sessionLocation/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/sessionLocation/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10390,20 +14241,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/proxyChainExcludedDomains/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/proxyChainExcludedDomains/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/proxyChainExcludedDomains/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10419,6 +14278,23 @@ r = requests.get('http://zap/JSON/core/view/proxyChainExcludedDomains/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/proxyChainExcludedDomains/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10454,20 +14330,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainSkipName/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainSkipName/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainSkipName/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10483,6 +14367,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainSkipName/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainSkipName/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10518,20 +14419,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyExcludedDomains/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyExcludedDomains/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyExcludedDomains/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10547,6 +14456,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyExcludedDomains/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyExcludedDomains/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10582,20 +14508,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyExcludedDomainsEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyExcludedDomainsEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyExcludedDomainsEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10611,6 +14545,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyExcludedDomainsEnabled/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyExcludedDomainsEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10646,20 +14597,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/zapHomePath/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/zapHomePath/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/zapHomePath/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10675,6 +14634,23 @@ r = requests.get('http://zap/JSON/core/view/zapHomePath/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/zapHomePath/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10710,20 +14686,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionMaximumAlertInstances/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionMaximumAlertInstances/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionMaximumAlertInstances/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10739,6 +14723,23 @@ r = requests.get('http://zap/JSON/core/view/optionMaximumAlertInstances/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionMaximumAlertInstances/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10774,20 +14775,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionMergeRelatedAlerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionMergeRelatedAlerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionMergeRelatedAlerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10803,6 +14812,23 @@ r = requests.get('http://zap/JSON/core/view/optionMergeRelatedAlerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionMergeRelatedAlerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10838,20 +14864,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionAlertOverridesFilePath/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionAlertOverridesFilePath/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionAlertOverridesFilePath/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10867,6 +14901,23 @@ r = requests.get('http://zap/JSON/core/view/optionAlertOverridesFilePath/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionAlertOverridesFilePath/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10902,21 +14953,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/alert/?id=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/alert/?id=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/alert/',
-  params: {
-  'id' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -10932,6 +14990,24 @@ r = requests.get('http://zap/JSON/core/view/alert/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/alert/',
+  params: {
+  'id' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -10973,20 +15049,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/alerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/alerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/alerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11002,6 +15086,23 @@ r = requests.get('http://zap/JSON/core/view/alerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/alerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11046,20 +15147,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/alertsSummary/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/alertsSummary/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/alertsSummary/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11075,6 +15184,23 @@ r = requests.get('http://zap/JSON/core/view/alertsSummary/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/alertsSummary/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11116,20 +15242,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/numberOfAlerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/numberOfAlerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/numberOfAlerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11145,6 +15279,23 @@ r = requests.get('http://zap/JSON/core/view/numberOfAlerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/numberOfAlerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11187,20 +15338,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionDefaultUserAgent/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionDefaultUserAgent/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionDefaultUserAgent/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11216,6 +15375,23 @@ r = requests.get('http://zap/JSON/core/view/optionDefaultUserAgent/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionDefaultUserAgent/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11251,20 +15427,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionDnsTtlSuccessfulQueries/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionDnsTtlSuccessfulQueries/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionDnsTtlSuccessfulQueries/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11280,6 +15464,23 @@ r = requests.get('http://zap/JSON/core/view/optionDnsTtlSuccessfulQueries/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionDnsTtlSuccessfulQueries/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11315,20 +15516,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionHttpState/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionHttpState/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionHttpState/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11344,6 +15553,23 @@ r = requests.get('http://zap/JSON/core/view/optionHttpState/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionHttpState/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11377,20 +15603,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainName/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainName/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainName/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11406,6 +15640,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainName/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainName/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11439,20 +15690,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainPassword/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainPassword/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPassword/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11468,6 +15727,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainPassword/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPassword/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11501,20 +15777,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainPort/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainPort/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPort/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11530,6 +15814,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainPort/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPort/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11563,20 +15864,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainRealm/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainRealm/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainRealm/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11592,6 +15901,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainRealm/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainRealm/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11625,20 +15951,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainUserName/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainUserName/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainUserName/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11654,6 +15988,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainUserName/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainUserName/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11687,20 +16038,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionTimeoutInSecs/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionTimeoutInSecs/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionTimeoutInSecs/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11716,6 +16075,23 @@ r = requests.get('http://zap/JSON/core/view/optionTimeoutInSecs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionTimeoutInSecs/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11751,20 +16127,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionHttpStateEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionHttpStateEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionHttpStateEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11780,6 +16164,23 @@ r = requests.get('http://zap/JSON/core/view/optionHttpStateEnabled/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionHttpStateEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11813,20 +16214,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionProxyChainPrompt/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionProxyChainPrompt/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPrompt/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11842,6 +16251,23 @@ r = requests.get('http://zap/JSON/core/view/optionProxyChainPrompt/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionProxyChainPrompt/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11875,20 +16301,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionSingleCookieRequestHeader/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionSingleCookieRequestHeader/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionSingleCookieRequestHeader/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11904,6 +16338,23 @@ r = requests.get('http://zap/JSON/core/view/optionSingleCookieRequestHeader/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionSingleCookieRequestHeader/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11937,20 +16388,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionUseProxyChain/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionUseProxyChain/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionUseProxyChain/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -11966,6 +16425,23 @@ r = requests.get('http://zap/JSON/core/view/optionUseProxyChain/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionUseProxyChain/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -11999,20 +16475,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/view/optionUseProxyChainAuth/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/view/optionUseProxyChainAuth/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/view/optionUseProxyChainAuth/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12028,6 +16512,23 @@ r = requests.get('http://zap/JSON/core/view/optionUseProxyChainAuth/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/view/optionUseProxyChainAuth/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12061,21 +16562,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/accessUrl/?url=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/accessUrl/?url=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/accessUrl/',
-  params: {
-  'url' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12091,6 +16599,24 @@ r = requests.get('http://zap/JSON/core/action/accessUrl/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/accessUrl/',
+  params: {
+  'url' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12133,20 +16659,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/shutdown/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/shutdown/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/shutdown/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12162,6 +16696,23 @@ r = requests.get('http://zap/JSON/core/action/shutdown/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/shutdown/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12197,20 +16748,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/newSession/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/newSession/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/newSession/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12226,6 +16785,23 @@ r = requests.get('http://zap/JSON/core/action/newSession/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/newSession/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12268,20 +16844,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/loadSession/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/loadSession/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/loadSession/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12297,6 +16881,23 @@ r = requests.get('http://zap/JSON/core/action/loadSession/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/loadSession/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12338,21 +16939,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/saveSession/?name=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/saveSession/?name=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/saveSession/',
-  params: {
-  'name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12368,6 +16976,24 @@ r = requests.get('http://zap/JSON/core/action/saveSession/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/saveSession/',
+  params: {
+  'name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12410,21 +17036,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/snapshotSession/?name=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/snapshotSession/?name=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/snapshotSession/',
-  params: {
-  'name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12440,6 +17073,24 @@ r = requests.get('http://zap/JSON/core/action/snapshotSession/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/snapshotSession/',
+  params: {
+  'name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12482,20 +17133,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/clearExcludedFromProxy/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/clearExcludedFromProxy/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/clearExcludedFromProxy/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12511,6 +17170,23 @@ r = requests.get('http://zap/JSON/core/action/clearExcludedFromProxy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/clearExcludedFromProxy/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12546,21 +17222,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/excludeFromProxy/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/excludeFromProxy/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/excludeFromProxy/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12576,6 +17259,24 @@ r = requests.get('http://zap/JSON/core/action/excludeFromProxy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/excludeFromProxy/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12617,21 +17318,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setHomeDirectory/?dir=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setHomeDirectory/?dir=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setHomeDirectory/',
-  params: {
-  'dir' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12647,6 +17355,24 @@ r = requests.get('http://zap/JSON/core/action/setHomeDirectory/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setHomeDirectory/',
+  params: {
+  'dir' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12686,21 +17412,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setMode/?mode=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setMode/?mode=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setMode/',
-  params: {
-  'mode' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12716,6 +17449,24 @@ r = requests.get('http://zap/JSON/core/action/setMode/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setMode/',
+  params: {
+  'mode' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12757,20 +17508,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/generateRootCA/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/generateRootCA/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/generateRootCA/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12786,6 +17545,23 @@ r = requests.get('http://zap/JSON/core/action/generateRootCA/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/generateRootCA/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12821,21 +17597,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/sendRequest/?request=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/sendRequest/?request=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/sendRequest/',
-  params: {
-  'request' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12851,6 +17634,24 @@ r = requests.get('http://zap/JSON/core/action/sendRequest/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/sendRequest/',
+  params: {
+  'request' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12893,20 +17694,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/runGarbageCollection/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/runGarbageCollection/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/runGarbageCollection/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12922,6 +17731,23 @@ r = requests.get('http://zap/JSON/core/action/runGarbageCollection/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/runGarbageCollection/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -12955,21 +17781,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/deleteSiteNode/?url=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/deleteSiteNode/?url=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/deleteSiteNode/',
-  params: {
-  'url' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -12985,6 +17818,24 @@ r = requests.get('http://zap/JSON/core/action/deleteSiteNode/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/deleteSiteNode/',
+  params: {
+  'url' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13028,21 +17879,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/addProxyChainExcludedDomain/?value=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/addProxyChainExcludedDomain/?value=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/addProxyChainExcludedDomain/',
-  params: {
-  'value' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13058,6 +17916,24 @@ r = requests.get('http://zap/JSON/core/action/addProxyChainExcludedDomain/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/addProxyChainExcludedDomain/',
+  params: {
+  'value' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13101,21 +17977,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/modifyProxyChainExcludedDomain/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/modifyProxyChainExcludedDomain/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/modifyProxyChainExcludedDomain/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13131,6 +18014,24 @@ r = requests.get('http://zap/JSON/core/action/modifyProxyChainExcludedDomain/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/modifyProxyChainExcludedDomain/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13175,21 +18076,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/removeProxyChainExcludedDomain/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/removeProxyChainExcludedDomain/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/removeProxyChainExcludedDomain/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13205,6 +18113,24 @@ r = requests.get('http://zap/JSON/core/action/removeProxyChainExcludedDomain/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/removeProxyChainExcludedDomain/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13246,20 +18172,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/enableAllProxyChainExcludedDomains/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/enableAllProxyChainExcludedDomains/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/enableAllProxyChainExcludedDomains/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13275,6 +18209,23 @@ r = requests.get('http://zap/JSON/core/action/enableAllProxyChainExcludedDomains
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/enableAllProxyChainExcludedDomains/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13310,20 +18261,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/disableAllProxyChainExcludedDomains/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/disableAllProxyChainExcludedDomains/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/disableAllProxyChainExcludedDomains/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13339,6 +18298,23 @@ r = requests.get('http://zap/JSON/core/action/disableAllProxyChainExcludedDomain
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/disableAllProxyChainExcludedDomains/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13374,21 +18350,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionMaximumAlertInstances/?numberOfInstances=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionMaximumAlertInstances/?numberOfInstances=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionMaximumAlertInstances/',
-  params: {
-  'numberOfInstances' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13404,6 +18387,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionMaximumAlertInstances/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionMaximumAlertInstances/',
+  params: {
+  'numberOfInstances' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13445,21 +18446,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionMergeRelatedAlerts/?enabled=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionMergeRelatedAlerts/?enabled=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionMergeRelatedAlerts/',
-  params: {
-  'enabled' => 'boolean'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13475,6 +18483,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionMergeRelatedAlerts/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionMergeRelatedAlerts/',
+  params: {
+  'enabled' => 'boolean'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13516,20 +18542,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionAlertOverridesFilePath/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionAlertOverridesFilePath/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionAlertOverridesFilePath/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13545,6 +18579,23 @@ r = requests.get('http://zap/JSON/core/action/setOptionAlertOverridesFilePath/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionAlertOverridesFilePath/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13586,6 +18637,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/enablePKCS12ClientCertificate/?filePath=string&password=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/enablePKCS12ClientCertificate/?filePath=string&password=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/core/action/enablePKCS12ClientCertificate/', params={
+  'filePath': 'string',  'password': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -13602,21 +18693,6 @@ result = RestClient.get 'http://zap/JSON/core/action/enablePKCS12ClientCertifica
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/core/action/enablePKCS12ClientCertificate/', params={
-  'filePath': 'string',  'password': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -13660,20 +18736,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/disableClientCertificate/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/disableClientCertificate/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/disableClientCertificate/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13689,6 +18773,23 @@ r = requests.get('http://zap/JSON/core/action/disableClientCertificate/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/disableClientCertificate/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13724,20 +18825,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/deleteAllAlerts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/deleteAllAlerts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/deleteAllAlerts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13753,6 +18862,23 @@ r = requests.get('http://zap/JSON/core/action/deleteAllAlerts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/deleteAllAlerts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13788,21 +18914,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/deleteAlert/?id=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/deleteAlert/?id=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/deleteAlert/',
-  params: {
-  'id' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13818,6 +18951,24 @@ r = requests.get('http://zap/JSON/core/action/deleteAlert/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/deleteAlert/',
+  params: {
+  'id' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13859,21 +19010,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionDefaultUserAgent/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionDefaultUserAgent/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionDefaultUserAgent/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13889,6 +19047,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionDefaultUserAgent/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionDefaultUserAgent/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13930,21 +19106,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainName/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainName/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainName/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -13960,6 +19143,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainName/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainName/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -13999,21 +19200,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainPassword/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainPassword/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPassword/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14029,6 +19237,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainPassword/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPassword/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14068,21 +19294,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainRealm/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainRealm/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainRealm/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14098,6 +19331,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainRealm/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainRealm/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14137,21 +19388,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainSkipName/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainSkipName/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainSkipName/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14167,6 +19425,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainSkipName/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainSkipName/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14208,21 +19484,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainUserName/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainUserName/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainUserName/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14238,6 +19521,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainUserName/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainUserName/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14277,21 +19578,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionDnsTtlSuccessfulQueries/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionDnsTtlSuccessfulQueries/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionDnsTtlSuccessfulQueries/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14307,6 +19615,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionDnsTtlSuccessfulQueries/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionDnsTtlSuccessfulQueries/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14348,21 +19674,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionHttpStateEnabled/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionHttpStateEnabled/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionHttpStateEnabled/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14378,6 +19711,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionHttpStateEnabled/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionHttpStateEnabled/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14417,21 +19768,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainPort/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainPort/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPort/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14447,6 +19805,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainPort/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPort/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14486,21 +19862,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionProxyChainPrompt/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionProxyChainPrompt/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPrompt/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14516,6 +19899,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionProxyChainPrompt/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionProxyChainPrompt/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14555,21 +19956,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionSingleCookieRequestHeader/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionSingleCookieRequestHeader/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionSingleCookieRequestHeader/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14585,6 +19993,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionSingleCookieRequestHeader
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionSingleCookieRequestHeader/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14624,21 +20050,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionTimeoutInSecs/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionTimeoutInSecs/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionTimeoutInSecs/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14654,6 +20087,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionTimeoutInSecs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionTimeoutInSecs/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14695,21 +20146,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionUseProxyChain/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionUseProxyChain/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionUseProxyChain/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14725,6 +20183,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionUseProxyChain/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionUseProxyChain/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14766,21 +20242,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/core/action/setOptionUseProxyChainAuth/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/core/action/setOptionUseProxyChainAuth/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/core/action/setOptionUseProxyChainAuth/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14796,6 +20279,24 @@ r = requests.get('http://zap/JSON/core/action/setOptionUseProxyChainAuth/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/core/action/setOptionUseProxyChainAuth/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14835,20 +20336,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/proxy.pac/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/proxy.pac/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/proxy.pac/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14864,6 +20373,23 @@ r = requests.get('http://zap/OTHER/core/other/proxy.pac/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/proxy.pac/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14897,20 +20423,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/rootcert/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/rootcert/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/rootcert/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14926,6 +20460,23 @@ r = requests.get('http://zap/OTHER/core/other/rootcert/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/rootcert/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -14961,21 +20512,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/setproxy/?proxy=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/setproxy/?proxy=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/setproxy/',
-  params: {
-  'proxy' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -14991,6 +20549,24 @@ r = requests.get('http://zap/OTHER/core/other/setproxy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/setproxy/',
+  params: {
+  'proxy' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15030,20 +20606,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/xmlreport/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/xmlreport/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/xmlreport/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15059,6 +20643,23 @@ r = requests.get('http://zap/OTHER/core/other/xmlreport/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/xmlreport/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15094,20 +20695,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/htmlreport/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/htmlreport/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/htmlreport/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15123,6 +20732,23 @@ r = requests.get('http://zap/OTHER/core/other/htmlreport/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/htmlreport/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15158,20 +20784,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/jsonreport/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/jsonreport/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/jsonreport/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15187,6 +20821,23 @@ r = requests.get('http://zap/OTHER/core/other/jsonreport/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/jsonreport/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15222,20 +20873,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/mdreport/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/mdreport/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/mdreport/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15251,6 +20910,23 @@ r = requests.get('http://zap/OTHER/core/other/mdreport/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/mdreport/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15286,21 +20962,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/messageHar/?id=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/messageHar/?id=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/messageHar/',
-  params: {
-  'id' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15316,6 +20999,24 @@ r = requests.get('http://zap/OTHER/core/other/messageHar/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/messageHar/',
+  params: {
+  'id' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15357,20 +21058,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/messagesHar/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/messagesHar/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/messagesHar/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15386,6 +21095,23 @@ r = requests.get('http://zap/OTHER/core/other/messagesHar/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/messagesHar/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15429,21 +21155,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/messagesHarById/?ids=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/messagesHarById/?ids=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/messagesHarById/',
-  params: {
-  'ids' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15459,6 +21192,24 @@ r = requests.get('http://zap/OTHER/core/other/messagesHarById/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/messagesHarById/',
+  params: {
+  'ids' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15500,21 +21251,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/OTHER/core/other/sendHarRequest/?request=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/OTHER/core/other/sendHarRequest/?request=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/OTHER/core/other/sendHarRequest/',
-  params: {
-  'request' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15530,6 +21288,24 @@ r = requests.get('http://zap/OTHER/core/other/sendHarRequest/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/OTHER/core/other/sendHarRequest/',
+  params: {
+  'request' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15574,20 +21350,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/params/view/params/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/params/view/params/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/params/view/params/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15603,6 +21387,23 @@ r = requests.get('http://zap/JSON/params/view/params/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/params/view/params/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15646,20 +21447,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/status/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/status/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/status/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15675,6 +21484,23 @@ r = requests.get('http://zap/JSON/ascan/view/status/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/status/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15714,20 +21540,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/scanProgress/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/scanProgress/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/scanProgress/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15743,6 +21577,23 @@ r = requests.get('http://zap/JSON/ascan/view/scanProgress/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/scanProgress/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15782,21 +21633,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/messagesIds/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/messagesIds/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/messagesIds/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15812,6 +21670,24 @@ r = requests.get('http://zap/JSON/ascan/view/messagesIds/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/messagesIds/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15853,21 +21729,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/alertsIds/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/alertsIds/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/alertsIds/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15883,6 +21766,24 @@ r = requests.get('http://zap/JSON/ascan/view/alertsIds/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/alertsIds/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15924,20 +21825,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/scans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/scans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/scans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -15953,6 +21862,23 @@ r = requests.get('http://zap/JSON/ascan/view/scans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/scans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -15986,20 +21912,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/scanPolicyNames/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/scanPolicyNames/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/scanPolicyNames/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16015,6 +21949,23 @@ r = requests.get('http://zap/JSON/ascan/view/scanPolicyNames/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/scanPolicyNames/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16048,20 +21999,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/excludedFromScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/excludedFromScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/excludedFromScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16077,6 +22036,23 @@ r = requests.get('http://zap/JSON/ascan/view/excludedFromScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/excludedFromScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16112,20 +22088,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/scanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/scanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/scanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16141,6 +22125,23 @@ r = requests.get('http://zap/JSON/ascan/view/scanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/scanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16183,20 +22184,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/policies/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/policies/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/policies/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16212,6 +22221,23 @@ r = requests.get('http://zap/JSON/ascan/view/policies/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/policies/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16252,20 +22278,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/attackModeQueue/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/attackModeQueue/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/attackModeQueue/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16281,6 +22315,23 @@ r = requests.get('http://zap/JSON/ascan/view/attackModeQueue/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/attackModeQueue/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16314,20 +22365,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/excludedParams/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/excludedParams/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/excludedParams/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16343,6 +22402,23 @@ r = requests.get('http://zap/JSON/ascan/view/excludedParams/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/excludedParams/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16378,20 +22454,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionExcludedParamList/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionExcludedParamList/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionExcludedParamList/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16407,6 +22491,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionExcludedParamList/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionExcludedParamList/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16442,20 +22543,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/excludedParamTypes/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/excludedParamTypes/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/excludedParamTypes/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16471,6 +22580,23 @@ r = requests.get('http://zap/JSON/ascan/view/excludedParamTypes/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/excludedParamTypes/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16506,20 +22632,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionAttackPolicy/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionAttackPolicy/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionAttackPolicy/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16535,6 +22669,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionAttackPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionAttackPolicy/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16568,20 +22719,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionDefaultPolicy/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionDefaultPolicy/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionDefaultPolicy/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16597,6 +22756,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionDefaultPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionDefaultPolicy/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16630,20 +22806,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionDelayInMs/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionDelayInMs/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionDelayInMs/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16659,6 +22843,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionDelayInMs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionDelayInMs/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16692,20 +22893,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionHandleAntiCSRFTokens/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionHandleAntiCSRFTokens/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionHandleAntiCSRFTokens/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16721,6 +22930,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionHandleAntiCSRFTokens/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionHandleAntiCSRFTokens/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16754,20 +22980,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionHostPerScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionHostPerScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionHostPerScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16783,6 +23017,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionHostPerScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionHostPerScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16816,20 +23067,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionMaxChartTimeInMins/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionMaxChartTimeInMins/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxChartTimeInMins/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16845,6 +23104,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionMaxChartTimeInMins/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxChartTimeInMins/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16878,20 +23154,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionMaxResultsToList/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionMaxResultsToList/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxResultsToList/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16907,6 +23191,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionMaxResultsToList/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxResultsToList/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -16940,20 +23241,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionMaxRuleDurationInMins/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionMaxRuleDurationInMins/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxRuleDurationInMins/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -16969,6 +23278,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionMaxRuleDurationInMins/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxRuleDurationInMins/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17002,20 +23328,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionMaxScanDurationInMins/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionMaxScanDurationInMins/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxScanDurationInMins/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17031,6 +23365,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionMaxScanDurationInMins/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxScanDurationInMins/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17064,20 +23415,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionMaxScansInUI/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionMaxScansInUI/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxScansInUI/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17093,6 +23452,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionMaxScansInUI/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionMaxScansInUI/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17126,20 +23502,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionTargetParamsEnabledRPC/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionTargetParamsEnabledRPC/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionTargetParamsEnabledRPC/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17155,6 +23539,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionTargetParamsEnabledRPC/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionTargetParamsEnabledRPC/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17188,20 +23589,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionTargetParamsInjectable/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionTargetParamsInjectable/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionTargetParamsInjectable/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17217,6 +23626,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionTargetParamsInjectable/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionTargetParamsInjectable/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17250,20 +23676,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionThreadPerHost/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionThreadPerHost/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionThreadPerHost/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17279,6 +23713,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionThreadPerHost/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionThreadPerHost/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17312,20 +23763,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionAddQueryParam/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionAddQueryParam/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionAddQueryParam/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17341,6 +23800,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionAddQueryParam/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionAddQueryParam/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17376,20 +23852,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionAllowAttackOnStart/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionAllowAttackOnStart/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionAllowAttackOnStart/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17405,6 +23889,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionAllowAttackOnStart/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionAllowAttackOnStart/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17438,20 +23939,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionInjectPluginIdInHeader/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionInjectPluginIdInHeader/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionInjectPluginIdInHeader/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17467,6 +23976,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionInjectPluginIdInHeader/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionInjectPluginIdInHeader/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17502,20 +24028,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionPromptInAttackMode/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionPromptInAttackMode/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionPromptInAttackMode/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17531,6 +24065,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionPromptInAttackMode/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionPromptInAttackMode/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17564,20 +24115,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionPromptToClearFinishedScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionPromptToClearFinishedScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionPromptToClearFinishedScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17593,6 +24152,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionPromptToClearFinishedScans/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionPromptToClearFinishedScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17626,20 +24202,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionRescanInAttackMode/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionRescanInAttackMode/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionRescanInAttackMode/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17655,6 +24239,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionRescanInAttackMode/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionRescanInAttackMode/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17688,20 +24289,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionScanHeadersAllRequests/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionScanHeadersAllRequests/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionScanHeadersAllRequests/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17717,6 +24326,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionScanHeadersAllRequests/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionScanHeadersAllRequests/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17752,20 +24378,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/view/optionShowAdvancedDialog/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/view/optionShowAdvancedDialog/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/view/optionShowAdvancedDialog/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17781,6 +24415,23 @@ r = requests.get('http://zap/JSON/ascan/view/optionShowAdvancedDialog/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/view/optionShowAdvancedDialog/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17814,20 +24465,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/scan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/scan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/scan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17843,6 +24502,23 @@ r = requests.get('http://zap/JSON/ascan/action/scan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/scan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17890,20 +24566,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/scanAsUser/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/scanAsUser/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/scanAsUser/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17919,6 +24603,23 @@ r = requests.get('http://zap/JSON/ascan/action/scanAsUser/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/scanAsUser/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -17966,21 +24667,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/pause/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/pause/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/pause/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -17996,6 +24704,24 @@ r = requests.get('http://zap/JSON/ascan/action/pause/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/pause/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18035,21 +24761,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/resume/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/resume/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/resume/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18065,6 +24798,24 @@ r = requests.get('http://zap/JSON/ascan/action/resume/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/resume/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18104,21 +24855,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/stop/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/stop/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/stop/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18134,6 +24892,24 @@ r = requests.get('http://zap/JSON/ascan/action/stop/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/stop/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18173,21 +24949,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/removeScan/?scanId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/removeScan/?scanId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/removeScan/',
-  params: {
-  'scanId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18203,6 +24986,24 @@ r = requests.get('http://zap/JSON/ascan/action/removeScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/removeScan/',
+  params: {
+  'scanId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18242,20 +25043,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/pauseAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/pauseAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/pauseAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18271,6 +25080,23 @@ r = requests.get('http://zap/JSON/ascan/action/pauseAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/pauseAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18304,20 +25130,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/resumeAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/resumeAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/resumeAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18333,6 +25167,23 @@ r = requests.get('http://zap/JSON/ascan/action/resumeAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/resumeAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18366,20 +25217,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/stopAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/stopAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/stopAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18395,6 +25254,23 @@ r = requests.get('http://zap/JSON/ascan/action/stopAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/stopAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18428,20 +25304,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/removeAllScans/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/removeAllScans/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/removeAllScans/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18457,6 +25341,23 @@ r = requests.get('http://zap/JSON/ascan/action/removeAllScans/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/removeAllScans/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18490,20 +25391,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/clearExcludedFromScan/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/clearExcludedFromScan/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/clearExcludedFromScan/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18519,6 +25428,23 @@ r = requests.get('http://zap/JSON/ascan/action/clearExcludedFromScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/clearExcludedFromScan/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18554,21 +25480,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/excludeFromScan/?regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/excludeFromScan/?regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/excludeFromScan/',
-  params: {
-  'regex' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18584,6 +25517,24 @@ r = requests.get('http://zap/JSON/ascan/action/excludeFromScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/excludeFromScan/',
+  params: {
+  'regex' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18625,20 +25576,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/enableAllScanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/enableAllScanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/enableAllScanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18654,6 +25613,23 @@ r = requests.get('http://zap/JSON/ascan/action/enableAllScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/enableAllScanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18695,20 +25671,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/disableAllScanners/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/disableAllScanners/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/disableAllScanners/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18724,6 +25708,23 @@ r = requests.get('http://zap/JSON/ascan/action/disableAllScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/disableAllScanners/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18765,21 +25766,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/enableScanners/?ids=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/enableScanners/?ids=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/enableScanners/',
-  params: {
-  'ids' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18795,6 +25803,24 @@ r = requests.get('http://zap/JSON/ascan/action/enableScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/enableScanners/',
+  params: {
+  'ids' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18837,21 +25863,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/disableScanners/?ids=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/disableScanners/?ids=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/disableScanners/',
-  params: {
-  'ids' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18867,6 +25900,24 @@ r = requests.get('http://zap/JSON/ascan/action/disableScanners/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/disableScanners/',
+  params: {
+  'ids' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18909,21 +25960,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setEnabledPolicies/?ids=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setEnabledPolicies/?ids=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setEnabledPolicies/',
-  params: {
-  'ids' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -18939,6 +25997,24 @@ r = requests.get('http://zap/JSON/ascan/action/setEnabledPolicies/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setEnabledPolicies/',
+  params: {
+  'ids' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -18979,6 +26055,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setPolicyAttackStrength/?id=0&attackStrength=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setPolicyAttackStrength/?id=0&attackStrength=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/ascan/action/setPolicyAttackStrength/', params={
+  'id': '0',  'attackStrength': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -18995,21 +26111,6 @@ result = RestClient.get 'http://zap/JSON/ascan/action/setPolicyAttackStrength/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/ascan/action/setPolicyAttackStrength/', params={
-  'id': '0',  'attackStrength': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -19051,6 +26152,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setPolicyAlertThreshold/?id=0&alertThreshold=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setPolicyAlertThreshold/?id=0&alertThreshold=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/ascan/action/setPolicyAlertThreshold/', params={
+  'id': '0',  'alertThreshold': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -19067,21 +26208,6 @@ result = RestClient.get 'http://zap/JSON/ascan/action/setPolicyAlertThreshold/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/ascan/action/setPolicyAlertThreshold/', params={
-  'id': '0',  'alertThreshold': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -19123,6 +26249,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setScannerAttackStrength/?id=0&attackStrength=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setScannerAttackStrength/?id=0&attackStrength=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/ascan/action/setScannerAttackStrength/', params={
+  'id': '0',  'attackStrength': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -19139,21 +26305,6 @@ result = RestClient.get 'http://zap/JSON/ascan/action/setScannerAttackStrength/'
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/ascan/action/setScannerAttackStrength/', params={
-  'id': '0',  'attackStrength': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -19195,6 +26346,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setScannerAlertThreshold/?id=0&alertThreshold=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setScannerAlertThreshold/?id=0&alertThreshold=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/ascan/action/setScannerAlertThreshold/', params={
+  'id': '0',  'alertThreshold': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -19211,21 +26402,6 @@ result = RestClient.get 'http://zap/JSON/ascan/action/setScannerAlertThreshold/'
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/ascan/action/setScannerAlertThreshold/', params={
-  'id': '0',  'alertThreshold': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -19267,21 +26443,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/addScanPolicy/?scanPolicyName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/addScanPolicy/?scanPolicyName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/addScanPolicy/',
-  params: {
-  'scanPolicyName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19297,6 +26480,24 @@ r = requests.get('http://zap/JSON/ascan/action/addScanPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/addScanPolicy/',
+  params: {
+  'scanPolicyName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19338,21 +26539,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/removeScanPolicy/?scanPolicyName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/removeScanPolicy/?scanPolicyName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/removeScanPolicy/',
-  params: {
-  'scanPolicyName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19368,6 +26576,24 @@ r = requests.get('http://zap/JSON/ascan/action/removeScanPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/removeScanPolicy/',
+  params: {
+  'scanPolicyName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19407,21 +26633,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/updateScanPolicy/?scanPolicyName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/updateScanPolicy/?scanPolicyName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/updateScanPolicy/',
-  params: {
-  'scanPolicyName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19437,6 +26670,24 @@ r = requests.get('http://zap/JSON/ascan/action/updateScanPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/updateScanPolicy/',
+  params: {
+  'scanPolicyName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19478,21 +26729,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/importScanPolicy/?path=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/importScanPolicy/?path=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/importScanPolicy/',
-  params: {
-  'path' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19508,6 +26766,24 @@ r = requests.get('http://zap/JSON/ascan/action/importScanPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/importScanPolicy/',
+  params: {
+  'path' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19549,21 +26825,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/addExcludedParam/?name=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/addExcludedParam/?name=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/addExcludedParam/',
-  params: {
-  'name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19579,6 +26862,24 @@ r = requests.get('http://zap/JSON/ascan/action/addExcludedParam/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/addExcludedParam/',
+  params: {
+  'name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19622,21 +26923,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/modifyExcludedParam/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/modifyExcludedParam/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/modifyExcludedParam/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19652,6 +26960,24 @@ r = requests.get('http://zap/JSON/ascan/action/modifyExcludedParam/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/modifyExcludedParam/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19696,21 +27022,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/removeExcludedParam/?idx=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/removeExcludedParam/?idx=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/removeExcludedParam/',
-  params: {
-  'idx' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19726,6 +27059,24 @@ r = requests.get('http://zap/JSON/ascan/action/removeExcludedParam/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/removeExcludedParam/',
+  params: {
+  'idx' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19767,6 +27118,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/skipScanner/?scanId=0&scannerId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/skipScanner/?scanId=0&scannerId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/ascan/action/skipScanner/', params={
+  'scanId': '0',  'scannerId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -19783,21 +27174,6 @@ result = RestClient.get 'http://zap/JSON/ascan/action/skipScanner/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/ascan/action/skipScanner/', params={
-  'scanId': '0',  'scannerId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -19840,21 +27216,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionAttackPolicy/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionAttackPolicy/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAttackPolicy/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19870,6 +27253,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionAttackPolicy/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAttackPolicy/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19909,21 +27310,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionDefaultPolicy/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionDefaultPolicy/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionDefaultPolicy/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -19939,6 +27347,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionDefaultPolicy/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionDefaultPolicy/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -19978,21 +27404,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionAddQueryParam/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionAddQueryParam/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAddQueryParam/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20008,6 +27441,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionAddQueryParam/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAddQueryParam/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20049,21 +27500,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionAllowAttackOnStart/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionAllowAttackOnStart/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAllowAttackOnStart/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20079,6 +27537,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionAllowAttackOnStart/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionAllowAttackOnStart/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20118,21 +27594,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionDelayInMs/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionDelayInMs/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionDelayInMs/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20148,6 +27631,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionDelayInMs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionDelayInMs/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20187,21 +27688,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionHandleAntiCSRFTokens/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionHandleAntiCSRFTokens/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionHandleAntiCSRFTokens/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20217,6 +27725,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionHandleAntiCSRFTokens/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionHandleAntiCSRFTokens/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20256,21 +27782,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionHostPerScan/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionHostPerScan/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionHostPerScan/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20286,6 +27819,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionHostPerScan/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionHostPerScan/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20325,21 +27876,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionInjectPluginIdInHeader/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionInjectPluginIdInHeader/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionInjectPluginIdInHeader/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20355,6 +27913,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionInjectPluginIdInHeader/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionInjectPluginIdInHeader/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20396,21 +27972,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionMaxChartTimeInMins/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionMaxChartTimeInMins/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxChartTimeInMins/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20426,6 +28009,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionMaxChartTimeInMins/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxChartTimeInMins/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20465,21 +28066,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionMaxResultsToList/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionMaxResultsToList/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxResultsToList/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20495,6 +28103,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionMaxResultsToList/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxResultsToList/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20534,21 +28160,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionMaxRuleDurationInMins/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionMaxRuleDurationInMins/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxRuleDurationInMins/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20564,6 +28197,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionMaxRuleDurationInMins/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxRuleDurationInMins/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20603,21 +28254,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionMaxScanDurationInMins/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionMaxScanDurationInMins/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxScanDurationInMins/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20633,6 +28291,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionMaxScanDurationInMins/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxScanDurationInMins/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20672,21 +28348,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionMaxScansInUI/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionMaxScansInUI/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxScansInUI/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20702,6 +28385,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionMaxScansInUI/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionMaxScansInUI/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20741,21 +28442,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionPromptInAttackMode/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionPromptInAttackMode/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionPromptInAttackMode/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20771,6 +28479,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionPromptInAttackMode/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionPromptInAttackMode/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20810,21 +28536,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionPromptToClearFinishedScans/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionPromptToClearFinishedScans/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionPromptToClearFinishedScans/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20840,6 +28573,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionPromptToClearFinishedSca
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionPromptToClearFinishedScans/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20879,21 +28630,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionRescanInAttackMode/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionRescanInAttackMode/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionRescanInAttackMode/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20909,6 +28667,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionRescanInAttackMode/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionRescanInAttackMode/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -20948,21 +28724,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionScanHeadersAllRequests/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionScanHeadersAllRequests/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionScanHeadersAllRequests/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -20978,6 +28761,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionScanHeadersAllRequests/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionScanHeadersAllRequests/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21019,21 +28820,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionShowAdvancedDialog/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionShowAdvancedDialog/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionShowAdvancedDialog/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21049,6 +28857,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionShowAdvancedDialog/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionShowAdvancedDialog/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21088,21 +28914,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionTargetParamsEnabledRPC/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionTargetParamsEnabledRPC/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionTargetParamsEnabledRPC/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21118,6 +28951,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionTargetParamsEnabledRPC/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionTargetParamsEnabledRPC/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21157,21 +29008,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionTargetParamsInjectable/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionTargetParamsInjectable/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionTargetParamsInjectable/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21187,6 +29045,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionTargetParamsInjectable/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionTargetParamsInjectable/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21226,21 +29102,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ascan/action/setOptionThreadPerHost/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ascan/action/setOptionThreadPerHost/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ascan/action/setOptionThreadPerHost/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21256,6 +29139,24 @@ r = requests.get('http://zap/JSON/ascan/action/setOptionThreadPerHost/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ascan/action/setOptionThreadPerHost/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21297,20 +29198,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/contextList/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/contextList/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/contextList/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21326,6 +29235,23 @@ r = requests.get('http://zap/JSON/context/view/contextList/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/contextList/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21361,21 +29287,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/excludeRegexs/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/excludeRegexs/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/excludeRegexs/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21391,6 +29324,24 @@ r = requests.get('http://zap/JSON/context/view/excludeRegexs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/excludeRegexs/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21432,21 +29383,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/includeRegexs/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/includeRegexs/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/includeRegexs/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21462,6 +29420,24 @@ r = requests.get('http://zap/JSON/context/view/includeRegexs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/includeRegexs/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21503,21 +29479,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/context/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/context/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/context/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21533,6 +29516,24 @@ r = requests.get('http://zap/JSON/context/view/context/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/context/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21574,20 +29575,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/technologyList/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/technologyList/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/technologyList/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21603,6 +29612,23 @@ r = requests.get('http://zap/JSON/context/view/technologyList/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/technologyList/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21638,21 +29664,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/includedTechnologyList/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/includedTechnologyList/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/includedTechnologyList/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21668,6 +29701,24 @@ r = requests.get('http://zap/JSON/context/view/includedTechnologyList/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/includedTechnologyList/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21709,21 +29760,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/excludedTechnologyList/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/excludedTechnologyList/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/excludedTechnologyList/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21739,6 +29797,24 @@ r = requests.get('http://zap/JSON/context/view/excludedTechnologyList/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/excludedTechnologyList/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21780,21 +29856,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/view/urls/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/view/urls/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/view/urls/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -21810,6 +29893,24 @@ r = requests.get('http://zap/JSON/context/view/urls/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/view/urls/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -21851,6 +29952,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/excludeFromContext/?contextName=string&regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/excludeFromContext/?contextName=string&regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/excludeFromContext/', params={
+  'contextName': 'string',  'regex': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -21867,21 +30008,6 @@ result = RestClient.get 'http://zap/JSON/context/action/excludeFromContext/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/excludeFromContext/', params={
-  'contextName': 'string',  'regex': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -21924,6 +30050,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/includeInContext/?contextName=string&regex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/includeInContext/?contextName=string&regex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/includeInContext/', params={
+  'contextName': 'string',  'regex': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -21940,21 +30106,6 @@ result = RestClient.get 'http://zap/JSON/context/action/includeInContext/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/includeInContext/', params={
-  'contextName': 'string',  'regex': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -21997,6 +30148,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/setContextRegexs/?contextName=string&incRegexs=string&excRegexs=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/setContextRegexs/?contextName=string&incRegexs=string&excRegexs=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/setContextRegexs/', params={
+  'contextName': 'string',  'incRegexs': 'string',  'excRegexs': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22014,21 +30205,6 @@ result = RestClient.get 'http://zap/JSON/context/action/setContextRegexs/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/setContextRegexs/', params={
-  'contextName': 'string',  'incRegexs': 'string',  'excRegexs': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22072,21 +30248,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/newContext/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/newContext/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/action/newContext/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22102,6 +30285,24 @@ r = requests.get('http://zap/JSON/context/action/newContext/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/action/newContext/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22143,21 +30344,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/removeContext/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/removeContext/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/action/removeContext/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22173,6 +30381,24 @@ r = requests.get('http://zap/JSON/context/action/removeContext/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/action/removeContext/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22214,6 +30440,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/exportContext/?contextName=string&contextFile=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/exportContext/?contextName=string&contextFile=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/exportContext/', params={
+  'contextName': 'string',  'contextFile': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22230,21 +30496,6 @@ result = RestClient.get 'http://zap/JSON/context/action/exportContext/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/exportContext/', params={
-  'contextName': 'string',  'contextFile': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22287,21 +30538,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/importContext/?contextFile=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/importContext/?contextFile=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/action/importContext/',
-  params: {
-  'contextFile' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22317,6 +30575,24 @@ r = requests.get('http://zap/JSON/context/action/importContext/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/action/importContext/',
+  params: {
+  'contextFile' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22358,6 +30634,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/includeContextTechnologies/?contextName=string&technologyNames=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/includeContextTechnologies/?contextName=string&technologyNames=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/includeContextTechnologies/', params={
+  'contextName': 'string',  'technologyNames': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22374,21 +30690,6 @@ result = RestClient.get 'http://zap/JSON/context/action/includeContextTechnologi
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/includeContextTechnologies/', params={
-  'contextName': 'string',  'technologyNames': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22431,21 +30732,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/includeAllContextTechnologies/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/includeAllContextTechnologies/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/action/includeAllContextTechnologies/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22461,6 +30769,24 @@ r = requests.get('http://zap/JSON/context/action/includeAllContextTechnologies/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/action/includeAllContextTechnologies/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22502,6 +30828,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/excludeContextTechnologies/?contextName=string&technologyNames=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/excludeContextTechnologies/?contextName=string&technologyNames=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/excludeContextTechnologies/', params={
+  'contextName': 'string',  'technologyNames': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22518,21 +30884,6 @@ result = RestClient.get 'http://zap/JSON/context/action/excludeContextTechnologi
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/excludeContextTechnologies/', params={
-  'contextName': 'string',  'technologyNames': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22575,21 +30926,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/excludeAllContextTechnologies/?contextName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/excludeAllContextTechnologies/?contextName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/context/action/excludeAllContextTechnologies/',
-  params: {
-  'contextName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22605,6 +30963,24 @@ r = requests.get('http://zap/JSON/context/action/excludeAllContextTechnologies/'
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/context/action/excludeAllContextTechnologies/',
+  params: {
+  'contextName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22646,6 +31022,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/context/action/setContextInScope/?contextName=string&booleanInScope=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/context/action/setContextInScope/?contextName=string&booleanInScope=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/context/action/setContextInScope/', params={
+  'contextName': 'string',  'booleanInScope': 'true'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22662,21 +31078,6 @@ result = RestClient.get 'http://zap/JSON/context/action/setContextInScope/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/context/action/setContextInScope/', params={
-  'contextName': 'string',  'booleanInScope': 'true'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22721,20 +31122,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/view/sites/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/view/sites/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/view/sites/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22750,6 +31159,23 @@ r = requests.get('http://zap/JSON/httpSessions/view/sites/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/view/sites/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22785,6 +31211,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/view/sessions/?site=string&session=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/view/sessions/?site=string&session=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/view/sessions/', params={
+  'site': 'string',  'session': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -22801,21 +31267,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/view/sessions/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/view/sessions/', params={
-  'site': 'string',  'session': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -22858,21 +31309,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/view/activeSession/?site=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/view/activeSession/?site=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/view/activeSession/',
-  params: {
-  'site' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22888,6 +31346,24 @@ r = requests.get('http://zap/JSON/httpSessions/view/activeSession/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/view/activeSession/',
+  params: {
+  'site' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -22929,21 +31405,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/view/sessionTokens/?site=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/view/sessionTokens/?site=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/view/sessionTokens/',
-  params: {
-  'site' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -22959,6 +31442,24 @@ r = requests.get('http://zap/JSON/httpSessions/view/sessionTokens/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/view/sessionTokens/',
+  params: {
+  'site' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23000,20 +31501,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/view/defaultSessionTokens/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/view/defaultSessionTokens/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/view/defaultSessionTokens/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23029,6 +31538,23 @@ r = requests.get('http://zap/JSON/httpSessions/view/defaultSessionTokens/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/view/defaultSessionTokens/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23064,21 +31590,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/createEmptySession/?site=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/createEmptySession/?site=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/action/createEmptySession/',
-  params: {
-  'site' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23094,6 +31627,24 @@ r = requests.get('http://zap/JSON/httpSessions/action/createEmptySession/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/action/createEmptySession/',
+  params: {
+  'site' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23136,6 +31687,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/removeSession/?site=string&session=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/removeSession/?site=string&session=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/removeSession/', params={
+  'site': 'string',  'session': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23152,21 +31743,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/removeSession/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/removeSession/', params={
-  'site': 'string',  'session': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23209,6 +31785,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/setActiveSession/?site=string&session=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/setActiveSession/?site=string&session=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/setActiveSession/', params={
+  'site': 'string',  'session': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23225,21 +31841,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/setActiveSession/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/setActiveSession/', params={
-  'site': 'string',  'session': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23282,21 +31883,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/unsetActiveSession/?site=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/unsetActiveSession/?site=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/action/unsetActiveSession/',
-  params: {
-  'site' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23312,6 +31920,24 @@ r = requests.get('http://zap/JSON/httpSessions/action/unsetActiveSession/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/action/unsetActiveSession/',
+  params: {
+  'site' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23353,6 +31979,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/addSessionToken/?site=string&sessionToken=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/addSessionToken/?site=string&sessionToken=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/addSessionToken/', params={
+  'site': 'string',  'sessionToken': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23369,21 +32035,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/addSessionToken/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/addSessionToken/', params={
-  'site': 'string',  'sessionToken': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23426,6 +32077,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/removeSessionToken/?site=string&sessionToken=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/removeSessionToken/?site=string&sessionToken=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/removeSessionToken/', params={
+  'site': 'string',  'sessionToken': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23442,21 +32133,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/removeSessionToken/
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/removeSessionToken/', params={
-  'site': 'string',  'sessionToken': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23499,6 +32175,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/setSessionTokenValue/?site=string&session=string&sessionToken=string&tokenValue=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/setSessionTokenValue/?site=string&session=string&sessionToken=string&tokenValue=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/setSessionTokenValue/', params={
+  'site': 'string',  'session': 'string',  'sessionToken': 'string',  'tokenValue': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23517,21 +32233,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/setSessionTokenValu
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/setSessionTokenValue/', params={
-  'site': 'string',  'session': 'string',  'sessionToken': 'string',  'tokenValue': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23576,6 +32277,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/renameSession/?site=string&oldSessionName=string&newSessionName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/renameSession/?site=string&oldSessionName=string&newSessionName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/renameSession/', params={
+  'site': 'string',  'oldSessionName': 'string',  'newSessionName': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23593,21 +32334,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/renameSession/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/renameSession/', params={
-  'site': 'string',  'oldSessionName': 'string',  'newSessionName': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23651,21 +32377,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/addDefaultSessionToken/?sessionToken=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/addDefaultSessionToken/?sessionToken=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/action/addDefaultSessionToken/',
-  params: {
-  'sessionToken' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23681,6 +32414,24 @@ r = requests.get('http://zap/JSON/httpSessions/action/addDefaultSessionToken/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/action/addDefaultSessionToken/',
+  params: {
+  'sessionToken' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23723,6 +32474,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/setDefaultSessionTokenEnabled/?sessionToken=string&tokenEnabled=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/setDefaultSessionTokenEnabled/?sessionToken=string&tokenEnabled=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/httpSessions/action/setDefaultSessionTokenEnabled/', params={
+  'sessionToken': 'string',  'tokenEnabled': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -23739,21 +32530,6 @@ result = RestClient.get 'http://zap/JSON/httpSessions/action/setDefaultSessionTo
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/httpSessions/action/setDefaultSessionTokenEnabled/', params={
-  'sessionToken': 'string',  'tokenEnabled': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -23796,21 +32572,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/httpSessions/action/removeDefaultSessionToken/?sessionToken=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/httpSessions/action/removeDefaultSessionToken/?sessionToken=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/httpSessions/action/removeDefaultSessionToken/',
-  params: {
-  'sessionToken' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23826,6 +32609,24 @@ r = requests.get('http://zap/JSON/httpSessions/action/removeDefaultSessionToken/
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/httpSessions/action/removeDefaultSessionToken/',
+  params: {
+  'sessionToken' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23869,20 +32670,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/view/isBreakAll/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/view/isBreakAll/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/view/isBreakAll/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23898,6 +32707,23 @@ r = requests.get('http://zap/JSON/break/view/isBreakAll/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/view/isBreakAll/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23933,20 +32759,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/view/isBreakRequest/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/view/isBreakRequest/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/view/isBreakRequest/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -23962,6 +32796,23 @@ r = requests.get('http://zap/JSON/break/view/isBreakRequest/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/view/isBreakRequest/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -23997,20 +32848,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/view/isBreakResponse/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/view/isBreakResponse/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/view/isBreakResponse/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24026,6 +32885,23 @@ r = requests.get('http://zap/JSON/break/view/isBreakResponse/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/view/isBreakResponse/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24061,20 +32937,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/view/httpMessage/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/view/httpMessage/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/view/httpMessage/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24090,6 +32974,23 @@ r = requests.get('http://zap/JSON/break/view/httpMessage/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/view/httpMessage/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24125,6 +33026,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/break/?type=string&state=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/break/?type=string&state=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/break/action/break/', params={
+  'type': 'string',  'state': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -24141,21 +33082,6 @@ result = RestClient.get 'http://zap/JSON/break/action/break/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/break/action/break/', params={
-  'type': 'string',  'state': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -24199,21 +33125,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/setHttpMessage/?httpHeader=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/setHttpMessage/?httpHeader=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/action/setHttpMessage/',
-  params: {
-  'httpHeader' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24229,6 +33162,24 @@ r = requests.get('http://zap/JSON/break/action/setHttpMessage/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/action/setHttpMessage/',
+  params: {
+  'httpHeader' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24271,20 +33222,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/continue/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/continue/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/action/continue/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24300,6 +33259,23 @@ r = requests.get('http://zap/JSON/break/action/continue/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/action/continue/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24335,20 +33311,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/step/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/step/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/action/step/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24364,6 +33348,23 @@ r = requests.get('http://zap/JSON/break/action/step/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/action/step/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24399,20 +33400,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/drop/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/drop/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/break/action/drop/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24428,6 +33437,23 @@ r = requests.get('http://zap/JSON/break/action/drop/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/break/action/drop/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24463,6 +33489,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/addHttpBreakpoint/?string=string&location=string&match=string&inverse=true&ignorecase=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/addHttpBreakpoint/?string=string&location=string&match=string&inverse=true&ignorecase=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/break/action/addHttpBreakpoint/', params={
+  'string': 'string',  'location': 'string',  'match': 'string',  'inverse': 'true',  'ignorecase': 'true'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -24482,21 +33548,6 @@ result = RestClient.get 'http://zap/JSON/break/action/addHttpBreakpoint/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/break/action/addHttpBreakpoint/', params={
-  'string': 'string',  'location': 'string',  'match': 'string',  'inverse': 'true',  'ignorecase': 'true'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -24542,6 +33593,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/break/action/removeHttpBreakpoint/?string=string&location=string&match=string&inverse=true&ignorecase=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/break/action/removeHttpBreakpoint/?string=string&location=string&match=string&inverse=true&ignorecase=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/break/action/removeHttpBreakpoint/', params={
+  'string': 'string',  'location': 'string',  'match': 'string',  'inverse': 'true',  'ignorecase': 'true'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -24561,21 +33652,6 @@ result = RestClient.get 'http://zap/JSON/break/action/removeHttpBreakpoint/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/break/action/removeHttpBreakpoint/', params={
-  'string': 'string',  'location': 'string',  'match': 'string',  'inverse': 'true',  'ignorecase': 'true'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -24623,20 +33699,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/view/getSupportedAuthenticationMethods/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/view/getSupportedAuthenticationMethods/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authentication/view/getSupportedAuthenticationMethods/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24652,6 +33736,23 @@ r = requests.get('http://zap/JSON/authentication/view/getSupportedAuthentication
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authentication/view/getSupportedAuthenticationMethods/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24687,21 +33788,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/view/getAuthenticationMethodConfigParams/?authMethodName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/view/getAuthenticationMethodConfigParams/?authMethodName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authentication/view/getAuthenticationMethodConfigParams/',
-  params: {
-  'authMethodName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24717,6 +33825,24 @@ r = requests.get('http://zap/JSON/authentication/view/getAuthenticationMethodCon
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authentication/view/getAuthenticationMethodConfigParams/',
+  params: {
+  'authMethodName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24758,21 +33884,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/view/getAuthenticationMethod/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/view/getAuthenticationMethod/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authentication/view/getAuthenticationMethod/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24788,6 +33921,24 @@ r = requests.get('http://zap/JSON/authentication/view/getAuthenticationMethod/',
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authentication/view/getAuthenticationMethod/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24829,21 +33980,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/view/getLoggedInIndicator/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/view/getLoggedInIndicator/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authentication/view/getLoggedInIndicator/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24859,6 +34017,24 @@ r = requests.get('http://zap/JSON/authentication/view/getLoggedInIndicator/', pa
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authentication/view/getLoggedInIndicator/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24900,21 +34076,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/view/getLoggedOutIndicator/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/view/getLoggedOutIndicator/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authentication/view/getLoggedOutIndicator/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -24930,6 +34113,24 @@ r = requests.get('http://zap/JSON/authentication/view/getLoggedOutIndicator/', p
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authentication/view/getLoggedOutIndicator/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -24971,6 +34172,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/action/setAuthenticationMethod/?contextId=0&authMethodName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/action/setAuthenticationMethod/?contextId=0&authMethodName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/authentication/action/setAuthenticationMethod/', params={
+  'contextId': '0',  'authMethodName': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -24987,21 +34228,6 @@ result = RestClient.get 'http://zap/JSON/authentication/action/setAuthentication
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/authentication/action/setAuthenticationMethod/', params={
-  'contextId': '0',  'authMethodName': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -25045,6 +34271,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/action/setLoggedInIndicator/?contextId=0&loggedInIndicatorRegex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/action/setLoggedInIndicator/?contextId=0&loggedInIndicatorRegex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/authentication/action/setLoggedInIndicator/', params={
+  'contextId': '0',  'loggedInIndicatorRegex': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -25061,21 +34327,6 @@ result = RestClient.get 'http://zap/JSON/authentication/action/setLoggedInIndica
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/authentication/action/setLoggedInIndicator/', params={
-  'contextId': '0',  'loggedInIndicatorRegex': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -25118,6 +34369,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authentication/action/setLoggedOutIndicator/?contextId=0&loggedOutIndicatorRegex=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authentication/action/setLoggedOutIndicator/?contextId=0&loggedOutIndicatorRegex=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/authentication/action/setLoggedOutIndicator/', params={
+  'contextId': '0',  'loggedOutIndicatorRegex': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -25134,21 +34425,6 @@ result = RestClient.get 'http://zap/JSON/authentication/action/setLoggedOutIndic
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/authentication/action/setLoggedOutIndicator/', params={
-  'contextId': '0',  'loggedOutIndicatorRegex': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -25193,21 +34469,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authorization/view/getAuthorizationDetectionMethod/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authorization/view/getAuthorizationDetectionMethod/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authorization/view/getAuthorizationDetectionMethod/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25223,6 +34506,24 @@ r = requests.get('http://zap/JSON/authorization/view/getAuthorizationDetectionMe
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authorization/view/getAuthorizationDetectionMethod/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25264,21 +34565,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/authorization/action/setBasicAuthorizationDetectionMethod/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/authorization/action/setBasicAuthorizationDetectionMethod/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/authorization/action/setBasicAuthorizationDetectionMethod/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25294,6 +34602,24 @@ r = requests.get('http://zap/JSON/authorization/action/setBasicAuthorizationDete
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/authorization/action/setBasicAuthorizationDetectionMethod/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25341,20 +34667,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/localProxies/view/additionalProxies/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/localProxies/view/additionalProxies/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/localProxies/view/additionalProxies/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25370,6 +34704,23 @@ r = requests.get('http://zap/JSON/localProxies/view/additionalProxies/', params=
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/localProxies/view/additionalProxies/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25405,6 +34756,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/localProxies/action/addAdditionalProxy/?address=string&port=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/localProxies/action/addAdditionalProxy/?address=string&port=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/localProxies/action/addAdditionalProxy/', params={
+  'address': 'string',  'port': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -25421,21 +34812,6 @@ result = RestClient.get 'http://zap/JSON/localProxies/action/addAdditionalProxy/
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/localProxies/action/addAdditionalProxy/', params={
-  'address': 'string',  'port': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -25481,6 +34857,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/localProxies/action/removeAdditionalProxy/?address=string&port=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/localProxies/action/removeAdditionalProxy/?address=string&port=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/localProxies/action/removeAdditionalProxy/', params={
+  'address': 'string',  'port': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -25497,21 +34913,6 @@ result = RestClient.get 'http://zap/JSON/localProxies/action/removeAdditionalPro
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/localProxies/action/removeAdditionalProxy/', params={
-  'address': 'string',  'port': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -25556,21 +34957,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ruleConfig/view/ruleConfigValue/?key=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ruleConfig/view/ruleConfigValue/?key=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ruleConfig/view/ruleConfigValue/',
-  params: {
-  'key' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25586,6 +34994,24 @@ r = requests.get('http://zap/JSON/ruleConfig/view/ruleConfigValue/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ruleConfig/view/ruleConfigValue/',
+  params: {
+  'key' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25627,20 +35053,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ruleConfig/view/allRuleConfigs/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ruleConfig/view/allRuleConfigs/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ruleConfig/view/allRuleConfigs/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25656,6 +35090,23 @@ r = requests.get('http://zap/JSON/ruleConfig/view/allRuleConfigs/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ruleConfig/view/allRuleConfigs/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25691,21 +35142,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ruleConfig/action/resetRuleConfigValue/?key=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ruleConfig/action/resetRuleConfigValue/?key=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ruleConfig/action/resetRuleConfigValue/',
-  params: {
-  'key' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25721,6 +35179,24 @@ r = requests.get('http://zap/JSON/ruleConfig/action/resetRuleConfigValue/', para
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ruleConfig/action/resetRuleConfigValue/',
+  params: {
+  'key' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25762,20 +35238,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ruleConfig/action/resetAllRuleConfigValues/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ruleConfig/action/resetAllRuleConfigValues/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ruleConfig/action/resetAllRuleConfigValues/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25791,6 +35275,23 @@ r = requests.get('http://zap/JSON/ruleConfig/action/resetAllRuleConfigValues/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ruleConfig/action/resetAllRuleConfigValues/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25826,21 +35327,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/ruleConfig/action/setRuleConfigValue/?key=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/ruleConfig/action/setRuleConfigValue/?key=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/ruleConfig/action/setRuleConfigValue/',
-  params: {
-  'key' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25856,6 +35364,24 @@ r = requests.get('http://zap/JSON/ruleConfig/action/setRuleConfigValue/', params
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/ruleConfig/action/setRuleConfigValue/',
+  params: {
+  'key' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25900,20 +35426,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/sessionManagement/view/getSupportedSessionManagementMethods/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/sessionManagement/view/getSupportedSessionManagementMethods/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSupportedSessionManagementMethods/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25929,6 +35463,23 @@ r = requests.get('http://zap/JSON/sessionManagement/view/getSupportedSessionMana
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSupportedSessionManagementMethods/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -25964,21 +35515,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/sessionManagement/view/getSessionManagementMethodConfigParams/?methodName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/sessionManagement/view/getSessionManagementMethodConfigParams/?methodName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSessionManagementMethodConfigParams/',
-  params: {
-  'methodName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -25994,6 +35552,24 @@ r = requests.get('http://zap/JSON/sessionManagement/view/getSessionManagementMet
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSessionManagementMethodConfigParams/',
+  params: {
+  'methodName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26035,21 +35611,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/sessionManagement/view/getSessionManagementMethod/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/sessionManagement/view/getSessionManagementMethod/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSessionManagementMethod/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -26065,6 +35648,24 @@ r = requests.get('http://zap/JSON/sessionManagement/view/getSessionManagementMet
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/sessionManagement/view/getSessionManagementMethod/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26106,6 +35707,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/sessionManagement/action/setSessionManagementMethod/?contextId=0&methodName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/sessionManagement/action/setSessionManagementMethod/?contextId=0&methodName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/sessionManagement/action/setSessionManagementMethod/', params={
+  'contextId': '0',  'methodName': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26122,21 +35763,6 @@ result = RestClient.get 'http://zap/JSON/sessionManagement/action/setSessionMana
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/sessionManagement/action/setSessionManagementMethod/', params={
-  'contextId': '0',  'methodName': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26182,20 +35808,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/view/usersList/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/view/usersList/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/users/view/usersList/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -26211,6 +35845,23 @@ r = requests.get('http://zap/JSON/users/view/usersList/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/users/view/usersList/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26252,6 +35903,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/view/getUserById/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/view/getUserById/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/view/getUserById/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26268,21 +35959,6 @@ result = RestClient.get 'http://zap/JSON/users/view/getUserById/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/view/getUserById/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26325,21 +36001,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/view/getAuthenticationCredentialsConfigParams/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/view/getAuthenticationCredentialsConfigParams/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/users/view/getAuthenticationCredentialsConfigParams/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -26355,6 +36038,24 @@ r = requests.get('http://zap/JSON/users/view/getAuthenticationCredentialsConfigP
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/users/view/getAuthenticationCredentialsConfigParams/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26396,6 +36097,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/view/getAuthenticationCredentials/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/view/getAuthenticationCredentials/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/view/getAuthenticationCredentials/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26412,21 +36153,6 @@ result = RestClient.get 'http://zap/JSON/users/view/getAuthenticationCredentials
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/view/getAuthenticationCredentials/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26469,6 +36195,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/action/newUser/?contextId=0&name=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/action/newUser/?contextId=0&name=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/action/newUser/', params={
+  'contextId': '0',  'name': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26485,21 +36251,6 @@ result = RestClient.get 'http://zap/JSON/users/action/newUser/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/action/newUser/', params={
-  'contextId': '0',  'name': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26542,6 +36293,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/action/removeUser/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/action/removeUser/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/action/removeUser/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26558,21 +36349,6 @@ result = RestClient.get 'http://zap/JSON/users/action/removeUser/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/action/removeUser/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26615,6 +36391,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/action/setUserEnabled/?contextId=0&userId=0&enabled=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/action/setUserEnabled/?contextId=0&userId=0&enabled=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/action/setUserEnabled/', params={
+  'contextId': '0',  'userId': '0',  'enabled': 'true'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26632,21 +36448,6 @@ result = RestClient.get 'http://zap/JSON/users/action/setUserEnabled/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/action/setUserEnabled/', params={
-  'contextId': '0',  'userId': '0',  'enabled': 'true'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26690,6 +36491,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/action/setUserName/?contextId=0&userId=0&name=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/action/setUserName/?contextId=0&userId=0&name=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/action/setUserName/', params={
+  'contextId': '0',  'userId': '0',  'name': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26707,21 +36548,6 @@ result = RestClient.get 'http://zap/JSON/users/action/setUserName/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/action/setUserName/', params={
-  'contextId': '0',  'userId': '0',  'name': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26765,6 +36591,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/users/action/setAuthenticationCredentials/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/users/action/setAuthenticationCredentials/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/users/action/setAuthenticationCredentials/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26781,21 +36647,6 @@ result = RestClient.get 'http://zap/JSON/users/action/setAuthenticationCredentia
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/users/action/setAuthenticationCredentials/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -26841,20 +36692,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/forcedUser/view/isForcedUserModeEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/forcedUser/view/isForcedUserModeEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/forcedUser/view/isForcedUserModeEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -26870,6 +36729,23 @@ r = requests.get('http://zap/JSON/forcedUser/view/isForcedUserModeEnabled/', par
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/forcedUser/view/isForcedUserModeEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26905,21 +36781,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/forcedUser/view/getForcedUser/?contextId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/forcedUser/view/getForcedUser/?contextId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/forcedUser/view/getForcedUser/',
-  params: {
-  'contextId' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -26935,6 +36818,24 @@ r = requests.get('http://zap/JSON/forcedUser/view/getForcedUser/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/forcedUser/view/getForcedUser/',
+  params: {
+  'contextId' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -26976,6 +36877,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/forcedUser/action/setForcedUser/?contextId=0&userId=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/forcedUser/action/setForcedUser/?contextId=0&userId=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/forcedUser/action/setForcedUser/', params={
+  'contextId': '0',  'userId': '0'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -26992,21 +36933,6 @@ result = RestClient.get 'http://zap/JSON/forcedUser/action/setForcedUser/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/forcedUser/action/setForcedUser/', params={
-  'contextId': '0',  'userId': '0'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -27049,21 +36975,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/forcedUser/action/setForcedUserModeEnabled/',
-  params: {
-  'boolean' => 'boolean'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27079,6 +37012,24 @@ r = requests.get('http://zap/JSON/forcedUser/action/setForcedUserModeEnabled/', 
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/forcedUser/action/setForcedUserModeEnabled/',
+  params: {
+  'boolean' => 'boolean'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27122,20 +37073,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/listEngines/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/listEngines/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/listEngines/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27151,6 +37110,23 @@ r = requests.get('http://zap/JSON/script/view/listEngines/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/listEngines/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27186,20 +37162,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/listTypes/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/listTypes/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/listTypes/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27215,6 +37199,23 @@ r = requests.get('http://zap/JSON/script/view/listTypes/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/listTypes/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27250,20 +37251,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/listScripts/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/listScripts/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/listScripts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27279,6 +37288,23 @@ r = requests.get('http://zap/JSON/script/view/listScripts/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/listScripts/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27314,21 +37340,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/globalVar/?varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/globalVar/?varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/globalVar/',
-  params: {
-  'varKey' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27344,6 +37377,24 @@ r = requests.get('http://zap/JSON/script/view/globalVar/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/globalVar/',
+  params: {
+  'varKey' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27385,20 +37436,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/globalVars/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/globalVars/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/globalVars/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27414,6 +37473,23 @@ r = requests.get('http://zap/JSON/script/view/globalVars/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/globalVars/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27449,6 +37525,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/scriptVar/?scriptName=string&varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/scriptVar/?scriptName=string&varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/script/view/scriptVar/', params={
+  'scriptName': 'string',  'varKey': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -27465,21 +37581,6 @@ result = RestClient.get 'http://zap/JSON/script/view/scriptVar/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/script/view/scriptVar/', params={
-  'scriptName': 'string',  'varKey': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -27522,21 +37623,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/view/scriptVars/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/view/scriptVars/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/view/scriptVars/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27552,6 +37660,24 @@ r = requests.get('http://zap/JSON/script/view/scriptVars/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/view/scriptVars/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27593,21 +37719,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/enable/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/enable/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/enable/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27623,6 +37756,24 @@ r = requests.get('http://zap/JSON/script/action/enable/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/enable/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27664,21 +37815,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/disable/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/disable/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/disable/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27694,6 +37852,24 @@ r = requests.get('http://zap/JSON/script/action/disable/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/disable/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27735,6 +37911,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/load/?scriptName=string&scriptType=string&scriptEngine=string&fileName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/load/?scriptName=string&scriptType=string&scriptEngine=string&fileName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/script/action/load/', params={
+  'scriptName': 'string',  'scriptType': 'string',  'scriptEngine': 'string',  'fileName': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -27753,21 +37969,6 @@ result = RestClient.get 'http://zap/JSON/script/action/load/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/script/action/load/', params={
-  'scriptName': 'string',  'scriptType': 'string',  'scriptEngine': 'string',  'fileName': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -27814,21 +38015,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/remove/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/remove/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/remove/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27844,6 +38052,24 @@ r = requests.get('http://zap/JSON/script/action/remove/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/remove/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27885,21 +38111,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/runStandAloneScript/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/runStandAloneScript/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/runStandAloneScript/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27915,6 +38148,24 @@ r = requests.get('http://zap/JSON/script/action/runStandAloneScript/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/runStandAloneScript/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -27956,21 +38207,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/clearGlobalVar/?varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/clearGlobalVar/?varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/clearGlobalVar/',
-  params: {
-  'varKey' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -27986,6 +38244,24 @@ r = requests.get('http://zap/JSON/script/action/clearGlobalVar/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/clearGlobalVar/',
+  params: {
+  'varKey' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28027,20 +38303,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/clearGlobalVars/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/clearGlobalVars/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/clearGlobalVars/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28056,6 +38340,23 @@ r = requests.get('http://zap/JSON/script/action/clearGlobalVars/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/clearGlobalVars/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28091,6 +38392,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/clearScriptVar/?scriptName=string&varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/clearScriptVar/?scriptName=string&varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/script/action/clearScriptVar/', params={
+  'scriptName': 'string',  'varKey': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -28107,21 +38448,6 @@ result = RestClient.get 'http://zap/JSON/script/action/clearScriptVar/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/script/action/clearScriptVar/', params={
-  'scriptName': 'string',  'varKey': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -28164,21 +38490,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/clearScriptVars/?scriptName=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/clearScriptVars/?scriptName=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/clearScriptVars/',
-  params: {
-  'scriptName' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28194,6 +38527,24 @@ r = requests.get('http://zap/JSON/script/action/clearScriptVars/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/clearScriptVars/',
+  params: {
+  'scriptName' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28235,6 +38586,46 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/setScriptVar/?scriptName=string&varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
+
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/setScriptVar/?scriptName=string&varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-ZAP-API-Key': 'API_KEY'
+}
+
+r = requests.get('http://zap/JSON/script/action/setScriptVar/', params={
+  'scriptName': 'string',  'varKey': 'string'
+}, headers = headers)
+
+print r.json()
+
+```
+
 ```ruby
 require 'rest-client'
 require 'json'
@@ -28251,21 +38642,6 @@ result = RestClient.get 'http://zap/JSON/script/action/setScriptVar/',
 }, headers: headers
 
 p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-ZAP-API-Key': 'API_KEY'
-}
-
-r = requests.get('http://zap/JSON/script/action/setScriptVar/', params={
-  'scriptName': 'string',  'varKey': 'string'
-}, headers = headers)
-
-print r.json()
 
 ```
 
@@ -28309,21 +38685,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/script/action/setGlobalVar/?varKey=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/script/action/setGlobalVar/?varKey=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/script/action/setGlobalVar/',
-  params: {
-  'varKey' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28339,6 +38722,24 @@ r = requests.get('http://zap/JSON/script/action/setGlobalVar/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/script/action/setGlobalVar/',
+  params: {
+  'varKey' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28383,20 +38784,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/stats/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/stats/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/stats/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28412,6 +38821,23 @@ r = requests.get('http://zap/JSON/stats/view/stats/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/stats/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28453,20 +38879,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/allSitesStats/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/allSitesStats/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/allSitesStats/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28482,6 +38916,23 @@ r = requests.get('http://zap/JSON/stats/view/allSitesStats/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/allSitesStats/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28523,21 +38974,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/siteStats/?site=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/siteStats/?site=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/siteStats/',
-  params: {
-  'site' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28553,6 +39011,24 @@ r = requests.get('http://zap/JSON/stats/view/siteStats/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/siteStats/',
+  params: {
+  'site' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28595,20 +39071,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/optionStatsdHost/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/optionStatsdHost/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdHost/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28624,6 +39108,23 @@ r = requests.get('http://zap/JSON/stats/view/optionStatsdHost/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdHost/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28659,20 +39160,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/optionStatsdPort/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/optionStatsdPort/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdPort/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28688,6 +39197,23 @@ r = requests.get('http://zap/JSON/stats/view/optionStatsdPort/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdPort/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28723,20 +39249,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/optionStatsdPrefix/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/optionStatsdPrefix/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdPrefix/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28752,6 +39286,23 @@ r = requests.get('http://zap/JSON/stats/view/optionStatsdPrefix/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdPrefix/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28787,20 +39338,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/optionInMemoryEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/optionInMemoryEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/optionInMemoryEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28816,6 +39375,23 @@ r = requests.get('http://zap/JSON/stats/view/optionInMemoryEnabled/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/optionInMemoryEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28851,20 +39427,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/view/optionStatsdEnabled/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/view/optionStatsdEnabled/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdEnabled/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28880,6 +39464,23 @@ r = requests.get('http://zap/JSON/stats/view/optionStatsdEnabled/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/view/optionStatsdEnabled/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28915,20 +39516,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/action/clearStats/ \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/action/clearStats/");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/action/clearStats/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -28944,6 +39553,23 @@ r = requests.get('http://zap/JSON/stats/action/clearStats/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/action/clearStats/',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -28985,21 +39611,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/action/setOptionStatsdHost/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/action/setOptionStatsdHost/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdHost/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -29015,6 +39648,24 @@ r = requests.get('http://zap/JSON/stats/action/setOptionStatsdHost/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdHost/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -29056,21 +39707,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/action/setOptionStatsdPrefix/?String=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/action/setOptionStatsdPrefix/?String=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdPrefix/',
-  params: {
-  'String' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -29086,6 +39744,24 @@ r = requests.get('http://zap/JSON/stats/action/setOptionStatsdPrefix/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdPrefix/',
+  params: {
+  'String' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -29127,21 +39803,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/action/setOptionInMemoryEnabled/?Boolean=string \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/action/setOptionInMemoryEnabled/?Boolean=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/action/setOptionInMemoryEnabled/',
-  params: {
-  'Boolean' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -29157,6 +39840,24 @@ r = requests.get('http://zap/JSON/stats/action/setOptionInMemoryEnabled/', param
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/action/setOptionInMemoryEnabled/',
+  params: {
+  'Boolean' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -29198,21 +39899,28 @@ apiKeyHeader, apiKeyQuery
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```shell
+# You can also use wget
+curl -X GET http://zap/JSON/stats/action/setOptionStatsdPort/?Integer=0 \
+  -H 'Accept: application/json' \
+  -H 'X-ZAP-API-Key: API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'X-ZAP-API-Key' => 'API_KEY'
+```
+
+```java
+URL obj = new URL("http://zap/JSON/stats/action/setOptionStatsdPort/?Integer=0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-
-result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdPort/',
-  params: {
-  'Integer' => 'integer'
-}, headers: headers
-
-p JSON.parse(result)
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -29228,6 +39936,24 @@ r = requests.get('http://zap/JSON/stats/action/setOptionStatsdPort/', params={
 }, headers = headers)
 
 print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-ZAP-API-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'http://zap/JSON/stats/action/setOptionStatsdPort/',
+  params: {
+  'Integer' => 'integer'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -29283,4 +40009,3 @@ apiKeyHeader, apiKeyQuery
 |---|---|---|---|---|
 |message|string|true|none|none|
 |code|integer|true|none|none|
-
