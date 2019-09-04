@@ -1,24 +1,22 @@
 <a name="examples"></a>Examples
 =========================================
 
-The following are high level examples of how to use the ZAP APIs to perform specific actions.
+The following are high-level examples on how to use the ZAP APIs to perform specific actions.
 
 <aside class="notice">
-The examples shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
-arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
+The examples shows some usages with the minimal required arguments. However, this is not a reference, and not all APIs 
+nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
 Using Spider
 -------------------
 
-The spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
+The Spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
 list of URLs to visit, called the seeds, which depends on how the Spider is started. The Spider then visits these URLs, 
-it identifies all the hyperlinks in the page and adds them to the list of URLs to visit and the process continues recursively 
-as long as new resources are found.
+it identifies all the hyperlinks in the page and adds them to the list of URLs to visit, and the process continues recursively as long as new resources are found.
 
-During the processing of an URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
+During the processing of a URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
 Each response type is processed differently in ZAP.
-The processing behaviours is different for different types of responses.
 
 ### Start the spider
 
@@ -27,9 +25,10 @@ The processing behaviours is different for different types of responses.
 $ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&zapapiformat=JSON&url=http://localhost:3000=&contextName="
 ```
 
-The spider(s) explore the site. They don't actually do any scanning.
-The [passive scan](#passive_scan) rules examine all of the requests and responses flowing through ZAP and report the issues they can spot.
-The spider API will return the scan ID as the response. 
+The spider(s) explore the site and don't actually do any scanning. The [passive scan](#passive_scan) rules examine all of 
+the requests and responses flowing through ZAP and report the issues they can spot.
+
+The spider API will return the scan ID as the response.
 
 
 ### View Status
@@ -39,14 +38,31 @@ The spider API will return the scan ID as the response.
 $ curl "http://localhost:8080/JSON/spider/view/status/?apikey=68u5tu85j34dc4g3ushdp847ku&scanId=<scan id>"
 ```
 
-The scan is a async request.To view the scan status. 
+The scan is a async request. To view the status of the scan you can execute the API call which is shown in right column. 
+
+
+### View Spider Results
 
 ```shell
 $ curl http://localhost:8080/JSON/spider/view/results/?apikey=zapAPIKey&scanId=0
 ```
 
+The following command in t
 
-![alerts](../images/alert1.png)
+
+<div class="center-column"></div>
+```json
+{
+  "results": [
+    "https://public-firing-range.appspot.com/address/location.hash/jshref",
+    "https://public-firing-range.appspot.com/address/location.hash/formaction",
+    "https://public-firing-range.appspot.com/dom/toxicdom/external/sessionStorage/array/eval",
+    "https://public-firing-range.appspot.com/address/locationsearch/documentwrite",
+    "https://public-firing-range.appspot.com/dom/toxicdom/sessionStorage/function/eval",
+    "https://public-firing-range.appspot.com/flashinjection/callbackParameterDoesNothing?callback=func"
+  ]
+}
+```
 
 
 <a name="passive_scan"></a>Perform Passive Scan

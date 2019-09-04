@@ -69,12 +69,12 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 <p>Following are some of the features provided by ZAP:</p>
 
 <ul>
-<li>Active Scanner</li>
+<li>Spider</li>
 <li>Passive Scanner</li>
+<li>Active Scanner</li>
 <li>Brute Force Scanner</li>
 <li>Fuzzer</li>
 <li>Port Scanner</li>
-<li>Spider</li>
 <li>Web Sockets</li>
 <li>Ajax Spider</li>
 </ul>
@@ -94,7 +94,9 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 
 <h2 id="basics-on-the-api-request">Basics on the API request</h2>
 
-<p>The API is available in the following formats.</p>
+<p>The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
+will increase the functionality/scope available via the APIs. The API is available through GET and POST endpoints. 
+The response of the API request is available in one of the following formats.</p>
 
 <ul>
 <li>JSON </li>
@@ -102,13 +104,10 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 <li>XML</li>
 </ul>
 
-<p>A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
-or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. By default only the 
-machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
+<p>If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
+This web UI is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. 
+By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
 access to the API. The API is configured using the Options API screen.</p>
-
-<p>The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will 
-increase the functionality/scope available via the APIs.</p>
 
 <aside class="notice">
 The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. The API key is used to prevent malicious 
@@ -136,11 +135,12 @@ operating system. After extracting the bundle you can start zap by issuing the f
 sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
 isolated environment.</p>
 
-<h2 id="configure-testing-application">Configure Testing Application</h2>
+<h2 id="setup-testing-web-application">Setup Testing Web-Application</h2>
 
-<p>If you have a website to scan then obtain a publicly accessible URL/IP. For the example guides we will be using OWASP Juice shop.</p>
+<p>If you have a website to scan or to perform security testing, then obtain a publicly accessible URL/IP. For the example guides we will be using 
+Google&rsquo;s Firing Range.</p>
 
-<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for an array of vulnerabilities.
+<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities.
 It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
 
 <aside class="warning">
@@ -159,43 +159,57 @@ Do not use on unauthorized ZAP pages. Use ZAP on a websites only if you have per
 
           <h1 id="examples"><a name="examples"></a>Examples</h1>
 
-<p>The following are high level examples of how to use the ZAP APIs to perform specific actions.</p>
+<p>The following are high-level examples on how to use the ZAP APIs to perform specific actions.</p>
 
 <aside class="notice">
-The examples shows some usages with the minimal required arguments. However, this is not a reference and not all APIs nor 
-arguments are shown. View API catalogue to see all the parameters and socpe of each APIs.
+The examples shows some usages with the minimal required arguments. However, this is not a reference, and not all APIs 
+nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
 <h2 id="using-spider">Using Spider</h2>
 
-<p>The spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
+<p>The Spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
 list of URLs to visit, called the seeds, which depends on how the Spider is started. The Spider then visits these URLs, 
-it identifies all the hyperlinks in the page and adds them to the list of URLs to visit and the process continues recursively 
-as long as new resources are found.</p>
+it identifies all the hyperlinks in the page and adds them to the list of URLs to visit, and the process continues recursively as long as new resources are found.</p>
 
-<p>During the processing of an URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
-Each response type is processed differently in ZAP.
-The processing behaviours is different for different types of responses.</p>
+<p>During the processing of a URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
+Each response type is processed differently in ZAP.</p>
 
 <h3 id="start-the-spider">Start the spider</h3>
 <pre class="highlight shell"><code><span class="c"># Start the spider scan </span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&amp;zapapiformat=JSON&amp;url=http://localhost:3000=&amp;contextName="</span>
 </code></pre>
 
-<p>The spider(s) explore the site. They don&rsquo;t actually do any scanning.
-The <a href="#passive_scan">passive scan</a> rules examine all of the requests and responses flowing through ZAP and report the issues they can spot.
-The spider API will return the scan ID as the response. </p>
+<p>The spider(s) explore the site and don&rsquo;t actually do any scanning. The <a href="#passive_scan">passive scan</a> rules examine all of 
+the requests and responses flowing through ZAP and report the issues they can spot.</p>
+
+<p>The spider API will return the scan ID as the response.</p>
 
 <h3 id="view-status">View Status</h3>
 <pre class="highlight shell"><code><span class="c"># To view the scan status</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/status/?apikey=68u5tu85j34dc4g3ushdp847ku&amp;scanId=&lt;scan id&gt;"</span>
 </code></pre>
 
-<p>The scan is a async request.To view the scan status. </p>
+<p>The scan is a async request. To view the status of the scan you can execute the API call which is shown in right column. </p>
+
+<h3 id="view-spider-results">View Spider Results</h3>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl http://localhost:8080/JSON/spider/view/results/?apikey<span class="o">=</span>zapAPIKey&amp;scanId<span class="o">=</span>0
 </code></pre>
 
-<p><img alt="alerts" src="images/alert1.png" /></p>
+<p>The following command in t</p>
+
+<div class="center-column"></div>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/address/location.hash/jshref"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/address/location.hash/formaction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/dom/toxicdom/external/sessionStorage/array/eval"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/address/locationsearch/documentwrite"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/dom/toxicdom/sessionStorage/function/eval"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://public-firing-range.appspot.com/flashinjection/callbackParameterDoesNothing?callback=func"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h2 id="perform-passive-scan"><a name="passive_scan"></a>Perform Passive Scan</h2>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s1">'https://zap.com/v1/coverage'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>

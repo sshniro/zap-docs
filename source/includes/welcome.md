@@ -16,17 +16,16 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 
 Following are some of the features provided by ZAP:
 
-* Active Scanner
+* Spider
 * Passive Scanner
+* Active Scanner
 * Brute Force Scanner
 * Fuzzer
 * Port Scanner
-* Spider
 * Web Sockets
 * Ajax Spider
 
 Have a look at the examples below to learn how to use each of these features via ZAP API.
-
 
 Documentation Structure
 ---------------
@@ -41,19 +40,18 @@ The API documentation is divided in to four main parts. Following shows the summ
 Basics on the API request
 -------------------------
 
-The API is available in the following formats.
+The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
+will increase the functionality/scope available via the APIs. The API is available through GET and POST endpoints. 
+The response of the API request is available in one of the following formats.
 
 - JSON 
 - HTML
 - XML
 
-A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
-or via the host and port ZAP is listening on, eg [http://localhost:8080/](http://localhost:8080/). By default only the 
-machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
+If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
+This web UI is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg [http://localhost:8080/](http://localhost:8080/). 
+By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
 access to the API. The API is configured using the Options API screen.
-
-The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will 
-increase the functionality/scope available via the APIs.
 
 <aside class="notice">
 The API key must be specified on all API 'actions' and some 'other' operations. The API key is used to prevent malicious 
@@ -84,12 +82,13 @@ sites from accessing the ZAP API. It is strongly recommended that you set a key 
 isolated environment.
 
 
-Configure Testing Application
+Setup Testing Web-Application
 ---------------
 
-If you have a website to scan then obtain a publicly accessible URL/IP. For the example guides we will be using OWASP Juice shop.
+If you have a website to scan or to perform security testing, then obtain a publicly accessible URL/IP. For the example guides we will be using 
+Google's Firing Range.
 
-Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for an array of vulnerabilities.
+Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities.
 It can be deployed as a Google App Engine application. A public instance is running at [https://public-firing-range.appspot.com](https://public-firing-range.appspot.com).
 
 

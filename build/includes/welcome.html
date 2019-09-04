@@ -48,12 +48,12 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 <p>Following are some of the features provided by ZAP:</p>
 
 <ul>
-<li>Active Scanner</li>
+<li>Spider</li>
 <li>Passive Scanner</li>
+<li>Active Scanner</li>
 <li>Brute Force Scanner</li>
 <li>Fuzzer</li>
 <li>Port Scanner</li>
-<li>Spider</li>
 <li>Web Sockets</li>
 <li>Ajax Spider</li>
 </ul>
@@ -73,7 +73,9 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 
 <h2 id="basics-on-the-api-request">Basics on the API request</h2>
 
-<p>The API is available in the following formats.</p>
+<p>The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
+will increase the functionality/scope available via the APIs. The API is available through GET and POST endpoints. 
+The response of the API request is available in one of the following formats.</p>
 
 <ul>
 <li>JSON </li>
@@ -81,13 +83,10 @@ incorrect, please check the GitHub issues for existing known issues or create a 
 <li>XML</li>
 </ul>
 
-<p>A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, 
-or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. By default only the 
-machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
+<p>If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
+This web UI is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. 
+By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, 
 access to the API. The API is configured using the Options API screen.</p>
-
-<p>The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP will 
-increase the functionality/scope available via the APIs.</p>
 
 <aside class="notice">
 The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. The API key is used to prevent malicious 
@@ -115,11 +114,12 @@ operating system. After extracting the bundle you can start zap by issuing the f
 sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
 isolated environment.</p>
 
-<h2 id="configure-testing-application">Configure Testing Application</h2>
+<h2 id="setup-testing-web-application">Setup Testing Web-Application</h2>
 
-<p>If you have a website to scan then obtain a publicly accessible URL/IP. For the example guides we will be using OWASP Juice shop.</p>
+<p>If you have a website to scan or to perform security testing, then obtain a publicly accessible URL/IP. For the example guides we will be using 
+Google&rsquo;s Firing Range.</p>
 
-<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for an array of vulnerabilities.
+<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities.
 It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
 
 <aside class="warning">
