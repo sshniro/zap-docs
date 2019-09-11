@@ -14,7 +14,11 @@ toc_footers:
 
 includes:
   - welcome
-  - examples
+  - explore
+  - attack
+  - results
+  - auth
+  - advanced
   - contributing
   - apis
 

@@ -37,62 +37,74 @@
 <h2 id="overview">Overview</h2>
 
 <p>Welcome to the ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
-is one of the world&rsquo;s most popular free security tools which lets you automatically find security 
-vulnerabilities in your web applications. It&rsquo;s also an excellent tool for experienced pentesters to use for manual security testing. ZAP also has an extremely powerful API that allows you 
-to do nearly everything that possible via the desktop interface.</p>
+is one of the world&rsquo;s most popular free security tools which lets you automatically find security vulnerabilities in your 
+web applications. ZAP also has an extremely powerful API that allows you to do nearly everything that possible via the desktop interface.
+This allows the developers to automate the security testing of the application in the CI/CD pipeline. </p>
 
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
-incorrect, please check the GitHub issues for existing known issues or create a new issue.</p>
+incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues or create a new issue.</p>
 
 <p>Following are some of the features provided by ZAP:</p>
 
 <ul>
-<li>Spider</li>
-<li>Passive Scanner</li>
-<li>Active Scanner</li>
+<li>Intercepting Proxy</li>
+<li>Active and Passive Scanners</li>
+<li>Traditional and Ajax Spiders</li>
 <li>Brute Force Scanner</li>
 <li>Fuzzer</li>
 <li>Port Scanner</li>
 <li>Web Sockets</li>
-<li>Ajax Spider</li>
 </ul>
 
 <p>Have a look at the examples below to learn how to use each of these features via ZAP API.</p>
 
 <h2 id="documentation-structure">Documentation Structure</h2>
 
-<p>The API documentation is divided in to four main parts. Following shows the summary of each main section.</p>
+<p>The API documentation is divided in to eight main parts. Following shows the summary of each main section.</p>
 
 <ul>
-<li><a href="#welcome"><strong>Getting Started:</strong></a> This section provides introduction to ZAP and installation guide to setup ZAP for testing.</li>
-<li><a href="#examples"><strong>Examples:</strong></a> Contains high-level examples on how to use ZAP APIs to perform specific actions.</li>
-<li><a href="#contribution"><strong>Contributions:</strong></a> Guidelines and instruction on how to contribute to ZAPs documentations</li>
-<li><a href="#api_catalogue"><strong>API Catalogue:</strong></a> Contains Open API definitions for ZAP APIs. </li>
+<li><a href="#welcome"><strong>Getting Started</strong></a> section contains introductory information of ZAP and installation guide to setup ZAP for testing.</li>
+<li><a href="#explore"><strong>Exploring The Apps</strong></a> section contains examples on how to explore the web application.</li>
+<li><a href="#attack"><strong>Attacking The Apps</strong></a> section contains examples on how to scan or attack a web application.</li>
+<li><a href="#results"><strong>Getting The Results</strong></a> section contains examples on how to generate Reports/Results from ZAP.</li>
+<li><a href="#auth"><strong>Authentication</strong></a> section contains examples on how to authenticate the web application.</li>
+<li><a href="#examples"><strong>Advanced Settings</strong></a> section contains configurations on how to fine tune the ZAP results.</li>
+<li><a href="#contribution"><strong>Contributions</strong></a> section contains guidelines and instruction on how to contribute to ZAPs documentations.</li>
+<li><a href="#api_catalogue"><strong>API Catalogue</strong></a> section contains Open API definitions for ZAP APIs. </li>
 </ul>
+
+<aside class="notice">
+The examples shows some usages with the minimal required arguments. However, this is not a reference, and not all APIs 
+nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
+</aside>
 
 <h2 id="basics-on-the-api-request">Basics on the API request</h2>
 
-<p>The APIs provide access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
-will increase the functionality/scope available via the APIs. The API is available via GET and POST endpoints. 
-The response of the API request is available in one of the following formats.</p>
+<p>The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
+will increase the functionality/scope available via the APIs. The API is available via <code class="prettyprint">GET</code> and <code class="prettyprint">POST</code> endpoints. 
+The API is available in <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> and <code class="prettyprint">HTML</code> formats. Based on the use case, you can select the appropriate response type. 
+For example, XML/JSON based response can be used to parse the results and HTML based responses can be used to obtain alerts/reports 
+that are easily readable.</p>
+
+<p>The API supports:</p>
 
 <ul>
-<li>JSON </li>
-<li>HTML</li>
-<li>XML</li>
+<li>Views: Returns information/view</li>
+<li>Action: These control the ZAP</li>
 </ul>
 
 <p>If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
-This web UI is available via the URL <a href="http://zap/">http://zap/</a> when you are proxying via ZAP, or via the host and port ZAP 
-is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. By default only the machine ZAP is running on is able 
-to access the APIs. You can allow other machines, that are able to use ZAP as a proxy, access to the API. The API is configured 
-using the Options API screen.</p>
+This web UI is available via the URL (<a href="http://zap/">http://zap/</a>) when you are proxying via ZAP, or via the host and port ZAP 
+is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. </p>
+
+<p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
+use ZAP as a proxy, access to the API. The API is configured using the Options API screen.</p>
 
 <aside class="notice">
-The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. The API key is used to prevent malicious 
-sites from accessing the ZAP API. It is strongly recommended that you set a key unless you are using ZAP in a completely 
-isolated environment.
+ZAP requires API Key to perform specific actions via the REST API. The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. 
+The API key is used to prevent malicious sites from accessing the ZAP API. It is strongly recommended that you set a key 
+unless you are using ZAP in a completely isolated environment.
 </aside>
 
 <h2 id="quick-setup-guide">Quick Setup Guide</h2>
@@ -125,16 +137,14 @@ Google&rsquo;s Firing Range.</p>
 It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
 
 <aside class="warning">
-Do not use ZAP on unauthorized pages. Use ZAP on websites only if you have permissions to perform testing on it!
+Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
+specifically been given permission to test.
 </aside>
 
 <h2 id="getting-help">Getting help</h2>
 
-<p>All available functions are documented in <a href="#interface">API Catalogue</a></p>
-
-<p>A developer <a href="https://groups.google.com/d/forum/zaproxy-develop">forum</a> is available to ask questions or feature request.</p>
-
-<p>In order to report bug and make feature requests please use our github <a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
+<p>All available APIs are documented in <a href="#interface">API Catalogue</a>. A developer <a href="https://groups.google.com/d/forum/zaproxy-develop">forum</a> is 
+available to ask questions or feature request. In order to report bug and make feature requests please use our github <a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
 
 <p>Stay tuned on twitter <a href="https://twitter.com/zaproxy">@zaproxy</a>.</p>
 
