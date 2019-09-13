@@ -1,13 +1,9 @@
 <a name="contribution"></a>Contributions Welcome!
 =========================================
 
-Contributions are welcome in all the following forms which improves the quality and content of the documentation.
+Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.
 
-## Ways to Contribute
-
-There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.
-
-**1. Creating High-level API Docs**
+**1. Creating High-level API/Automation Docs**
 
     Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
     The source files for the ZAP API documentation is hosted in Github. The repository is available at [Github](https://github.com/sshniro/zapdocs).
@@ -68,25 +64,38 @@ To submit a documentation update, use the following steps:
 
 This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.
 
+### General Guidelines
+
+* Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
+check option or plugin.
+
+* Use a friendly or conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
+chains of clauses, and location-specific idioms can make text hard to understand and translate.
+
+* If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.
+
+* The documentation should be neutral, without judgments, opinions. For example, words like "easily" or "simple" come with 
+a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
+when contributing to the document.
+
 ### Language and Grammar
+
+* Use [American spellings](https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/) when
+contributing to the documentation. 
  
+* In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
+the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it's less important 
+who or what completed the action and more important that the action was completed. For example:
+    - Recommended: The Spider crawls the URLs.
+    - Not recommended: The URLs are crawled by the Spider.
 
-* In general, use active voice (in which the grammatical subject of the sentence is the person or thing performing the action) 
-instead of passive voice (in which the grammatical subject of the sentence is the person or thing being acted upon), though there are exceptions.
+* In general, use second person in your docs rather than first person. For example:
+    - Recommended: We recommend to use the Spider.
+    - Not recommended: You are recommended to use the Spider.
 
-    Example:
-
-    - Recommended: Send a query to the scan service. The zap sends the status of the scanning process.
-
-    - Not recommended: The scan service is queried, and an status is sent.
-
-
-* In general, use second person in your docs rather than first person—"you" (sometimes implicit) instead of "we."
-
-* The documentation should be neutral, without judgements, opinions. Make sure you do not favor anyone, our community is great as a whole, 
-there is no need to point who is better than the rest of us.
-
-* When referencing a hypothetical person, such as “a user with a session cookie”, gender-neutral pronouns (they/their/them) should be used. For example, instead of:
+* In general use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as "a user with a logged in session". 
+For example, instead of:
     - he or she, use they
     - him or her, use them
     - his or her, use their
@@ -96,31 +105,35 @@ there is no need to point who is better than the rest of us.
 * Please use appropriate, informative, rather formal language.
     
 * When you're writing reference documentation for a method, phrase the main method description in terms of what it does 
-("Gets," "Lists," "Creates," "Searches"), rather than what the developer would use it to do ("Get," "List," "Create," "Search").
+("Gets," "Starts," "Creates," "Lists"), rather than what the developer would use it to do ("Get," "Start," "Create," "List").
 
-    - Recommended: tasks.insert: Creates a new task on the specified task list.
-    - Not recommended: tasks.insert: Create a new task on the specified task list.
+    - Recommended: action.scan: Starts the Spider on the specified URL.
+    - Not recommended: action.scan: Start the Spider on the specified URL
 
-### Principles of Good Style
+* Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+API or ZAP or HTML, you can use it without spelling it first.
 
-* Check the spelling and grammar in your contributions. Most editors include a spell checker or have an available spell-checking plugin.
-
-* Avoid disclaimers, opinions, and value judgements. Words like "easily", "just", and "simple" are loaded with assumptions. 
-Something might seem easy to you, but be difficult for another person. Try to avoid these whenever possible.
-
-* Use simple, to the point sentences without complicated jargon. Compound sentences, chains of clauses, and location-specific 
-idioms can make text hard to understand and translate. If a sentence can be split in two, it probably should. Avoid semicolons. 
-Use bullet lists when appropriate.
-
-* Provide context. Don't use abbreviations without explaining them. Don't mention non zap contents without linking to them.
- 
 ### Formatting
 
-* For sections (Titles), use the following capitalization rules: Capitalization of the first word, and all other words, 
-except for closed-class words.
+* Capitalization:
 
-    - Example - The Spider Tutorial with APIs
+    * For titles of a section, Capitalize of the first letter of each word except for the [closed-class words](http://babelnet.sbg.ac.at/themepark/grammar/classes.htm) 
+      such as determiners, pronouns, conjunctions, and prepositions
+      
+      - Example: The Spider Tutorial **with** APIs
+      
+    * For normal sentences dont capitalize random words in the middle of the sentences.
     
+* Number formatting    
+    * In general spell out the number if it is less than ten. 
+     - Example: The passive scan showed nine warnings. 
+     
+    *
+
+### Punctuation
+    
+
+*  
     
 ## Markdown Syntax
 

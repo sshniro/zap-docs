@@ -111,7 +111,7 @@ $ curl "http://localhost:8080/JSON/ajaxSpider/view/status/"
 ```
 
 Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work done. Use the `status` endpoint to 
-identify whether the Spidering is still active or finished.
+identify whether the Spider is still active or finished.
 
 
 ### View Results
@@ -123,7 +123,8 @@ $ curl "http://localhost:8080/JSON/ajaxSpider/view/numberOfResults/"
 $ curl "http://localhost:8080/JSON/ajaxSpider/view/fullResults/"
 ```
 
-Use the following commands on the right to view the number of results or to obtain 
+Use the following commands on the right to view the number of results or to obtain the entire results or a limited set of
+results.
 
 ### Stop the AJAX Spider
 
