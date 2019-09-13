@@ -102,8 +102,6 @@ For example, instead of:
     - his or hers, use theirs
     - himself or herself, use themselves
     
-* Please use appropriate, informative, rather formal language.
-    
 * When you're writing reference documentation for a method, phrase the main method description in terms of what it does 
 ("Gets," "Starts," "Creates," "Lists"), rather than what the developer would use it to do ("Get," "Start," "Create," "List").
 
