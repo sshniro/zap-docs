@@ -28,7 +28,7 @@ Each response type is processed differently in ZAP. All the available endpoints 
 
 ``` shell
 # Start the spider scan 
-$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&zapapiformat=JSON&url=http://localhost:3000=&contextName="
+$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&zapapiformat=JSON&url=https://public-firing-range.appspot.com&contextName=&recurse=true"
 ```
 
 The Spider(s) explore the site and don't actually do any scanning. The [passive scan](#passive_scan) rules examine all of 
@@ -110,7 +110,7 @@ Use the command in the right column to start the AJAX Spider. This will start a 
 $ curl "http://localhost:8080/JSON/ajaxSpider/view/status/"
 ```
 
-Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work done. Use the `status` endpoint to 
+Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work to be done. Use the `status` endpoint to 
 identify whether the Spider is still active or finished.
 
 
@@ -132,3 +132,8 @@ results.
 # To stop the AJAX Spider
 $ curl "http://localhost:8080/JSON/ajaxSpider/action/stop/"
 ```
+
+Ajax spider does not have an indication on how much resources are left to crawl. Therefor if the Ajax spider takes too much time
+than expected, then it can be stopped by using the following command in the right.
+
+View the [advanced settings](#ajax_advanced) on how to enhance the Ajax Spider results.
