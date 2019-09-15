@@ -34,13 +34,9 @@
       <div class="content">
         <h1 id="contributions-welcome"><a name="contribution"></a>Contributions Welcome!</h1>
 
-<p>Contributions are welcome in all the following forms which improves the quality and content of the documentation.</p>
+<p>Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
 
-<h2 id="ways-to-contribute">Ways to Contribute</h2>
-
-<p>There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
-
-<p><strong>1. Creating High-level API Docs</strong></p>
+<p><strong>1. Creating High-level API/Automation Docs</strong></p>
 
 <p>Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
     The source files for the ZAP API documentation is hosted in Github. The repository is available at <a href="https://github.com/sshniro/zapdocs">Github</a>.
@@ -99,22 +95,41 @@ To submit a documentation update, use the following steps:</p>
 
 <p>This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.</p>
 
+<h3 id="general-guidelines">General Guidelines</h3>
+
+<ul>
+<li><p>Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
+check option or plugin.</p></li>
+<li><p>Use a friendly or conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
+chains of clauses, and location-specific idioms can make text hard to understand and translate.</p></li>
+<li><p>If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.</p></li>
+<li><p>The documentation should be neutral, without judgments, opinions. For example, words like &ldquo;easily&rdquo; or &ldquo;simple&rdquo; come with 
+a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
+when contributing to the document.</p></li>
+</ul>
+
 <h3 id="language-and-grammar">Language and Grammar</h3>
 
 <ul>
-<li><p>In general, use active voice (in which the grammatical subject of the sentence is the person or thing performing the action) 
-instead of passive voice (in which the grammatical subject of the sentence is the person or thing being acted upon), though there are exceptions.</p>
-
-<p>Example:</p>
+<li><p>Use <a href="https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/">American spellings</a> when
+contributing to the documentation. </p></li>
+<li><p>In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
+the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it&rsquo;s less important 
+who or what completed the action and more important that the action was completed. For example:</p>
 
 <ul>
-<li>Recommended: Send a query to the scan service. The zap sends the status of the scanning process.</li>
-<li>Not recommended: The scan service is queried, and an status is sent.</li>
+<li>Recommended: The Spider crawls the URLs.</li>
+<li>Not recommended: The URLs are crawled by the Spider.</li>
 </ul></li>
-<li><p>In general, use second person in your docs rather than first person—&quot;you&quot; (sometimes implicit) instead of &ldquo;we.&rdquo;</p></li>
-<li><p>The documentation should be neutral, without judgements, opinions. Make sure you do not favor anyone, our community is great as a whole, 
-there is no need to point who is better than the rest of us.</p></li>
-<li><p>When referencing a hypothetical person, such as “a user with a session cookie”, gender-neutral pronouns (they/their/them) should be used. For example, instead of:</p>
+<li><p>In general, use second person in your docs rather than first person. For example:</p>
+
+<ul>
+<li>Recommended: We recommend to use the Spider.</li>
+<li>Not recommended: You are recommended to use the Spider.</li>
+</ul></li>
+<li><p>In general use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as &ldquo;a user with a logged in session&rdquo;. 
+For example, instead of:</p>
 
 <ul>
 <li>he or she, use they</li>
@@ -123,37 +138,48 @@ there is no need to point who is better than the rest of us.</p></li>
 <li>his or hers, use theirs</li>
 <li>himself or herself, use themselves</li>
 </ul></li>
-<li><p>Please use appropriate, informative, rather formal language.</p></li>
 <li><p>When you&rsquo;re writing reference documentation for a method, phrase the main method description in terms of what it does 
-(&ldquo;Gets,&rdquo; &ldquo;Lists,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Searches&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;List,&rdquo; &ldquo;Create,&rdquo; &ldquo;Search&rdquo;).</p>
+(&ldquo;Gets,&rdquo; &ldquo;Starts,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Lists&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;Start,&rdquo; &ldquo;Create,&rdquo; &ldquo;List&rdquo;).</p>
 
 <ul>
-<li>Recommended: tasks.insert: Creates a new task on the specified task list.</li>
-<li>Not recommended: tasks.insert: Create a new task on the specified task list.</li>
+<li>Recommended: action.scan: Starts the Spider on the specified URL.</li>
+<li>Not recommended: action.scan: Start the Spider on the specified URL</li>
 </ul></li>
-</ul>
-
-<h3 id="principles-of-good-style">Principles of Good Style</h3>
-
-<ul>
-<li><p>Check the spelling and grammar in your contributions. Most editors include a spell checker or have an available spell-checking plugin.</p></li>
-<li><p>Avoid disclaimers, opinions, and value judgements. Words like &ldquo;easily&rdquo;, &ldquo;just&rdquo;, and &ldquo;simple&rdquo; are loaded with assumptions. 
-Something might seem easy to you, but be difficult for another person. Try to avoid these whenever possible.</p></li>
-<li><p>Use simple, to the point sentences without complicated jargon. Compound sentences, chains of clauses, and location-specific 
-idioms can make text hard to understand and translate. If a sentence can be split in two, it probably should. Avoid semicolons. 
-Use bullet lists when appropriate.</p></li>
-<li><p>Provide context. Don&rsquo;t use abbreviations without explaining them. Don&rsquo;t mention non zap contents without linking to them.</p></li>
+<li><p>Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+API or ZAP or HTML, you can use it without spelling it first.</p></li>
 </ul>
 
 <h3 id="formatting">Formatting</h3>
 
 <ul>
-<li><p>For sections (Titles), use the following capitalization rules: Capitalization of the first word, and all other words, 
-except for closed-class words.</p>
+<li><p>Capitalization:</p>
 
 <ul>
-<li>Example - The Spider Tutorial with APIs</li>
+<li>For titles of a section, Capitalize of the first letter of each word except for the <a href="http://babelnet.sbg.ac.at/themepark/grammar/classes.htm">closed-class words</a> 
+such as determiners, pronouns, conjunctions, and prepositions
+
+<ul>
+<li>Example: The Spider Tutorial <strong>with</strong> APIs</li>
 </ul></li>
+<li>For normal sentences dont capitalize random words in the middle of the sentences.</li>
+</ul></li>
+<li><p>Number formatting    </p>
+
+<ul>
+<li>In general spell out the number if it is less than ten. 
+
+<ul>
+<li>Example: The passive scan showed nine warnings. </li>
+</ul></li>
+</ul>
+
+<p>*</p></li>
+</ul>
+
+<h3 id="punctuation">Punctuation</h3>
+
+<ul>
+<li> In Progress</li>
 </ul>
 
 <h2 id="markdown-syntax">Markdown Syntax</h2>

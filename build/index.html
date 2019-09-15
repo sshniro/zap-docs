@@ -17,7 +17,7 @@
 
       <script>
         $(function() {
-          setupLanguages(["shell","java","python","ruby"]);
+          setupLanguages(["shell","java","python"]);
         });
       </script>
   </head>
@@ -35,7 +35,6 @@
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="java">java</a>
               <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="ruby">ruby</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -60,11 +59,14 @@
 <p>Welcome to the ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
 is one of the world&rsquo;s most popular free security tools which lets you automatically find security vulnerabilities in your 
 web applications. ZAP also has an extremely powerful API that allows you to do nearly everything that possible via the desktop interface.
-This allows the developers to automate the security testing of the application in the CI/CD pipeline. </p>
+This allows the developers to automate the security testing of the application in the CI/CD pipeline. If you are looking for
+automating the security testing, a series of automation scripts are available in the following <a href="https://github.com/zaproxy/community-scripts">Github repository</a> 
+for advanced automation.</p>
 
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
-incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues or create a new issue.</p>
+incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues or create a new issue
+in the Github repository.</p>
 
 <p>Following are some of the features provided by ZAP:</p>
 
@@ -120,7 +122,7 @@ This web UI is available via the URL (<a href="http://zap/">http://zap/</a>) whe
 is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. </p>
 
 <p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
-use ZAP as a proxy, access to the API. The API is configured using the Options API screen.</p>
+use ZAP as a proxy, access to the API. The API can be configured using the Options API screen in the desktop interface.</p>
 
 <aside class="notice">
 ZAP requires API Key to perform specific actions via the REST API. The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. 
@@ -152,10 +154,13 @@ sites from accessing the ZAP API. </p>
 <h2 id="setup-testing-web-application">Setup Testing Web-Application</h2>
 
 <p>If you have a website to scan or to perform security testing, then obtain a publicly accessible URL/IP. For the example guides we will be using 
-Google&rsquo;s Firing Range.</p>
+<a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and <a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a>.</p>
 
-<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities.
-It can be deployed as a Google App Engine application. A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.</p>
+<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities. 
+A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.
+The Spidering and Attacking examples will use the public instance of the firing range for security testing. OWASP Juice Shop is used 
+to showcase the Authentication examples. Following is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
+of publicly available vulnerable applications that you can also use in conjunction with ZAP.</p>
 
 <aside class="warning">
 Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
@@ -194,7 +199,7 @@ Each response type is processed differently in ZAP. All the available endpoints 
 
 <h3 id="start-the-spider">Start the spider</h3>
 <pre class="highlight shell"><code><span class="c"># Start the spider scan </span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&amp;zapapiformat=JSON&amp;url=http://localhost:3000=&amp;contextName="</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&amp;zapapiformat=JSON&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse=true"</span>
 </code></pre>
 
 <p>The Spider(s) explore the site and don&rsquo;t actually do any scanning. The <a href="#passive_scan">passive scan</a> rules examine all of 
@@ -260,8 +265,8 @@ Additional APIs are available in the API Catalogue to pause/resume/stop All the 
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/status/"</span>
 </code></pre>
 
-<p>Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work done. Use the <code class="prettyprint">status</code> endpoint to 
-identify whether the Spidering is still active or finished.</p>
+<p>Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work to be done. Use the <code class="prettyprint">status</code> endpoint to 
+identify whether the Spider is still active or finished.</p>
 
 <h3 id="view-results">View Results</h3>
 <pre class="highlight shell"><code><span class="c"># To view the number of results</span>
@@ -270,66 +275,113 @@ identify whether the Spidering is still active or finished.</p>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/fullResults/"</span>
 </code></pre>
 
-<p>Use the following commands on the right to view the number of results or to obtain </p>
+<p>Use the following commands on the right to view the number of results or to obtain the entire results or a limited set of
+results.</p>
 
 <h3 id="stop-the-ajax-spider">Stop the AJAX Spider</h3>
 <pre class="highlight shell"><code><span class="c"># To stop the AJAX Spider</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/stop/"</span>
 </code></pre>
 
+<p>Ajax spider does not have an indication on how much resources are left to crawl. Therefor if the Ajax spider takes too much time
+than expected, then it can be stopped by using the following command in the right.</p>
+
+<p>View the <a href="#ajax_advanced">advanced settings</a> on how to enhance the Ajax Spider results.</p>
+
           <h1 id="attacking-the-app"><a name="examples"></a>Attacking The App</h1>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+<p>Before you start attacking the Application its recommended to explore the application. If you haven&rsquo;t done that look at the
+<a href="#explore">explore</a> section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.</p>
 
-<aside class="notice">
-The examples shows some usages with the minimal required arguments. However, this is not a reference, and not all APIs 
-nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
+<aside class="warning">
+Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
+specifically been given permission to test.
 </aside>
 
 <h2 id="perform-passive-scan"><a name="passive_scan"></a>Perform Passive Scan</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=68u5tu85j34dc4g3ushdp847ku&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
+<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
 </code></pre>
 
-<p>All requests that are proxied through ZAP or initialised by tools like the spider are passively scanned. 
-ZAP by default passively scans all HTTP messages (requests and responses) sent to the web application being tested. 
-Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
+<p>All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
+to manually start the passive scan process, ZAP by default passively scans all HTTP messages (requests and responses) sent 
+to the web application being tested. The alerts for the passive scan can be obtained via issuing the following commands on the right. </p>
+
+<p>Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
 vulnerabilities like XSS which require malicious requests to be sent - thats the job of the <a href="#active_scan">active scanner</a>.</p>
 
-<p>The (main) behaviour of the passive scanner can be configured using the Options Passive Scanner API.</p>
-
 <p>Passive scanning can also be used for automatically adding tags and raising alerts for potential issues. A set of rules for 
 automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags screen.
-The alerts raised by passive scanners can be configured using the Options Passive Scan Rules screen.</p>
+The alerts raised by passive scanners can be configured using the Options Passive Scan Rules API.</p>
 
-<p>The alerts for the passive scan can be obtained via issuing the following commands.</p>
+<p>The (main) behaviour of the passive scanner can be configured using the Passive Scanner API. View the advanced section to
+know how to configure these additional parameters.</p>
 
 <h2 id="perform-active-scan"><a name="active_scan"></a>Perform Active Scan</h2>
 
-<p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets.</p>
+<p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
+is an attack on those targets. You should NOT use it on web applications that you do not own. </p>
 
-<p>Active scanning is an attack on those targets. You should NOT use it on web applications that you do not own.</p>
+<h3 id="start-active-scanner">Start Active Scanner</h3>
+<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?url=https%3A%2F%2Fpublic-firing-range.appspot.com&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
+</code></pre>
 
-<p>In order to facilitate identifying ZAP traffic and Web Application Firewall exceptions, ZAP is accompanied by a script &ldquo;AddZapHeader.js&rdquo; which can be used to add a specific header to all traffic that passes through or originates from ZAP. eg: X-ZAP-Initiator: 3</p>
+<p>The <code class="prettyprint">scan</code> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
+under the given URL, the parameter <code class="prettyprint">inScopeOnly</code> can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
+The parameter <code class="prettyprint">scanPolicyName</code> allows to specify the scan policy (if none is given it uses the default scan policy). 
+The parameters <code class="prettyprint">method</code> and <code class="prettyprint">postData</code> allow to select a given request in conjunction with the given URL. </p>
 
-<p>It should be noted that active scanning can only find certain types of vulnerabilities. Logical vulnerabilities, such as broken access control, will not be found by any active or automated vulnerability scanning. Manual penetration testing should always be performed in addition to active scanning to find all types of vulnerabilities.</p>
+<p>View advanced settings to configure how to configure the <a href="#context_advanced">context</a>, <a href="#scope_advanced">scope</a>, and 
+scan policy with ZAP APIs.</p>
+
+<h3 id="view-status">View Status</h3>
+<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=1"</span>
+</code></pre>
+
+<p>The status API provides the percentage of attack done for the active scanner. The scan ID returned via starting the spider should be used to query the results. </p>
+
+<h3 id="view-results">View Results</h3>
+<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
+</code></pre>
+
+<p>Similar to the passive scan results the active scan results can be viewed using the alerts endpoint </p>
+
+<h3 id="stop-active-scanning">Stop Active Scanning</h3>
+<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?scanId=1"</span>
+</code></pre>
+
+<p>Use the stop API to stop a long running active scan. Optionally you can use the stopAllScans endpoints or pause endpoints to
+stop and pause the active scanning.</p>
+
+<p>It should be noted that active scanning can only find certain types of vulnerabilities. Logical vulnerabilities, such as 
+broken access control, will not be found by any active or automated vulnerability scanning. Manual penetration testing should 
+always be performed in addition to active scanning to find all types of vulnerabilities.</p>
 
           <h1 id="getting-the-results"><a name="results"></a>Getting The Results</h1>
 
 <p>After Scanning completes, ZAP shows the result summary in the form of different categories of alerts. Basically, alerts 
 are potential vulnerabilities and have been categorized as high priority, medium priority, low priority, and informational 
-priority, which indicates the degree of associated risks. A high priority alert means that an issue under this category is 
-more serious than other priority alerts. Likewise, medium priority alerts, low priority alerts, and informational priority 
-alerts are consecutively less and less serious. Alerts categories are indicated by different colour flags. </p>
+priority, which indicates the degree of associated risks. A high priority alert means that an issue under this category 
+is more serious than other priority alerts. Likewise, medium priority alerts, low priority alerts, and informational priority 
+alerts are consecutively less and less serious. Alerts categories are indicated by different colour flags. The following image shows, 
+alerts flags can be seen in the bottom left of ZAP window with numbers. The number beside the flags indicate the number 
+of potential issues within that category. </p>
 
-<aside class="notice">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</aside>
+<p>The final results can be obtained in the following formats:</p>
+
+<ul>
+<li>HTML</li>
+<li>Markdown</li>
+<li>JSON</li>
+<li>XML</li>
+</ul>
+
+<p><img alt="html report" src="images/report_html.png" /></p>
 
           <h1 id="authentication"><a name="examples"></a>Authentication</h1>
 
@@ -340,7 +392,7 @@ The examples shows some usages with the minimal required arguments. However, thi
 nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
-          <h1 id="advance-settings"><a name="results"></a>Advance Settings</h1>
+          <h1 id="advanced-settings"><a name="results"></a>Advanced Settings</h1>
 
 <p>The following are high-level examples on how to use the ZAP APIs to perform specific actions.</p>
 
@@ -349,15 +401,23 @@ The examples shows some usages with the minimal required arguments. However, thi
 nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
+<h2 id="spider-advanced"><a name="ajax_advanced"></a>Spider (Advanced)</h2>
+
+<h2 id="ajax-spider-advanced"><a name="ajax_advanced"></a>Ajax Spider (Advanced)</h2>
+
+<h2 id="passive-scan-advanced"><a name="ajax_advanced"></a>Passive Scan (Advanced)</h2>
+
+<h2 id="active-scan-advanced"><a name="ajax_advanced"></a>Active Scan (Advanced)</h2>
+
+<h2 id="context-advanced"><a name="context_advanced"></a>Context (Advanced)</h2>
+
+<h2 id="scope-advanced"><a name="scope_advanced"></a>Scope (Advanced)</h2>
+
           <h1 id="contributions-welcome"><a name="contribution"></a>Contributions Welcome!</h1>
 
-<p>Contributions are welcome in all the following forms which improves the quality and content of the documentation.</p>
+<p>Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
 
-<h2 id="ways-to-contribute">Ways to Contribute</h2>
-
-<p>There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
-
-<p><strong>1. Creating High-level API Docs</strong></p>
+<p><strong>1. Creating High-level API/Automation Docs</strong></p>
 
 <p>Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
     The source files for the ZAP API documentation is hosted in Github. The repository is available at <a href="https://github.com/sshniro/zapdocs">Github</a>.
@@ -416,22 +476,41 @@ To submit a documentation update, use the following steps:</p>
 
 <p>This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.</p>
 
+<h3 id="general-guidelines">General Guidelines</h3>
+
+<ul>
+<li><p>Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
+check option or plugin.</p></li>
+<li><p>Use a friendly or conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
+chains of clauses, and location-specific idioms can make text hard to understand and translate.</p></li>
+<li><p>If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.</p></li>
+<li><p>The documentation should be neutral, without judgments, opinions. For example, words like &ldquo;easily&rdquo; or &ldquo;simple&rdquo; come with 
+a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
+when contributing to the document.</p></li>
+</ul>
+
 <h3 id="language-and-grammar">Language and Grammar</h3>
 
 <ul>
-<li><p>In general, use active voice (in which the grammatical subject of the sentence is the person or thing performing the action) 
-instead of passive voice (in which the grammatical subject of the sentence is the person or thing being acted upon), though there are exceptions.</p>
-
-<p>Example:</p>
+<li><p>Use <a href="https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/">American spellings</a> when
+contributing to the documentation. </p></li>
+<li><p>In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
+the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it&rsquo;s less important 
+who or what completed the action and more important that the action was completed. For example:</p>
 
 <ul>
-<li>Recommended: Send a query to the scan service. The zap sends the status of the scanning process.</li>
-<li>Not recommended: The scan service is queried, and an status is sent.</li>
+<li>Recommended: The Spider crawls the URLs.</li>
+<li>Not recommended: The URLs are crawled by the Spider.</li>
 </ul></li>
-<li><p>In general, use second person in your docs rather than first person—&quot;you&quot; (sometimes implicit) instead of &ldquo;we.&rdquo;</p></li>
-<li><p>The documentation should be neutral, without judgements, opinions. Make sure you do not favor anyone, our community is great as a whole, 
-there is no need to point who is better than the rest of us.</p></li>
-<li><p>When referencing a hypothetical person, such as “a user with a session cookie”, gender-neutral pronouns (they/their/them) should be used. For example, instead of:</p>
+<li><p>In general, use second person in your docs rather than first person. For example:</p>
+
+<ul>
+<li>Recommended: We recommend to use the Spider.</li>
+<li>Not recommended: You are recommended to use the Spider.</li>
+</ul></li>
+<li><p>In general use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as &ldquo;a user with a logged in session&rdquo;. 
+For example, instead of:</p>
 
 <ul>
 <li>he or she, use they</li>
@@ -440,37 +519,48 @@ there is no need to point who is better than the rest of us.</p></li>
 <li>his or hers, use theirs</li>
 <li>himself or herself, use themselves</li>
 </ul></li>
-<li><p>Please use appropriate, informative, rather formal language.</p></li>
 <li><p>When you&rsquo;re writing reference documentation for a method, phrase the main method description in terms of what it does 
-(&ldquo;Gets,&rdquo; &ldquo;Lists,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Searches&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;List,&rdquo; &ldquo;Create,&rdquo; &ldquo;Search&rdquo;).</p>
+(&ldquo;Gets,&rdquo; &ldquo;Starts,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Lists&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;Start,&rdquo; &ldquo;Create,&rdquo; &ldquo;List&rdquo;).</p>
 
 <ul>
-<li>Recommended: tasks.insert: Creates a new task on the specified task list.</li>
-<li>Not recommended: tasks.insert: Create a new task on the specified task list.</li>
+<li>Recommended: action.scan: Starts the Spider on the specified URL.</li>
+<li>Not recommended: action.scan: Start the Spider on the specified URL</li>
 </ul></li>
-</ul>
-
-<h3 id="principles-of-good-style">Principles of Good Style</h3>
-
-<ul>
-<li><p>Check the spelling and grammar in your contributions. Most editors include a spell checker or have an available spell-checking plugin.</p></li>
-<li><p>Avoid disclaimers, opinions, and value judgements. Words like &ldquo;easily&rdquo;, &ldquo;just&rdquo;, and &ldquo;simple&rdquo; are loaded with assumptions. 
-Something might seem easy to you, but be difficult for another person. Try to avoid these whenever possible.</p></li>
-<li><p>Use simple, to the point sentences without complicated jargon. Compound sentences, chains of clauses, and location-specific 
-idioms can make text hard to understand and translate. If a sentence can be split in two, it probably should. Avoid semicolons. 
-Use bullet lists when appropriate.</p></li>
-<li><p>Provide context. Don&rsquo;t use abbreviations without explaining them. Don&rsquo;t mention non zap contents without linking to them.</p></li>
+<li><p>Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+API or ZAP or HTML, you can use it without spelling it first.</p></li>
 </ul>
 
 <h3 id="formatting">Formatting</h3>
 
 <ul>
-<li><p>For sections (Titles), use the following capitalization rules: Capitalization of the first word, and all other words, 
-except for closed-class words.</p>
+<li><p>Capitalization:</p>
 
 <ul>
-<li>Example - The Spider Tutorial with APIs</li>
+<li>For titles of a section, Capitalize of the first letter of each word except for the <a href="http://babelnet.sbg.ac.at/themepark/grammar/classes.htm">closed-class words</a> 
+such as determiners, pronouns, conjunctions, and prepositions
+
+<ul>
+<li>Example: The Spider Tutorial <strong>with</strong> APIs</li>
 </ul></li>
+<li>For normal sentences dont capitalize random words in the middle of the sentences.</li>
+</ul></li>
+<li><p>Number formatting    </p>
+
+<ul>
+<li>In general spell out the number if it is less than ten. 
+
+<ul>
+<li>Example: The passive scan showed nine warnings. </li>
+</ul></li>
+</ul>
+
+<p>*</p></li>
+</ul>
+
+<h3 id="punctuation">Punctuation</h3>
+
+<ul>
+<li> In Progress</li>
 </ul>
 
 <h2 id="markdown-syntax">Markdown Syntax</h2>
@@ -47851,7 +47941,6 @@ apiKeyHeader, apiKeyQuery
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="java">java</a>
                 <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="ruby">ruby</a>
           </div>
       </div>
     </div>
