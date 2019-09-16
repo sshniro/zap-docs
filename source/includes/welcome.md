@@ -38,8 +38,8 @@ The API documentation is divided in to eight main parts. Following shows the sum
 * [**Exploring The Apps**](#explore) section contains examples on how to explore the web application.
 * [**Attacking The Apps**](#attack) section contains examples on how to scan or attack a web application.
 * [**Getting The Results**](#results) section contains examples on how to generate Reports/Results from ZAP.
-* [**Authentication**](#auth) section contains examples on how to authenticate the web application.
-* [**Advanced Settings**](#examples) section contains configurations on how to fine tune the ZAP results.
+* [**Authentication**](#auth) section contains examples on how to authenticate the web application with ZAP.
+* [**Advanced Settings**](#examples) section contains advanced configurations on how to fine tune the ZAP results.
 * [**Contributions**](#contribution) section contains guidelines and instruction on how to contribute to ZAPs documentations.
 * [**API Catalogue**](#api_catalogue) section contains Open API definitions for ZAP APIs. 
 
