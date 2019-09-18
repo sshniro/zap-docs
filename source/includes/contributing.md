@@ -69,7 +69,7 @@ This style guide provides a set of editorial guidelines for anyone writing docum
 * Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
 check option or plugin.
 
-* Use a friendly or conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
+* Use a friendly and conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
 chains of clauses, and location-specific idioms can make text hard to understand and translate.
 
 * If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.
@@ -80,53 +80,70 @@ when contributing to the document.
 
 ### Language and Grammar
 
-* Use [American spellings](https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/) when
-contributing to the documentation. 
- 
-* In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
-the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
-the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it's less important 
-who or what completed the action and more important that the action was completed. For example:
-    - Recommended: The Spider crawls the URLs.
+* Abbreviation
+
+    Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+    API or ZAP or HTML, you can use it without spelling it first.
+
+* Active Voice
+
+    In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+    the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
+    the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it's less important 
+    who or what completed the action and more important that the action was completed. For example:
+    
+    - Recommended: The Spider crawls the URLs.<br>
     - Not recommended: The URLs are crawled by the Spider.
 
-* In general, use second person in your docs rather than first person. For example:
-    - Recommended: We recommend to use the Spider.
+* Gender References
+
+    Use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as "a user with a logged in session". 
+    For example, instead of:
+        - he or she, use they;
+        - him or her, use them;
+        - his or her, use their;
+        - his or hers, use theirs;
+        - himself or herself, use themselves;
+
+* Method Description
+
+    When you're writing reference documentation for a method, phrase the main method description in terms of what it does 
+    ("Gets," "Starts," "Creates," "Lists"), rather than what the developer would use it to do ("Get," "Start," "Create," "List").
+    
+    - Recommended: action.scan: Starts the Spider on the specified URL. <br>
+    - Not recommended: action.scan: Start the Spider on the specified URL.
+
+* Second Person
+
+    In general, use second person in your docs rather than first person. For example:
+    
+    - Recommended: We recommend to use the Spider. <br>
     - Not recommended: You are recommended to use the Spider.
 
-* In general use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as "a user with a logged in session". 
-For example, instead of:
-    - he or she, use they
-    - him or her, use them
-    - his or her, use their
-    - his or hers, use theirs
-    - himself or herself, use themselves
-    
-* When you're writing reference documentation for a method, phrase the main method description in terms of what it does 
-("Gets," "Starts," "Creates," "Lists"), rather than what the developer would use it to do ("Get," "Start," "Create," "List").
+* Spellings
 
-    - Recommended: action.scan: Starts the Spider on the specified URL.
-    - Not recommended: action.scan: Start the Spider on the specified URL
-
-* Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
-API or ZAP or HTML, you can use it without spelling it first.
-
+    Use [American spellings](https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/) when
+    contributing to the documentation. 
+ 
 ### Formatting
 
 * Capitalization:
 
     * For titles of a section, Capitalize of the first letter of each word except for the [closed-class words](http://babelnet.sbg.ac.at/themepark/grammar/classes.htm) 
       such as determiners, pronouns, conjunctions, and prepositions
+      - Recommended: The Spider Tutorial **with** APIs
       
-      - Example: The Spider Tutorial **with** APIs
-      
-    * For normal sentences dont capitalize random words in the middle of the sentences.
+    * For normal sentences dont [capitalize](https://www.grammarly.com/blog/capitalization-rules/) random words in the middle of the sentences.
     
 * Number formatting    
-    * In general spell out the number if it is less than ten. 
-     - Example: The passive scan showed nine warnings. 
-     
-    *
+    * In general spell out the number if it starts a sentence or is less than ten or an ordinal number. 
+      - Recommended: Seventeen requests has been intercepted by the passive scanner. 
+      - Recommended: The passive scan showed nine warnings.    
+      - Recommended: The fifth alert was a high priority alert.  
+       
+    * Use numerals for numbers higher than ten or fractions or unit prices.
+     - Recommended: The active scanner detected 24 issues.
+     - Recommended: The scanner took 23.4 seconds to complete the crawling.
 
 ### Punctuation
     
@@ -143,8 +160,6 @@ and the Markdown rules that ZAP documentation uses.
 
 Put \``backticks`\` around the following symbols when used in text:
 
-* Argument names: `input`, `x`, `tensor`
-* Returned tensor names: `output`, `idx`, `out`
 * Data types: `json`, `xml`, `html`
 * File name: `test.py`, `/path-to-your-data/xml/example-name`
 

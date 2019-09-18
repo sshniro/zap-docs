@@ -100,7 +100,7 @@ To submit a documentation update, use the following steps:</p>
 <ul>
 <li><p>Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
 check option or plugin.</p></li>
-<li><p>Use a friendly or conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
+<li><p>Use a friendly and conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
 chains of clauses, and location-specific idioms can make text hard to understand and translate.</p></li>
 <li><p>If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.</p></li>
 <li><p>The documentation should be neutral, without judgments, opinions. For example, words like &ldquo;easily&rdquo; or &ldquo;simple&rdquo; come with 
@@ -111,42 +111,51 @@ when contributing to the document.</p></li>
 <h3 id="language-and-grammar">Language and Grammar</h3>
 
 <ul>
-<li><p>Use <a href="https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/">American spellings</a> when
-contributing to the documentation. </p></li>
-<li><p>In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+<li><p>Abbreviation</p>
+
+<p>Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+API or ZAP or HTML, you can use it without spelling it first.</p></li>
+<li><p>Active Voice</p>
+
+<p>In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
 the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
 the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it&rsquo;s less important 
 who or what completed the action and more important that the action was completed. For example:</p>
 
 <ul>
-<li>Recommended: The Spider crawls the URLs.</li>
+<li>Recommended: The Spider crawls the URLs.<br></li>
 <li>Not recommended: The URLs are crawled by the Spider.</li>
 </ul></li>
-<li><p>In general, use second person in your docs rather than first person. For example:</p>
+<li><p>Gender References</p>
 
-<ul>
-<li>Recommended: We recommend to use the Spider.</li>
-<li>Not recommended: You are recommended to use the Spider.</li>
-</ul></li>
-<li><p>In general use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as &ldquo;a user with a logged in session&rdquo;. 
-For example, instead of:</p>
+<p>Use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as &ldquo;a user with a logged in session&rdquo;. 
+For example, instead of:
+    - he or she, use they;
+    - him or her, use them;
+    - his or her, use their;
+    - his or hers, use theirs;
+    - himself or herself, use themselves;</p></li>
+<li><p>Method Description</p>
 
-<ul>
-<li>he or she, use they</li>
-<li>him or her, use them</li>
-<li>his or her, use their</li>
-<li>his or hers, use theirs</li>
-<li>himself or herself, use themselves</li>
-</ul></li>
-<li><p>When you&rsquo;re writing reference documentation for a method, phrase the main method description in terms of what it does 
+<p>When you&rsquo;re writing reference documentation for a method, phrase the main method description in terms of what it does 
 (&ldquo;Gets,&rdquo; &ldquo;Starts,&rdquo; &ldquo;Creates,&rdquo; &ldquo;Lists&rdquo;), rather than what the developer would use it to do (&ldquo;Get,&rdquo; &ldquo;Start,&rdquo; &ldquo;Create,&rdquo; &ldquo;List&rdquo;).</p>
 
 <ul>
-<li>Recommended: action.scan: Starts the Spider on the specified URL.</li>
-<li>Not recommended: action.scan: Start the Spider on the specified URL</li>
+<li>Recommended: action.scan: Starts the Spider on the specified URL. <br></li>
+<li>Not recommended: action.scan: Start the Spider on the specified URL.</li>
 </ul></li>
-<li><p>Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
-API or ZAP or HTML, you can use it without spelling it first.</p></li>
+<li><p>Second Person</p>
+
+<p>In general, use second person in your docs rather than first person. For example:</p>
+
+<ul>
+<li>Recommended: We recommend to use the Spider. <br></li>
+<li>Not recommended: You are recommended to use the Spider.</li>
+</ul></li>
+<li><p>Spellings</p>
+
+<p>Use <a href="https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/">American spellings</a> when
+contributing to the documentation. </p></li>
 </ul>
 
 <h3 id="formatting">Formatting</h3>
@@ -159,21 +168,27 @@ API or ZAP or HTML, you can use it without spelling it first.</p></li>
 such as determiners, pronouns, conjunctions, and prepositions
 
 <ul>
-<li>Example: The Spider Tutorial <strong>with</strong> APIs</li>
+<li>Recommended: The Spider Tutorial <strong>with</strong> APIs</li>
 </ul></li>
-<li>For normal sentences dont capitalize random words in the middle of the sentences.</li>
+<li>For normal sentences dont <a href="https://www.grammarly.com/blog/capitalization-rules/">capitalize</a> random words in the middle of the sentences.</li>
 </ul></li>
 <li><p>Number formatting    </p>
 
 <ul>
-<li>In general spell out the number if it is less than ten. 
+<li>In general spell out the number if it starts a sentence or is less than ten or an ordinal number. 
 
 <ul>
-<li>Example: The passive scan showed nine warnings. </li>
+<li>Recommended: Seventeen requests has been intercepted by the passive scanner. </li>
+<li>Recommended: The passive scan showed nine warnings.<br></li>
+<li>Recommended: The fifth alert was a high priority alert.<br></li>
 </ul></li>
-</ul>
+<li>Use numerals for numbers higher than ten or fractions or unit prices.
 
-<p>*</p></li>
+<ul>
+<li>Recommended: The active scanner detected 24 issues.</li>
+<li>Recommended: The scanner took 23.4 seconds to complete the crawling.</li>
+</ul></li>
+</ul></li>
 </ul>
 
 <h3 id="punctuation">Punctuation</h3>
@@ -194,8 +209,6 @@ and the Markdown rules that ZAP documentation uses.</p>
 <p>Put `<code class="prettyprint">backticks</code>` around the following symbols when used in text:</p>
 
 <ul>
-<li>Argument names: <code class="prettyprint">input</code>, <code class="prettyprint">x</code>, <code class="prettyprint">tensor</code></li>
-<li>Returned tensor names: <code class="prettyprint">output</code>, <code class="prettyprint">idx</code>, <code class="prettyprint">out</code></li>
 <li>Data types: <code class="prettyprint">json</code>, <code class="prettyprint">xml</code>, <code class="prettyprint">html</code></li>
 <li>File name: <code class="prettyprint">test.py</code>, <code class="prettyprint">/path-to-your-data/xml/example-name</code></li>
 </ul>

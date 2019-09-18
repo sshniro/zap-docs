@@ -80,7 +80,7 @@ Quick Setup Guide
 ---------------
 
 
-> 2 ways to start zap
+> Two ways to start zap (View shell command column)
 
 ``` shell
 # Option: 1, using "headless" mode
@@ -119,7 +119,7 @@ specifically been given permission to test.
 Getting help
 ------------
 
-All available APIs are documented in [API Catalogue](#interface). A developer [forum](https://groups.google.com/d/forum/zaproxy-develop) is 
+All available APIs are documented in [API Catalogue](#interface). A [developer forum](https://groups.google.com/d/forum/zaproxy-develop) is 
 available to ask questions or feature request. In order to report bug and make feature requests please use our github [zap repository](https://github.com/zaproxy/zaproxy/issues)
 
 Stay tuned on twitter [@zaproxy](https://twitter.com/zaproxy).

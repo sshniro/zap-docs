@@ -624,3 +624,7 @@ html, body {
     width: 55% !important;
   }
 }
+
+li > ul {
+  padding-bottom: 0.5em;
+}
