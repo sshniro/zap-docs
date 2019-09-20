@@ -70,6 +70,8 @@ is listening on, eg [http://localhost:8080/](http://localhost:8080/).
 By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
 use ZAP as a proxy, access to the API. The API can be configured using the Options API screen in the desktop interface.
 
+Visit the following link to download the [official SDKs](https://github.com/zaproxy/zaproxy/wiki/ApiDetails) 
+
 <aside class="notice">
 ZAP requires API Key to perform specific actions via the REST API. The API key must be specified on all API 'actions' and some 'other' operations. 
 The API key is used to prevent malicious sites from accessing the ZAP API. It is strongly recommended that you set a key 
@@ -80,13 +82,27 @@ Quick Setup Guide
 ---------------
 
 
-> Two ways to start zap (View shell command column)
+> Two ways to start zap
 
 ``` shell
-# Option: 1, using "headless" mode
+# Option: 1, using "headless/daemon" mode
 $ <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
 # Option: 2, using normal/ Desktop interface mode
 $ <ZAP_HOME>./zap.sh
+```
+
+``` java
+// Option: 1, using "headless/daemon" mode
+<ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
+// Option: 2, using normal/ Desktop interface mode
+<ZAP_HOME>./zap.sh
+```
+
+``` python
+# Option: 1, using "headless/daemon" mode
+<ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
+# Option: 2, using normal/ Desktop interface mode
+<ZAP_HOME>./zap.sh
 ```
 
 The quick setup guide focuses on setting up _ZAP_ and a testing application. If you have already setup ZAP then Jump to 

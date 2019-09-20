@@ -40,12 +40,13 @@ $ curl "http://localhost:8080/JSON/spider/action/resume/?scanId=<scan_id>"
 
 ```java
 public class Spider {
+
     private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
     private static final String ZAP_API_KEY =
-            null; // Change this if you have set the apikey in ZAP via Options / API
+    null; // Change this if you have set the apikey in ZAP via Options / API
 
-    private static final String TARGET = "https://public-firing-range.appspot.com/";
+    private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
         ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
@@ -53,8 +54,7 @@ public class Spider {
         try {
             // Start spidering the target
             System.out.println("Spider : " + TARGET);
-            // It's not necessary to pass the ZAP API key again, already set when creating the
-            // ClientApi.
+            // Create the
             ApiResponse resp = api.spider.scan(TARGET, null, null, null, null);
             String scanid;
             int progress;
@@ -74,7 +74,7 @@ public class Spider {
                 }
             }
             System.out.println("Spider complete");
-            System.out.println(String.valueOf(api.spider.results(scanid)));
+            System.out.println(api.spider.results(scanid));
 
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
@@ -172,7 +172,7 @@ has crawled through.
 If the scanning takes too much time than expected you can stop or pause the scanning via using the start and pause APIs. 
 Additional APIs are available in the API Catalogue to pause/resume/stop All the scanning processes.
 
-Perform AJAX Spider
+Using AJAX Spider
 -------------------
 
 ```shell
