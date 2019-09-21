@@ -47,7 +47,7 @@ nor arguments are shown. View the API catalog to see all the parameters and scop
 </aside>
 
 
-Basics on the API request
+Basics on the API Request
 -------------------------
 
 ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
@@ -77,8 +77,8 @@ The following shows the API URL format of ZAP:
 
 `http://zap/<format>/<component>/<operation>/<operation name>[/?<parameters>]`
 
-The format can be either `JSON`, `XML` or `HTML`. The operation can be either `view` or `action`. `view` is used to return
-information and `action` is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
+The format can be either `JSON`, `XML` or `HTML`. The operation can be either `view` or `action`. The `view` operation is used to return
+information and the `action` is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
 action can be used to start or stop the Spider. The components, operation names and parameters can all be discovered by 
 browsing the [API Catalogue](#api_catalogue).
 
@@ -92,13 +92,11 @@ is listening on, eg [http://localhost:8080/](http://localhost:8080/).
 ![zap_api_ui](../images/zap_api_ui.png)
 
 By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
-use ZAP as a proxy, access to the API. The API can be also configured using the Options API screen using the desktop interface.
+use ZAP as a proxy, access to the API.
 
 ### <a name="client_sdk"></a>Client SDKs
 
-
 ZAP provides official clients for Python, Java, and Node JS. Visit the following link to download the [official SDKs](https://github.com/zaproxy/zaproxy/wiki/ApiDetails) 
-
 
 Quick Setup Guide
 ---------------
@@ -138,10 +136,10 @@ sites from accessing the ZAP API.
 **Setup a Testing Application**
 
 If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
-The example guide uses the [Google's Firing Range](https://github.com/google/firing-range) and 
+The example guide uses [Google's Firing Range](https://github.com/google/firing-range) and 
 [OWASP Juice Shop](https://github.com/bkimminich/juice-shop) to perform the security testing. 
-The Spidering and Attacking examples uses the [public instance](https://public-firing-range.appspot.com) of the 
-firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
+The Spidering and Attacking examples use the [public instance](https://public-firing-range.appspot.com) of the 
+firing range, and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
 is a [list](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps) 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.
 

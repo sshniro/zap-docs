@@ -80,7 +80,7 @@ The examples shows some usages with the minimal required arguments. However, thi
 nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
-<h2 id="basics-on-the-api-request">Basics on the API request</h2>
+<h2 id="basics-on-the-api-request">Basics on the API Request</h2>
 
 <p>ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
 enabled if you have started the ZAP in deamon or headless mode. If you are using the ZAP desktop then the API should be enabled
@@ -109,8 +109,8 @@ For example, to generate easily readable reports use the HTML format and use XML
 
 <p><code class="prettyprint">http://zap/&lt;format&gt;/&lt;component&gt;/&lt;operation&gt;/&lt;operation name&gt;[/?&lt;parameters&gt;]</code></p>
 
-<p>The format can be either <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> or <code class="prettyprint">HTML</code>. The operation can be either <code class="prettyprint">view</code> or <code class="prettyprint">action</code>. <code class="prettyprint">view</code> is used to return
-information and <code class="prettyprint">action</code> is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
+<p>The format can be either <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> or <code class="prettyprint">HTML</code>. The operation can be either <code class="prettyprint">view</code> or <code class="prettyprint">action</code>. The <code class="prettyprint">view</code> operation is used to return
+information and the <code class="prettyprint">action</code> is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
 action can be used to start or stop the Spider. The components, operation names and parameters can all be discovered by 
 browsing the <a href="#api_catalogue">API Catalogue</a>.</p>
 
@@ -124,7 +124,7 @@ is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>.
 <p><img alt="zap_api_ui" src="../images/zap_api_ui.png" /></p>
 
 <p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
-use ZAP as a proxy, access to the API. The API can be also configured using the Options API screen using the desktop interface.</p>
+use ZAP as a proxy, access to the API.</p>
 
 <h3 id="client-sdks"><a name="client_sdk"></a>Client SDKs</h3>
 
@@ -161,10 +161,10 @@ sites from accessing the ZAP API. </p>
 <p><strong>Setup a Testing Application</strong></p>
 
 <p>If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
-The example guide uses the <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
+The example guide uses <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
 <a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a> to perform the security testing. 
-The Spidering and Attacking examples uses the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
-firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
+The Spidering and Attacking examples use the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
+firing range, and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
 is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.</p>
 

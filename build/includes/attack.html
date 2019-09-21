@@ -42,14 +42,18 @@ Do not use ZAP on unauthorized pages. Please be aware that you should only attac
 specifically been given permission to test.
 </aside>
 
-<h2 id="perform-passive-scan"><a name="passive_scan"></a>Perform Passive Scan</h2>
+<h2 id="using-passive-scan"><a name="passive_scan"></a>Using Passive Scan</h2>
+<pre class="highlight java"><code>
+</code></pre>
+<pre class="highlight python"><code>
+</code></pre>
 <pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
 </code></pre>
 
 <p>All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
 to manually start the passive scan process, ZAP by default passively scans all HTTP messages (requests and responses) sent 
-to the web application being tested. The alerts for the passive scan can be obtained via issuing the following commands on the right. </p>
+to the web application being tested. </p>
 
 <p>Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
@@ -57,23 +61,36 @@ vulnerabilities like XSS which require malicious requests to be sent - that&rsqu
 
 <h3 id="view-the-status">View the status</h3>
 
-<p>As the records are passively scanned it will take additional time to complete the full scan. The <a href="#pscan_records_to_scan">recordsToScan</a> 
-API will return the number of records left to be scanned. After the scanning has completed the alerts can be obtained 
-via the alerts endpoint.</p>
+<p>As the records are passively scanned it will take additional time to complete the full scan. After the crawling is completed 
+use the <a href="#pscan_records_to_scan">recordsToScan</a> API to obtain the number of records left to be scanned. After the scanning 
+has completed the alerts can be obtained via the alerts endpoint.</p>
 
 <p>View the <a href="#pscan_advanced">advanced section</a> to know how to configure additional parameters of Passive Scan.</p>
 
-<h2 id="perform-active-scan"><a name="active_scan"></a>Perform Active Scan</h2>
+<h2 id="using-active-scan"><a name="active_scan"></a>Using Active Scan</h2>
 
 <p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
-is an attack on those targets. You should NOT use it on web applications that you do not own. </p>
+is an attack on those targets. You should <strong>NOT</strong> use it on web applications that you do not own. </p>
 
 <h3 id="start-active-scanner">Start Active Scanner</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<pre class="highlight java"><code>
+</code></pre>
+<pre class="highlight python"><code>
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># To view the the active scan</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?url=https%3A%2F%2Fpublic-firing-range.appspot.com&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=1"</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?scanId=1"</span>
 </code></pre>
 
-<p>The <code class="prettyprint">scan</code> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
+<p>The <a href="#ascan_scan_api">scan</a> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
 under the given URL, the parameter <code class="prettyprint">inScopeOnly</code> can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
 The parameter <code class="prettyprint">scanPolicyName</code> allows to specify the scan policy (if none is given it uses the default scan policy). 
 The parameters <code class="prettyprint">method</code> and <code class="prettyprint">postData</code> allow to select a given request in conjunction with the given URL. </p>
@@ -82,23 +99,14 @@ The parameters <code class="prettyprint">method</code> and <code class="prettypr
 scan policy with ZAP APIs.</p>
 
 <h3 id="view-status">View Status</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=1"</span>
-</code></pre>
 
 <p>The status API provides the percentage of attack done for the active scanner. The scan ID returned via starting the spider should be used to query the results. </p>
 
 <h3 id="view-results">View Results</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
-</code></pre>
 
 <p>Similar to the passive scan results the active scan results can be viewed using the alerts endpoint </p>
 
 <h3 id="stop-active-scanning">Stop Active Scanning</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?scanId=1"</span>
-</code></pre>
 
 <p>Use the stop API to stop a long running active scan. Optionally you can use the stopAllScans endpoints or pause endpoints to
 stop and pause the active scanning.</p>
