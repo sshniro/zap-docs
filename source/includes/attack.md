@@ -1,7 +1,7 @@
 <a name="examples"></a>Attacking The App
 =========================================
 
-Before you start attacking the Application its recommended to explore the application. If you haven't done that look at the
+Before you start attacking the application its recommended to explore the application. If you haven't done that look at the
 [explore](#explore) section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.
 
 
@@ -24,14 +24,15 @@ to the web application being tested. The alerts for the passive scan can be obta
 
 Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
-vulnerabilities like XSS which require malicious requests to be sent - thats the job of the [active scanner](#active_scan).
+vulnerabilities like XSS which require malicious requests to be sent - that's the job of the [active scanner](#active_scan).
 
-Passive scanning can also be used for automatically adding tags and raising alerts for potential issues. A set of rules for 
-automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags screen.
-The alerts raised by passive scanners can be configured using the Options Passive Scan Rules API.
+### View the status
 
-The (main) behaviour of the passive scanner can be configured using the Passive Scanner API. View the advanced section to
-know how to configure these additional parameters.
+As the records are passively scanned it will take additional time to complete the full scan. The [recordsToScan](#pscan_records_to_scan) 
+API will return the number of records left to be scanned. After the scanning has completed the alerts can be obtained 
+via the alerts endpoint.
+
+View the [advanced section](#pscan_advanced) to know how to configure additional parameters of Passive Scan.
 
 <a name="active_scan"></a>Perform Active Scan
 -------------------

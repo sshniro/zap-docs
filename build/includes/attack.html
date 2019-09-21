@@ -34,7 +34,7 @@
       <div class="content">
         <h1 id="attacking-the-app"><a name="examples"></a>Attacking The App</h1>
 
-<p>Before you start attacking the Application its recommended to explore the application. If you haven&rsquo;t done that look at the
+<p>Before you start attacking the application its recommended to explore the application. If you haven&rsquo;t done that look at the
 <a href="#explore">explore</a> section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.</p>
 
 <aside class="warning">
@@ -53,14 +53,15 @@ to the web application being tested. The alerts for the passive scan can be obta
 
 <p>Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
-vulnerabilities like XSS which require malicious requests to be sent - thats the job of the <a href="#active_scan">active scanner</a>.</p>
+vulnerabilities like XSS which require malicious requests to be sent - that&rsquo;s the job of the <a href="#active_scan">active scanner</a>.</p>
 
-<p>Passive scanning can also be used for automatically adding tags and raising alerts for potential issues. A set of rules for 
-automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags screen.
-The alerts raised by passive scanners can be configured using the Options Passive Scan Rules API.</p>
+<h3 id="view-the-status">View the status</h3>
 
-<p>The (main) behaviour of the passive scanner can be configured using the Passive Scanner API. View the advanced section to
-know how to configure these additional parameters.</p>
+<p>As the records are passively scanned it will take additional time to complete the full scan. The <a href="#pscan_records_to_scan">recordsToScan</a> 
+API will return the number of records left to be scanned. After the scanning has completed the alerts can be obtained 
+via the alerts endpoint.</p>
+
+<p>View the <a href="#pscan_advanced">advanced section</a> to know how to configure additional parameters of Passive Scan.</p>
 
 <h2 id="perform-active-scan"><a name="active_scan"></a>Perform Active Scan</h2>
 
