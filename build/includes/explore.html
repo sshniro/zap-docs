@@ -67,12 +67,13 @@ The following are some of the options to explore the site by using ZAP.</p>
 
 </code></pre>
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Spider</span> <span class="o">{</span>
+
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span>
-            <span class="kc">null</span><span class="o">;</span> <span class="c1">// Change this if you have set the apikey in ZAP via Options / API</span>
+    <span class="kc">null</span><span class="o">;</span> <span class="c1">// Change this if you have set the apikey in ZAP via Options / API</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com/"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
@@ -80,8 +81,7 @@ The following are some of the options to explore the site by using ZAP.</p>
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// Start spidering the target</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
-            <span class="c1">// It's not necessary to pass the ZAP API key again, already set when creating the</span>
-            <span class="c1">// ClientApi.</span>
+            <span class="c1">// Create the</span>
             <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
             <span class="n">String</span> <span class="n">scanid</span><span class="o">;</span>
             <span class="kt">int</span> <span class="n">progress</span><span class="o">;</span>
@@ -101,7 +101,7 @@ The following are some of the options to explore the site by using ZAP.</p>
                 <span class="o">}</span>
             <span class="o">}</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider complete"</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">results</span><span class="o">(</span><span class="n">scanid</span><span class="o">)));</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">results</span><span class="o">(</span><span class="n">scanid</span><span class="o">));</span>
 
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
@@ -197,7 +197,7 @@ has crawled through.</p>
 <p>If the scanning takes too much time than expected you can stop or pause the scanning via using the start and pause APIs. 
 Additional APIs are available in the API Catalogue to pause/resume/stop All the scanning processes.</p>
 
-<h2 id="perform-ajax-spider">Perform AJAX Spider</h2>
+<h2 id="using-ajax-spider">Using AJAX Spider</h2>
 <pre class="highlight shell"><code><span class="c"># To start the AJAX Spider</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/scan/?url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
 

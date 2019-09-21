@@ -39,14 +39,13 @@
 <p>Welcome to the ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
 is one of the world&rsquo;s most popular free security tools which lets you automatically find security vulnerabilities in your 
 web applications. ZAP also has an extremely powerful API that allows you to do nearly everything that possible via the desktop interface.
-This allows the developers to automate the security testing of the application in the CI/CD pipeline. If you are looking for
-automating the security testing, a series of automation scripts are available in the following <a href="https://github.com/zaproxy/community-scripts">Github repository</a> 
-for advanced automation.</p>
+This allows the developers to automate pentesting and security regression testing of the application in the CI/CD pipeline. </p>
 
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
 incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues or create a new issue
-in the Github repository.</p>
+in the Github repository. If you are looking for advanced automation, a series of automation scripts are available 
+in the following <a href="https://github.com/zaproxy/community-scripts">Github repository</a>.</p>
 
 <p>Following are some of the features provided by ZAP:</p>
 
@@ -55,7 +54,6 @@ in the Github repository.</p>
 <li>Active and Passive Scanners</li>
 <li>Traditional and Ajax Spiders</li>
 <li>Brute Force Scanner</li>
-<li>Fuzzer</li>
 <li>Port Scanner</li>
 <li>Web Sockets</li>
 </ul>
@@ -70,10 +68,10 @@ in the Github repository.</p>
 <li><a href="#welcome"><strong>Getting Started</strong></a> section contains introductory information of ZAP and installation guide to setup ZAP for testing.</li>
 <li><a href="#explore"><strong>Exploring The Apps</strong></a> section contains examples on how to explore the web application.</li>
 <li><a href="#attack"><strong>Attacking The Apps</strong></a> section contains examples on how to scan or attack a web application.</li>
-<li><a href="#results"><strong>Getting The Results</strong></a> section contains examples on how to generate Reports/Results from ZAP.</li>
+<li><a href="#results"><strong>Getting The Results</strong></a> section contains examples on how to retrieve alerts and generate Reports from ZAP.</li>
 <li><a href="#auth"><strong>Authentication</strong></a> section contains examples on how to authenticate the web application with ZAP.</li>
 <li><a href="#examples"><strong>Advanced Settings</strong></a> section contains advanced configurations on how to fine tune the ZAP results.</li>
-<li><a href="#contribution"><strong>Contributions</strong></a> section contains guidelines and instruction on how to contribute to ZAPs documentations.</li>
+<li><a href="#contribution"><strong>Contributions</strong></a> section contains guidelines and instruction on how to contribute to ZAP&rsquo;s documentations.</li>
 <li><a href="#api_catalogue"><strong>API Catalogue</strong></a> section contains Open API definitions for ZAP APIs. </li>
 </ul>
 
@@ -84,25 +82,13 @@ nor arguments are shown. View the API catalog to see all the parameters and scop
 
 <h2 id="basics-on-the-api-request">Basics on the API request</h2>
 
-<p>The APIs provides access to most of the core ZAP features such as the active scanner and spider. Future versions of ZAP 
-will increase the functionality/scope available via the APIs. The API is available via <code class="prettyprint">GET</code> and <code class="prettyprint">POST</code> endpoints. 
-The API is available in <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> and <code class="prettyprint">HTML</code> formats. Based on the use case, you can select the appropriate response type. 
-For example, XML/JSON based response can be used to parse the results and HTML based responses can be used to obtain alerts/reports 
-that are easily readable.</p>
+<p>ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
+enabled if you have started the ZAP in deamon or headless mode. If you are using the ZAP desktop then the API should be enabled
+by visiting the following API screen: </p>
 
-<p>The API supports:</p>
+<p><code class="prettyprint">Tools -&gt; Options -&gt; API</code>.</p>
 
-<ul>
-<li>Views: Returns information/view</li>
-<li>Action: These control the ZAP</li>
-</ul>
-
-<p>If you are running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
-This web UI is available via the URL (<a href="http://zap/">http://zap/</a>) when you are proxying via ZAP, or via the host and port ZAP 
-is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. </p>
-
-<p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
-use ZAP as a proxy, access to the API. The API can be configured using the Options API screen in the desktop interface.</p>
+<p><img alt="zap_desktop_api" src="../images/zap_desktop_api.png" /></p>
 
 <aside class="notice">
 ZAP requires API Key to perform specific actions via the REST API. The API key must be specified on all API &lsquo;actions&rsquo; and some 'other&rsquo; operations. 
@@ -110,36 +96,76 @@ The API key is used to prevent malicious sites from accessing the ZAP API. It is
 unless you are using ZAP in a completely isolated environment.
 </aside>
 
+<p>Please note that not all the operations which are allowed from the desktop interface are available via the APIs. 
+Future versions of ZAP will increase the functionality/scope available via the APIs.</p>
+
+<h3 id="api-url-format">API URL Format</h3>
+
+<p>The API is available via <code class="prettyprint">GET</code> and <code class="prettyprint">POST</code> endpoints and the response is available in <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code>, and <code class="prettyprint">HTML</code> formats. All the 
+response formats returns the same information, just in a different format. Based on the use case, choose the appropriate format. 
+For example, to generate easily readable reports use the HTML format and use XML/JSON based response to parse the results quickly.</p>
+
+<p>The following shows the API URL format of ZAP:</p>
+
+<p><code class="prettyprint">http://zap/&lt;format&gt;/&lt;component&gt;/&lt;operation&gt;/&lt;operation name&gt;[/?&lt;parameters&gt;]</code></p>
+
+<p>The format can be either <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> or <code class="prettyprint">HTML</code>. The operation can be either <code class="prettyprint">view</code> or <code class="prettyprint">action</code>. <code class="prettyprint">view</code> is used to return
+information and <code class="prettyprint">action</code> is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
+action can be used to start or stop the Spider. The components, operation names and parameters can all be discovered by 
+browsing the <a href="#api_catalogue">API Catalogue</a>.</p>
+
+<h3 id="access-the-api">Access the API</h3>
+
+<p>The REST API can be accessed directly or via one of the <a href="#client_sdk">client implementations</a> detailed below. If you are 
+running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
+This web UI is available via the URL (<a href="http://zap/">http://zap/</a>) when you are proxying via ZAP, or via the host and port ZAP 
+is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>. </p>
+
+<p><img alt="zap_api_ui" src="../images/zap_api_ui.png" /></p>
+
+<p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
+use ZAP as a proxy, access to the API. The API can be also configured using the Options API screen using the desktop interface.</p>
+
+<h3 id="client-sdks"><a name="client_sdk"></a>Client SDKs</h3>
+
+<p>ZAP provides official clients for Python, Java, and Node JS. Visit the following link to download the <a href="https://github.com/zaproxy/zaproxy/wiki/ApiDetails">official SDKs</a> </p>
+
 <h2 id="quick-setup-guide">Quick Setup Guide</h2>
 
-<blockquote>
-<p>Two ways to start zap (View shell command column)</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="c"># Option: 1, using "headless" mode</span>
+<p>The quick setup guide focuses on setting up <em>ZAP</em> and a testing application. If you have already setup ZAP then Jump to 
+specific <a href="#examples">example</a> to experiment with specific features.</p>
+
+<h3 id="install-zap">Install  ZAP</h3>
+<pre class="highlight shell"><code><span class="c"># Option: 1, using "headless/daemon" mode</span>
 <span class="gp">$ </span>&lt;ZAP_HOME&gt;./zap.sh -daemon -config api.key<span class="o">=</span>change-me-9203935709
 <span class="c"># Option: 2, using normal/ Desktop interface mode</span>
 <span class="gp">$ </span>&lt;ZAP_HOME&gt;./zap.sh
 </code></pre>
+<pre class="highlight java"><code><span class="c1">// Option: 1, using "headless/daemon" mode</span>
+<span class="o">&lt;</span><span class="n">ZAP_HOME</span><span class="o">&gt;./</span><span class="n">zap</span><span class="o">.</span><span class="na">sh</span> <span class="o">-</span><span class="n">daemon</span> <span class="o">-</span><span class="n">config</span> <span class="n">api</span><span class="o">.</span><span class="na">key</span><span class="o">=</span><span class="n">change</span><span class="o">-</span><span class="n">me</span><span class="o">-</span><span class="mi">9203935709</span>
+<span class="c1">// Option: 2, using normal/ Desktop interface mode</span>
+<span class="o">&lt;</span><span class="n">ZAP_HOME</span><span class="o">&gt;./</span><span class="n">zap</span><span class="o">.</span><span class="na">sh</span>
+</code></pre>
+<pre class="highlight python"><code><span class="c"># Option: 1, using "headless/daemon" mode</span>
+<span class="o">&lt;</span><span class="n">ZAP_HOME</span><span class="o">&gt;./</span><span class="n">zap</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">daemon</span> <span class="o">-</span><span class="n">config</span> <span class="n">api</span><span class="o">.</span><span class="n">key</span><span class="o">=</span><span class="n">change</span><span class="o">-</span><span class="n">me</span><span class="o">-</span><span class="mi">9203935709</span>
+<span class="c"># Option: 2, using normal/ Desktop interface mode</span>
+<span class="o">&lt;</span><span class="n">ZAP_HOME</span><span class="o">&gt;./</span><span class="n">zap</span><span class="o">.</span><span class="n">sh</span>
+</code></pre>
 
-<p>The quick setup guide focuses on setting up <em>ZAP</em> and a testing application. If you have already setup ZAP then Jump to 
-specific <a href="#examples">example</a> to experiment with specific features. To install ZAP, go to the ZAP 
-<a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
-operating system. After extracting the bundle you can start zap by issuing the following command.</p>
+<p>To install ZAP, go to the ZAP <a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
+operating system. After extracting the bundle you can start zap by issuing the following command shown in the right column.</p>
 
 <p>The API key must be specified on all API <code class="prettyprint">actions</code> and some <code class="prettyprint">other</code> operations. The API key is used to prevent malicious 
 sites from accessing the ZAP API. </p>
 
-<p>If you are running the desktop interface then the API key can be obtained via navigating to the following tab: <code class="prettyprint">Tools -&gt; Options -&gt; API</code></p>
+<h3 id="setup-a-testing-application">Setup a Testing Application</h3>
 
-<h2 id="setup-testing-web-application">Setup Testing Web-Application</h2>
-
-<p>If you have a website to scan or to perform security testing, then obtain a publicly accessible URL/IP. For the example guides we will be using 
-<a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and <a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a>.</p>
-
-<p>Firing Range is a test bed for web application security scanners, providing synthetic, wide coverage for array of vulnerabilities. 
-A public instance is running at <a href="https://public-firing-range.appspot.com">https://public-firing-range.appspot.com</a>.
-The Spidering and Attacking examples will use the public instance of the firing range for security testing. OWASP Juice Shop is used 
-to showcase the Authentication examples. Following is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
+<p>If you have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
+The example guide uses the <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
+<a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a> to perform the security testing. 
+The Spidering and Attacking examples will use the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
+firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
+is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.</p>
 
 <aside class="warning">
@@ -149,8 +175,15 @@ specifically been given permission to test.
 
 <h2 id="getting-help">Getting help</h2>
 
-<p>All available APIs are documented in <a href="#interface">API Catalogue</a>. A <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> is 
-available to ask questions or feature request. In order to report bug and make feature requests please use our github <a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
+<p>All available APIs are documented in the <a href="#api_catalogue">API Catalogue</a>. If you have come across any issue with ZAP, 
+please feel free to raise a question in the <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or 
+<a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. Also, use the <a href="(https://github.com/zaproxy/zaproxy/issues)">ZAP&rsquo;s Github repository</a> 
+to raise a bug report or to make any feature requests.</p>
+
+<p>All available APIs are documented in the <a href="#api_catalogue">API Catalogue</a>. If you have come across any issue with ZAP, please
+feel free to raise a question in the <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or 
+<a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. In order to report bug or make feature requests please use the github 
+<a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
 
 <p>Stay tuned on twitter <a href="https://twitter.com/zaproxy">@zaproxy</a>.</p>
 
