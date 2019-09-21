@@ -182,10 +182,87 @@ The [advanced section on Spider](#spider_advanced) contains more examples on how
 Using Ajax Spider
 -------------------
 
+```java
+public class AjaxSpider {
+
+    private static final String ZAP_ADDRESS = "localhost";
+    private static final int ZAP_PORT = 8080;
+    private static final String ZAP_API_KEY =
+    null; // Change this if you have set the apikey in ZAP via Options / API
+
+    private static final String TARGET = "https://public-firing-range.appspot.com";
+
+    public static void main(String[] args) {
+        ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
+
+        try {
+            // Start spidering the target
+            System.out.println("Ajax Spider : " + TARGET);
+            // It's not necessary to pass the ZAP API key again, already set when creating the
+            // ClientApi.
+            ApiResponse resp = api.ajaxSpider.scan(TARGET, null, null, null);
+            String scanid;
+            int progress;
+
+            // The scan now returns a scan id to support concurrent scanning
+            scanid = ((ApiResponseElement) resp).getValue();
+
+            // Poll the status until it completes
+            while (true) {
+                Thread.sleep(1000);
+                progress =
+                        Integer.parseInt(
+                                ((ApiResponseElement) api.ajaxSpider.status()).getValue());
+                System.out.println("Spider progress : " + progress + "%");
+                if (progress >= 100) {
+                    break;
+                }
+            }
+            System.out.println("Ajax Spider complete");
+            System.out.println(api.spider.results(scanid));
+
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```python
+#!/usr/bin/env python
+import time
+from zapv2 import ZAPv2
+
+target = 'https://public-firing-range.appspot.com'
+apikey = 'changeme' # Change to match the API key set in ZAP, or use None if the API key is disabled
+#
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
+
+# Proxy a request to the target so that ZAP has something to deal with
+print('Accessing target {}'.format(target))
+zap.urlopen(target)
+# Give the sites tree a chance to get updated
+time.sleep(2)
+
+print('Spidering target {}'.format(target))
+scanid = zap.ajaxSpider.scan(target)
+# Give the Spider a chance to start
+time.sleep(2)
+while (int(zap.ajaxSpider.status(scanid)) < 100):
+    # Loop until the spider has finished
+    print('Spider progress %: {}'.format(zap.ajaxSpider.status(scanid)))
+    time.sleep(2)
+
+print ('Ajax Spider completed')
+print(zap.ajaxSpider.results(scanid, 0, 10))
+
+```
+
 ```shell
 # To start the Ajax Spider
 $ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?url=<URL>&inScope=&contextName=&subtreeOnly="
-
 
 # To view the status
 $ curl "http://localhost:8080/JSON/AjaxSpider/view/status/"

@@ -106,7 +106,7 @@ Quick Setup Guide
 The quick setup guide focuses on setting up _ZAP_ and a testing application. If you have already setup ZAP then Jump to 
 specific [example](#examples) to experiment with specific features.
 
-### Install  ZAP
+**Install  ZAP**
 
 ``` shell
 # Option: 1, using "headless/daemon" mode
@@ -135,7 +135,7 @@ operating system. After extracting the bundle you can start zap by issuing the f
 The API key must be specified on all API `actions` and some `other` operations. The API key is used to prevent malicious 
 sites from accessing the ZAP API. 
 
-### Setup a Testing Application
+**Setup a Testing Application**
 
 If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
 The example guide uses the [Google's Firing Range](https://github.com/google/firing-range) and 
