@@ -137,10 +137,10 @@ sites from accessing the ZAP API.
 
 ### Setup a Testing Application
 
-If you have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
+If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
 The example guide uses the [Google's Firing Range](https://github.com/google/firing-range) and 
 [OWASP Juice Shop](https://github.com/bkimminich/juice-shop) to perform the security testing. 
-The Spidering and Attacking examples will use the [public instance](https://public-firing-range.appspot.com) of the 
+The Spidering and Attacking examples uses the [public instance](https://public-firing-range.appspot.com) of the 
 firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
 is a [list](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps) 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.
@@ -157,11 +157,5 @@ All available APIs are documented in the [API Catalogue](#api_catalogue). If you
 please feel free to raise a question in the [developer forum](https://groups.google.com/d/forum/zaproxy-develop) or 
 [Stack Overflow](https://stackoverflow.com/questions/tagged/zap). Also, use the [ZAP's Github repository]((https://github.com/zaproxy/zaproxy/issues)) 
 to raise a bug report or to make any feature requests.
-
-
-All available APIs are documented in the [API Catalogue](#api_catalogue). If you have come across any issue with ZAP, please
-feel free to raise a question in the [developer forum](https://groups.google.com/d/forum/zaproxy-develop) or 
-[Stack Overflow](https://stackoverflow.com/questions/tagged/zap). In order to report bug or make feature requests please use the github 
-[zap repository](https://github.com/zaproxy/zaproxy/issues)
 
 Stay tuned on twitter [@zaproxy](https://twitter.com/zaproxy).

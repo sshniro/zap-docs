@@ -180,10 +180,10 @@ sites from accessing the ZAP API. </p>
 
 <h3 id="setup-a-testing-application">Setup a Testing Application</h3>
 
-<p>If you have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
+<p>If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
 The example guide uses the <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
 <a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a> to perform the security testing. 
-The Spidering and Attacking examples will use the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
+The Spidering and Attacking examples uses the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
 firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
 is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.</p>
@@ -200,47 +200,24 @@ please feel free to raise a question in the <a href="https://groups.google.com/d
 <a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. Also, use the <a href="(https://github.com/zaproxy/zaproxy/issues)">ZAP&rsquo;s Github repository</a> 
 to raise a bug report or to make any feature requests.</p>
 
-<p>All available APIs are documented in the <a href="#api_catalogue">API Catalogue</a>. If you have come across any issue with ZAP, please
-feel free to raise a question in the <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or 
-<a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. In order to report bug or make feature requests please use the github 
-<a href="https://github.com/zaproxy/zaproxy/issues">zap repository</a></p>
-
 <p>Stay tuned on twitter <a href="https://twitter.com/zaproxy">@zaproxy</a>.</p>
 
           <h1 id="exploring-the-app"><a name="examples"></a>Exploring The App</h1>
 
 <p>Its recommended to explore the web application before performing any scan or attack. The more you explore your App the more 
 accurate the results will be. If the application is not explored very well then it will impact or reduce the vulnerabilities ZAP can find.
-The following are some of the options to explore the site by using ZAP.</p>
+The following are some of the options to explore the site by using ZAP. You can use multiple approaches in a combination to
+get a wide coverage of the application.</p>
 
 <ul>
-<li><p><strong>Traditional Spider (Crawler)</strong></p></li>
-<li><p><strong>Ajax Spider</strong> </p></li>
-<li><p><strong>Proxy Regression / Unit tests:</strong> This is the recommended approach, if you already have a test suite or unit tests.</p></li>
-<li><p><strong>Spider SOAP Definition</strong></p></li>
+<li><p><strong>Traditional Spider (Crawler):</strong> Use this approach to crawl the HTML resources (hyperlinks etc) in the web application</p></li>
+<li><p><strong>Ajax Spider:</strong> Use this feature if the web application heavily relies with Ajax calls.</p></li>
+<li><p><strong>Proxy Regression / Unit tests</strong> This is the recommended approach for security regression testing. Use this approach 
+to explore the application, if you already have a test suite or unit tests in place. </p></li>
+<li><p><strong>Open API/SOAP Definition</strong>: Use this approach if you have a well defined Open API definition.</p></li>
 </ul>
 
 <h2 id="using-spider">Using Spider</h2>
-<pre class="highlight shell"><code><span class="c"># Start the spider scan </span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&amp;zapapiformat=JSON&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse=true"</span>
-
-
-<span class="c"># To view the scan status</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/status/?apikey=zapAPIKey&amp;scanId=&lt;scan id&gt;"</span>
-
-
-<span class="c"># To view the scan results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/results/?apikey=zapAPIKey&amp;scanId=0"</span>
-
-
-<span class="c"># To stop the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/stop/?scanId=&lt;scan_id&gt;"</span>
-<span class="c"># To pause the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/pause/?scanId=&lt;scan_id&gt;"</span>
-<span class="c"># To resume the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/resume/?scanId=&lt;scan_id&gt;"</span>
-
-</code></pre>
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Spider</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
@@ -338,81 +315,109 @@ The following are some of the options to explore the site by using ZAP.</p>
 <span class="k">print</span> <span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
 <span class="n">pprint</span> <span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">())</span>
 </code></pre>
+<pre class="highlight shell"><code><span class="c"># To start the Spider scan (Response: Scan ID)</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=&lt;zapAPIKey&gt;&amp;zapapiformat=JSON&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse=true"</span>
+
+
+<span class="c"># To view the scan status</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/status/?apikey=&lt;zapAPIKey&gt;&amp;scanId=&lt;scan id&gt;"</span>
+
+
+<span class="c"># To view the scan results</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/results/?apikey=&lt;zapAPIKey&gt;&amp;scanId=&lt;scan id&gt;"</span>
+
+
+<span class="c"># To stop the scanning</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/stop/?scanId=&lt;scan_id&gt;"</span>
+<span class="c"># To pause the scanning</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/pause/?scanId=&lt;scan_id&gt;"</span>
+<span class="c"># To resume the scanning</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/resume/?scanId=&lt;scan_id&gt;"</span>
+
+</code></pre>
 
 <p>The Spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
 list of URLs to visit, called the seeds, which depends on how the Spider is started. The Spider then visits these URLs, 
 it identifies all the hyperlinks in the page and adds them to the list of URLs to visit, and the process continues 
-recursively as long as new resources are found.</p>
-
-<p>During the processing of a URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
-Each response type is processed differently in ZAP. All the available endpoints for the spider can be found in <code class="prettyprint">spider</code></p>
+recursively as long as new resources are found. Each response type is processed differently in ZAP. All the available 
+endpoints for the spider can be found in <a href="#spider_api">spider</a> section.</p>
 
 <h3 id="start-the-spider">Start the spider</h3>
 
-<p>The Spider(s) explore the site and don&rsquo;t actually do any scanning. The scan API will initiate the crawling of the Spiders.
-The scan ID will be returned as the response after triggering the Spider.
-The request whhich are proxied through the ZAP will be <a href="#passive_scan">passively scanned</a> by the passive scanner. The passive
-scanner all of the requests and responses flowing through ZAP and report the issues they can spot. </p>
+<p>The Spiders explore the site and they don&rsquo;t actually do any scanning. The <a href="#spider_scan_api">scan</a> API runs the spider against the given URL. 
+Optionally, the &lsquo;maxChildren&rsquo; parameter can be set to limit the number of children scanned and the &#39;recurse&rsquo; parameter can 
+be used to prevent the spider from seeding recursively. The parameter &#39;subtreeOnly&rsquo; allows to restrict the spider under a 
+site&rsquo;s subtree (using the specified &#39;url&rsquo;). The parameter &#39;contextName&rsquo; can be used to constrain the scan to 
+a Context. View the <a href="#context_advanced">context example</a> to understand how to create a context with ZAP API.   </p>
+
+<p>The code sample on the right recursively scans the web application with the provided URL. The scan ID is returns as a reponse
+when starting the Spider. Use this scan ID to perform any additional actions or to retrive any views from the Spider API.</p>
 
 <h3 id="view-status">View Status</h3>
 
 <p>The spider scan is a async request and the time to complete the task will vary depending on the complexity of the web application. 
-The scan ID returned via starting the spider should be used to query the results. Execute the status API to get the status/ 
-percentage of work done by the Spider.</p>
+The scan ID returned via starting the spider should be used to obtain the results of the crawling. Execute the <a href="#spider_status_api">status</a> 
+API to get the status/percentage of work done by the Spider.</p>
 
 <h3 id="view-spider-results">View Spider Results</h3>
 
-<p>The request in the code block will provide a response similar to the below, which will enlist all the resources the spider 
-has crawled through.</p>
+<p>The results of the crawling can be obtained via the <a href="#spider_results_api">results</a> API. The following image shows the JSON sample 
+response provided by the results API, enlisitng all the resources crawled by Spider.</p>
 
 <p><img alt="spider results" src="images/spider_results.png" /></p>
 
 <h3 id="stop-or-pause-the-spider">Stop or Pause The Spider</h3>
 
-<p>If the scanning takes too much time than expected you can stop or pause the scanning via using the start and pause APIs. 
-Additional APIs are available in the API Catalogue to pause/resume/stop All the scanning processes.</p>
+<p>If the scanning takes too much time than expected you can stop or pause the scanning via using the <a href="#spider_stop_api">stop</a> 
+and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in the API Catalogue to pause or resume or to 
+<a href="#spider_stopAll_api">stop All</a> the scanning processes.</p>
 
-<h2 id="using-ajax-spider">Using AJAX Spider</h2>
-<pre class="highlight shell"><code><span class="c"># To start the AJAX Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/scan/?url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
+<p>The <a href="#spider_advanced">advanced section on Spider</a> contains more examples on how to tweak/improve the Spider results.</p>
+
+<h2 id="using-ajax-spider">Using Ajax Spider</h2>
+<pre class="highlight shell"><code><span class="c"># To start the Ajax Spider</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/scan/?url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
 
 
 <span class="c"># To view the status</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/status/"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/status/"</span>
 
 <span class="c"># To view the number of results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/numberOfResults/"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/"</span>
 <span class="c"># To view the results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/fullResults/"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/fullResults/"</span>
 
-<span class="c"># To stop the AJAX Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/stop/"</span>
+<span class="c"># To stop the Ajax Spider</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/stop/"</span>
 </code></pre>
 
-<p>The AJAX Spider allows you to crawl web applications written in AJAX in far more depth than the native Spider. 
- Use the AJAX Spider if you may have web applications written in AJAX. You should also use the native Spider as well for 
- complete coverage of a web application (e.g. to cover HTML comments).</p>
+<p>Use the Ajax Spider if you may have web applications written in Ajax. The Ajax Spider allows you to crawl web applications 
+written in Ajax in far more depth than the native Spider.You should also use the native Spider as well for complete coverage 
+of a web application (e.g. to cover HTML comments).</p>
 
-<h3 id="start-ajax-spider">Start AJAX Spider</h3>
+<h3 id="start-ajax-spider">Start Ajax Spider</h3>
 
-<p>Use the command in the right column to start the AJAX Spider. This will start a long running asynchronous task.</p>
+<p>The scan API starts the Ajax Spider to given URL. Similar to the Traditional Spider, Ajax Spider can be also limited to a 
+context or scope. The parameter &#39;contextName&rsquo; can be used to constrain the scan to a Context, the option &#39;in scope&rsquo; is 
+ignored if a context was also specified. The parameter &#39;subtreeOnly&rsquo; allows to restrict the spider under a site&rsquo;s subtree (using the specified &#39;url&rsquo;). </p>
 
 <h3 id="view-status">View Status</h3>
 
-<p>Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work to be done. Use the <code class="prettyprint">status</code> endpoint to 
-identify whether the Spider is still active or finished.</p>
+<p>Unlike the traditional Spider, Ajax Spider does not provide a percentage for the work to be done. Use the <a href="#spider_status_api">status</a> 
+endpoint to identify whether the Ajax Spider is still active or finished.</p>
 
 <h3 id="view-results">View Results</h3>
 
-<p>Use the following commands on the right to view the number of results or to obtain the entire results or a limited set of
-results.</p>
+<p>Similar to the Traditional Spider, Ajax spider&rsquo;s <a href="#aspider_results_api">results</a> API can be used to view the resources 
+which are crawled by the Ajax Spider.</p>
 
-<h3 id="stop-the-ajax-spider">Stop the AJAX Spider</h3>
+<h3 id="stop-the-ajax-spider">Stop the Ajax Spider</h3>
 
 <p>Ajax spider does not have an indication on how much resources are left to crawl. Therefor if the Ajax spider takes too much time
-than expected, then it can be stopped by using the following command in the right.</p>
+than expected, then it can be stopped the <a href="#aspider_stop_api">stop</a> API.</p>
 
-<p>View the <a href="#ajax_advanced">advanced settings</a> on how to enhance the Ajax Spider results.</p>
+<p>The <a href="#spider_advanced">advanced section on Ajax Spider</a> contains more examples on how to tweak/improve the results of the 
+Ajax Spider.</p>
 
           <h1 id="attacking-the-app"><a name="examples"></a>Attacking The App</h1>
 

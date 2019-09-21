@@ -3,40 +3,20 @@
 
 Its recommended to explore the web application before performing any scan or attack. The more you explore your App the more 
 accurate the results will be. If the application is not explored very well then it will impact or reduce the vulnerabilities ZAP can find.
-The following are some of the options to explore the site by using ZAP.
+The following are some of the options to explore the site by using ZAP. You can use multiple approaches in a combination to
+get a wide coverage of the application.
 
-* **Traditional Spider (Crawler)**
+* **Traditional Spider (Crawler):** Use this approach to crawl the HTML resources (hyperlinks etc) in the web application
 
-* **Ajax Spider** 
+* **Ajax Spider:** Use this feature if the web application heavily relies with Ajax calls.
 
-* **Proxy Regression / Unit tests:** This is the recommended approach, if you already have a test suite or unit tests.
+* **Proxy Regression / Unit tests** This is the recommended approach for security regression testing. Use this approach 
+to explore the application, if you already have a test suite or unit tests in place. 
 
-* **Spider SOAP Definition**
+* **Open API/SOAP Definition**: Use this approach if you have a well defined Open API definition.
 
 Using Spider
 -------------------
-
-``` shell
-# Start the spider scan 
-$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=zapAPIKey&zapapiformat=JSON&url=https://public-firing-range.appspot.com&contextName=&recurse=true"
-
-
-# To view the scan status
-$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=zapAPIKey&scanId=<scan id>"
-
-
-# To view the scan results
-$ curl "http://localhost:8080/JSON/spider/view/results/?apikey=zapAPIKey&scanId=0"
-
-
-# To stop the scanning
-$ curl "http://localhost:8080/JSON/spider/action/stop/?scanId=<scan_id>"
-# To pause the scanning
-$ curl "http://localhost:8080/JSON/spider/action/pause/?scanId=<scan_id>"
-# To resume the scanning
-$ curl "http://localhost:8080/JSON/spider/action/resume/?scanId=<scan_id>"
-
-```
 
 ```java
 public class Spider {
@@ -139,81 +119,111 @@ print ('Alerts: ')
 pprint (zap.core.alerts())
 ```
 
+``` shell
+# To start the Spider scan (Response: Scan ID)
+$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=<zapAPIKey>&zapapiformat=JSON&url=https://public-firing-range.appspot.com&contextName=&recurse=true"
+
+
+# To view the scan status
+$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=<zapAPIKey>&scanId=<scan id>"
+
+
+# To view the scan results
+$ curl "http://localhost:8080/JSON/spider/view/results/?apikey=<zapAPIKey>&scanId=<scan id>"
+
+
+# To stop the scanning
+$ curl "http://localhost:8080/JSON/spider/action/stop/?scanId=<scan_id>"
+# To pause the scanning
+$ curl "http://localhost:8080/JSON/spider/action/pause/?scanId=<scan_id>"
+# To resume the scanning
+$ curl "http://localhost:8080/JSON/spider/action/resume/?scanId=<scan_id>"
+
+```
+
 The Spider is a tool that is used to automatically discover new resources (URLs) on a particular site. It begins with a 
 list of URLs to visit, called the seeds, which depends on how the Spider is started. The Spider then visits these URLs, 
 it identifies all the hyperlinks in the page and adds them to the list of URLs to visit, and the process continues 
-recursively as long as new resources are found.
-
-During the processing of a URL, the Spider makes a request to fetch the resource and then parses the response, identifying hyperlinks. 
-Each response type is processed differently in ZAP. All the available endpoints for the spider can be found in `spider`
+recursively as long as new resources are found. Each response type is processed differently in ZAP. All the available 
+endpoints for the spider can be found in [spider](#spider_api) section.
 
 ### Start the spider
 
-The Spider(s) explore the site and don't actually do any scanning. The scan API will initiate the crawling of the Spiders.
-The scan ID will be returned as the response after triggering the Spider.
-The request whhich are proxied through the ZAP will be [passively scanned](#passive_scan) by the passive scanner. The passive
-scanner all of the requests and responses flowing through ZAP and report the issues they can spot. 
+The Spiders explore the site and they don't actually do any scanning. The [scan](#spider_scan_api) API runs the spider against the given URL. 
+Optionally, the 'maxChildren' parameter can be set to limit the number of children scanned and the 'recurse' parameter can 
+be used to prevent the spider from seeding recursively. The parameter 'subtreeOnly' allows to restrict the spider under a 
+site's subtree (using the specified 'url'). The parameter 'contextName' can be used to constrain the scan to 
+a Context. View the [context example](#context_advanced) to understand how to create a context with ZAP API.   
+
+The code sample on the right recursively scans the web application with the provided URL. The scan ID is returns as a reponse
+when starting the Spider. Use this scan ID to perform any additional actions or to retrive any views from the Spider API.
 
 ### View Status
 
 The spider scan is a async request and the time to complete the task will vary depending on the complexity of the web application. 
-The scan ID returned via starting the spider should be used to query the results. Execute the status API to get the status/ 
-percentage of work done by the Spider.
+The scan ID returned via starting the spider should be used to obtain the results of the crawling. Execute the [status](#spider_status_api) 
+API to get the status/percentage of work done by the Spider.
 
 ### View Spider Results
 
-The request in the code block will provide a response similar to the below, which will enlist all the resources the spider 
-has crawled through.
+The results of the crawling can be obtained via the [results](#spider_results_api) API. The following image shows the JSON sample 
+response provided by the results API, enlisitng all the resources crawled by Spider.
 
 ![spider results](../images/spider_results.png)
 
 ### Stop or Pause The Spider
 
-If the scanning takes too much time than expected you can stop or pause the scanning via using the start and pause APIs. 
-Additional APIs are available in the API Catalogue to pause/resume/stop All the scanning processes.
+If the scanning takes too much time than expected you can stop or pause the scanning via using the [stop](#spider_stop_api) 
+and [pause](#spider_pause_api) APIs. Additional APIs are available in the API Catalogue to pause or resume or to 
+[stop All](#spider_stopAll_api) the scanning processes.
 
-Using AJAX Spider
+The [advanced section on Spider](#spider_advanced) contains more examples on how to tweak/improve the Spider results.
+
+Using Ajax Spider
 -------------------
 
 ```shell
-# To start the AJAX Spider
-$ curl "http://localhost:8080/JSON/ajaxSpider/action/scan/?url=<URL>&inScope=&contextName=&subtreeOnly="
+# To start the Ajax Spider
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?url=<URL>&inScope=&contextName=&subtreeOnly="
 
 
 # To view the status
-$ curl "http://localhost:8080/JSON/ajaxSpider/view/status/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/status/"
 
 # To view the number of results
-$ curl "http://localhost:8080/JSON/ajaxSpider/view/numberOfResults/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/"
 # To view the results
-$ curl "http://localhost:8080/JSON/ajaxSpider/view/fullResults/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/fullResults/"
 
-# To stop the AJAX Spider
-$ curl "http://localhost:8080/JSON/ajaxSpider/action/stop/"
+# To stop the Ajax Spider
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/stop/"
 ```
+ 
+Use the Ajax Spider if you may have web applications written in Ajax. The Ajax Spider allows you to crawl web applications 
+written in Ajax in far more depth than the native Spider.You should also use the native Spider as well for complete coverage 
+of a web application (e.g. to cover HTML comments).
 
- The AJAX Spider allows you to crawl web applications written in AJAX in far more depth than the native Spider. 
- Use the AJAX Spider if you may have web applications written in AJAX. You should also use the native Spider as well for 
- complete coverage of a web application (e.g. to cover HTML comments).
+### Start Ajax Spider
 
-### Start AJAX Spider
-
-Use the command in the right column to start the AJAX Spider. This will start a long running asynchronous task.
+The scan API starts the Ajax Spider to given URL. Similar to the Traditional Spider, Ajax Spider can be also limited to a 
+context or scope. The parameter 'contextName' can be used to constrain the scan to a Context, the option 'in scope' is 
+ignored if a context was also specified. The parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url'). 
 
 ### View Status
 
-Unlike the traditional Spider, AJAX Spider does not provide a percentage for the work to be done. Use the `status` endpoint to 
-identify whether the Spider is still active or finished.
+Unlike the traditional Spider, Ajax Spider does not provide a percentage for the work to be done. Use the [status](#spider_status_api) 
+endpoint to identify whether the Ajax Spider is still active or finished.
 
 
 ### View Results
 
-Use the following commands on the right to view the number of results or to obtain the entire results or a limited set of
-results.
+Similar to the Traditional Spider, Ajax spider's [results](#aspider_results_api) API can be used to view the resources 
+which are crawled by the Ajax Spider.
 
-### Stop the AJAX Spider
+### Stop the Ajax Spider
 
 Ajax spider does not have an indication on how much resources are left to crawl. Therefor if the Ajax spider takes too much time
-than expected, then it can be stopped by using the following command in the right.
+than expected, then it can be stopped the [stop](#aspider_stop_api) API.
 
-View the [advanced settings](#ajax_advanced) on how to enhance the Ajax Spider results.
+The [advanced section on Ajax Spider](#spider_advanced) contains more examples on how to tweak/improve the results of the 
+Ajax Spider.
