@@ -2,8 +2,8 @@
 title: ZAP API Docs
 
 language_tabs:
-  - java
   - python
+  - java
   - shell
 
 toc_footers:
