@@ -23,8 +23,9 @@ public class Spider {
 
     private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    private static final String ZAP_API_KEY = null; // Change this if you have set the API Key
-
+    // Change to match the API key set in ZAP, or use NULL if the API key is disabled
+    private static final String ZAP_API_KEY = "change me";
+    // The URL of the web application to be tested
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
@@ -32,27 +33,28 @@ public class Spider {
 
         try {
             // Start spidering the target
-            System.out.println("Spider : " + TARGET);
+            System.out.println("Spidering target : " + TARGET);
             ApiResponse resp = api.spider.scan(TARGET, null, null, null, null);
-            String scanid;
+            String scanID;
             int progress;
 
-            // The scan now returns a scan id to support concurrent scanning
-            scanid = ((ApiResponseElement) resp).getValue();
+            // The scan returns a scan id to support concurrent scanning
+            scanID = ((ApiResponseElement) resp).getValue();
             // Poll the status until it completes
             while (true) {
                 Thread.sleep(1000);
-                progress =
-                        Integer.parseInt(
-                                ((ApiResponseElement) api.spider.status(scanid)).getValue());
+                progress = Integer.parseInt(((ApiResponseElement) api.spider.status(scanID)).getValue());
                 System.out.println("Spider progress : " + progress + "%");
                 if (progress >= 100) {
                     break;
                 }
             }
-            System.out.println("Spider complete");
-            // Perform additional operations with the Spider results
-            List<ApiResponse> spiderResults = ((ApiResponseList)api.spider.results(scanid)).getItems();
+            System.out.println("Spider completed");
+            // If required post process the spider results
+            List<ApiResponse> spiderResults = ((ApiResponseList) api.spider.results(scanID)).getItems();
+
+            // TODO: Explore the Application more with Ajax Spider or Start scanning the application for vulnerabilities
+
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
             e.printStackTrace();
@@ -63,60 +65,52 @@ public class Spider {
 
 ```python
 #!/usr/bin/env python
-# A basic ZAP Python API example which spiders a target URL
-
 import time
 from zapv2 import ZAPv2
 
 # The URL of the web application to be tested
 target = 'https://public-firing-range.appspot.com'
 # Change to match the API key set in ZAP, or use None if the API key is disabled
-apikey = 'changeme'
+apiKey = '"changeMe"'
 
 # By default ZAP API client will connect to port 8080
-zap = ZAPv2(apikey=apikey)
+zap = ZAPv2(apikey=apiKey)
 # Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
 # zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
 
-# Proxy a request to the target so that ZAP has something to deal with
-print('Accessing target {}'.format(target))
-zap.urlopen(target)
-# Give the sites tree a chance to get updated
-time.sleep(2)
-
 print('Spidering target {}'.format(target))
-scanid = zap.spider.scan(target)
-# Give the Spider a chance to start
-# time.sleep(2)
-while int(zap.spider.status(scanid)) < 100:
-    # Loop until the spider has finished
-    print('Spider progress %: {}'.format(zap.spider.status(scanid)))
-    time.sleep(2)
+# The scan returns a scan id to support concurrent scanning
+scanID = zap.spider.scan(target)
+while int(zap.spider.status(scanID)) < 100:
+    # Poll the status until it completes
+    print('Spider progress %: {}'.format(zap.spider.status(scanID)))
+    time.sleep(1)
 
-# print the URLs the spider has crawled
-print('\n'.join(map(str, zap.spider.results(scanid))))
-# Use the spider results to perform any other additional operations
+print('Spider has completed!')
+# Prints the URLs the spider has crawled
+print('\n'.join(map(str, zap.spider.results(scanID))))
+# If required post process the spider results
+
+# TODO: Explore the Application more with Ajax Spider or Start scanning the application for vulnerabilities
+
 ```
 
 ``` shell
 # To start the Spider scan (Response: Scan ID). Modify the API Key and URL to suite the target
-$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=<zapAPIKey>&zapapiformat=JSON&url=https://public-firing-range.appspot.com&contextName=&recurse=true"
+$ curl "http://localhost:8080/JSON/spider/action/scan/?apikey=<ZAP_API_KEY>&url=https://public-firing-range.appspot.com&contextName=&recurse="
 
-
-# To view the scan status
-$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=<zapAPIKey>&scanId=<scan id>"
-
+# To view the scan status/ percentage of work done
+$ curl "http://localhost:8080/JSON/spider/view/status/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 
 # To view the scan results
-$ curl "http://localhost:8080/JSON/spider/view/results/?apikey=<zapAPIKey>&scanId=<scan id>"
-
+$ curl "http://localhost:8080/JSON/spider/view/results/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 
 # To stop the scanning
-$ curl "http://localhost:8080/JSON/spider/action/stop/?scanId=<scan_id>"
+$ curl "http://localhost:8080/JSON/spider/action/stop/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 # To pause the scanning
-$ curl "http://localhost:8080/JSON/spider/action/pause/?scanId=<scan_id>"
+$ curl "http://localhost:8080/JSON/spider/action/pause/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 # To resume the scanning
-$ curl "http://localhost:8080/JSON/spider/action/resume/?scanId=<scan_id>"
+$ curl "http://localhost:8080/JSON/spider/action/resume/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 
 ```
 
@@ -164,10 +158,9 @@ Using Ajax Spider
 ```java
 public class AjaxSpider {
 
-    private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    private static final String ZAP_API_KEY = null; // Change this if you have set the API key in ZAP via Options / API
-
+    private static final String ZAP_API_KEY = null;
+    private static final String ZAP_ADDRESS = "localhost";
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
@@ -176,18 +169,18 @@ public class AjaxSpider {
 
         try {
             // Start spidering the target
-            System.out.println("Ajax Spider : " + TARGET);
+            System.out.println("Ajax Spider target : " + TARGET);
             ApiResponse resp = api.ajaxSpider.scan(TARGET, null, null, null);
             String status;
 
             long startTime = System.currentTimeMillis();
             long timeout = 120000; // Two minutes in milli seconds
-            // Poll the status until it completes or break if the timeout has exceeded
+            // Loop until the ajax spider has finished or the timeout has exceeded
             while (true) {
                 Thread.sleep(2000);
                 status = (((ApiResponseElement) api.ajaxSpider.status()).getValue());
                 System.out.println("Spider status : " + status);
-                if (("stopped".equals(status)) || (System.currentTimeMillis()-startTime)<timeout) {
+                if (!("stopped".equals(status)) || (System.currentTimeMillis() - startTime) < timeout) {
                     break;
                 }
             }
@@ -195,6 +188,8 @@ public class AjaxSpider {
             // Perform additional operations with the Ajax Spider results
             List<ApiResponse> ajaxSpiderResponse = ((ApiResponseList) api.ajaxSpider.results("0", "10")).getItems();
 
+            // TODO: Start scanning(passive/active scan) the application to find vulnerabilities
+            
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
             e.printStackTrace();
@@ -211,51 +206,46 @@ from zapv2 import ZAPv2
 # The URL of the web application to be tested
 target = 'https://public-firing-range.appspot.com'
 # Change to match the API key set in ZAP, or use None if the API key is disabled
-apikey = 'changeme'
+apiKey = 'changeme'
 
 # By default ZAP API client will connect to port 8080
-zap = ZAPv2(apikey=apikey)
-# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
+zap = ZAPv2(apikey=apiKey)
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
 
-# Proxy a request to the target so that ZAP has something to deal with
-print('Accessing target {}'.format(target))
-zap.urlopen(target)
-# Give the sites tree a chance to get updated
-time.sleep(2)
-
-# print('Spidering target {}'.format(target))
-scanid = zap.ajaxSpider.scan(target)
-# Give the Spider a chance to start
-time.sleep(2)
+print('Ajax Spider target {}'.format(target))
+scanID = zap.ajaxSpider.scan(target)
 
 timeout = time.time() + 60*2   # 2 minutes from now
-
 # Loop until the ajax spider has finished or the timeout has exceeded
-while (zap.ajaxSpider.status == 'running'):
+while zap.ajaxSpider.status == 'running':
     if time.time() > timeout:
         break
     print('Ajax Spider status' + zap.ajaxSpider.status)
     time.sleep(2)
 
-print ('Ajax Spider completed')
+print('Ajax Spider completed')
 ajaxResults = zap.ajaxSpider.results(start=0, count=10)
-# Perform additional operations with the Ajax Spider results
+# If required perform additional operations with the Ajax Spider results
+
+# TODO: Start scanning the application to find vulnerabilities
 ```
 
 ```shell
 # To start the Ajax Spider
-$ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=<zapAPIKey>&url=<URL>&inScope=&contextName=&subtreeOnly="
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=<ZAP_API_KEY>&url=<URL>&inScope=&contextName=&subtreeOnly="
 
 # To view the status
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=<zapAPIKey>"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=<ZAP_API_KEY>"
 
 # To view the number of results
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=<zapAPIKey>"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=<ZAP_API_KEY>"
+
 # To view the results
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=<zapAPIKey>"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=<ZAP_API_KEY>"
 
 # To stop the Ajax Spider
-$ curl "http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=<zapAPIKey>"
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=<ZAP_API_KEY>"
 ```
  
 Use the Ajax Spider if you may have web applications written in Ajax. The Ajax Spider allows you to crawl web applications 
@@ -291,5 +281,5 @@ Ajax Spider.
 
 <aside class="success">
 Welldone! Now ZAP has crawled the application using the Spider and the Ajax Spider. Move on to the attacking section to learn how 
-to find vulnerabiltities using the indentitfied resources.
+to find vulnerabilities using the identified resources.
 </aside>
