@@ -1,7 +1,7 @@
 <a name="attack"></a>Attacking The App
 =========================================
 
-The web application should be explored before starting to scan the application for vulnerabilities. 
+The web application should be explored before starting to scan for security vulnerabilities. 
 If you haven't done that look at the [explore](#explore) section on how to explore the web application. 
 The following section provides examples on how to use the Passive and Active Scanner to find security vulnerabilities in 
 the application.
@@ -192,26 +192,27 @@ $ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseur
 $ curl "http://localhost:8080/JSON/ascan/action/stop/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 ```
 
-The [scan](#ascan_scan_api) endpoint runs the active scanner against the given URL and/or Context. Optionally, the `recurse` parameter can be used to scan URLs 
-under the given URL, the parameter `inScopeOnly` can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
-The parameter `scanPolicyName` allows to specify the scan policy (if none is given it uses the default scan policy). 
-The parameters `method` and `postData` allow to select a given request in conjunction with the given URL. 
+The [scan](#ascan_scan_api) endpoint runs the active scanner against the given URL and/or Context. Optionally, the 'recurse' parameter can be used to scan URLs 
+under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
+The parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy). 
+The parameters 'method` and 'postData' allow to select a given request in conjunction with the given URL. 
 
 View advanced settings to configure how to configure the [context](#context_advanced), [scope](#scope_advanced), and 
 scan policy with ZAP APIs.
 
 ### View Status
 
-The status API provides the percentage of attack done for the active scanner. The scan ID returned via starting the spider should be used to query the results. 
+The [status](#ascan_status_api) API provides the percentage of scanning done by the active scanner. The scan ID returned 
+via starting the spider should be used to query the status of the scanner. 
 
 ### View Results
 
-Similar to the passive scan results the active scan results can be viewed using the alerts endpoint 
+Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint. Alerts which are  
 
 ### Stop Active Scanning
 
-Use the stop API to stop a long running active scan. Optionally you can use the stopAllScans endpoints or pause endpoints to
-stop and pause the active scanning.
+Use the [stop](#ascan_stop_api) API to stop a long running active scan. Optionally you can use the [stopAllScans](#ascan_stop_all_scans_api) 
+endpoints or [pause](#ascan_pause_api) endpoint to stop and pause the active scanning.
 
 It should be noted that active scanning can only find certain types of vulnerabilities. Logical vulnerabilities, such as 
 broken access control, will not be found by any active or automated vulnerability scanning. Manual penetration testing should 
