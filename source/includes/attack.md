@@ -14,16 +14,78 @@ specifically been given permission to test.
 -------------------
 
 ```java
+public class PassiveScan {
 
+    private static final String ZAP_ADDRESS = "localhost";
+    private static final int ZAP_PORT = 8080;
+    // Change this if you have set the apikey in ZAP via Options / API
+    private static final String ZAP_API_KEY = null;
+
+    private static final String TARGET = "https://public-firing-range.appspot.com";
+
+    public static void main(String[] args) {
+        ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
+        int numberOfRecords;
+        try {
+            // Poll the records to scan endpoint until it gets zero
+            while (true) {
+                Thread.sleep(5000);
+                api.pscan.recordsToScan();
+                numberOfRecords =
+                        Integer.parseInt(
+                                ((ApiResponseElement) api.pscan.recordsToScan()).getValue());
+                System.out.println("Number of records left for scanning : " + numberOfRecords);
+                if (numberOfRecords == 0) {
+                    break;
+                }
+            }
+            System.out.println("Passive Scan complete");
+
+            System.out.println("Alerts:");
+            System.out.println(new String(api.core.xmlreport(), StandardCharsets.UTF_8));
+
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
 ```
 
 ```python
+#!/usr/bin/env python
+# A basic ZAP Python API example which spiders and scans a target URL
 
+import time
+from pprint import pprint
+from zapv2 import ZAPv2
+
+target = 'https://public-firing-range.appspot.com'
+apikey = 'changeme'  # Change to match the API key set in ZAP, or use None if the API key is disabled
+#
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apikey)
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+while int(zap.pscan.records_to_scan) > 0:
+    print('Records to passive scan : {}'.format(zap.pscan.records_to_scan))
+    time.sleep(2)
+
+print('Passive Scan completed')
+
+# Report the results
+print('Hosts: {}'.format(', '.join(zap.core.hosts)))
+print('Alerts: ')
+pprint(zap.core.alerts())
 ```
 
 ``` shell
+# To view the number of records left to be scanned
+$ curl "http://localhost:8080/JSON/pscan/view/recordsToScan/?apikey=<ZAP_API_KEY>"
+
 # To view the alerts of passive scan
-$ curl "http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=&count="
+$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=0&count=10"
 ```
 
 All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
@@ -51,25 +113,92 @@ is an attack on those targets. You should **NOT** use it on web applications tha
 ### Start Active Scanner
 
 ```java
+public class ActiveScan {
 
+    private static final String ZAP_ADDRESS = "localhost";
+    private static final int ZAP_PORT = 8080;
+    // Change this if you have set the API Key in ZAP
+    private static final String ZAP_API_KEY = null; 
+
+    private static final String TARGET = "https://public-firing-range.appspot.com";
+
+    public static void main(String[] args) {
+        ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
+
+        try {
+            System.out.println("Active scan : " + TARGET);
+            ApiResponse resp = api.ascan.scan(TARGET, "True", "False", null, null, null);
+            String scanid;
+            int progress;
+            // The scan now returns a scan id to support concurrent scanning
+            scanid = ((ApiResponseElement) resp).getValue();
+
+            // Poll the status until it completes
+            while (true) {
+                Thread.sleep(5000);
+                progress =
+                        Integer.parseInt(
+                                ((ApiResponseElement) api.ascan.status(scanid)).getValue());
+                System.out.println("Active Scan progress : " + progress + "%");
+                if (progress >= 100) {
+                    break;
+                }
+            }
+            System.out.println("Active Scan complete");
+
+            System.out.println("Alerts:");
+            System.out.println(new String(api.core.xmlreport(), StandardCharsets.UTF_8));
+
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
 ```
 
 ```python
+#!/usr/bin/env python
+# A basic ZAP Python API example which spiders and scans a target URL
+import time
+from pprint import pprint
+from zapv2 import ZAPv2
 
+target = 'https://public-firing-range.appspot.com'
+apikey = 'changeme' # Change to match the API key set in ZAP, or use None if the API key is disabled
+#
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apikey)
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+print ('Active Scanning target {}'.format(target))
+scanid = zap.ascan.scan(target)
+while (int(zap.ascan.status(scanid)) < 100):
+    # Loop until the scanner has finished
+    print ('Scan progress %: {}'.format(zap.ascan.status(scanid)))
+    time.sleep(5)
+
+print ('Active Scan completed')
+
+# Report the results
+print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
+print ('Alerts: ')
+pprint (zap.core.alerts(baseurl=target))
 ```
 
 ``` shell
-# To view the the active scan
-$ curl "http://localhost:8080/JSON/ascan/action/scan/?url=https%3A%2F%2Fpublic-firing-range.appspot.com&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
+# To start the the active scan
+$ curl "http://localhost:8080/JSON/ascan/action/scan/?url=<URL>&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
 
-# To view the alerts of passive scan
-$ curl "http://localhost:8080/JSON/ascan/view/status/?scanId=1"
+# To view the the status of active scan
+$ curl "http://localhost:8080/JSON/ascan/view/status/?scanId=<scanID>"
 
-# To view the alerts of passive scan
-$ curl "http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=&count="
+# To view the alerts of active scan
+$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=0&count=10"
 
-# To view the alerts of passive scan
-$ curl "http://localhost:8080/JSON/ascan/action/stop/?scanId=1"
+# To stop the active scan
+$ curl "http://localhost:8080/JSON/ascan/action/stop/?apikey=<ZAP_API_KEY>&scanId=<scan_ID>"
 ```
 
 The [scan](#ascan_scan_api) endpoint runs the active scanner against the given URL and/or Context. Optionally, the `recurse` parameter can be used to scan URLs 
