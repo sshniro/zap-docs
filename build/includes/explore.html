@@ -52,8 +52,9 @@ to explore the application, if you already have a test suite or unit tests in pl
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// Change this if you have set the API Key</span>
-
+    <span class="c1">// Change to match the API key set in ZAP, or use NULL if the API key is disabled</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="s">"change me"</span><span class="o">;</span>
+    <span class="c1">// The URL of the web application to be tested</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -61,27 +62,28 @@ to explore the application, if you already have a test suite or unit tests in pl
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// Start spidering the target</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spidering target : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
             <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-            <span class="n">String</span> <span class="n">scanid</span><span class="o">;</span>
+            <span class="n">String</span> <span class="n">scanID</span><span class="o">;</span>
             <span class="kt">int</span> <span class="n">progress</span><span class="o">;</span>
 
-            <span class="c1">// The scan now returns a scan id to support concurrent scanning</span>
-            <span class="n">scanid</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
+            <span class="c1">// The scan returns a scan id to support concurrent scanning</span>
+            <span class="n">scanID</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
             <span class="c1">// Poll the status until it completes</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
-                <span class="n">progress</span> <span class="o">=</span>
-                        <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span>
-                                <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">status</span><span class="o">(</span><span class="n">scanid</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
+                <span class="n">progress</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">status</span><span class="o">(</span><span class="n">scanID</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider progress : "</span> <span class="o">+</span> <span class="n">progress</span> <span class="o">+</span> <span class="s">"%"</span><span class="o">);</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider complete"</span><span class="o">);</span>
-            <span class="c1">// Perform additional operations with the Spider results</span>
-            <span class="n">List</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span> <span class="n">spiderResults</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseList</span><span class="o">)</span><span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">results</span><span class="o">(</span><span class="n">scanid</span><span class="o">)).</span><span class="na">getItems</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider completed"</span><span class="o">);</span>
+            <span class="c1">// If required post process the spider results</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span> <span class="n">spiderResults</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseList</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">results</span><span class="o">(</span><span class="n">scanID</span><span class="o">)).</span><span class="na">getItems</span><span class="o">();</span>
+
+            <span class="c1">// TODO: Explore the Application more with Ajax Spider or Start scanning the application for vulnerabilities</span>
+
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
             <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
@@ -90,58 +92,50 @@ to explore the application, if you already have a test suite or unit tests in pl
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="c"># A basic ZAP Python API example which spiders a target URL</span>
-
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
 <span class="c"># The URL of the web application to be tested</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
 <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span>
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'"changeMe"'</span>
 
 <span class="c"># By default ZAP API client will connect to port 8080</span>
-<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
 <span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
 <span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
 
-<span class="c"># Proxy a request to the target so that ZAP has something to deal with</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Accessing target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
-<span class="n">zap</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="c"># Give the sites tree a chance to get updated</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
 <span class="k">print</span><span class="p">(</span><span class="s">'Spidering target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
-<span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="c"># Give the Spider a chance to start</span>
-<span class="c"># time.sleep(2)</span>
-<span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="c"># Loop until the spider has finished</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Spider progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">)))</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># The scan returns a scan id to support concurrent scanning</span>
+<span class="n">scanID</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="c"># Poll the status until it completes</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Spider progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">)))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c"># print the URLs the spider has crawled</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">scanid</span><span class="p">))))</span>
-<span class="c"># Use the spider results to perform any other additional operations</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Spider has completed!'</span><span class="p">)</span>
+<span class="c"># Prints the URLs the spider has crawled</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">scanID</span><span class="p">))))</span>
+<span class="c"># If required post process the spider results</span>
+
+<span class="c"># TODO: Explore the Application more with Ajax Spider or Start scanning the application for vulnerabilities</span>
+
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># To start the Spider scan (Response: Scan ID). Modify the API Key and URL to suite the target</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=&lt;zapAPIKey&gt;&amp;zapapiformat=JSON&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse=true"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse="</span>
 
-
-<span class="c"># To view the scan status</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/status/?apikey=&lt;zapAPIKey&gt;&amp;scanId=&lt;scan id&gt;"</span>
-
+<span class="c"># To view the scan status/ percentage of work done</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/status/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 
 <span class="c"># To view the scan results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/results/?apikey=&lt;zapAPIKey&gt;&amp;scanId=&lt;scan id&gt;"</span>
-
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/view/results/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 
 <span class="c"># To stop the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/stop/?scanId=&lt;scan_id&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/stop/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 <span class="c"># To pause the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/pause/?scanId=&lt;scan_id&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/pause/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 <span class="c"># To resume the scanning</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/resume/?scanId=&lt;scan_id&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/resume/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 
 </code></pre>
 
@@ -186,10 +180,9 @@ and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in
 <h2 id="using-ajax-spider">Using Ajax Spider</h2>
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AjaxSpider</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// Change this if you have set the API key in ZAP via Options / API</span>
-
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -198,24 +191,26 @@ and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// Start spidering the target</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ajax Spider : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ajax Spider target : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
             <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">ajaxSpider</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
             <span class="n">String</span> <span class="n">status</span><span class="o">;</span>
 
             <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
             <span class="kt">long</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">120000</span><span class="o">;</span> <span class="c1">// Two minutes in milli seconds</span>
-            <span class="c1">// Poll the status until it completes or break if the timeout has exceeded</span>
+            <span class="c1">// Loop until the ajax spider has finished or the timeout has exceeded</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
                 <span class="n">status</span> <span class="o">=</span> <span class="o">(((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">ajaxSpider</span><span class="o">.</span><span class="na">status</span><span class="o">()).</span><span class="na">getValue</span><span class="o">());</span>
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Spider status : "</span> <span class="o">+</span> <span class="n">status</span><span class="o">);</span>
-                <span class="k">if</span> <span class="o">((</span><span class="s">"stopped"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">status</span><span class="o">))</span> <span class="o">||</span> <span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()-</span><span class="n">startTime</span><span class="o">)&lt;</span><span class="n">timeout</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!(</span><span class="s">"stopped"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">status</span><span class="o">))</span> <span class="o">||</span> <span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ajax Spider completed"</span><span class="o">);</span>
             <span class="c1">// Perform additional operations with the Ajax Spider results</span>
             <span class="n">List</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span> <span class="n">ajaxSpiderResponse</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseList</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">ajaxSpider</span><span class="o">.</span><span class="na">results</span><span class="o">(</span><span class="s">"0"</span><span class="o">,</span> <span class="s">"10"</span><span class="o">)).</span><span class="na">getItems</span><span class="o">();</span>
+
+            <span class="c1">// TODO: Start scanning(passive/active scan) the application to find vulnerabilities</span>
 
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
@@ -231,49 +226,44 @@ and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in
 <span class="c"># The URL of the web application to be tested</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
 <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span>
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeme'</span>
 
 <span class="c"># By default ZAP API client will connect to port 8080</span>
-<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
-<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+<span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
+<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
 
-<span class="c"># Proxy a request to the target so that ZAP has something to deal with</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Accessing target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
-<span class="n">zap</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="c"># Give the sites tree a chance to get updated</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c"># print('Spidering target {}'.format(target))</span>
-<span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="c"># Give the Spider a chance to start</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Ajax Spider target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+<span class="n">scanID</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span><span class="o">*</span><span class="mi">2</span>   <span class="c"># 2 minutes from now</span>
-
 <span class="c"># Loop until the ajax spider has finished or the timeout has exceeded</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">'running'</span><span class="p">):</span>
+<span class="k">while</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">'running'</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
         <span class="k">break</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Ajax Spider status'</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s">'Ajax Spider completed'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Ajax Spider completed'</span><span class="p">)</span>
 <span class="n">ajaxResults</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="c"># Perform additional operations with the Ajax Spider results</span>
+<span class="c"># If required perform additional operations with the Ajax Spider results</span>
+
+<span class="c"># TODO: Start scanning the application to find vulnerabilities</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># To start the Ajax Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=&lt;zapAPIKey&gt;&amp;url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
 
 <span class="c"># To view the status</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=&lt;zapAPIKey&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To view the number of results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=&lt;zapAPIKey&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+
 <span class="c"># To view the results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=&lt;zapAPIKey&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To stop the Ajax Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=&lt;zapAPIKey&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 </code></pre>
 
 <p>Use the Ajax Spider if you may have web applications written in Ajax. The Ajax Spider allows you to crawl web applications 
@@ -308,7 +298,7 @@ Ajax Spider.</p>
 
 <aside class="success">
 Welldone! Now ZAP has crawled the application using the Spider and the Ajax Spider. Move on to the attacking section to learn how 
-to find vulnerabiltities using the indentitfied resources.
+to find vulnerabilities using the identified resources.
 </aside>
 
       </div>

@@ -1,8 +1,10 @@
-<a name="examples"></a>Attacking The App
+<a name="attack"></a>Attacking The App
 =========================================
 
-Before you start attacking the application its recommended to explore the application. If you haven't done that look at the
-[explore](#explore) section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.
+The web application should be explored before starting to scan the application for vulnerabilities. 
+If you haven't done that look at the [explore](#explore) section on how to explore the web application. 
+The following section provides examples on how to use the Passive and Active Scanner to find security vulnerabilities in 
+the application.
 
 <aside class="warning">
 Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
@@ -15,31 +17,29 @@ specifically been given permission to test.
 ```java
 public class PassiveScan {
 
-    private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    // Change this if you have set the apikey in ZAP via Options / API
     private static final String ZAP_API_KEY = null;
-
-    private static final String TARGET = "https://public-firing-range.appspot.com";
+    private static final String ZAP_ADDRESS = "localhost";
 
     public static void main(String[] args) {
         ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
         int numberOfRecords;
+        
         try {
-            // Poll the records to scan endpoint until it gets zero
+            // TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details
+            // Loop until the ajax spider has finished or the timeout has exceeded
             while (true) {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 api.pscan.recordsToScan();
-                numberOfRecords =
-                        Integer.parseInt(
-                                ((ApiResponseElement) api.pscan.recordsToScan()).getValue());
+                numberOfRecords = Integer.parseInt(((ApiResponseElement) api.pscan.recordsToScan()).getValue());
                 System.out.println("Number of records left for scanning : " + numberOfRecords);
                 if (numberOfRecords == 0) {
                     break;
                 }
             }
-            System.out.println("Passive Scan complete");
-
+            System.out.println("Passive Scan completed");
+            
+            // Print Passive scan results/alerts
             System.out.println("Alerts:");
             System.out.println(new String(api.core.xmlreport(), StandardCharsets.UTF_8));
 
@@ -63,11 +63,13 @@ zap = ZAPv2(apikey=apiKey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'h
 
 # TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details
 while int(zap.pscan.records_to_scan) > 0:
+    # Loop until the ajax spider has finished or the timeout has exceeded
     print('Records to passive scan : ' + zap.pscan.records_to_scan)
     time.sleep(2)
 
 print('Passive Scan completed')
-# Report the results
+
+# Print Passive scan results/alerts
 print('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print('Alerts: ')
 pprint(zap.core.alerts())
@@ -78,7 +80,7 @@ pprint(zap.core.alerts())
 $ curl "http://localhost:8080/JSON/pscan/view/recordsToScan/?apikey=<ZAP_API_KEY>"
 
 # To view the alerts of passive scan
-$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=0&count=10"
+$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=<TARGET_URL>&start=0&count=10"
 ```
 
 All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
@@ -109,21 +111,23 @@ is an attack on those targets. You should **NOT** use it on web applications tha
 public class ActiveScan {
 
     private static final int ZAP_PORT = 8080;
-    private static final String ZAP_API_KEY = null; 
+    private static final String ZAP_API_KEY = null;
     private static final String ZAP_ADDRESS = "localhost";
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
+
         ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
 
         try {
-            System.out.println("Active scan : " + TARGET);
+            // TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section
+            System.out.println("Active Scanning target : " + TARGET);
             ApiResponse resp = api.ascan.scan(TARGET, "True", "False", null, null, null);
             String scanid;
             int progress;
+
             // The scan now returns a scan id to support concurrent scanning
             scanid = ((ApiResponseElement) resp).getValue();
-
             // Poll the status until it completes
             while (true) {
                 Thread.sleep(5000);
@@ -135,8 +139,9 @@ public class ActiveScan {
                     break;
                 }
             }
-            System.out.println("Active Scan complete");
 
+            System.out.println("Active Scan complete");
+            // Print vulnerabilities found by the scanning
             System.out.println("Alerts:");
             System.out.println(new String(api.core.xmlreport(), StandardCharsets.UTF_8));
 
@@ -167,7 +172,7 @@ while int(zap.ascan.status(scanID)) < 100:
     time.sleep(5)
 
 print('Active Scan completed')
-# Report the results
+# Print vulnerabilities found by the scanning
 print('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print('Alerts: ')
 pprint(zap.core.alerts(baseurl=target))
@@ -175,16 +180,16 @@ pprint(zap.core.alerts(baseurl=target))
 
 ``` shell
 # To start the the active scan
-$ curl "http://localhost:8080/JSON/ascan/action/scan/?url=<URL>&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
+$ curl "http://localhost:8080/JSON/ascan/action/scan/?apikey=<ZAP_API_KEY>&url=<TARGET_URL>&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
 
 # To view the the status of active scan
-$ curl "http://localhost:8080/JSON/ascan/view/status/?scanId=<scanID>"
+$ curl "http://localhost:8080/JSON/ascan/view/status/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 
 # To view the alerts of active scan
-$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=http://localhost:3000&start=0&count=10"
+$ curl "http://localhost:8080/JSON/core/view/alerts/?apikey=<ZAP_API_KEY>&baseurl=<TARGET_URL>&start=0&count=10"
 
 # To stop the active scan
-$ curl "http://localhost:8080/JSON/ascan/action/stop/?apikey=<ZAP_API_KEY>&scanId=<scan_ID>"
+$ curl "http://localhost:8080/JSON/ascan/action/stop/?apikey=<ZAP_API_KEY>&scanId=<SCAN_ID>"
 ```
 
 The [scan](#ascan_scan_api) endpoint runs the active scanner against the given URL and/or Context. Optionally, the `recurse` parameter can be used to scan URLs 
