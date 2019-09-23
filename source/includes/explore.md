@@ -23,8 +23,7 @@ public class Spider {
 
     private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    private static final String ZAP_API_KEY =
-    null; // Change this if you have set the apikey in ZAP via Options / API
+    private static final String ZAP_API_KEY = null; // Change this if you have set the API Key
 
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
@@ -34,14 +33,12 @@ public class Spider {
         try {
             // Start spidering the target
             System.out.println("Spider : " + TARGET);
-            // Create the
             ApiResponse resp = api.spider.scan(TARGET, null, null, null, null);
             String scanid;
             int progress;
 
             // The scan now returns a scan id to support concurrent scanning
             scanid = ((ApiResponseElement) resp).getValue();
-
             // Poll the status until it completes
             while (true) {
                 Thread.sleep(1000);
@@ -54,8 +51,8 @@ public class Spider {
                 }
             }
             System.out.println("Spider complete");
-            System.out.println(api.spider.results(scanid));
-
+            // Perform additional operations with the Spider results
+            List<ApiResponse> spiderResults = ((ApiResponseList)api.spider.results(scanid)).getItems();
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
             e.printStackTrace();
@@ -169,39 +166,34 @@ public class AjaxSpider {
 
     private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    private static final String ZAP_API_KEY =
-    null; // Change this if you have set the apikey in ZAP via Options / API
+    private static final String ZAP_API_KEY = null; // Change this if you have set the API key in ZAP via Options / API
 
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
+        // Create the ZAP Client
         ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
 
         try {
             // Start spidering the target
             System.out.println("Ajax Spider : " + TARGET);
-            // It's not necessary to pass the ZAP API key again, already set when creating the
-            // ClientApi.
             ApiResponse resp = api.ajaxSpider.scan(TARGET, null, null, null);
-            String scanid;
-            int progress;
+            String status;
 
-            // The scan now returns a scan id to support concurrent scanning
-            scanid = ((ApiResponseElement) resp).getValue();
-
-            // Poll the status until it completes
+            long startTime = System.currentTimeMillis();
+            long timeout = 120000; // Two minutes in milli seconds
+            // Poll the status until it completes or break if the timeout has exceeded
             while (true) {
-                Thread.sleep(1000);
-                progress =
-                        Integer.parseInt(
-                                ((ApiResponseElement) api.ajaxSpider.status()).getValue());
-                System.out.println("Spider progress : " + progress + "%");
-                if (progress >= 100) {
+                Thread.sleep(2000);
+                status = (((ApiResponseElement) api.ajaxSpider.status()).getValue());
+                System.out.println("Spider status : " + status);
+                if (("stopped".equals(status)) || (System.currentTimeMillis()-startTime)<timeout) {
                     break;
                 }
             }
-            System.out.println("Ajax Spider complete");
-            System.out.println(api.spider.results(scanid));
+            System.out.println("Ajax Spider completed");
+            // Perform additional operations with the Ajax Spider results
+            List<ApiResponse> ajaxSpiderResponse = ((ApiResponseList) api.ajaxSpider.results("0", "10")).getItems();
 
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
@@ -236,7 +228,7 @@ scanid = zap.ajaxSpider.scan(target)
 # Give the Spider a chance to start
 time.sleep(2)
 
-timeout = time.time() + 60*5   # 5 minutes from now
+timeout = time.time() + 60*2   # 2 minutes from now
 
 # Loop until the ajax spider has finished or the timeout has exceeded
 while (zap.ajaxSpider.status == 'running'):
@@ -252,18 +244,18 @@ ajaxResults = zap.ajaxSpider.results(start=0, count=10)
 
 ```shell
 # To start the Ajax Spider
-$ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?url=<URL>&inScope=&contextName=&subtreeOnly="
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=<zapAPIKey>&url=<URL>&inScope=&contextName=&subtreeOnly="
 
 # To view the status
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/status/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=<zapAPIKey>"
 
 # To view the number of results
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=<zapAPIKey>"
 # To view the results
-$ curl "http://localhost:8080/JSON/AjaxSpider/view/fullResults/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=<zapAPIKey>"
 
 # To stop the Ajax Spider
-$ curl "http://localhost:8080/JSON/AjaxSpider/action/stop/"
+$ curl "http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=<zapAPIKey>"
 ```
  
 Use the Ajax Spider if you may have web applications written in Ajax. The Ajax Spider allows you to crawl web applications 
