@@ -13,8 +13,7 @@ This allows the developers to automate pentesting and security regression testin
 This document provides example guides & API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
 incorrect, please check the [GitHub issues](https://github.com/zaproxy/zaproxy/issues) for existing known issues or create a new issue
-in the Github repository. If you are looking for advanced automation, a series of automation scripts are available 
-in the following [Github repository](https://github.com/zaproxy/community-scripts).
+in the Github repository.
 
 Following are some of the features provided by ZAP:
 
@@ -32,14 +31,14 @@ Documentation Structure
 
 The API documentation is divided in to eight main parts. Following shows the summary of each main section.
 
-* [**Getting Started**](#welcome) section contains introductory information of ZAP and installation guide to setup ZAP for testing.
+* [**Getting Started**](#welcome) section contains introductory information of ZAP and installation guide to set up ZAP for testing.
 * [**Exploring The Apps**](#explore) section contains examples on how to explore the web application.
 * [**Attacking The Apps**](#attack) section contains examples on how to scan or attack a web application.
 * [**Getting The Results**](#results) section contains examples on how to retrieve alerts and generate Reports from ZAP.
 * [**Authentication**](#auth) section contains examples on how to authenticate the web application with ZAP.
 * [**Advanced Settings**](#examples) section contains advanced configurations on how to fine tune the ZAP results.
 * [**Contributions**](#contribution) section contains guidelines and instruction on how to contribute to ZAP's documentations.
-* [**API Catalogue**](#api_catalogue) section contains Open API definitions for ZAP APIs. 
+* [**API Catalogue**](#api_catalogue) section contains Open API definitions and auto generated code for ZAP APIs. 
 
 <aside class="notice">
 The examples shows some usages with the minimal required arguments. However, this is not a reference, and not all APIs 
@@ -50,9 +49,9 @@ nor arguments are shown. View the API catalog to see all the parameters and scop
 Basics on the API Request
 -------------------------
 
-ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
-enabled if you have started the ZAP in deamon or headless mode. If you are using the ZAP desktop then the API should be enabled
-by visiting the following API screen: 
+ZAP APIs provide access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is  automatically enabled 
+if you have started the ZAP in daemon or headless mode. If you are using the ZAP desktop, then the API should be enabled
+by visiting the following screen: 
 
 `Tools -> Options -> API`.
 
@@ -157,9 +156,9 @@ the desktop UI. Therefore by working with the UI, you will get a good understand
 Also, use the export config functionality from the desktop UI to export complex configurations such as contexts, scan policies, etc.
 Then use the exported configurations when creating the automation scripts.
 
- If you have come across any issue with ZAP, 
-please feel free to raise a question in the [developer forum](https://groups.google.com/d/forum/zaproxy-develop) or 
-[Stack Overflow](https://stackoverflow.com/questions/tagged/zap). Also, use the [ZAP's Github repository]((https://github.com/zaproxy/zaproxy/issues)) 
+ZAP has a very friendly and active developer community. Always feel free to raise a question in the 
+[developer forum](https://groups.google.com/d/forum/zaproxy-develop) or [Stack Overflow](https://stackoverflow.com/questions/tagged/zap) 
+for issues related to ZAP. Also, use the [ZAP's Github repository]((https://github.com/zaproxy/zaproxy/issues)) 
 to raise a bug report or to make any feature requests.
 
 Stay tuned on twitter [@zaproxy](https://twitter.com/zaproxy).

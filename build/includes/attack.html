@@ -81,26 +81,20 @@ specifically been given permission to test.
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="c"># A basic ZAP Python API example which spiders and scans a target URL</span>
-
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeme'</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span>  <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="c">#</span>
-<span class="c"># By default ZAP API client will connect to port 8080</span>
-<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
-<span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
-<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="p">{</span><span class="s">'http'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">,</span> <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">})</span>
 
+<span class="c"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
 <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Passive Scan completed'</span><span class="p">)</span>
-
 <span class="c"># Report the results</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
@@ -137,11 +131,9 @@ is an attack on those targets. You should <strong>NOT</strong> use it on web app
 <h3 id="start-active-scanner">Start Active Scanner</h3>
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="c1">// Change this if you have set the API Key in ZAP</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
-
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -179,32 +171,27 @@ is an attack on those targets. You should <strong>NOT</strong> use it on web app
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="c"># A basic ZAP Python API example which spiders and scans a target URL</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeme'</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span> <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="c">#</span>
-<span class="c"># By default ZAP API client will connect to port 8080</span>
-<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
-<span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
-<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="p">{</span><span class="s">'http'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">,</span> <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">})</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s">'Active Scanning target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
-<span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+<span class="c"># TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Active Scanning target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+<span class="n">scanID</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
     <span class="c"># Loop until the scanner has finished</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s">'Scan progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Scan progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">)))</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s">'Active Scan completed'</span><span class="p">)</span>
-
+<span class="k">print</span><span class="p">(</span><span class="s">'Active Scan completed'</span><span class="p">)</span>
 <span class="c"># Report the results</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
-<span class="n">pprint</span> <span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="n">target</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="n">target</span><span class="p">))</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># To start the the active scan</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?url=&lt;URL&gt;&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>

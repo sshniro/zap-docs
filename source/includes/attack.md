@@ -4,7 +4,6 @@
 Before you start attacking the application its recommended to explore the application. If you haven't done that look at the
 [explore](#explore) section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.
 
-
 <aside class="warning">
 Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
 specifically been given permission to test.
@@ -54,26 +53,20 @@ public class PassiveScan {
 
 ```python
 #!/usr/bin/env python
-# A basic ZAP Python API example which spiders and scans a target URL
-
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
 
+apiKey = 'changeme'
 target = 'https://public-firing-range.appspot.com'
-apikey = 'changeme'  # Change to match the API key set in ZAP, or use None if the API key is disabled
-#
-# By default ZAP API client will connect to port 8080
-zap = ZAPv2(apikey=apikey)
-# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
-# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+zap = ZAPv2(apikey=apiKey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
 
+# TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details
 while int(zap.pscan.records_to_scan) > 0:
-    print('Records to passive scan : {}'.format(zap.pscan.records_to_scan))
+    print('Records to passive scan : ' + zap.pscan.records_to_scan)
     time.sleep(2)
 
 print('Passive Scan completed')
-
 # Report the results
 print('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print('Alerts: ')
@@ -115,11 +108,9 @@ is an attack on those targets. You should **NOT** use it on web applications tha
 ```java
 public class ActiveScan {
 
-    private static final String ZAP_ADDRESS = "localhost";
     private static final int ZAP_PORT = 8080;
-    // Change this if you have set the API Key in ZAP
     private static final String ZAP_API_KEY = null; 
-
+    private static final String ZAP_ADDRESS = "localhost";
     private static final String TARGET = "https://public-firing-range.appspot.com";
 
     public static void main(String[] args) {
@@ -159,32 +150,27 @@ public class ActiveScan {
 
 ```python
 #!/usr/bin/env python
-# A basic ZAP Python API example which spiders and scans a target URL
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
 
+apiKey = 'changeme'
 target = 'https://public-firing-range.appspot.com'
-apikey = 'changeme' # Change to match the API key set in ZAP, or use None if the API key is disabled
-#
-# By default ZAP API client will connect to port 8080
-zap = ZAPv2(apikey=apikey)
-# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
-# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+zap = ZAPv2(apikey=apiKey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
 
-print ('Active Scanning target {}'.format(target))
-scanid = zap.ascan.scan(target)
-while (int(zap.ascan.status(scanid)) < 100):
+# TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section
+print('Active Scanning target {}'.format(target))
+scanID = zap.ascan.scan(target)
+while int(zap.ascan.status(scanID)) < 100:
     # Loop until the scanner has finished
-    print ('Scan progress %: {}'.format(zap.ascan.status(scanid)))
+    print('Scan progress %: {}'.format(zap.ascan.status(scanID)))
     time.sleep(5)
 
-print ('Active Scan completed')
-
+print('Active Scan completed')
 # Report the results
-print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
-print ('Alerts: ')
-pprint (zap.core.alerts(baseurl=target))
+print('Hosts: {}'.format(', '.join(zap.core.hosts)))
+print('Alerts: ')
+pprint(zap.core.alerts(baseurl=target))
 ```
 
 ``` shell

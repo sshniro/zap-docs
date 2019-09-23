@@ -44,8 +44,7 @@ This allows the developers to automate pentesting and security regression testin
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
 incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues or create a new issue
-in the Github repository. If you are looking for advanced automation, a series of automation scripts are available 
-in the following <a href="https://github.com/zaproxy/community-scripts">Github repository</a>.</p>
+in the Github repository.</p>
 
 <p>Following are some of the features provided by ZAP:</p>
 
@@ -65,14 +64,14 @@ in the following <a href="https://github.com/zaproxy/community-scripts">Github r
 <p>The API documentation is divided in to eight main parts. Following shows the summary of each main section.</p>
 
 <ul>
-<li><a href="#welcome"><strong>Getting Started</strong></a> section contains introductory information of ZAP and installation guide to setup ZAP for testing.</li>
+<li><a href="#welcome"><strong>Getting Started</strong></a> section contains introductory information of ZAP and installation guide to set up ZAP for testing.</li>
 <li><a href="#explore"><strong>Exploring The Apps</strong></a> section contains examples on how to explore the web application.</li>
 <li><a href="#attack"><strong>Attacking The Apps</strong></a> section contains examples on how to scan or attack a web application.</li>
 <li><a href="#results"><strong>Getting The Results</strong></a> section contains examples on how to retrieve alerts and generate Reports from ZAP.</li>
 <li><a href="#auth"><strong>Authentication</strong></a> section contains examples on how to authenticate the web application with ZAP.</li>
 <li><a href="#examples"><strong>Advanced Settings</strong></a> section contains advanced configurations on how to fine tune the ZAP results.</li>
 <li><a href="#contribution"><strong>Contributions</strong></a> section contains guidelines and instruction on how to contribute to ZAP&rsquo;s documentations.</li>
-<li><a href="#api_catalogue"><strong>API Catalogue</strong></a> section contains Open API definitions for ZAP APIs. </li>
+<li><a href="#api_catalogue"><strong>API Catalogue</strong></a> section contains Open API definitions and auto generated code for ZAP APIs. </li>
 </ul>
 
 <aside class="notice">
@@ -82,9 +81,9 @@ nor arguments are shown. View the API catalog to see all the parameters and scop
 
 <h2 id="basics-on-the-api-request">Basics on the API Request</h2>
 
-<p>ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
-enabled if you have started the ZAP in deamon or headless mode. If you are using the ZAP desktop then the API should be enabled
-by visiting the following API screen: </p>
+<p>ZAP APIs provide access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is  automatically enabled 
+if you have started the ZAP in daemon or headless mode. If you are using the ZAP desktop, then the API should be enabled
+by visiting the following screen: </p>
 
 <p><code class="prettyprint">Tools -&gt; Options -&gt; API</code>.</p>
 
@@ -181,9 +180,9 @@ the desktop UI. Therefore by working with the UI, you will get a good understand
 Also, use the export config functionality from the desktop UI to export complex configurations such as contexts, scan policies, etc.
 Then use the exported configurations when creating the automation scripts.</p>
 
-<p>If you have come across any issue with ZAP, 
-please feel free to raise a question in the <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or 
-<a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. Also, use the <a href="(https://github.com/zaproxy/zaproxy/issues)">ZAP&rsquo;s Github repository</a> 
+<p>ZAP has a very friendly and active developer community. Always feel free to raise a question in the 
+<a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or <a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a> 
+for issues related to ZAP. Also, use the <a href="(https://github.com/zaproxy/zaproxy/issues)">ZAP&rsquo;s Github repository</a> 
 to raise a bug report or to make any feature requests.</p>
 
 <p>Stay tuned on twitter <a href="https://twitter.com/zaproxy">@zaproxy</a>.</p>
