@@ -100,7 +100,7 @@ The examples shows some usages with the minimal required arguments. However, thi
 nor arguments are shown. View the API catalog to see all the parameters and scope of each APIs.
 </aside>
 
-<h2 id="basics-on-the-api-request">Basics on the API request</h2>
+<h2 id="basics-on-the-api-request">Basics on the API Request</h2>
 
 <p>ZAP APIs provides access to most of the core features of ZAP such as the active scanner and spider. The ZAP API is automatically 
 enabled if you have started the ZAP in deamon or headless mode. If you are using the ZAP desktop then the API should be enabled
@@ -129,8 +129,8 @@ For example, to generate easily readable reports use the HTML format and use XML
 
 <p><code class="prettyprint">http://zap/&lt;format&gt;/&lt;component&gt;/&lt;operation&gt;/&lt;operation name&gt;[/?&lt;parameters&gt;]</code></p>
 
-<p>The format can be either <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> or <code class="prettyprint">HTML</code>. The operation can be either <code class="prettyprint">view</code> or <code class="prettyprint">action</code>. <code class="prettyprint">view</code> is used to return
-information and <code class="prettyprint">action</code> is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
+<p>The format can be either <code class="prettyprint">JSON</code>, <code class="prettyprint">XML</code> or <code class="prettyprint">HTML</code>. The operation can be either <code class="prettyprint">view</code> or <code class="prettyprint">action</code>. The <code class="prettyprint">view</code> operation is used to return
+information and the <code class="prettyprint">action</code> is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
 action can be used to start or stop the Spider. The components, operation names and parameters can all be discovered by 
 browsing the <a href="#api_catalogue">API Catalogue</a>.</p>
 
@@ -144,7 +144,7 @@ is listening on, eg <a href="http://localhost:8080/">http://localhost:8080/</a>.
 <p><img alt="zap_api_ui" src="images/zap_api_ui.png" /></p>
 
 <p>By default only the machine ZAP is running on is able to access the APIs. You can allow other machines, that are able to 
-use ZAP as a proxy, access to the API. The API can be also configured using the Options API screen using the desktop interface.</p>
+use ZAP as a proxy, access to the API.</p>
 
 <h3 id="client-sdks"><a name="client_sdk"></a>Client SDKs</h3>
 
@@ -181,10 +181,10 @@ sites from accessing the ZAP API. </p>
 <p><strong>Setup a Testing Application</strong></p>
 
 <p>If you already have a website to scan or to perform security testing, then obtain the URL/IP of the application to begin the scanning. 
-The example guide uses the <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
+The example guide uses <a href="https://github.com/google/firing-range">Google&rsquo;s Firing Range</a> and 
 <a href="https://github.com/bkimminich/juice-shop">OWASP Juice Shop</a> to perform the security testing. 
-The Spidering and Attacking examples uses the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
-firing range and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
+The Spidering and Attacking examples use the <a href="https://public-firing-range.appspot.com">public instance</a> of the 
+firing range, and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. Following 
 is a <a href="https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps">list</a> 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.</p>
 
@@ -195,7 +195,13 @@ specifically been given permission to test.
 
 <h2 id="getting-help">Getting help</h2>
 
-<p>All available APIs are documented in the <a href="#api_catalogue">API Catalogue</a>. If you have come across any issue with ZAP, 
+<p>All available APIs are documented in the <a href="#api_catalogue">API Catalogue</a>. If you are new to ZAP, then it&rsquo;s highly 
+recommended that you experiment with the desktop UI before trying out the APIs. Because ZAP&rsquo;s APIs strongly resembles 
+the desktop UI. Therefore by working with the UI, you will get a good understanding on how to orchestrate ZAP&rsquo;s APIs.
+Also, use the export config functionality from the desktop UI to export complex configurations such as contexts, scan policies, etc.
+Then use the exported configurations when creating the automation scripts.</p>
+
+<p>If you have come across any issue with ZAP, 
 please feel free to raise a question in the <a href="https://groups.google.com/d/forum/zaproxy-develop">developer forum</a> or 
 <a href="https://stackoverflow.com/questions/tagged/zap">Stack Overflow</a>. Also, use the <a href="(https://github.com/zaproxy/zaproxy/issues)">ZAP&rsquo;s Github repository</a> 
 to raise a bug report or to make any feature requests.</p>
@@ -263,15 +269,16 @@ to explore the application, if you already have a test suite or unit tests in pl
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="c"># A basic ZAP Python API example which spiders and scans a target URL</span>
+<span class="c"># A basic ZAP Python API example which spiders a target URL</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
-<span class="n">target</span> <span class="o">=</span> <span class="s">'http://127.0.0.1'</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span> <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="c">#</span>
+<span class="c"># The URL of the web application to be tested</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
+<span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
+<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span>
+
 <span class="c"># By default ZAP API client will connect to port 8080</span>
 <span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
 <span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
@@ -286,36 +293,17 @@ to explore the application, if you already have a test suite or unit tests in pl
 <span class="k">print</span><span class="p">(</span><span class="s">'Spidering target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
 <span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="c"># Give the Spider a chance to start</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+<span class="c"># time.sleep(2)</span>
+<span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
     <span class="c"># Loop until the spider has finished</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Spider progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">)))</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s">'Spider completed'</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-      <span class="k">print</span> <span class="p">(</span><span class="s">'Records to passive scan : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">))</span>
-      <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="p">(</span><span class="s">'Passive Scan completed'</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="p">(</span><span class="s">'Active Scanning target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
-<span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="c"># Loop until the scanner has finished</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s">'Scan progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">)))</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="p">(</span><span class="s">'Active Scan completed'</span><span class="p">)</span>
-
-<span class="c"># Report the results</span>
-
-<span class="k">print</span> <span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
-<span class="n">pprint</span> <span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">())</span>
+<span class="c"># print the URLs the spider has crawled</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">scanid</span><span class="p">))))</span>
+<span class="c"># Use the spider results to perform any other additional operations</span>
 </code></pre>
-<pre class="highlight shell"><code><span class="c"># To start the Spider scan (Response: Scan ID)</span>
+<pre class="highlight shell"><code><span class="c"># To start the Spider scan (Response: Scan ID). Modify the API Key and URL to suite the target</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/spider/action/scan/?apikey=&lt;zapAPIKey&gt;&amp;zapapiformat=JSON&amp;url=https://public-firing-range.appspot.com&amp;contextName=&amp;recurse=true"</span>
 
 
@@ -424,11 +412,14 @@ and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
+<span class="c"># The URL of the web application to be tested</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
-<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span> <span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
-<span class="c">#</span>
+<span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
+<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeme'</span>
+
 <span class="c"># By default ZAP API client will connect to port 8080</span>
-<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="p">{</span><span class="s">'http'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">,</span> <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">})</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
+<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})</span>
 
 <span class="c"># Proxy a request to the target so that ZAP has something to deal with</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Accessing target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
@@ -436,18 +427,23 @@ and <a href="#spider_pause_api">pause</a> APIs. Additional APIs are available in
 <span class="c"># Give the sites tree a chance to get updated</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">'Spidering target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+<span class="c"># print('Spidering target {}'.format(target))</span>
 <span class="n">scanid</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="c"># Give the Spider a chance to start</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="c"># Loop until the spider has finished</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Spider progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanid</span><span class="p">)))</span>
+
+<span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span><span class="o">*</span><span class="mi">5</span>   <span class="c"># 5 minutes from now</span>
+
+<span class="c"># Loop until the ajax spider has finished or the timeout has exceeded</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">'running'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Ajax Spider status'</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="p">(</span><span class="s">'Ajax Spider completed'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">scanid</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-
+<span class="n">ajaxResults</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ajaxSpider</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c"># Perform additional operations with the Ajax Spider results</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># To start the Ajax Spider</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/scan/?url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
@@ -481,16 +477,23 @@ endpoint to identify whether the Ajax Spider is still active or finished.</p>
 
 <h3 id="view-results">View Results</h3>
 
-<p>Similar to the Traditional Spider, Ajax spider&rsquo;s <a href="#aspider_results_api">results</a> API can be used to view the resources 
-which are crawled by the Ajax Spider.</p>
+<p>Similar to the Traditional Spider, Ajax Spider&rsquo;s <a href="#aspider_results_api">results</a> API can be used to view the resources 
+which are crawled by the Ajax Spider. The following image shows a sample response given by the API.</p>
+
+<p><img alt="ajax_spider_results" src="images/ajax_spider_results.png" /></p>
 
 <h3 id="stop-the-ajax-spider">Stop the Ajax Spider</h3>
 
-<p>Ajax spider does not have an indication on how much resources are left to crawl. Therefor if the Ajax spider takes too much time
-than expected, then it can be stopped the <a href="#aspider_stop_api">stop</a> API.</p>
+<p>Ajax spider does not have an indication on how much resources are left to be crawled. Therefor if the Ajax spider takes too much time
+than expected, then it can be stopped by using the <a href="#aspider_stop_api">stop</a> API.</p>
 
-<p>The <a href="#spider_advanced">advanced section on Ajax Spider</a> contains more examples on how to tweak/improve the results of the 
+<p>View the <a href="#spider_advanced">advanced section on Ajax Spider</a> section to learn more about how to further fine-tune or improve the results of the 
 Ajax Spider.</p>
+
+<aside class="success">
+Welldone! Now ZAP has crawled the application using the Spider and the Ajax Spider. Move on to the attacking section to learn how 
+to find vulnerabiltities using the indentitfied resources.
+</aside>
 
           <h1 id="attacking-the-app"><a name="examples"></a>Attacking The App</h1>
 
@@ -502,14 +505,18 @@ Do not use ZAP on unauthorized pages. Please be aware that you should only attac
 specifically been given permission to test.
 </aside>
 
-<h2 id="perform-passive-scan"><a name="passive_scan"></a>Perform Passive Scan</h2>
+<h2 id="using-passive-scan"><a name="passive_scan"></a>Using Passive Scan</h2>
+<pre class="highlight java"><code>
+</code></pre>
+<pre class="highlight python"><code>
+</code></pre>
 <pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
 </code></pre>
 
 <p>All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
 to manually start the passive scan process, ZAP by default passively scans all HTTP messages (requests and responses) sent 
-to the web application being tested. The alerts for the passive scan can be obtained via issuing the following commands on the right. </p>
+to the web application being tested. </p>
 
 <p>Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
@@ -517,23 +524,36 @@ vulnerabilities like XSS which require malicious requests to be sent - that&rsqu
 
 <h3 id="view-the-status">View the status</h3>
 
-<p>As the records are passively scanned it will take additional time to complete the full scan. The <a href="#pscan_records_to_scan">recordsToScan</a> 
-API will return the number of records left to be scanned. After the scanning has completed the alerts can be obtained 
-via the alerts endpoint.</p>
+<p>As the records are passively scanned it will take additional time to complete the full scan. After the crawling is completed 
+use the <a href="#pscan_records_to_scan">recordsToScan</a> API to obtain the number of records left to be scanned. After the scanning 
+has completed the alerts can be obtained via the alerts endpoint.</p>
 
 <p>View the <a href="#pscan_advanced">advanced section</a> to know how to configure additional parameters of Passive Scan.</p>
 
-<h2 id="perform-active-scan"><a name="active_scan"></a>Perform Active Scan</h2>
+<h2 id="using-active-scan"><a name="active_scan"></a>Using Active Scan</h2>
 
 <p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
-is an attack on those targets. You should NOT use it on web applications that you do not own. </p>
+is an attack on those targets. You should <strong>NOT</strong> use it on web applications that you do not own. </p>
 
 <h3 id="start-active-scanner">Start Active Scanner</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
+<pre class="highlight java"><code>
+</code></pre>
+<pre class="highlight python"><code>
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># To view the the active scan</span>
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?url=https%3A%2F%2Fpublic-firing-range.appspot.com&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=1"</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
+
+<span class="c"># To view the alerts of passive scan</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?scanId=1"</span>
 </code></pre>
 
-<p>The <code class="prettyprint">scan</code> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
+<p>The <a href="#ascan_scan_api">scan</a> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
 under the given URL, the parameter <code class="prettyprint">inScopeOnly</code> can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
 The parameter <code class="prettyprint">scanPolicyName</code> allows to specify the scan policy (if none is given it uses the default scan policy). 
 The parameters <code class="prettyprint">method</code> and <code class="prettyprint">postData</code> allow to select a given request in conjunction with the given URL. </p>
@@ -542,23 +562,14 @@ The parameters <code class="prettyprint">method</code> and <code class="prettypr
 scan policy with ZAP APIs.</p>
 
 <h3 id="view-status">View Status</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=1"</span>
-</code></pre>
 
 <p>The status API provides the percentage of attack done for the active scanner. The scan ID returned via starting the spider should be used to query the results. </p>
 
 <h3 id="view-results">View Results</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?zapapiformat=JSON&amp;apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=&amp;count="</span>
-</code></pre>
 
 <p>Similar to the passive scan results the active scan results can be viewed using the alerts endpoint </p>
 
 <h3 id="stop-active-scanning">Stop Active Scanning</h3>
-<pre class="highlight shell"><code><span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?scanId=1"</span>
-</code></pre>
 
 <p>Use the stop API to stop a long running active scan. Optionally you can use the stopAllScans endpoints or pause endpoints to
 stop and pause the active scanning.</p>

@@ -151,7 +151,13 @@ specifically been given permission to test.
 Getting help
 ------------
 
-All available APIs are documented in the [API Catalogue](#api_catalogue). If you have come across any issue with ZAP, 
+All available APIs are documented in the [API Catalogue](#api_catalogue). If you are new to ZAP, then it's highly 
+recommended that you experiment with the desktop UI before trying out the APIs. Because ZAP's APIs strongly resembles 
+the desktop UI. Therefore by working with the UI, you will get a good understanding on how to orchestrate ZAP's APIs.
+Also, use the export config functionality from the desktop UI to export complex configurations such as contexts, scan policies, etc.
+Then use the exported configurations when creating the automation scripts.
+
+ If you have come across any issue with ZAP, 
 please feel free to raise a question in the [developer forum](https://groups.google.com/d/forum/zaproxy-develop) or 
 [Stack Overflow](https://stackoverflow.com/questions/tagged/zap). Also, use the [ZAP's Github repository]((https://github.com/zaproxy/zaproxy/issues)) 
 to raise a bug report or to make any feature requests.
