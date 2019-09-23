@@ -207,7 +207,8 @@ via starting the spider should be used to query the status of the scanner.
 
 ### View Results
 
-Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint. Alerts which are  
+Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint. The alerts endpoint
+will show the consolidated results of Passive and Active Scan.
 
 ### Stop Active Scanning
 
