@@ -96,7 +96,7 @@ use ZAP as a proxy, access to the API.
 
 ### <a name="client_sdk"></a>Client SDKs
 
-ZAP provides official clients for Python, Java, and Node JS. Visit the following link to download the [official SDKs](https://github.com/zaproxy/zaproxy/wiki/ApiDetails) 
+ZAP provides official clients for Python, Java, and Node JS. Visit the following link to download the [official SDKs](https://github.com/zaproxy/zaproxy/wiki/ApiDetails). 
 
 Quick Setup Guide
 ---------------
@@ -127,7 +127,7 @@ $ <ZAP_HOME>./zap.sh
 <ZAP_HOME>./zap.sh
 ```
 
-To install ZAP, go to the ZAP [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and download the installer specific to the 
+To install ZAP, go to the ZAP's [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and download the installer specific to the 
 operating system. After extracting the bundle you can start zap by issuing the following command shown in the right column.
 
 The API key must be specified on all API `actions` and some `other` operations. The API key is used to prevent malicious 
