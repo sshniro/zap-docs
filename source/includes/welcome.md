@@ -86,7 +86,7 @@ browsing the [API Catalogue](#api_catalogue).
 The REST API can be accessed directly or via one of the [client implementations](#client_sdk) detailed below. If you are 
 running the ZAP desktop interface then, a simple web UI is also available which allows to explore and use the APIs. 
 This web UI is available via the URL ([http://zap/](http://zap/)) when you are proxying via ZAP, or via the host and port ZAP 
-is listening on, eg [http://localhost:8080/](http://localhost:8080/). 
+is listening on, e.g. [http://localhost:8080/](http://localhost:8080/). 
 
 ![zap_api_ui](../images/zap_api_ui.png)
 
