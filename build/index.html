@@ -476,10 +476,12 @@ Welldone! Now ZAP has crawled the application using the Spider and the Ajax Spid
 to find vulnerabilities using the identified resources.
 </aside>
 
-          <h1 id="attacking-the-app"><a name="examples"></a>Attacking The App</h1>
+          <h1 id="attacking-the-app"><a name="attack"></a>Attacking The App</h1>
 
-<p>Before you start attacking the application its recommended to explore the application. If you haven&rsquo;t done that look at the
-<a href="#explore">explore</a> section on how to perform it. The scanning of the App can be classified in to passive scan and active scan.</p>
+<p>The web application should be explored before starting to scan for security vulnerabilities. 
+If you haven&rsquo;t done that look at the <a href="#explore">explore</a> section on how to explore the web application. 
+The following section provides examples on how to use the Passive and Active Scanner to find security vulnerabilities in 
+the application.</p>
 
 <aside class="warning">
 Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
@@ -489,31 +491,29 @@ specifically been given permission to test.
 <h2 id="using-passive-scan"><a name="passive_scan"></a>Using Passive Scan</h2>
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassiveScan</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="c1">// Change this if you have set the apikey in ZAP via Options / API</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
         <span class="kt">int</span> <span class="n">numberOfRecords</span><span class="o">;</span>
+
         <span class="k">try</span> <span class="o">{</span>
-            <span class="c1">// Poll the records to scan endpoint until it gets zero</span>
+            <span class="c1">// TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
+            <span class="c1">// Loop until the ajax spider has finished or the timeout has exceeded</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
                 <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">();</span>
-                <span class="n">numberOfRecords</span> <span class="o">=</span>
-                        <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span>
-                                <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">()).</span><span class="na">getValue</span><span class="o">());</span>
+                <span class="n">numberOfRecords</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">()).</span><span class="na">getValue</span><span class="o">());</span>
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Number of records left for scanning : "</span> <span class="o">+</span> <span class="n">numberOfRecords</span><span class="o">);</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">numberOfRecords</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Passive Scan complete"</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Passive Scan completed"</span><span class="o">);</span>
 
+            <span class="c1">// Print Passive scan results/alerts</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
 
@@ -535,11 +535,13 @@ specifically been given permission to test.
 
 <span class="c"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
 <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c"># Loop until the ajax spider has finished or the timeout has exceeded</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Passive Scan completed'</span><span class="p">)</span>
-<span class="c"># Report the results</span>
+
+<span class="c"># Print Passive scan results/alerts</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">())</span>
@@ -548,7 +550,7 @@ specifically been given permission to test.
 <span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/pscan/view/recordsToScan/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=0&amp;count=10"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
 </code></pre>
 
 <p>All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
@@ -576,21 +578,23 @@ is an attack on those targets. You should <strong>NOT</strong> use it on web app
 <pre class="highlight java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
         <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
 
         <span class="k">try</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active scan : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
+            <span class="c1">// TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scanning target : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
             <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">ascan</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="s">"True"</span><span class="o">,</span> <span class="s">"False"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
             <span class="n">String</span> <span class="n">scanid</span><span class="o">;</span>
             <span class="kt">int</span> <span class="n">progress</span><span class="o">;</span>
+
             <span class="c1">// The scan now returns a scan id to support concurrent scanning</span>
             <span class="n">scanid</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
-
             <span class="c1">// Poll the status until it completes</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
@@ -602,8 +606,9 @@ is an attack on those targets. You should <strong>NOT</strong> use it on web app
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan complete"</span><span class="o">);</span>
 
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan complete"</span><span class="o">);</span>
+            <span class="c1">// Print vulnerabilities found by the scanning</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
 
@@ -632,44 +637,45 @@ is an attack on those targets. You should <strong>NOT</strong> use it on web app
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Active Scan completed'</span><span class="p">)</span>
-<span class="c"># Report the results</span>
+<span class="c"># Print vulnerabilities found by the scanning</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="n">target</span><span class="p">))</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># To start the the active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?url=&lt;URL&gt;&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;TARGET_URL&gt;&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
 
 <span class="c"># To view the the status of active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?scanId=&lt;scanID&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 
 <span class="c"># To view the alerts of active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=http://localhost:3000&amp;start=0&amp;count=10"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
 
 <span class="c"># To stop the active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;scan_ID&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 </code></pre>
 
-<p>The <a href="#ascan_scan_api">scan</a> endpoint runs the active scanner against the given URL and/or Context. Optionally, the <code class="prettyprint">recurse</code> parameter can be used to scan URLs 
-under the given URL, the parameter <code class="prettyprint">inScopeOnly</code> can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
-The parameter <code class="prettyprint">scanPolicyName</code> allows to specify the scan policy (if none is given it uses the default scan policy). 
-The parameters <code class="prettyprint">method</code> and <code class="prettyprint">postData</code> allow to select a given request in conjunction with the given URL. </p>
+<p>The <a href="#ascan_scan_api">scan</a> endpoint runs the active scanner against the given URL and/or Context. Optionally, the &lsquo;recurse&rsquo; parameter can be used to scan URLs 
+under the given URL, the parameter &#39;inScopeOnly&rsquo; can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
+The parameter &#39;scanPolicyName&rsquo; allows to specify the scan policy (if none is given it uses the default scan policy). 
+The parameters &#39;method` and &#39;postData&rsquo; allow to select a given request in conjunction with the given URL. </p>
 
 <p>View advanced settings to configure how to configure the <a href="#context_advanced">context</a>, <a href="#scope_advanced">scope</a>, and 
 scan policy with ZAP APIs.</p>
 
 <h3 id="view-status">View Status</h3>
 
-<p>The status API provides the percentage of attack done for the active scanner. The scan ID returned via starting the spider should be used to query the results. </p>
+<p>The <a href="#ascan_status_api">status</a> API provides the percentage of scanning done by the active scanner. The scan ID returned 
+via starting the spider should be used to query the status of the scanner. </p>
 
 <h3 id="view-results">View Results</h3>
 
-<p>Similar to the passive scan results the active scan results can be viewed using the alerts endpoint </p>
+<p>Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint. Alerts which are  </p>
 
 <h3 id="stop-active-scanning">Stop Active Scanning</h3>
 
-<p>Use the stop API to stop a long running active scan. Optionally you can use the stopAllScans endpoints or pause endpoints to
-stop and pause the active scanning.</p>
+<p>Use the <a href="#ascan_stop_api">stop</a> API to stop a long running active scan. Optionally you can use the <a href="#ascan_stop_all_scans_api">stopAllScans</a> 
+endpoints or <a href="#ascan_pause_api">pause</a> endpoint to stop and pause the active scanning.</p>
 
 <p>It should be noted that active scanning can only find certain types of vulnerabilities. Logical vulnerabilities, such as 
 broken access control, will not be found by any active or automated vulnerability scanning. Manual penetration testing should 
