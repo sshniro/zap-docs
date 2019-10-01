@@ -171,5 +171,3 @@ Put \``backticks`\` around the following symbols when used in text:
 Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.
 
 
-// TODO link the slate documentation
-
