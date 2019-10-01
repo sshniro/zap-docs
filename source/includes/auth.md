@@ -1,6 +1,5 @@
-<a name="examples"></a>Authentication
-=========================================
+#Auth
 
-The following are high-level examples on how to use the ZAP APIs to perform specific actions.
+Content in progress!
 
 

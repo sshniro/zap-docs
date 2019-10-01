@@ -1,5 +1,5 @@
-<a name="results"></a>Getting The Results
-=========================================
+#Getting The Results
+
 
 After Scanning (active/passive) completes, ZAP shows the result summary in the form of different categories of alerts. Basically, alerts 
 are potential vulnerabilities and have been categorized as high priority, medium priority, low priority, and informational 

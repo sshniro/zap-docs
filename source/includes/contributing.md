@@ -1,5 +1,4 @@
-<a name="contribution"></a>Contributions Welcome!
-=========================================
+#Contributions Welcome!
 
 Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.
 
@@ -38,7 +37,6 @@ For extensive changes, please use the local setup and editing option.
 You can fork the repository in Github and submit the changes via [pull requests](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork). 
 Please see the local setup for API docs section to setup and render the docs locally.
 
-
 <aside class="notice">
 The API documentation (this document) is built from the master branch of ZapDocs using Slate.
 </aside>
@@ -69,10 +67,13 @@ This style guide provides a set of editorial guidelines for anyone writing docum
 * Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
 check option or plugin.
 
-* Use a friendly and conversational tone. Use simple, to the point sentences without complicated jargon. Compound sentences, 
-chains of clauses, and location-specific idioms can make text hard to understand and translate.
+* Use a friendly and conversational tone. Always use simple sentences. If the sentence is lengthy try to break it in to small sentences. 
+Also avoid sentences with complicated words or jargon.
 
-* If a sentence can be split in two, it probably should. Avoid semicolons. Use bullet lists when appropriate.
+* Write positively and avoid using negative sentences.
+
+  - Recommended: If you are not familiar Spider, then read this documentation
+  - Not Recommended: Read this documentation to get familiarized with the Spider
 
 * The documentation should be neutral, without judgments, opinions. For example, words like "easily" or "simple" come with 
 a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
@@ -117,8 +118,8 @@ when contributing to the document.
 
     In general, use second person in your docs rather than first person. For example:
     
-    - Recommended: We recommend to use the Spider. <br>
-    - Not recommended: You are recommended to use the Spider.
+    - Recommended: You are recommended to use the Spider.<br>
+    - Not Recommended: We recommend to use the Spider. 
 
 * Spellings
 
@@ -129,13 +130,15 @@ when contributing to the document.
 
 * Capitalization:
 
+    * Use the Chicago manual for capitalization rules for the documentation.
+    
     * For titles of a section, Capitalize of the first letter of each word except for the [closed-class words](http://babelnet.sbg.ac.at/themepark/grammar/classes.htm) 
-      such as determiners, pronouns, conjunctions, and prepositions
+      such as determiners, pronouns, conjunctions, and prepositions. Use the following [link](https://capitalizemytitle.com/#Chicago) for guidance.
       - Recommended: The Spider Tutorial **with** APIs
       
     * For normal sentences dont [capitalize](https://www.grammarly.com/blog/capitalization-rules/) random words in the middle of the sentences.
     
-* Number formatting    
+* Number formatting   
     * In general spell out the number if it starts a sentence or is less than ten or an ordinal number. 
       - Recommended: Seventeen requests has been intercepted by the passive scanner. 
       - Recommended: The passive scan showed nine warnings.    
@@ -147,7 +150,7 @@ when contributing to the document.
 
 ### Punctuation
     
-*  In Progress
+*  Use oxford commas
     
 ## Markdown Syntax
 
@@ -166,4 +169,7 @@ Put \``backticks`\` around the following symbols when used in text:
 **Code block**                                              
 
 Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.
+
+
+// TODO link the slate documentation
 

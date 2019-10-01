@@ -1,22 +1,23 @@
-<a name="examples"></a>Exploring The App
-=========================================
+#Exploring The App
 
-Its recommended to explore the web application before performing any scan or attack. The more you explore your App the more 
-accurate the results will be. If the application is not explored very well then it will impact or reduce the vulnerabilities ZAP can find.
+In order to expose content and functionality for Zap to test the target the web application should be explored before performing 
+any scan or attack. The more you explore your App the more accurate the results will be. If the application is not explored 
+very well then it will impact or reduce the vulnerabilities ZAP can find.
+
 The following are some of the options to explore the site by using ZAP. You can use multiple approaches in a combination to
-get a wide coverage of the application.
+get more complete coverage of the application.
 
 * **Traditional Spider (Crawler):** Use this approach to crawl the HTML resources (hyperlinks etc) in the web application
 
 * **Ajax Spider:** Use this feature if the web application heavily relies with Ajax calls.
 
-* **Proxy Regression / Unit tests** This is the recommended approach for security regression testing. Use this approach 
+* **Proxy Regression / Unit Tests** This is the recommended approach for security regression testing. Use this approach 
 to explore the application, if you already have a test suite or unit tests in place. 
 
-* **Open API/SOAP Definition**: Use this approach if you have a well defined Open API definition.
+* **Open API/SOAP Definition**: Use this approach if you have a well defined Open API definition. The Open API plugin can be downloaded
+via the marketplace.
 
-Using Spider
--------------------
+##Using Spider
 
 ```java
 public class Spider {
@@ -71,7 +72,7 @@ from zapv2 import ZAPv2
 # The URL of the web application to be tested
 target = 'https://public-firing-range.appspot.com'
 # Change to match the API key set in ZAP, or use None if the API key is disabled
-apiKey = '"changeMe"'
+apiKey = 'changeMe'
 
 # By default ZAP API client will connect to port 8080
 zap = ZAPv2(apikey=apiKey)
@@ -120,7 +121,7 @@ it identifies all the hyperlinks in the page and adds them to the list of URLs t
 recursively as long as new resources are found. Each response type is processed differently in ZAP. All the available 
 endpoints for the spider can be found in [spider](#spider_api) section.
 
-### Start the spider
+### Start the Spider
 
 The Spiders explore the site and they don't actually do any scanning. The [scan](#spider_scan_api) API runs the spider against the given URL. 
 Optionally, the 'maxChildren' parameter can be set to limit the number of children scanned and the 'recurse' parameter can 
@@ -152,8 +153,7 @@ and [pause](#spider_pause_api) APIs. Additional APIs are available in the API Ca
 
 The [advanced section on Spider](#spider_advanced) contains more examples on how to tweak/improve the Spider results.
 
-Using Ajax Spider
--------------------
+##Using Ajax Spider
 
 ```java
 public class AjaxSpider {
@@ -280,6 +280,6 @@ View the [advanced section on Ajax Spider](#spider_advanced) section to learn mo
 Ajax Spider.
 
 <aside class="success">
-Welldone! Now ZAP has crawled the application using the Spider and the Ajax Spider. Move on to the attacking section to learn how 
+Well done! Now ZAP has crawled the application using the Spider and the Ajax Spider. Move on to the attacking section to learn how 
 to find vulnerabilities using the identified resources.
 </aside>

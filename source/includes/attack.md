@@ -1,5 +1,4 @@
-<a name="attack"></a>Attacking The App
-=========================================
+#Attacking The App
 
 The web application should be explored before starting to scan for security vulnerabilities. 
 If you haven't done that look at the [explore](#explore) section on how to explore the web application. 
@@ -7,12 +6,12 @@ The following section provides examples on how to use the Passive and Active Sca
 the application.
 
 <aside class="warning">
-Do not use ZAP on unauthorized pages. Please be aware that you should only attack applications that you have been 
-specifically been given permission to test.
+In many jurisdictions it is illegal to "test" web sites/applications without permission. Please be aware that you should 
+only use ZAP with targets that you have been specifically given permission to test.
 </aside>
 
-<a name="passive_scan"></a>Using Passive Scan
--------------------
+##Using Passive Scan
+
 
 ```java
 public class PassiveScan {
@@ -91,16 +90,15 @@ Passive scanning does not change the requests nor the responses in any way and i
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
 vulnerabilities like XSS which require malicious requests to be sent - that's the job of the [active scanner](#active_scan).
 
-### View the status
+### View the Status
 
 As the records are passively scanned it will take additional time to complete the full scan. After the crawling is completed 
 use the [recordsToScan](#pscan_records_to_scan) API to obtain the number of records left to be scanned. After the scanning 
-has completed the alerts can be obtained via the alerts endpoint.
+has completed the alerts can be obtained via the alerts endpoint(s).
 
 View the [advanced section](#pscan_advanced) to know how to configure additional parameters of Passive Scan.
 
-<a name="active_scan"></a>Using Active Scan
--------------------
+##Using Active Scan
 
 Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
 is an attack on those targets. You should **NOT** use it on web applications that you do not own. 
@@ -195,19 +193,20 @@ $ curl "http://localhost:8080/JSON/ascan/action/stop/?apikey=<ZAP_API_KEY>&scanI
 The [scan](#ascan_scan_api) endpoint runs the active scanner against the given URL and/or Context. Optionally, the 'recurse' parameter can be used to scan URLs 
 under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
 The parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy). 
-The parameters 'method` and 'postData' allow to select a given request in conjunction with the given URL. 
+The parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL. 
 
-View advanced settings to configure how to configure the [context](#context_advanced), [scope](#scope_advanced), and 
+View advanced settings to learn, how to configure the [context](#context_advanced), [scope](#scope_advanced), and 
 scan policy with ZAP APIs.
 
 ### View Status
 
 The [status](#ascan_status_api) API provides the percentage of scanning done by the active scanner. The scan ID returned 
-via starting the spider should be used to query the status of the scanner. 
+via starting the Active Scan should be used to query the status of the scanner. 
 
 ### View Results
 
-Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint. Alerts which are  
+Similar to the passive scan results, the active scan results can be viewed using the same alerts endpoint(s). 
+The alerts endpoint(s) will show the consolidated results of Passive and Active Scan.
 
 ### Stop Active Scanning
 

@@ -1,9 +1,8 @@
 @charset "utf-8";
 @import 'normalize';
-@import 'compass';
 @import 'variables';
-@import 'syntax';
 @import 'icon-font';
+// @import 'rtl'; // uncomment to switch to RTL format
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -50,12 +49,12 @@ html, body {
 
 @mixin embossed-bg {
   background:
-    linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
-    linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 8px),
-    $nav-subitem-bg2;
+    linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 5px),
+    linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 5px)
 }
 
-.tocify-wrapper {
+
+.toc-wrapper {
   transition: left 0.3s ease-in-out;
 
   overflow-y: auto;
@@ -80,8 +79,10 @@ html, body {
   }
 
   // This is the logo at the top of the ToC
-  &>img {
+  .logo {
     display: block;
+    max-width: 100%;
+    margin-bottom: $logo-margin;
   }
 
   &>.search {
@@ -89,14 +90,14 @@ html, body {
 
     input {
       background: $nav-bg;
-      border-width: 0 0 2px 0;
+      border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - 30;
+      width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text3;
+      color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -109,10 +110,6 @@ html, body {
     }
   }
 
-  img+.tocify {
-    margin-top: $logo-margin;
-  }
-
   .search-results {
     margin-top: 0;
     box-sizing: border-box;
@@ -122,13 +119,14 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
+    background: $nav-subitem-bg;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
     }
-
-    @include embossed-bg;
-
+    background:
+      linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 5px),
+      linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 5px);
     li {
       margin: 1em $nav-padding;
       line-height: 1;
@@ -145,14 +143,6 @@ html, body {
   }
 
 
-  .tocify-item>a, .toc-footer li {
-    padding: 0 $nav-padding 0 $nav-padding;
-    display: block;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
   // styling of an unordered list because it is ugly.
@@ -164,35 +154,37 @@ html, body {
   }
 
   li {
-    color: $nav-text2;
+    color: $nav-text;
     transition-property: background;
     transition-timing-function: linear;
-    transition-duration: 230ms;
+    transition-duration: 200ms;
   }
 
   // This is the currently selected ToC entry
-  .tocify-focus {
-    border-left: solid 6px $nav-active-shadow;
+  .toc-link.active {
     background-color: $nav-active-bg;
-    color: $nav-text3;
+    color: $nav-active-text;
+    border-left: solid 5px $nav-active-text;
   }
 
-  // Subheaders are the submenus that slide open
-  // in the table of contents.
-  .tocify-subheader {
-    display: none; // tocify will override this when needed
-    background-color: $nav-subitem-bg;
-    font-weight: 400;
-    .tocify-item>a {
-      padding-left: $nav-padding + $nav-indent;
-      font-size: 12px;
-    }
+  // this is parent links of the currently selected ToC entry
+  .toc-link.active-parent {
+    background-color: $nav-active-parent-bg;
+    color: $nav-active-parent-text;
+  }
 
-    // for embossed look:
-    @include embossed-bg;
-    &>li:last-child {
-      box-shadow: none; // otherwise it'll overflow out of the subheader
-    }
+  .toc-list-h2 {
+    display: none;
+    background-color: $nav-subitem-bg;
+    font-weight: 500;
+    background:
+      linear-gradient(to top, rgba(#000, 0.3), rgba(#000, 0) 5px),
+      linear-gradient(to bottom, rgba(#000, 0.3), rgba(#000, 0) 5px)
+  }
+
+  .toc-h2 {
+    padding-left: $nav-padding + $nav-indent;
+    font-size: 12px;
   }
 
   .toc-footer {
@@ -215,7 +207,19 @@ html, body {
       text-decoration: none;
     }
   }
+}
 
+.toc-link, .toc-footer li {
+  padding: 0 $nav-padding 0 $nav-padding;
+  display: block;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: $nav-text;
+  transition-property: background;
+  transition-timing-function: linear;
+  transition-duration: 130ms;
 }
 
 // button to show navigation on mobile devices
@@ -323,6 +327,8 @@ html, body {
 // This is all the stuff with the light background in the left half of the page
 
 .content {
+  // fixes webkit rendering bug for some: see #538
+  -webkit-transform: translateZ(0);
   // to place content above the dark box
   position: relative;
   z-index: 30;
@@ -353,13 +359,13 @@ html, body {
 
   h1 {
     @extend %header-font;
-    color: $nav-text2;
-    font-size: 35px;
+    font-size: 36px;
     font-weight: normal;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    border-top: 1px solid #ddd;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.1), transparent 6px),linear-gradient(to top, rgba(0,0,0,0), transparent 8px),#ffffff;
+    border-top: 1px solid #ccc;
+    background-color: #fdfdfd;
+    //border-bottom: 1px solid #ccc;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -369,8 +375,7 @@ html, body {
 
   h2 {
     @extend %header-font;
-    color: $nav-text2;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: normal;
     margin-bottom: 0;
     padding-top: 1.2em;
@@ -386,12 +391,12 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    color: $nav-text2;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 17px;
     margin-top: 1.5em;
     margin-bottom: 0.8em;
   }
+
 
   h4, h5, h6 {
     font-size: 15px;
@@ -410,6 +415,9 @@ html, body {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
+      code {
+        white-space: nowrap;
+      }
     }
 
     th {
@@ -470,8 +478,6 @@ html, body {
     padding-bottom: 1em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    border-right: solid 25px #fff;
-    border-left: solid 25px #fff;
     background: $aside-notice-bg;
     line-height: 1.6;
 
@@ -504,7 +510,7 @@ html, body {
 
   .search-highlight {
     padding: 2px;
-    margin: -2px;
+    margin: -3px;
     border-radius: 4px;
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
@@ -521,7 +527,6 @@ html, body {
     background-color: $code-bg;
     color: #fff;
 
-    padding: 2em $main-padding;
     margin: 0;
     width: $examples-width;
 
@@ -529,7 +534,6 @@ html, body {
     clear:right;
 
     box-sizing: border-box;
-    @include text-shadow(0px 1px 2px rgba(0,0,0,0.4));
 
     @extend %right-col;
 
@@ -544,16 +548,16 @@ html, body {
 
   pre {
     @extend %code-font;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding: 2em $main-padding;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      padding: $code-annotation-padding 2em;
+      color: #eee;
     }
   }
 }
@@ -565,7 +569,7 @@ html, body {
 // There are also a couple styles disperesed
 
 @media (max-width: $tablet-width) {
-  .tocify-wrapper {
+  .toc-wrapper {
     left: -$nav-width;
 
     &.open {
@@ -581,7 +585,7 @@ html, body {
     display: block;
   }
 
-  .tocify-wrapper .tocify-item > a {
+  .toc-link {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
   }
@@ -596,7 +600,7 @@ html, body {
     margin-right: 0;
   }
 
-  .tocify-wrapper .lang-selector {
+  .toc-wrapper .lang-selector {
     display: block;
   }
 
@@ -614,17 +618,10 @@ html, body {
   }
 }
 
-.content {
-  .center-column + pre {
-    position: static;
-    float: none;
-    clear: none;
-    margin: 0 28px;
-    left: 0;
-    width: 55% !important;
-  }
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #909090;
 }
 
-li > ul {
-  padding-bottom: 0.5em;
+.highlight, .highlight .w {
+  background-color: $code-bg;
 }

@@ -13,8 +13,8 @@ headingLevel: 2
 
 ---
 
-<a name="api_catalogue"></a>API Catalogue
-=========================================
+#API Catalogue
+
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 

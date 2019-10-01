@@ -1,10 +1,10 @@
 ---
-title: ZAP API Docs
+title: API Reference
 
-language_tabs:
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
   - python
   - java
-  - shell
 
 toc_footers:
   - <a href='https://www.zaproxy.org/'>zap org</a>
@@ -23,3 +23,5 @@ includes:
 
 search: true
 ---
+
+
