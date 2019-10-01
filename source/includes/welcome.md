@@ -1,4 +1,4 @@
-#Getting Started
+#Introduction
 
 ##Overview
 
@@ -9,11 +9,13 @@ This allows the developers to automate pentesting and security regression testin
 
 
 This document provides example guides & API definitions for ZAP APIs. You can view code examples in the dark area to 
-the right; switch the programming language of the examples with the tabs on the top right. If anything is missing or seems 
-incorrect, please check the [GitHub issues](https://github.com/zaproxy/zaproxy/issues) for existing known issues or create a new issue
-in the Github repository.
+the right; switch the programming language of the examples with the tabs on the top right. 
+If anything is missing or seems incorrect, please check the [FAQs](https://github.com/zaproxy/zaproxy/wiki/FAQtoplevel) or the
+[GitHub issues](https://github.com/zaproxy/zaproxy/issues) for existing known issues.
+Also, if you are new to ZAP, then check out the [getting started guide](https://github.com/zaproxy/zaproxy/releases/download/2.4.0/ZAPGettingStartedGuide-2.4.pdf) 
+to learn the basic concepts behind ZAP. 
 
-Following are some of the features provided by ZAP:
+The following are some of the features provided by ZAP:
 
 * Intercepting Proxy
 * Active and Passive Scanners
@@ -26,9 +28,9 @@ Have a look at the examples below to learn how to use each of these features via
 
 ##Documentation Structure
 
-The API documentation is divided in to eight main parts. Following shows the summary of each main section.
+The API documentation is divided in to eight main parts.
 
-* [**Getting Started**](#getting-started) section contains introductory information of ZAP and installation guide to set up ZAP for testing.
+* [**Introduction**](#getting-started) section contains introductory information of ZAP and installation guide to set up ZAP for testing.
 * [**Exploring The Apps**](#exploring-the-app) section contains examples on how to explore the web application.
 * [**Attacking The Apps**](#attacking-the-app) section contains examples on how to scan or attack a web application.
 * [**Getting The Results**](#getting-the-results) section contains examples on how to retrieve alerts and generate Reports from ZAP.
@@ -72,7 +74,7 @@ The following shows the API URL format of ZAP:
 
 `http://zap/<format>/<component>/<operation>/<operation name>[/?<parameters>]`
 
-The format can be either `JSON`, `XML` or `HTML`. The operation can be either `view` or `action`. The `view` operation is used to return
+The format can be either `JSON`, `XML` or `HTML`. The operation can be either `view` or `action` or `other`. The `view` operation is used to return
 information and the `action` is used to control the ZAP. For example, view can be used to generated reports or retrive results and 
 action can be used to start or stop the Spider. The components, operation names and parameters can all be discovered by 
 browsing the [API Catalogue](#api_catalogue).
@@ -147,7 +149,7 @@ only use ZAP with targets that you have been specifically given permission to te
 ##Getting Help
 
 All available APIs are documented in the [API Catalogue](#api_catalogue). If you are new to ZAP, then it's highly 
-recommended that you experiment with the desktop UI before trying out the APIs. Because ZAP's APIs strongly resembles 
+recommended that you experiment with the desktop UI before trying out the APIs. Because ZAP's APIs strongly resemble 
 the desktop UI. Therefore by working with the UI, you will get a good understanding on how to orchestrate ZAP's APIs.
 Also, use the export config functionality from the desktop UI to export complex configurations such as contexts, scan policies, etc.
 Then use the exported configurations when creating the automation scripts.

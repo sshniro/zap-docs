@@ -145,7 +145,7 @@ response provided by the results API, enlisitng all the resources crawled by Spi
 
 ![spider results](../images/spider_results.png)
 
-### Stop or Pause The Spider
+### Stop or Pause the Spider
 
 If the scanning takes too much time than expected you can stop or pause the scanning via using the [stop](#spider_stop_api) 
 and [pause](#spider_pause_api) APIs. Additional APIs are available in the API Catalogue to pause or resume or to 
