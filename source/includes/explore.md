@@ -1,4 +1,4 @@
-#Exploring The App
+#Exploring the App
 
 In order to expose content and functionality for Zap to test the target the web application should be explored before performing 
 any scan or attack. The more you explore your App the more accurate the results will be. If the application is not explored 

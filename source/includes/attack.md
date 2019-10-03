@@ -1,4 +1,4 @@
-#Attacking The App
+#Attacking the App
 
 The web application should be explored before starting to scan for security vulnerabilities. 
 If you haven't done that look at the [explore](#explore) section on how to explore the web application. 
