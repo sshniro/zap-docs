@@ -1,7 +1,7 @@
 #Attacking the App
 
 The web application should be explored before starting to scan for security vulnerabilities. 
-If you haven't done that look at the [explore](#explore) section on how to explore the web application. 
+If you haven't done that look at the [explore](#exploring-the-app) section on how to explore the web application. 
 The following section provides examples on how to use the Passive and Active Scanner to find security vulnerabilities in 
 the application.
 

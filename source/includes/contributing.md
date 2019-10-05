@@ -150,7 +150,14 @@ when contributing to the document.
 
 ### Punctuation
     
-*  Use oxford commas
+*  Commas
+  *Use oxford commas when writing a list of three or more items
+      - Recommended: The API can return the results in XML, JSON, and HTML.
+      - Not Recommended: The API can return the results in XML, JSON and HTML. <br>
+
+*  Periods
+  * Do not add period to headings or titles.  
+  * Avoid using periods at the end of URLs. Try to modify the sentence so the URL can be in the middle of the sentence.
     
 ## Markdown Syntax
 
