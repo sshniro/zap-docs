@@ -6,9 +6,14 @@ The following are high-level examples on how to use the ZAP APIs to perform spec
 
 Content in progress!
 
+
+![spider_advanced](../images/spider_advanced.png)
+
 ##Ajax Spider
 
 Content in progress!
+
+![ajax_spider_advanced](../images/ajax_spider_advanced.png)
 
 ##Passive Scan
 

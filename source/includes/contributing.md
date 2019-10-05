@@ -154,10 +154,12 @@ when contributing to the document.
     
 ## Markdown Syntax
 
-The API docs are created using the markdown files. This section explains the primary differences between standard Markdown rules 
-and the Markdown rules that ZAP documentation uses.
+The API docs are created using standard markdown files.  
+for Markdown syntax. This section contains information regarding the syntax and linting of the Markdown files.
+Also refer the [Slate documentation](https://github.com/slatedocs/slate/wiki/Markdown-Syntax). Refer this 
+[document](https://github.com/markdownlint/markdownlint/edit/master/docs/RULES.md) to properly lint the Markdown files.
 
-#### Writing code
+### Writing code
 
 **Inline Code**
 
@@ -168,7 +170,7 @@ Put \``backticks`\` around the following symbols when used in text:
 
 **Code block**                                              
 
-Use three back ticks to open and close a code block. Specify the programming language after the first backtick group.
+Use three back ticks to open and close a code block. Specify the programming language after the first backtick group. 
+The documentation currently supports `python`, `java`, and `shell` languages.
 
-// Check for Travis deploy
-
+![code_example](../images/code_example.png)
