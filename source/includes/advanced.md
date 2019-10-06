@@ -24,7 +24,6 @@ The following images shows the advanced configurations tab of Spider in the desk
 
 Similar to the Spider API, Ajax spider also provides APIs to set the [maximum depth](#), [crawl state](#), and [maximum duration](#).
 
-<!-- Event wait time, Reload wait time ? -->
 
 ##Passive Scan
 
@@ -35,14 +34,6 @@ Passive scanning can also be used for automatically adding tags and raising aler
 automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags Screen.
 
 ##Active Scan
-
-Content in progress!
-
-##Context
-
-Content in progress!
-
-##Scope
 
 Content in progress!
 

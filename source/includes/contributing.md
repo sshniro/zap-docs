@@ -67,13 +67,13 @@ This style guide provides a set of editorial guidelines for anyone writing docum
 * Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
 check option or plugin.
 
-* Use a friendly and conversational tone. Always use simple sentences. If the sentence is lengthy try to break it in to small sentences. 
+* Use a friendly and conversational tone. Always use simple sentences. If the sentence is lengthy try to break it in to smaller sentences. 
 Also avoid sentences with complicated words or jargon.
 
 * Write positively and avoid using negative sentences.
 
-  - Recommended: If you are not familiar Spider, then read this documentation
-  - Not Recommended: Read this documentation to get familiarized with the Spider
+  - Recommended: If you are not familiar with the Spider, then read this documentation.
+  - Not Recommended: Read this documentation to get familiarized with the Spider.
 
 * The documentation should be neutral, without judgments, opinions. For example, words like "easily" or "simple" come with 
 a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
@@ -93,8 +93,8 @@ when contributing to the document.
     the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it's less important 
     who or what completed the action and more important that the action was completed. For example:
     
-    - Recommended: The Spider crawls the URLs.<br>
-    - Not recommended: The URLs are crawled by the Spider.
+    - Recommended: The Spider crawls the URLs.
+    - Not recommended: The URLs are crawled by the Spider.<br>
 
 * Gender References
 
@@ -111,15 +111,15 @@ when contributing to the document.
     When you're writing reference documentation for a method, phrase the main method description in terms of what it does 
     ("Gets," "Starts," "Creates," "Lists"), rather than what the developer would use it to do ("Get," "Start," "Create," "List").
     
-    - Recommended: action.scan: Starts the Spider on the specified URL. <br>
-    - Not recommended: action.scan: Start the Spider on the specified URL.
+    - Recommended: action.scan: Starts the Spider on the specified URL. 
+    - Not recommended: action.scan: Start the Spider on the specified URL.<br>
 
 * Second Person
 
     In general, use second person in your docs rather than first person. For example:
     
-    - Recommended: You are recommended to use the Spider.<br>
-    - Not Recommended: We recommend to use the Spider. 
+    - Recommended: You are recommended to use the Spider.
+    - Not Recommended: We recommend to use the Spider. <br>
 
 * Spellings
 
@@ -161,9 +161,8 @@ when contributing to the document.
     
 ## Markdown Syntax
 
-The API docs are created using standard markdown files.  
-for Markdown syntax. This section contains information regarding the syntax and linting of the Markdown files.
-Also refer the [Slate documentation](https://github.com/slatedocs/slate/wiki/Markdown-Syntax). Refer this 
+The API docs are created using standard markdown files. This section contains information regarding the syntax and linting of the Markdown files.
+Refer the [Slate documentation](https://github.com/slatedocs/slate/wiki/Markdown-Syntax). Also Refer this 
 [document](https://github.com/markdownlint/markdownlint/edit/master/docs/RULES.md) to properly lint the Markdown files.
 
 ### Writing code
