@@ -110,14 +110,14 @@ After the scanning (Active/Passive) completes, ZAP provides the security vulnera
 are categorized into high-priority, medium-priority, low-priority and informational priority risks. The priority indicates the degree of risk associated with each alert. 
 For example, a high priority risk means that the issues listed in that category has more threat or risk potential than a medium-priority alert.
  
-The [alerts](#) endpoint provides all the alerts which are identified by ZAP. View the sample code on the right to retrieve the 
+The [alerts](#alertviewalerts) endpoint provides all the alerts which are identified by ZAP. View the sample code on the right to retrieve the 
 alerts from the alerts endpoint. The results can be used to raise security alerts in the CI/CD pipeline or to trigger any custom workflows. 
-The [alerts summary](#) gets the number of alerts grouped by each risk level and optionally filtering by URL.
+The [alerts summary](#alertviewalertssummary) gets the number of alerts grouped by each risk level and optionally filtering by URL.
 
 ![alert_sample](../images/alerts_results.png)
 
-A Summary report can be also generated using the core module. The report can be generated via the [htmlreport](#) or [jsonreport](#)
-or [xmlreport](#) endpoint. The following image shows the report generated via the HTML report API.
+A Summary report can be also generated using the core module. The report can be generated via the [htmlreport](#coreotherhtmlreport) 
+or [jsonreport](#coreotherjsonreport) or [xmlreport](#coreotherxmlreport) endpoint. The following image shows the report generated via the HTML report API.
 The report categories the alerts to risk level and provides a brief description about each alert. 
 
 ![html report](../images/report_html.png)
