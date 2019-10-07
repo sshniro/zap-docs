@@ -88,15 +88,15 @@ to the web application being tested.
 
 Passive scanning does not change the requests nor the responses in any way and is therefore safe to use.
 This is good for finding problems like missing security headers or missing anti CSRF tokens but is no good for finding 
-vulnerabilities like XSS which require malicious requests to be sent - that's the job of the [active scanner](#active_scan).
+vulnerabilities like XSS which require malicious requests to be sent - that's the job of the [active scanner](#using-active-scan).
 
 ### View the Status
 
 As the records are passively scanned it will take additional time to complete the full scan. After the crawling is completed 
-use the [recordsToScan](#pscan_records_to_scan) API to obtain the number of records left to be scanned. After the scanning 
+use the [recordsToScan](#pscanviewrecordstoscan) API to obtain the number of records left to be scanned. After the scanning 
 has completed the alerts can be obtained via the alerts endpoint(s).
 
-View the [advanced section](#pscan_advanced) to know how to configure additional parameters of Passive Scan.
+View the [advanced section](#passive-scan) to know how to configure additional parameters of Passive Scan.
 
 ##Using Active Scan
 

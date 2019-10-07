@@ -4,7 +4,7 @@
 
 Welcome to ZAP API Documentation! The [OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (**ZAP**) 
 is one of the world's most popular free security tools which lets you automatically find security vulnerabilities in your 
-web applications. ZAP also has an extremely powerful API that allows you to do nearly everything that possible via the desktop interface.
+web applications. ZAP also has an extremely powerful API that allows you to do nearly everything that is possible via the desktop interface.
 This allows the developers to automate pentesting and security regression testing of the application in the CI/CD pipeline. 
 
 
@@ -144,7 +144,7 @@ The example guide uses [Google's Firing Range](https://github.com/google/firing-
 The Spidering and Attacking examples use the [public instance](https://public-firing-range.appspot.com) of the 
 firing range, and OWASP Juice Shop is used to showcase the Authentication examples of ZAP. 
 
-Following is a [list](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps) 
+The following is a [list](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project#tab=On-Line_apps) 
 of publicly available vulnerable applications that you can also use in conjunction with ZAP.
 
 <aside class="warning">
