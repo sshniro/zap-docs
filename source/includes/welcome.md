@@ -104,24 +104,30 @@ specific [example](#exploring-the-app) to experiment with specific features.
 ###Install  ZAP
 
 ``` shell
-# Option: 1, using "headless/daemon" mode
+# For Linux/, Option: 1, using "headless/daemon" mode
 $ <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
-# Option: 2, using normal/ Desktop interface mode
-$ <ZAP_HOME>./zap.sh
+# For Linux, Option: 2, using normal/ Desktop interface mode
+$ <ZAP_HOME>./zap.sh 
+
+# For Windows, Run the exe file or zap.bat script to start the ZAP
 ```
 
 ``` java
-// Option: 1, using "headless/daemon" mode
+// For Linux, Option: 1, using "headless/daemon" mode
 <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
-// Option: 2, using normal/ Desktop interface mode
+// For Linux, Option: 2, using normal/ Desktop interface mode
 <ZAP_HOME>./zap.sh
+
+# For Windows, Run the exe file or zap.bat script to start the ZAP
 ```
 
 ``` python
-# Option: 1, using "headless/daemon" mode
+# For Linux, Option: 1, using "headless/daemon" mode
 <ZAP_HOME>./zap.sh -daemon -config api.key=change-me-9203935709
-# Option: 2, using normal/ Desktop interface mode
+# For Linux, Option: 2, using normal/ Desktop interface mode
 <ZAP_HOME>./zap.sh
+
+# For Windows, Run the exe file or zap.bat script to start the ZAP
 ```
 
 To install ZAP, go to the ZAP's [home page](https://github.com/zaproxy/zaproxy/wiki/Downloads) and download the installer specific to the 
