@@ -36,5 +36,17 @@ automatic tagging are provided by default. These can be changed, deleted or adde
 
 ##Active Scan
 
-Content in progress!
+### Input Vectors
+
+![input_vectors](../images/ascan_advanced_input_vectors.png)
+
+
+### Technology 
+
+![technology](../images/ascan_advanced_tech.png)
+
+### Policy
+
+![policy](../images/ascan_advanced_policy.png)
+
 

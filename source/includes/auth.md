@@ -29,19 +29,20 @@ Issue the following command to start the docker container: `docker run -d -p 300
 
 
 After the setting up the application a user should be created in the Juice Shop to proceed with the ZAP configurations.
-A new user can be created by clicking the login button in the web application and clicking the register new user option.
+A new user can be created by clicking the login button in the web application and clicking the `Not yet a customer?` option.
 
 ## Configure ZAP
 
-Its recommended to configure the authentication via the desktop UI before attempting via the APIs. Refer the 
-[following link](https://github.com/zaproxy/zaproxy/wiki/FAQformauth) to learn how to perform form based authentication
-via the desktop. Refer the following steps below to configure the application via the APIs
+Its recommended to configure the authentication via the desktop UI before attempting the APIs. Refer the 
+[following link](https://github.com/zaproxy/zaproxy/wiki/FAQformauth) to learn to configure form based authentication
+via the desktop. The following sections below provides a step by step guide on how to configure authentication for Juice Shop
+application.
 
 ### Step 1: Include in Context
 
-Inorder to proceed with Auth the URL of the webapplication should be added to the context. As the Juice Shop is avaiable
-via [http://localhost:3000](http://localhost:3000) use the [includeInContext](#contextactionincludeincontext) to add the
-URL to the context. If you are using the desktop UI then export the context configis and import them via the 
+Inorder to proceed with Authenticaion the URL of the webapplication should be added to the context. As the Juice Shop is available
+via [http://localhost:3000](http://localhost:3000) use the [includeInContext](#contextactionincludeincontext) API to add the
+URL to the context. If you are using the desktop UI then export the context configs and import them via the 
 [importContext](#contextactionimportcontext) API.
 
 ### Step 2:  Set Authentication Method
