@@ -1,4 +1,4 @@
-#Advanced Settings
+#Advanced Settings  (Content In Progress)
 
 The following section shows some advanced configurations for ZAP's features. The examples below shows the advanced configurations
 available via the desktop interface and the relevant endpoints required to perform the same via ZAP APIs.
@@ -38,17 +38,18 @@ the advanced section to learn how to configure a context or scope using ZAP APIs
 Passive scanning can also be used for automatically add tags and raise alerts for potential issues. A set of rules for 
 automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags Screen.
 
-View the [Passive Scan section](#spider) in the API Catalogue for other additional APIs.
+View the [Passive Scan](#spider) section in the API Catalogue for additional information regarding the APIs.
 
 ##Active Scan
 
 
 ###General Options
 
+The general options for Active Scan can be configured using the options tab in the desktop UI shown below.
+
 ![options](../images/ascan_advanced_options.png)
 
-The general options for Active Scan can be configured using the options tab in the desktop UI. Use the [setOptionMaxScanDurationInMins](#)
-to limit the duration of scan and [setOptionMaxRuleDurationInMins](#) API to limit the time of individual active scan rules.
+Use the [setOptionMaxScanDurationInMins](#) to limit the duration of scan and [setOptionMaxRuleDurationInMins](#) API to limit the time of individual active scan rules.
 This can be used to prevent rules that are taking an excessive amount of time.
 
 The [setOptionHostPerScan](#) API to set the maximum number of hosts that will be scanned at the same time. 
@@ -58,7 +59,7 @@ will reduce the active scanning time but this may put extra strain on the server
 Use the [setOptionDelayInMs](#) to delay each request from ZAP in milliseconds. Setting this to a non zero value will increase 
 the time an active scan takes, but will put less of a strain on the target host.
 
-View the [ascan](#) modules to learn about the rest of the configuration parameters for Active Scan.
+View the [Active Scan](#spider) section in the API Catalogue for additional information regarding the APIs.
 
 ### Input Vectors
 
