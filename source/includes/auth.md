@@ -9,6 +9,140 @@ for modern web-application can be quite complex. ZAP supports multiple ways for 
 
 ## Form Based Authentication
 
+
+```java
+public class AuthenticationApiExample {
+
+	private static final String ZAP_ADDRESS = "localhost";
+	private static final int ZAP_PORT = 8090;
+	private static final String ZAP_API_KEY = null;
+
+	private static void listAuthInformation(ClientApi clientApi) throws ClientApiException {
+		// Check out which authentication methods are supported by the API
+		List<String> supportedMethodNames = new LinkedList<>();
+		ApiResponseList authMethodsList = (ApiResponseList) clientApi.authentication.getSupportedAuthenticationMethods();
+		for (ApiResponse authMethod : authMethodsList.getItems()) {
+			supportedMethodNames.add(((ApiResponseElement) authMethod).getValue());
+		}
+		System.out.println("Supported authentication methods: " + supportedMethodNames);
+
+		// Check out which are the config parameters of the authentication methods
+		for (String methodName : supportedMethodNames) {
+
+			ApiResponseList configParamsList = (ApiResponseList) clientApi.authentication
+					.getAuthenticationMethodConfigParams(methodName);
+
+			for (ApiResponse r : configParamsList.getItems()) {
+				ApiResponseSet set = (ApiResponseSet) r;
+				System.out.println("'" + methodName + "' config param: " + set.getAttribute("name") + " ("
+						+ (set.getAttribute("mandatory").equals("true") ? "mandatory" : "optional") + ")");
+			}
+		}
+	}
+
+	private static void listUserConfigInformation(ClientApi clientApi) throws ClientApiException {
+		// Check out which are the config parameters required to set up an user with the currently
+		// set authentication methods
+		String contextId = "1";
+		ApiResponseList configParamsList = (ApiResponseList) clientApi.users
+				.getAuthenticationCredentialsConfigParams(contextId);
+
+		StringBuilder sb = new StringBuilder("Users' config params: ");
+		for (ApiResponse r : configParamsList.getItems()) {
+			ApiResponseSet set = (ApiResponseSet) r;
+			sb.append(set.getAttribute("name")).append(" (");
+			sb.append((set.getAttribute("mandatory").equals("true") ? "mandatory" : "optional"));
+			sb.append("), ");
+		}
+		System.out.println(sb.deleteCharAt(sb.length() - 2).toString());
+	}
+
+	private static void setLoggedInIndicator(ClientApi clientApi) throws UnsupportedEncodingException, ClientApiException {
+		// Prepare values to set, with the logged in indicator as a regex matching the logout link
+		String loggedInIndicator = "<a href=\"logout.jsp\"></a>";
+		String contextId = "1";
+
+		// Actually set the logged in indicator
+		clientApi.authentication.setLoggedInIndicator(ZAP_API_KEY, contextId, java.util.regex.Pattern.quote(loggedInIndicator));
+
+		// Check out the logged in indicator that is set
+		System.out.println("Configured logged in indicator regex: "
+				+ ((ApiResponseElement) clientApi.authentication.getLoggedInIndicator(contextId)).getValue());
+	}
+
+	private static void setFormBasedAuthenticationForBodgeit(ClientApi clientApi) throws ClientApiException,
+			UnsupportedEncodingException {
+		// Setup the authentication method
+		String contextId = "1";
+		String loginUrl = "http://localhost:8080/bodgeit/login.jsp";
+		String loginRequestData = "username={%username%}&password={%password%}";
+
+		// Prepare the configuration in a format similar to how URL parameters are formed. This
+		// means that any value we add for the configuration values has to be URL encoded.
+		StringBuilder formBasedConfig = new StringBuilder();
+		formBasedConfig.append("loginUrl=").append(URLEncoder.encode(loginUrl, "UTF-8"));
+		formBasedConfig.append("&loginRequestData=").append(URLEncoder.encode(loginRequestData, "UTF-8"));
+
+		System.out.println("Setting form based authentication configuration as: "
+				+ formBasedConfig.toString());
+		clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "formBasedAuthentication",
+				formBasedConfig.toString());
+
+		// Check if everything is set up ok
+		System.out
+				.println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
+	}
+
+	private static void setUserAuthConfigForBodgeit(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
+		// Prepare info
+		String contextId = "1";
+		String user = "Test User";
+		String username = "test@example.com";
+		String password = "weakPassword";
+
+		// Make sure we have at least one user
+		String userId = extractUserId(clientApi.users.newUser(ZAP_API_KEY, contextId, user));
+
+		// Prepare the configuration in a format similar to how URL parameters are formed. This
+		// means that any value we add for the configuration values has to be URL encoded.
+		StringBuilder userAuthConfig = new StringBuilder();
+		userAuthConfig.append("username=").append(URLEncoder.encode(username, "UTF-8"));
+		userAuthConfig.append("&password=").append(URLEncoder.encode(password, "UTF-8"));
+
+		System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
+		clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
+
+		// Check if everything is set up ok
+		System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
+	}
+
+	private static String extractUserId(ApiResponse response) {
+		return ((ApiResponseElement) response).getValue();
+	}
+
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws ClientApiException
+	 * @throws UnsupportedEncodingException
+	 */
+	public static void main(String[] args) throws ClientApiException, UnsupportedEncodingException {
+		ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT);
+
+		listAuthInformation(clientApi);
+		System.out.println("-------------");
+		setFormBasedAuthenticationForBodgeit(clientApi);
+		System.out.println("-------------");
+		setLoggedInIndicator(clientApi);
+		System.out.println("-------------");
+		listUserConfigInformation(clientApi);
+		System.out.println("-------------");
+		setUserAuthConfigForBodgeit(clientApi);
+	}
+}
+```
+
 Its recommended to configure the authentication via the desktop UI before attempting the APIs. Refer the 
 [following link](https://github.com/zaproxy/zaproxy/wiki/FAQformauth) to learn to configure form based authentication
 via the desktop. The following sections below provides a step by step guide on how to configure authentication for Juice Shop
@@ -23,7 +157,7 @@ Refer the [following link](#https://github.com/ethicalhack3r/DVWA) on how to set
 
 ### Step 1: Include in Context
 
-Inorder to proceed with authentication the URL of the webapplication should be added to the context. As the Juice Shop is available
+Inorder to proceed with authentication the URL of the webapplication should be added to the context. As the DVWA is available
 via [http://localhost:3000](http://localhost:3000) use the [includeInContext](#contextactionincludeincontext) API to add the
 URL to the context. If you are using the desktop UI then export the context configs and import them via the 
 [importContext](#contextactionimportcontext) API.
@@ -33,7 +167,7 @@ URL to the context. If you are using the desktop UI then export the context conf
 Use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
 the configuration parameters. The setAuthenticationMethod takes contextId, authMethodName, and authMethodConfigParams as
 
-As Juice Shop uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
+As DVWA uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
 which was generated in the Step 1 as the contextId parameter. 
 
 The authMethodConfigParams required the loginUrl and loginRequestData. Inorder to obtain these values observe the network 
