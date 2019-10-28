@@ -177,24 +177,27 @@ password: testpass
 
 ### Login
 
-After the registration browse to the following URL and login to the application: [http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)
+After registering the user browse to the following URL and login to the application: [http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)
 When you login the request will be added to the History in ZAP. Search for the POST that included the login information, 
-you should find a POST request to http://localhost:3000/rest/user/login. Right click (or control click) that request in the 
-history and in the context menu that prompted click, Right click (or control click) Flag as Context > Default Context : 
+you should find a POST request to http://localhost:8090/bodgeit/login.jsp. Right click (or control click) that request in the 
+history and in the context menu that prompted click, Right click (or control click) Flag as Context -> Default Context : 
 Form based Login Request. The will bring up the Context Authentication editor settings. You will notice the post data 
 with the authentication information as well as a couple parameters for selecting Username & Password. Go ahead and set 
 the username and password parameters to the corresponding JSON attributes.
 
-Now we need to inform ZAP whether the application is logged in or out. For that lets view the login response and select a
-response that is only available in when the user is logged in.
+Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout url 
+`<a href="logout.jsp">Logout</a>` as the successful response. You can view this by navigating to the response tab of the login request.
+Highlight the text and right click  and select Flag as Context -> Default Context, Loggedin Indicator. This will autofill
+the regex needed for the regex indicator.
 
+Following image shows the completed setpup for the authentication tab of the context menu.
+![auth](../images/auth_bodgeit_form_settings.png)
 
 Now lets add the user credentials to be authenticated via going to the `context -> users -> Add` section. After this enable 
 the forced used to mode in the UI to forcefully authenticate the user before performing any activities in ZAP such as Spider or Active Scan.
 
-
-
-After configuring the authentication tab go to the Spider and select the context to perform the authentication.
+After configuring the authentication tab go to the Spider and select the context to perform the authentication. After this
+you should see the Spider crawling all the protected 
 
 ### Steps to Reproduce via API
 
