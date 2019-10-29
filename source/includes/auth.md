@@ -1,166 +1,192 @@
-#Getting Authenticated
+# Getting Authenticated
 
-The application has a portion of functionality that is available only to logged in users. To fully test out your application, 
-you need to also test out the logic as a logged in user. Some applications have features exposed without authentication, 
-so it's very important to understand how to perform authenticated scans. ZAP has several means to authenticate to your 
+The target application for testing might have portion of the functionality which is only available for a logged in user.
+In order to get a full test coverage of the application you need to test the application with a logged user as well.
+Therefore it's very important to understand how to perform authenticated scans with ZAP. ZAP has several means to authenticate to your 
 application and keep track of authentication state.
 
-- Form based authentication.
-- Script based authentication
-- JSON based authentication
+- Form-based authentication.
+- Script-based authentication
+- JSON-based authentication
 
-In general you should configure which authentication method to use. For example for form and json based authentication you 
+In general, you should configure which authentication method to use. For example, for form and JSON based authentication, you 
 need to provide the login URL and the authentication payload (username & password). ZAP additionally needs hints to identify whether the application 
-is authenticated or not. To check authentication is working correctly ZAP supports logged in/out regexes. These are regex 
+is authenticated or not. To check authentication is working correctly, ZAP supports logged in/out regexes. These are regex 
 patterns that you should configure to match strings in the responses which indicate if the user is logged in or logged out.
 
-In general, apart from these configuration you should also set the users (user name, password), and session management 
-when configuring the authentication setup. Currently ZAP supports cookied based session management and HTTP authentication 
-based session management.
+Apart from the above configurations you should also set the users (user name, password), and session management 
+when configuring the authentication for your application. Currently, ZAP supports cookie based session management and 
+HTTP authentication based session management.
 
-The examples below shows three authentication workflows. A simple form based authentication is showcased with the bodgeit application.
-The second example shows the script based authentication using the DVWP. The third example shows a more complicated authentication
-workflow using the JSON and Script based authentication using the OWASP Juice Shop. 
+The examples below show three authentication workflows. A simple form-based authentication is showcased with the use Bodgeit application.
+The second example shows the script-based authentication using the Damn Vulnerable Web Application(DVWA). The third example shows a more complicated authentication
+workflow using the JSON and script-based authentication using the OWASP Juice Shop. 
+
+<aside class="info">
+It's recommended to configure the authentication using the desktop UI before automating it using the ZAP APIs. The examples
+belows shows how to perfom authentication with desktop and provides automation scripts on how to perform the similar using 
+ZAP APIs.
+</aside>
 
 ## Form Based Authentication
 
 ```java
-public class AuthenticationApiExample {
+public class FormAuth {
 
-	private static final String ZAP_ADDRESS = "localhost";
-	private static final int ZAP_PORT = 8090;
-	private static final String ZAP_API_KEY = null;
+    private static final String ZAP_ADDRESS = "localhost";
+    private static final int ZAP_PORT = 8090;
+    private static final String ZAP_API_KEY = null;
+    private static final String contextId = "1";
 
-	private static void listAuthInformation(ClientApi clientApi) throws ClientApiException {
-		// Check out which authentication methods are supported by the API
-		List<String> supportedMethodNames = new LinkedList<>();
-		ApiResponseList authMethodsList = (ApiResponseList) clientApi.authentication.getSupportedAuthenticationMethods();
-		for (ApiResponse authMethod : authMethodsList.getItems()) {
-			supportedMethodNames.add(((ApiResponseElement) authMethod).getValue());
-		}
-		System.out.println("Supported authentication methods: " + supportedMethodNames);
 
-		// Check out which are the config parameters of the authentication methods
-		for (String methodName : supportedMethodNames) {
+    private static void setLoggedInIndicator(ClientApi clientApi) throws UnsupportedEncodingException, ClientApiException {
+        // Prepare values to set, with the logged in indicator as a regex matching the logout link
+        String loggedInIndicator = "<a href=\"logout.jsp\"></a>";
 
-			ApiResponseList configParamsList = (ApiResponseList) clientApi.authentication
-					.getAuthenticationMethodConfigParams(methodName);
+        // Actually set the logged in indicator
+        clientApi.authentication.setLoggedInIndicator(ZAP_API_KEY, contextId, java.util.regex.Pattern.quote(loggedInIndicator));
 
-			for (ApiResponse r : configParamsList.getItems()) {
-				ApiResponseSet set = (ApiResponseSet) r;
-				System.out.println("'" + methodName + "' config param: " + set.getAttribute("name") + " ("
-						+ (set.getAttribute("mandatory").equals("true") ? "mandatory" : "optional") + ")");
-			}
-		}
-	}
+        // Check out the logged in indicator that is set
+        System.out.println("Configured logged in indicator regex: "
+                + ((ApiResponseElement) clientApi.authentication.getLoggedInIndicator(contextId)).getValue());
+    }
 
-	private static void listUserConfigInformation(ClientApi clientApi) throws ClientApiException {
-		// Check out which are the config parameters required to set up an user with the currently
-		// set authentication methods
-		String contextId = "1";
-		ApiResponseList configParamsList = (ApiResponseList) clientApi.users
-				.getAuthenticationCredentialsConfigParams(contextId);
+    private static void setFormBasedAuthenticationForBodgeit(ClientApi clientApi) throws ClientApiException,
+            UnsupportedEncodingException {
+        // Setup the authentication method
+        
+        String loginUrl = "http://localhost:8080/bodgeit/login.jsp";
+        String loginRequestData = "username={%username%}&password={%password%}";
 
-		StringBuilder sb = new StringBuilder("Users' config params: ");
-		for (ApiResponse r : configParamsList.getItems()) {
-			ApiResponseSet set = (ApiResponseSet) r;
-			sb.append(set.getAttribute("name")).append(" (");
-			sb.append((set.getAttribute("mandatory").equals("true") ? "mandatory" : "optional"));
-			sb.append("), ");
-		}
-		System.out.println(sb.deleteCharAt(sb.length() - 2).toString());
-	}
+        // Prepare the configuration in a format similar to how URL parameters are formed. This
+        // means that any value we add for the configuration values has to be URL encoded.
+        StringBuilder formBasedConfig = new StringBuilder();
+        formBasedConfig.append("loginUrl=").append(URLEncoder.encode(loginUrl, "UTF-8"));
+        formBasedConfig.append("&loginRequestData=").append(URLEncoder.encode(loginRequestData, "UTF-8"));
 
-	private static void setLoggedInIndicator(ClientApi clientApi) throws UnsupportedEncodingException, ClientApiException {
-		// Prepare values to set, with the logged in indicator as a regex matching the logout link
-		String loggedInIndicator = "<a href=\"logout.jsp\"></a>";
-		String contextId = "1";
+        System.out.println("Setting form based authentication configuration as: "
+                + formBasedConfig.toString());
+        clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "formBasedAuthentication",
+                formBasedConfig.toString());
 
-		// Actually set the logged in indicator
-		clientApi.authentication.setLoggedInIndicator(ZAP_API_KEY, contextId, java.util.regex.Pattern.quote(loggedInIndicator));
+        // Check if everything is set up ok
+        System.out
+                .println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
+    }
 
-		// Check out the logged in indicator that is set
-		System.out.println("Configured logged in indicator regex: "
-				+ ((ApiResponseElement) clientApi.authentication.getLoggedInIndicator(contextId)).getValue());
-	}
+    private static void setUserAuthConfigForBodgeit(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
+        // Prepare info
+        String user = "Test User";
+        String username = "test@example.com";
+        String password = "weakPassword";
 
-	private static void setFormBasedAuthenticationForBodgeit(ClientApi clientApi) throws ClientApiException,
-			UnsupportedEncodingException {
-		// Setup the authentication method
-		String contextId = "1";
-		String loginUrl = "http://localhost:8080/bodgeit/login.jsp";
-		String loginRequestData = "username={%username%}&password={%password%}";
+        // Make sure we have at least one user
+        String userId = extractUserId(clientApi.users.newUser(ZAP_API_KEY, contextId, user));
 
-		// Prepare the configuration in a format similar to how URL parameters are formed. This
-		// means that any value we add for the configuration values has to be URL encoded.
-		StringBuilder formBasedConfig = new StringBuilder();
-		formBasedConfig.append("loginUrl=").append(URLEncoder.encode(loginUrl, "UTF-8"));
-		formBasedConfig.append("&loginRequestData=").append(URLEncoder.encode(loginRequestData, "UTF-8"));
+        // Prepare the configuration in a format similar to how URL parameters are formed. This
+        // means that any value we add for the configuration values has to be URL encoded.
+        StringBuilder userAuthConfig = new StringBuilder();
+        userAuthConfig.append("username=").append(URLEncoder.encode(username, "UTF-8"));
+        userAuthConfig.append("&password=").append(URLEncoder.encode(password, "UTF-8"));
 
-		System.out.println("Setting form based authentication configuration as: "
-				+ formBasedConfig.toString());
-		clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "formBasedAuthentication",
-				formBasedConfig.toString());
+        System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
+        clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
 
-		// Check if everything is set up ok
-		System.out
-				.println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
-	}
+        // Check if everything is set up ok
+        System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
+    }
 
-	private static void setUserAuthConfigForBodgeit(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
-		// Prepare info
-		String contextId = "1";
-		String user = "Test User";
-		String username = "test@example.com";
-		String password = "weakPassword";
+    private static String extractUserId(ApiResponse response) {
+        return ((ApiResponseElement) response).getValue();
+    }
 
-		// Make sure we have at least one user
-		String userId = extractUserId(clientApi.users.newUser(ZAP_API_KEY, contextId, user));
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws ClientApiException
+     * @throws UnsupportedEncodingException
+     */
+    public static void main(String[] args) throws ClientApiException, UnsupportedEncodingException {
+        ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT);
 
-		// Prepare the configuration in a format similar to how URL parameters are formed. This
-		// means that any value we add for the configuration values has to be URL encoded.
-		StringBuilder userAuthConfig = new StringBuilder();
-		userAuthConfig.append("username=").append(URLEncoder.encode(username, "UTF-8"));
-		userAuthConfig.append("&password=").append(URLEncoder.encode(password, "UTF-8"));
-
-		System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
-		clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
-
-		// Check if everything is set up ok
-		System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
-	}
-
-	private static String extractUserId(ApiResponse response) {
-		return ((ApiResponseElement) response).getValue();
-	}
-
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 * @throws ClientApiException
-	 * @throws UnsupportedEncodingException
-	 */
-	public static void main(String[] args) throws ClientApiException, UnsupportedEncodingException {
-		ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT);
-
-		listAuthInformation(clientApi);
-		System.out.println("-------------");
-		setFormBasedAuthenticationForBodgeit(clientApi);
-		System.out.println("-------------");
-		setLoggedInIndicator(clientApi);
-		System.out.println("-------------");
-		listUserConfigInformation(clientApi);
-		System.out.println("-------------");
-		setUserAuthConfigForBodgeit(clientApi);
-	}
+        setFormBasedAuthenticationForBodgeit(clientApi);
+        System.out.println("-------------");
+        setLoggedInIndicator(clientApi);
+        System.out.println("-------------");
+        setUserAuthConfigForBodgeit(clientApi);
+    }
 }
 ```
 
-The following example performs a simple form based authentication for the bodgeit vulnerable application.
-Its recommended to configure the authentication via the desktop UI before attempting the APIs. Refer the 
-[following link](https://github.com/zaproxy/zaproxy/wiki/FAQformauth) to learn to configure form based authentication
-via the desktop. 
+```python
+#!/usr/bin/env python
+from urllib.parse import urlencode
+from zapv2 import ZAPv2
+
+context_id = 1
+apiKey = 'changeMe'
+
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apiKey)
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+
+def set_logged_in_indicator():
+    logged_in_regex = '<a href=\"logout.jsp\"></a>'
+    zap.authentication.set_logged_in_indicator(context_id, logged_in_regex, apiKey)
+    print('Configured logged in indicator regex: ')
+
+
+def set_form_based_auth():
+    login_url = "http://localhost:8080/bodgeit/login.jsp"
+    login_request_data = "username={%username%}&password={%password%}"
+    form_based_config = 'loginUrl=' + urlencode(login_url) + '&loginRequestData=' + urlencode(login_request_data)
+    zap.authentication.set_authentication_method(context_id, 'formBasedAuthentication', form_based_config, apiKey)
+    print('Configured form based authentication')
+
+
+def set_user_auth_config():
+    user = 'Test User'
+    username = 'test@example.com'
+    password = 'weakPassword'
+
+    user_id = zap.users.new_user(context_id, user, apiKey)
+    user_auth_config = 'username=' + urlencode(username) + '&password=' + urlencode(password)
+    zap.users.set_authentication_credentials(context_id, user_id, user_auth_config, apiKey)
+    
+    
+set_form_based_auth()
+set_logged_in_indicator()
+set_user_auth_config()
+```
+
+```shell
+# To create new context
+curl 'http://localhost:8080/JSON/context/action/newContext/?contextName=bodgeit
+
+# To include in context
+curl 'http://localhost:8080/JSON/context/action/includeInContext/?contextName=bodgeit&regex=http%3A%2F%2Flocalhost%3A8090.*'
+
+# Set login details (URL Endoded)
+curl 'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&authMethodName=formBasedAuthentication&authMethodConfigParams=loginUrl%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fbodgeit%2Flogin.jsp%26loginRequestData%3Dusername%253D%257B%2525username%2525%257D%2526password%253D%257B%2525password%2525%257D'
+
+# To set the login indicator
+curl 'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=4&loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'
+
+# To create a user
+curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=4&name=admin'
+
+# To add the credentials for the user
+curl ''
+
+# To enable forced used mode
+curl ''
+```
+
+The following example performs a simple [form based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) 
+using the Bodgeit vulnerable application. Its recommended to configure the authentication via the desktop UI before attempting the APIs. 
 
 ### Setup Target Application
 
@@ -170,76 +196,63 @@ a docker instance of the bodgeit application: `docker run --rm -p 8090:8080 -i -
 ### Register a User
 
 Register a user in the web application by navigating to the following link: `http://localhost:8090/bodgeit/register.jsp`.
-For the purpose of this tutorial, use the following information.
+For the purpose of this example, use the following information.
 
-username: test@gmail.com
-password: testpass
+* username: test@gmail.com
+* password: weakPass
 
 ### Login
 
-After registering the user browse to the following URL and login to the application: [http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)
-When you login the request will be added to the History in ZAP. Search for the POST that included the login information, 
-you should find a POST request to http://localhost:8090/bodgeit/login.jsp. Right click (or control click) that request in the 
-history and in the context menu that prompted click, Right click (or control click) Flag as Context -> Default Context : 
-Form based Login Request. The will bring up the Context Authentication editor settings. You will notice the post data 
-with the authentication information as well as a couple parameters for selecting Username & Password. Go ahead and set 
-the username and password parameters to the corresponding JSON attributes.
+After registering the user browse (proxied via ZAP) to the following URL and login to the application: 
+[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp) When you login to the application the 
+request will be added to the History in ZAP. Search for the POST request to the following URL: 
+[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp). Right-click on the post request in the 
+prompted menu select `Flag as Context -> Default Context : Form based Login Request` option. This will open the context
+authentication editor. You can notice it has auto selected the form based authentication, auto-filled the login URL and the post data.
+Select the correct JSON attribute as the username and password in the dropdown and click Ok.
 
 Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout url 
 `<a href="logout.jsp">Logout</a>` as the successful response. You can view this by navigating to the response tab of the login request.
-Highlight the text and right click  and select Flag as Context -> Default Context, Loggedin Indicator. This will autofill
-the regex needed for the regex indicator.
+Highlight the text and right click  and select the `Flag as Context -> Default Context, Loggedin Indicator` option. This will autofill
+the regex needed for the login indicator. Following image shows the completed setpup for the authentication tab of the context menu.
 
-Following image shows the completed setpup for the authentication tab of the context menu.
 ![auth](../images/auth_bodgeit_form_settings.png)
 
 Now lets add the user credentials to be authenticated via going to the `context -> users -> Add` section. After this enable 
 the forced used to mode in the UI to forcefully authenticate the user before performing any activities in ZAP such as Spider or Active Scan.
 
 After configuring the authentication tab go to the Spider and select the context to perform the authentication. After this
-you should see the Spider crawling all the protected 
+you should see the Spider crawling all the protected resources.
 
 ### Steps to Reproduce via API
 
 If you have configured the authentication via the desktop UI, then export the context and import it via using the 
-[importContext](#contextactionimportcontext) API.
+[importContext](#contextactionimportcontext) API. The steps belows shows how to create configuration via ZAP APIs. 
 
 #### Step 1: Include in Context
 
 Inorder to proceed with authentication the URL of the webapplication should be added to the context. As the Bodgit is available
 via [http://localhost:8090/bodgeit](http://localhost:8090/bodgeit) use the [includeInContext](#contextactionincludeincontext) API to add the
-URL to the context.
+URL to the default context.
 
 #### Step 2:  Set Authentication Method
 
 Use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
 the configuration parameters. The setAuthenticationMethod takes contextId, authMethodName, and authMethodConfigParams as
-
-As Bodgeit uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
+parameters. As Bodgeit uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
 which was generated in the Step 1 as the contextId parameter. 
 
-The authMethodConfigParams required the loginUrl and loginRequestData. Inorder to obtain these values observe the network 
-tab when login to the webapplication. Juice Shop uses the following URL [http://localhost:3000/rest/user/login](http://localhost:3000/rest/user/login)
-to post a XHR request to the back end. The following image shows the data and the response provided by the Juice Shop
-for a successful login request. 
+The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore you should set the values to authMethodConfigParams in the following format:
 
-Therefore you should set the values to authMethodConfigParams in the following format:
-
-`authMethodConfigParams : loginUrl=http://example.com/login.html&loginRequestData=username%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D`
+`authMethodConfigParams : loginUrl=http://localhost:8090/bodgeit/login.jsp&loginRequestData=username%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D`
 
 The values for authMethodConfigParams parameters must be URL encoded, in this case loginRequestData is username={%username%}&password={%password%}
 
 #### Step 3: Set up login and logout indicators
 
-As per the above image Juice Shops sends the auth token in a JSON format. Therefore for the login indicator a regex to match the successfull response can be 
-used to to hint the ZAP for a sucessful authentication.
+The Following is a regex command to match the successful response with the Bodgeit application.
 
-Following is a regex command to match the successful response for the Juice Shop backend.
-
-`\{"authentication".*\:\{.*\:.*\}\}`
-
-When you login to the Juice Shop a shopping basket will be shown to keep track of your purchases. This feature is not avaiable for
-a non authenticated user. Therefore you can use the following feature to hind the ZAP regardding a logout event.
+`\Q  \E`
 
 #### Setup Forced User Mode
 
@@ -248,7 +261,7 @@ Add the user credentials via the [forceduseractionsetforceduser](#forceduseracti
 
 ## Script Based Authentication
 
-The following example performs a script based authentication for the Damn Vulnerable Web Application.
+The following example performs a script based authentication for the Damn Vulnerable Web Application. 
 
 
 ## JSON Based Authentication
