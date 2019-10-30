@@ -20,7 +20,7 @@ belows shows how to perfom authentication with desktop and provides automation s
 ZAP APIs.
 </aside>
 
-## General Steps for Authentication
+## General Steps
 
 The following are the general steps when configuring the authentication with ZAP.
 
@@ -277,7 +277,7 @@ The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore
 
 `authMethodConfigParams : loginUrl=http://localhost:8090/bodgeit/login.jsp&loginRequestData=username%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D`
 
-The values for authMethodConfigParams parameters must be URL encoded, in this case loginRequestData is username={%username%}&password={%password%}
+The values for authMethodConfigParams parameters must be URL encoded, in this case loginRequestData is `username={%username%}&password={%password%}`.
 
 #### Step 3: Set up login and logout indicators
 
@@ -311,6 +311,9 @@ curl `http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&sc
 
 ```
 
+ZAP has scripting support for most of the popular languges. The following are some of the languge list to create ZAP scripts.
+
+
 The following example performs a script based authentication for the Damn Vulnerable Web Application. Similar to the
 Bodgeit example DVWP also uses the post request authenticate the users. But apart from username and password DVWA sends an 
 additional token to protect against the Cross-Site request forgery attacjs. This token is obtained from the the landing page.
@@ -341,17 +344,17 @@ Now navigate to [http://localhost:3000](http://localhost:3000) and add the URL t
 on the default context and select the script-based authentication as the authentication method. Now load the script from the 
 drop down provided and the following parameter values.
 
-* Login URL: http://localhost:3000/login.php
-* CSRF Field: user_token
-* POST Data: username={%username%}&password={%password%}&Login=Login&user_token={%user_token%}
-* Logged in regex: \Q<a href="logout.php">Logout</a>\E
-* Logged out regex: (?:Location: [./]*login\.php)|(?:\Q<form action="login.php" method="post">\E)
+* Login URL: `http://localhost:3000/login.php`
+* CSRF Field: `user_token`
+* POST Data: `username={%username%}&password={%password%}&Login=Login&user_token={%user_token%}`
+* Logged in regex: `\Q<a href="logout.php">Logout</a>\E`
+* Logged out regex: `(?:Location: [./]*login\.php)|(?:\Q<form action="login.php" method="post">\E)`
 
 Now add the default admin user to the users tab and enable the user.
 
-* User Name: Administrator
-* Username: admin
-* Password: password
+* User Name: `Administrator`
+* Username: `admin`
+* Password: `password`
 
 ![context_auth](../images/auth_dvwa_cotext_auth.png)
 
