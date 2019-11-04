@@ -1,9 +1,9 @@
 # Getting Authenticated
 
 The target application for testing might have portion of the functionality which is only available for a logged in user.
-In order to get a full test coverage of the application you need to test the application with a logged user as well.
+In order to get a full test coverage of the application you need to test the application with a logged in user as well.
 Therefore it's very important to understand how to perform authenticated scans with ZAP. ZAP has several means to authenticate to your 
-application and keep track of authentication state.
+application and keep track of authentication state. The following are some of the options available for authentication with ZAP.
 
 - Form-based authentication
 - Script-based authentication
@@ -214,64 +214,66 @@ curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=4&name=admin'
 curl ''
 
 # To enable forced used mode
-curl ''
+curl 'http://localhost'
 ```
 
-The following example performs a simple [form based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) 
-using the Bodgeit vulnerable application. Its recommended to configure the authentication via the desktop UI before attempting the APIs. 
+The following example performs a simple [form based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) using 
+the Bodgeit vulnerable application. Its recommended to configure the authentication via the desktop UI before attempting the APIs. 
 
 ### Setup Target Application
 
-Bodgeit uses a very simple form based authentication to authenticate the users to the web application. Use the following command to start
-a docker instance of the bodgeit application: `docker run --rm -p 8090:8080 -i -t psiinon/bodgeit` 
+Bodgeit uses a very simple form based authentication to authenticate the users to the application. Use the following command to start
+a docker instance of the Bodgeit application: `docker run --rm -p 8090:8080 -i -t psiinon/bodgeit` 
 
 ### Register a User
 
-Register a user in the web application by navigating to the following link: `http://localhost:8090/bodgeit/register.jsp`.
-For the purpose of this example, use the following information.
+Register a user in the application by navigating to the following URL: [http://localhost:8090/bodgeit/register.jsp](http://localhost:8090/bodgeit/register.jsp).
+For the purpose of this example, use the following credentials.
 
 * username: test@gmail.com
 * password: weakPass
 
 ### Login
 
-After registering the user browse (proxied via ZAP) to the following URL and login to the application: 
-[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp) When you login to the application the 
-request will be added to the History in ZAP. Search for the POST request to the following URL: 
-[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp). Right-click on the post request in the 
-prompted menu select `Flag as Context -> Default Context : Form based Login Request` option. This will open the context
-authentication editor. You can notice it has auto selected the form based authentication, auto-filled the login URL and the post data.
+After registering the user, browse (proxied via ZAP) to the following URL ([http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)) 
+and login to the application. When you login to the application the  request will be added to the `History` tab in ZAP. 
+Search for the POST request to the following URL: 
+[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp). Right-click on the post request, and select 
+`Flag as Context -> Default Context : Form based Login Request` option. This will open the context authentication editor. 
+You can notice it has auto selected the form based authentication, auto-filled the login URL and the post data.
 Select the correct JSON attribute as the username and password in the dropdown and click Ok.
 
 Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout url 
 `<a href="logout.jsp">Logout</a>` as the successful response. You can view this by navigating to the response tab of the login request.
 Highlight the text and right click  and select the `Flag as Context -> Default Context, Loggedin Indicator` option. This will autofill
-the regex needed for the login indicator. Following image shows the completed setpup for the authentication tab of the context menu.
+the regex needed for the login indicator. The following image shows the completed setup for the authentication tab of the context menu.
 
 ![auth](../images/auth_bodgeit_form_settings.png)
 
-Now lets add the user credentials to be authenticated via going to the `context -> users -> Add` section. After this enable 
-the forced used to mode in the UI to forcefully authenticate the user before performing any activities in ZAP such as Spider or Active Scan.
-After configuring the authentication tab go to the Spider and select the context to perform the authentication. After this
-you should see the Spider crawling all the protected resources.
+Now lets add the user credentials by going to the `context -> users -> Add` section. After this enable 
+the ![](https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png) "[Forced User](https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off)"
+to mode in the UI to forcefully authenticate the user prior to the testing of the application. 
+
+Now let's test the authentication by performing an authenticated Spidering with ZAP. To perform this go to the Spider and select the `default` 
+context and the test user to perform the authentication. After this you should see the Spider crawling all the protected resources.
 
 ### Steps to Reproduce via API
 
 If you have configured the authentication via the desktop UI, then export the context and import it via using the 
-[importContext](#contextactionimportcontext) API. Otherwise follow The steps below to configure the authentication configurations for the context. 
+[importContext](#contextactionimportcontext) API. Otherwise follow The steps below to configure the authentication setting for the context. 
 
-#### Step 1: Include in Context
+#### Include in Context
 
-Inorder to proceed with authentication the URL of the webapplication should be added to the context. As the Bodgit is available
+Inorder to proceed with authentication the URL of the application should be added to the context. As the Bodgit is available
 via [http://localhost:8090/bodgeit](http://localhost:8090/bodgeit) use the [includeInContext](#contextactionincludeincontext) API to add the
-URL to the default context.
+URL to a context.
 
-#### Step 2:  Set Authentication Method
+#### Set Authentication Method
 
 Use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
-the configuration parameters. The setAuthenticationMethod takes contextId, authMethodName, and authMethodConfigParams as
+the configuration parameters. The `setAuthenticationMethod` takes `contextId`, `authMethodName`, and `authMethodConfigParams` as
 parameters. As Bodgeit uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
-which was generated in the Step 1 as the contextId parameter. 
+from Step 1 as the `contextId` parameter. 
 
 The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore you should set the values to authMethodConfigParams in the following format:
 
@@ -279,25 +281,78 @@ The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore
 
 The values for authMethodConfigParams parameters must be URL encoded, in this case loginRequestData is `username={%username%}&password={%password%}`.
 
-#### Step 3: Set up login and logout indicators
+#### Set up login and logout indicators
 
-The Following is a regex command to match the successful response with the Bodgeit application.
+Use the [setLoggedOutIndicator](#authenticationactionsetloggedoutindicator) to set the logout indicators of the application.
+The Following is the regex command to match the successful response with the Bodgeit application.
+`\Q<a href=\"logout.jsp\"></a>\E`
 
-`\Q  \E`
+#### Create User and Enable Forced User Mode
 
-#### Setup Forced User Mode
-
-Use the [SetForcedUserModeEnabled](#forceduseractionsetforcedusermodeenabled) to enable the forced user mode in ZAP.
-Add the user credentials via the [forceduseractionsetforceduser](#forceduseractionsetforceduser) API.
+Now add the user credentials via the [setAuthenticationCredentials](#usersactionsetauthenticationcredentials) API and use
+the [SetForcedUserModeEnabled](#forceduseractionsetforcedusermodeenabled) to enable the forced user mode in ZAP.
 
 ## Script Based Authentication
 
 ```python
+#!/usr/bin/env python
+from urllib.parse import urlencode
+from zapv2 import ZAPv2
 
+context_id = 1
+apiKey = 'changeMe'
+
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apiKey)
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+
+def include_in_context():
+    target_url = 'http://localhost:3000/*'
+    zap.context.include_in_context('default', target_url, apiKey)
+
+
+def set_logged_in_indicator():
+    logged_in_regex = '<a href=\"logout.jsp\"></a>'
+    zap.authentication.set_logged_in_indicator(context_id, logged_in_regex, apiKey)
+    print('Configured logged in indicator regex: ')
+
+
+def set_form_based_auth():
+    login_url = "http://localhost:3000/login.jsp"
+    login_request_data = "username={%username%}&password={%password%}"
+    form_based_config = 'loginUrl=' + urlencode(login_url) + '&loginRequestData=' + urlencode(login_request_data)
+    zap.authentication.set_authentication_method(context_id, 'formBasedAuthentication', form_based_config, apiKey)
+    print('Configured form based authentication')
+
+
+def set_user_auth_config():
+    user = 'Administrator'
+    username = 'admin'
+    password = 'password'
+
+    user_id = zap.users.new_user(context_id, user, apiKey)
+    user_auth_config = 'username=' + urlencode(username) + '&password=' + urlencode(password)
+    zap.users.set_authentication_credentials(context_id, user_id, user_auth_config, apiKey)
+
+
+def upload_script():
+    script_name = 'authscript.js'
+    script_type = 'authentication'
+    script_engine = 'Oracle Nashorn'
+    file_name = '/tmp/authscript.js'
+    charset = 'UTF-8'
+    zap.script.load(script_name, script_type, script_engine, file_name, charset=charset, apiKey=apiKey)
+
+
+upload_script()
+set_form_based_auth()
+set_logged_in_indicator()
+set_user_auth_config()
 ```
 
 ```java
-
 
 ```
 
@@ -311,30 +366,37 @@ curl `http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&sc
 
 ```
 
-ZAP has scripting support for most of the popular languges. The following are some of the languge list to create ZAP scripts.
+ZAP has scripting support for most of the popular languages. The following are some of the scripting languages supported by ZAP.
 
+- Java
+- Javascript
+- Python
+
+ZAP has an Add-on Marketplace where you can add support for additional scripting engines. Click the red blue green & blue box stacked 
+icon in ZAP to bring up the marketplace modal. After it pops up, switch to the Marketplace and install the appropriate scripting engine.
 
 The following example performs a script based authentication for the Damn Vulnerable Web Application. Similar to the
-Bodgeit example DVWP also uses the post request authenticate the users. But apart from username and password DVWA sends an 
-additional token to protect against the Cross-Site request forgery attacjs. This token is obtained from the the landing page.
+Bodgeit example DVWP also uses `POST` request to authenticate the users. But apart from username and password DVWA sends an 
+additional token to protect against the Cross-Site request forgery attacks. This token is obtained from the the landing page.
 The following image shows the embedded token in the login page.
 
 ![csrf_token](../images/auth_dvwa_token_html.png)
 
 If the token is not included with the login script as a POST parameter, the request will be rejected. Inorder to send this 
-token lets use the script based authentication technique. The authentication script will parse the HTML content and extract
+token, lets use the script based authentication technique. The authentication script will parse the HTML content and extract
 the token and append it in the POST request.
 
 ### Setup Target Application
 
-Use the following docker command to start the DVWA.
+Use the following docker command to start the DVWA. Inorder to fully complete the setup you need to login ([http://localhost:3000](http://localhost:3000)) 
+to the application and press the configure button. Use the default credentials of the application to login and finish the setup (Username: admin, Password: password). 
 
 `docker run --rm -it -p 3000:80 vulnerables/web-dvwa`
 
 ### Upload the script
 
 Go to the script tab and create a new script under the authentication section. Provide a name to the script and select 
-JavaScript/Nashorn as the engine and replace/set the script contents with the following [script](#script). 
+`JavaScript/Nashorn` as the engine and replace the script contents with the following [script](https://github.com/zaproxy/source/scripts/auth-dvwa.js). 
 
 ![script_tab](../images/auth_dvwa_zap_script.png)
 
@@ -359,17 +421,177 @@ Now add the default admin user to the users tab and enable the user.
 ![context_auth](../images/auth_dvwa_cotext_auth.png)
 
 As the login operation is performed by the script lets add the login URL as out of context. Additionally you should add 
-pages such will disrupt the login process as out of context so Spider will not trigger unwanted log outs. Thus in "Exclude from Context" tab 
+pages which will disrupt the login process to out of context so Spider will not trigger unwanted log outs. Thus in "Exclude from Context" tab 
 add the following regex(s).
 
-* \Qhttp://localhost:3000/login.php\E
-* \Qhttp://localhost:3000/logout.php\E
-* \Qhttp://localhost:3000/setup.php\E
-* \Qhttp://localhost:3000/security.php\E
+* `\Qhttp://localhost:3000/login.php\E`
+* `\Qhttp://localhost:3000/logout.php\E`
+* `\Qhttp://localhost:3000/setup.php\E`
+* `\Qhttp://localhost:3000/security.php\E`
 
 Now enable the forced used mode and start the Spider by selecting the default context and the admin user. After this you should
-see the Spider crawling all the protected resources. The authentication results will be avaiable through the Output panel and
+see the Spider crawling all the protected resources. The authentication results will be available through the Output panel and
 you can also select the login POST request in the history tab to verify the token has been sent to the application.
+
+### Steps to Reproduce via API
+
+Use the scripts endpoint to upload the script file. Thereafter the configurations are very similar to the form based authentication
+with the Bodgeit application. Use the [includeInContext](#contextactionincludeincontext) API to add the URL to the default context
+and use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
+the configuration parameters. Finally use the users API to create the admin user. Refer the script in the right column
+on how to use the above APIs.
+
+## JSON Based Authentication
+
+```python
+
+```
+
+```java
+public class JSONAuth {
+
+    private static final String ZAP_ADDRESS = "localhost";
+    private static final int ZAP_PORT = 8090;
+    private static final String ZAP_API_KEY = null;
+    private static final String contextId = "1";
+
+    private static void setJSONBasedAuthentication(ClientApi clientApi) throws ClientApiException,
+            UnsupportedEncodingException {
+        // Setup the authentication method
+
+        String loginUrl = "http://localhost:3000/rest/user/login";
+        String loginRequestData = "username={%username%}&password={%password%}";
+
+        // Prepare the configuration in a format similar to how URL parameters are formed. This
+        // means that any value we add for the configuration values has to be URL encoded.
+        StringBuilder formBasedConfig = new StringBuilder();
+        formBasedConfig.append("loginUrl=").append(URLEncoder.encode(loginUrl, "UTF-8"));
+        formBasedConfig.append("&loginRequestData=").append(URLEncoder.encode(loginRequestData, "UTF-8"));
+
+        System.out.println("Setting JSON based authentication configuration as: "
+                + formBasedConfig.toString());
+        clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "jsonBasedAuthentication",
+                formBasedConfig.toString());
+
+        // Check if everything is set up ok
+        System.out
+                .println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
+    }
+
+    private static void setUserAuthConfig(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
+        // Prepare info
+        String user = "Test User";
+        String username = "test@example.com";
+        String password = "testtest";
+
+        // Make sure we have at least one user
+        String userId = extractUserId(clientApi.users.newUser(ZAP_API_KEY, contextId, user));
+
+        // Prepare the configuration in a format similar to how URL parameters are formed. This
+        // means that any value we add for the configuration values has to be URL encoded.
+        StringBuilder userAuthConfig = new StringBuilder();
+        userAuthConfig.append("username=").append(URLEncoder.encode(username, "UTF-8"));
+        userAuthConfig.append("&password=").append(URLEncoder.encode(password, "UTF-8"));
+
+        System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
+        clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
+
+        // Check if everything is set up ok
+        System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
+    }
+
+    private static void uploadScript(ClientApi clientApi) throws ClientApiException {
+
+        String script_name = "authscript.js";
+        String script_type = "authentication";
+        String script_engine = "Oracle Nashorn";
+        String file_name = "/tmp/authscript.js";
+        String charset = "UTF-8";
+        clientApi.script.load(script_name, script_type, script_engine, file_name, null, charset);
+    }
+
+    private static String extractUserId(ApiResponse response) {
+        return ((ApiResponseElement) response).getValue();
+    }
+
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws ClientApiException
+     * @throws UnsupportedEncodingException
+     */
+    public static void main(String[] args) throws ClientApiException, UnsupportedEncodingException {
+        ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT);
+
+        uploadScript(clientApi);
+        setJSONBasedAuthentication(clientApi);
+        System.out.println("-------------");
+        setUserAuthConfig(clientApi);
+    }
+}
+```
+
+```shell
+
+```
+
+The following example performs a script based authentication for the OWASP Juice Shop. Juice Shop is a modern application and
+it contrary to the previous examples the protected resources are accessed by sending an authorization header(JSON web token). 
+
+### Setup Target Application
+
+Use the following docker command to start the OWASP Juice Shop.
+
+`docker run -d -p 3000:3000 bkimminich/juice-shop`
+
+### Register User
+
+Register a user in the application by navigating to the following URL: [http://localhost:3000/#/register](http://localhost:3000/#/register). 
+For the purpose of this example, use the following information.
+
+* Email: test@test.com
+* Password: testtest
+* Security Question: Select Your eldest siblings middle name (enter any text)
+
+### Login
+
+After registering the user, browse (proxied via ZAP) to the following URL ([http://localhost:3000/#/login](http://localhost:3000/#/login)) 
+and login to the application. When you login to the application the  request will be added to the `History` tab in ZAP. 
+Search for the POST request to the following URL: [http://localhost:3000/rest/user/login](http://localhost:3000/rest/user/login). 
+Right-click on the post request, and select `Flag as Context -> Default Context : JSON-based Auth Login Request` option. This will open the context authentication editor. 
+You can notice it has auto selected the JSON-based authentication, auto-filled the login URL and the post data.
+Select the correct JSON attribute as the username and password in the dropdown and click Ok. The following image shows the completed setup for the authentication tab of the context menu. 
+
+Exit the context editor and go back to the login request. You will notice in the loging response headers there is no set cookie. In 
+the response body you will find the response data.
+
+The request that follows is GET http://localhost:3000/rest/user/whoami which you will notice has a header called Authorization 
+which uses the token from the response body of the login request. In body if the response, you should see some info about your 
+user.{"user":{"id":1,"email":"test@test.com"}}. If you visit that url directly, with your browser, the content of the page is 
+{"user":{}} - the Authorization header is not added to request and there is not authenticated.
+
+This request is initiated as a client side AJAX request using a spec called JWT. Currently ZAP doesn't have a notion of 
+the Authorization header for sessions so this is where ZAPs scripting engine will come into play! With ZAP's scripting 
+engine, we can easily add to or augment it's functionality.
+
+### Add Script
+
+Now in the left sidebar next to the Sites click + to add Scripts. This will bring into focus in the sidebar. Drill into 
+`Scripting > Scripts > HTTP Sender`. Then right click on the HTTP Sender and with that context menu click New Script. Name 
+the script maintain-jwt.js & set the Script Engine to ECMAScript (do no check the box that says enable).
+
+Now that we have that script setup, let's test it out! Go ahead and visit the login page http://localhost:3000/#/login 
+with the browser launched with ZAP and use your test account to login. After you login, back in ZAP in the Script Console 
+tab you should see a message that says.
+
+Now visit http://localhost:3000/rest/user/whoami directly in the browser and you will see you get JSON data with the 
+user {"user":{"id":9,"email":"test@test.com"}}! Back in the Script Console you will see the script went ahead and added the header!
+
+Now that we have a script forcing ensuring we have the right headers & cookies for authentication, let's go ahead and try 
+spidering the application again! So let's use the same setting we used earlier from the AJAX Spider [Settings](#AJAX Spider). 
+Once the scan starts, check out the browser running the scan - you'll notice the user is logged in! (Logout & Your Basket links visible). 
+Now the AJAX Spider will pick up some new paths that it couldn't find before!
 
 ### Steps to Reproduce via API
 
@@ -378,47 +600,3 @@ with the Bodgeit application. Use the [includeInContext](#contextactionincludein
 and use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
 the configuration parameters. Finally use the users API to create the admin user. Refer the script in the right column
 on how to use the above APIs.
-
-## JSON Based Authentication
-
-The following example performs a script based authentication for the OWASP Juice Shop.
-
-### Register User
-
-Let's go ahead and get first test user registered and setup to test authentication. Browse to http://localhost:3000/#/register & 
-register a new user. For the purpose of this tutorial, use the following information.
-
-Email input test@test.com
-Password input testtest
-Security Question
-Select Your eldest siblings middle name
-Input test
-
-### Login
-
-With the information you just registered with, browse to the login url http://localhost:3000/#/login. When you login the 
-request will be added to the History in ZAP. Search for the POST that included the login information, you should find a POST 
-request to http://localhost:3000/rest/user/login. Right click (or control click) that request in the history and in the context 
-menu that prompted click, Right click (or control click) Flag as Context > Default Context : JSON-based Auth Login Request 
-(if you only see the option for Form-based... that means your version of ZAP is out of date). The will bring up the Context 
-Authentication editor settings. You will notice the post data with the authentication information as well as a couple parameters 
-for selecting Username & Password. Go ahead and set the username and password parameters to the corresponding JSON attributes.
-
-
-Exit the context editor and go back to the request, you will notice in the response headers there is no set cookie. In 
-the response body you will find the response data.
-
-
-The request that follows is GET http://localhost:3000/rest/user/whoami which you will notice has a header called Authorization 
-which uses the token from the response body of the login request. In body if the response, you should see some info about your 
-user.{"user":{"id":9,"email":"test@test.com"}}. If you visit that url directly, with your browser, the content of the page is 
-{"user":{}} - the Authorization header is not added to request and there is not authenticated.
-
-
-This request is initiated as a client side AJAX request using a spec called JWT. Currently ZAP doesn't have a notion of 
-the Authorization header for sessions so this is where ZAPs scripting engine will come into play! With ZAP's scripting 
-engine, we can easily add to or augment it's functionality.
-
-
-
-

@@ -1,9 +1,9 @@
-#Advanced Settings  (Content In Progress)
+# Advanced Settings
 
 The following section shows some advanced configurations for ZAP's features. The examples below shows the advanced configurations
 available via the desktop interface and the relevant endpoints required to perform the same via ZAP APIs.
 
-##Spider
+## Spider
 
 The following images shows the advanced configurations tab of Spider in the desktop UI.
 
@@ -17,7 +17,7 @@ This allows the spider to skip big responses/files.
 
 View the [Spider section](#spider) in the API Catalogue for other additional APIs.
 
-##Ajax Spider
+## Ajax Spider
 
 The following images shows the advanced configurations tab of Ajax Spider in the desktop UI.
 
@@ -29,7 +29,7 @@ Set this to a higher value if the API takes longer time to provide the results o
 
 View the [Ajax Spider section](#spider) in the API Catalogue for other additional APIs. 
 
-##Passive Scan
+## Passive Scan
 
 The scanning rules can be enabled/disabled using the [enableScanners](#pscanactionenablescanners) and [disableScanners]((#pscanactiondisablescanners)) API.
 Also use the [setScanOnlyInScope](#pscanviewscanonlyinscope) API to limit the passive scanning to a scope. View
@@ -40,10 +40,10 @@ automatic tagging are provided by default. These can be changed, deleted or adde
 
 View the [Passive Scan](#spider) section in the API Catalogue for additional information regarding the APIs.
 
-##Active Scan
+## Active Scan
 
 
-###General Options
+### General Options
 
 The general options for Active Scan can be configured using the options tab in the desktop UI shown below.
 
