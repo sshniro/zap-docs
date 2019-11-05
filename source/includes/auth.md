@@ -132,14 +132,24 @@ start_spider(user_id_response)
 public class FormAuth {
 
     private static final String ZAP_ADDRESS = "localhost";
-    private static final int ZAP_PORT = 8090;
+    private static final int ZAP_PORT = 8080;
     private static final String ZAP_API_KEY = null;
     private static final String contextId = "1";
+    private static final String contextName = "Default Context";
+    private static final String target = "http://localhost:8090/bodgeit";
+
+    private static void setIncludeAndExcludeInContext(ClientApi clientApi) throws UnsupportedEncodingException, ClientApiException {
+        String includeInContext = "http://localhost:8090/bodgeit.*";
+        String excludeInContext = "http://localhost:8090/bodgeit/logout.jsp";
+
+        clientApi.context.includeInContext(contextName, includeInContext);
+        clientApi.context.excludeFromContext(contextName, excludeInContext);
+    }
 
 
     private static void setLoggedInIndicator(ClientApi clientApi) throws UnsupportedEncodingException, ClientApiException {
         // Prepare values to set, with the logged in indicator as a regex matching the logout link
-        String loggedInIndicator = "<a href=\"logout.jsp\"></a>";
+        String loggedInIndicator = "<a href=\"logout.jsp\">Logout</a>";
 
         // Actually set the logged in indicator
         clientApi.authentication.setLoggedInIndicator(ZAP_API_KEY, contextId, java.util.regex.Pattern.quote(loggedInIndicator));
@@ -152,8 +162,8 @@ public class FormAuth {
     private static void setFormBasedAuthenticationForBodgeit(ClientApi clientApi) throws ClientApiException,
             UnsupportedEncodingException {
         // Setup the authentication method
-        
-        String loginUrl = "http://localhost:8080/bodgeit/login.jsp";
+
+        String loginUrl = "http://localhost:8090/bodgeit/login.jsp";
         String loginRequestData = "username={%username%}&password={%password%}";
 
         // Prepare the configuration in a format similar to how URL parameters are formed. This
@@ -172,7 +182,7 @@ public class FormAuth {
                 .println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
     }
 
-    private static void setUserAuthConfigForBodgeit(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
+    private static String setUserAuthConfigForBodgeit(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
         // Prepare info
         String user = "Test User";
         String username = "test@example.com";
@@ -189,13 +199,21 @@ public class FormAuth {
 
         System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
         clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
+        clientApi.users.setUserEnabled(contextId, userId, "true");
+        clientApi.forcedUser.setForcedUser(contextId, userId);
+        clientApi.forcedUser.setForcedUserModeEnabled(true);
 
         // Check if everything is set up ok
         System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
+        return userId;
     }
 
     private static String extractUserId(ApiResponse response) {
         return ((ApiResponseElement) response).getValue();
+    }
+
+    private static void scanAsUser(ClientApi clientApi, String userId) throws ClientApiException {
+        clientApi.spider.scanAsUser(contextId, userId, target, null, "true", null);
     }
 
     /**
@@ -208,11 +226,11 @@ public class FormAuth {
     public static void main(String[] args) throws ClientApiException, UnsupportedEncodingException {
         ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT);
 
+        setIncludeAndExcludeInContext(clientApi);
         setFormBasedAuthenticationForBodgeit(clientApi);
-        System.out.println("-------------");
         setLoggedInIndicator(clientApi);
-        System.out.println("-------------");
-        setUserAuthConfigForBodgeit(clientApi);
+        String userId = setUserAuthConfigForBodgeit(clientApi);
+        scanAsUser(clientApi, userId);
     }
 }
 ```
