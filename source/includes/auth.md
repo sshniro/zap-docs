@@ -860,7 +860,7 @@ This request is initiated as a client side AJAX request using a spec called JWT.
 the Authorization header for sessions so this is where ZAPs scripting engine will come into play! With ZAP's scripting 
 engine, we can easily add to or augment it's functionality.
 
-### Add Script
+### Upload the Script
 
 Now in the left sidebar next to the Sites click + to add Scripts. This will bring into focus in the sidebar. Drill into 
 `Scripting > Scripts > HTTP Sender`. Then right click on the HTTP Sender and with that context menu click New Script. Name 
@@ -884,6 +884,6 @@ Now the AJAX Spider will pick up some new paths that it couldn't find before!
 
 Use the scripts endpoint to upload the script file. Thereafter the configurations are very similar to the form based authentication
 with the Bodgeit application. Use the [includeInContext](#contextactionincludeincontext) API to add the URL to the default context  
-and use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
+and use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and
 the configuration parameters. Finally use the users API to create the admin user. Refer the script in the right column
 on how to use the above APIs.
