@@ -237,26 +237,29 @@ public class FormAuth {
 
 
 ```shell
-# To create new context
-curl 'http://localhost:8080/JSON/context/action/newContext/?contextName=bodgeit
-
-# To include in context
-curl 'http://localhost:8080/JSON/context/action/includeInContext/?contextName=bodgeit&regex=http%3A%2F%2Flocalhost%3A8090.*'
+# To include in default context
+curl 'http://localhost:8080/JSON/context/action/includeInContext/?contextName=Default+Context&regex=http%3A%2F%2Flocalhost%3A8090%2Fbodgeit.*'
 
 # Set login details (URL Endoded)
 curl 'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&authMethodName=formBasedAuthentication&authMethodConfigParams=loginUrl%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fbodgeit%2Flogin.jsp%26loginRequestData%3Dusername%253D%257B%2525username%2525%257D%2526password%253D%257B%2525password%2525%257D'
 
 # To set the login indicator
-curl 'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=4&loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'
+curl 'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=1&loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'
 
-# To create a user
-curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=4&name=admin'
+# To create a user (The first user id is: 0)
+curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=1&name=Test+User'
 
 # To add the credentials for the user
-curl ''
+curl 'http://localhost:8080/JSON/users/action/setAuthenticationCredentials/?contextId=1&userId=0&authCredentialsConfigParams=username%3Dtest%40example.com%26password%3DweakPassword'
 
-# To enable forced used mode
-curl 'http://localhost'
+# To enable the user
+curl 'http://localhost:8080/JSON/users/action/setUserEnabled/?contextId=1&userId=0&enabled=true'
+
+# To set forced user
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&userId=0'
+
+# To enable forced user mode
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'
 ```
 
 The following example performs a simple [form based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) using 
@@ -338,34 +341,47 @@ the [SetForcedUserModeEnabled](#forceduseractionsetforcedusermodeenabled) to ena
 
 ```python
 #!/usr/bin/env python
-from urllib.parse import urlencode
+import urllib.parse
 from zapv2 import ZAPv2
 
 context_id = 1
 apiKey = 'changeMe'
+context_name = 'Default Context'
+target_url = 'http://localhost:3000'
 
 # By default ZAP API client will connect to port 8080
 zap = ZAPv2(apikey=apiKey)
+
 # Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
 # zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
 
 
-def include_in_context():
-    target_url = 'http://localhost:3000/*'
-    zap.context.include_in_context('default', target_url, apiKey)
+def set_include_in_context():
+    include_url = 'http://localhost:3000.*'
+    exclude_url = '\Qhttp://localhost:3000/logout.php\E'
+    
+    zap.context.include_in_context(context_name, include_url, apiKey)
+    zap.context.exclude_from_context(context_name, exclude_url, apiKey)
+    print('Configured include and exclude regex(s) in context')
 
 
 def set_logged_in_indicator():
-    logged_in_regex = '<a href=\"logout.jsp\"></a>'
+
+    logged_in_regex = '\Q<a href="logout.php">Logout</a>\E'
+    logged_out_regex = '(?:Location: [./]*login\.php)|(?:\Q<form action="login.php" method="post">\E)'
+
     zap.authentication.set_logged_in_indicator(context_id, logged_in_regex, apiKey)
+    zap.authentication.set_logged_out_indicator(context_id, logged_out_regex, apiKey)
     print('Configured logged in indicator regex: ')
 
 
 def set_form_based_auth():
-    login_url = "http://localhost:3000/login.jsp"
-    login_request_data = "username={%username%}&password={%password%}"
-    form_based_config = 'loginUrl=' + urlencode(login_url) + '&loginRequestData=' + urlencode(login_request_data)
-    zap.authentication.set_authentication_method(context_id, 'formBasedAuthentication', form_based_config, apiKey)
+    login_url = "http://localhost:3000/login.php"
+    login_request_data = "scriptName=authscript.js&Login URL=http://localhost:3000/login.php&CSRF Field=user_token" \
+                         "&POST Data=username={%username%}&password={%password%}&Login=Login&user_token={%user_token%}"
+
+    form_based_config = 'loginUrl=' + urllib.parse.quote(login_url) + '&loginRequestData=' + urllib.parse.quote(login_request_data)
+    zap.authentication.set_authentication_method(context_id, 'scriptBasedAuthentication', form_based_config, apiKey)
     print('Configured form based authentication')
 
 
@@ -375,7 +391,7 @@ def set_user_auth_config():
     password = 'password'
 
     user_id = zap.users.new_user(context_id, user, apiKey)
-    user_auth_config = 'username=' + urlencode(username) + '&password=' + urlencode(password)
+    user_auth_config = 'username=' + urllib.parse.quote(username) + '&password=' + urllib.parse.quote(password)
     zap.users.set_authentication_credentials(context_id, user_id, user_auth_config, apiKey)
 
 
@@ -383,11 +399,12 @@ def upload_script():
     script_name = 'authscript.js'
     script_type = 'authentication'
     script_engine = 'Oracle Nashorn'
-    file_name = '/tmp/authscript.js'
+    file_name = '/home/nirojan/Desktop/authscript.js'
     charset = 'UTF-8'
-    zap.script.load(script_name, script_type, script_engine, file_name, charset=charset, apiKey=apiKey)
+    zap.script.load(script_name, script_type, script_engine, file_name, charset=charset)
 
 
+set_include_in_context()
 upload_script()
 set_form_based_auth()
 set_logged_in_indicator()
@@ -403,7 +420,10 @@ set_user_auth_config()
 # To add in default context
 
 # To upload the script
-curl `http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&scriptType=authentication&scriptEngine=Oracle+Nashorn&fileName=%2Ftmp%2Fauthscript.js&scriptDescription=&charset=UTF-8`
+curl 'http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&scriptType=authentication&scriptEngine=Oracle+Nashorn&fileName=%2Ftmp%2Fauthscript.js&scriptDescription=&charset=UTF-8`
+
+# To set up authentication information
+curl 'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&authMethodName=scriptBasedAuthentication&authMethodConfigParams=scriptName%3Dauthscript.js%26Login+URL%3Dhttp%3A%2F%2Flocalhost%3A3000%2Flogin.php%26CSRF+Field%3Duser_token%26POST+Data%3Dusername%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D%26Login%3DLogin%26user_token%3D%7B%25user_token%25%7D'
 
 
 ```
