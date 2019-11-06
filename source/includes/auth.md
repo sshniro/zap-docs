@@ -539,7 +539,23 @@ curl 'http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&sc
 # To set up authentication information
 curl 'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&authMethodName=scriptBasedAuthentication&authMethodConfigParams=scriptName%3Dauthscript.js%26Login+URL%3Dhttp%3A%2F%2Flocalhost%3A3000%2Flogin.php%26CSRF+Field%3Duser_token%26POST+Data%3Dusername%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D%26Login%3DLogin%26user_token%3D%7B%25user_token%25%7D'
 
+# To set the login indicator
+curl 'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=1&loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'
 
+# To create a user (The first user id is: 0)
+curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=1&name=Test+User'
+
+# To add the credentials for the user
+curl 'http://localhost:8080/JSON/users/action/setAuthenticationCredentials/?contextId=1&userId=0&authCredentialsConfigParams=username%3Dtest%40example.com%26password%3DweakPassword'
+
+# To enable the user
+curl 'http://localhost:8080/JSON/users/action/setUserEnabled/?contextId=1&userId=0&enabled=true'
+
+# To set forced user
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&userId=0'
+
+# To enable forced user mode
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'
 ```
 
 ZAP has scripting support for most of the popular languages. The following are some of the scripting languages supported by ZAP.
@@ -630,11 +646,9 @@ public class JSONAuth {
     private static final int ZAP_PORT = 8090;
     private static final String ZAP_API_KEY = null;
     private static final String contextId = "1";
+    private static final String target = "http://localhost:3000";
 
-    private static void setJSONBasedAuthentication(ClientApi clientApi) throws ClientApiException,
-            UnsupportedEncodingException {
-        // Setup the authentication method
-
+    private static void setJSONBasedAuthentication(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
         String loginUrl = "http://localhost:3000/rest/user/login";
         String loginRequestData = "username={%username%}&password={%password%}";
 
@@ -644,17 +658,14 @@ public class JSONAuth {
         formBasedConfig.append("loginUrl=").append(URLEncoder.encode(loginUrl, "UTF-8"));
         formBasedConfig.append("&loginRequestData=").append(URLEncoder.encode(loginRequestData, "UTF-8"));
 
-        System.out.println("Setting JSON based authentication configuration as: "
-                + formBasedConfig.toString());
-        clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "jsonBasedAuthentication",
-                formBasedConfig.toString());
+        System.out.println("Setting JSON based authentication configuration as: " + formBasedConfig.toString());
+        clientApi.authentication.setAuthenticationMethod(ZAP_API_KEY, contextId, "jsonBasedAuthentication", formBasedConfig.toString());
 
         // Check if everything is set up ok
-        System.out
-                .println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
+        System.out.println("Authentication config: " + clientApi.authentication.getAuthenticationMethod(contextId).toString(0));
     }
 
-    private static void setUserAuthConfig(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
+    private static String setUserAuthConfig(ClientApi clientApi) throws ClientApiException, UnsupportedEncodingException {
         // Prepare info
         String user = "Test User";
         String username = "test@example.com";
@@ -671,19 +682,27 @@ public class JSONAuth {
 
         System.out.println("Setting user authentication configuration as: " + userAuthConfig.toString());
         clientApi.users.setAuthenticationCredentials(ZAP_API_KEY, contextId, userId, userAuthConfig.toString());
+        clientApi.users.setUserEnabled(contextId, userId, "true");
+        clientApi.forcedUser.setForcedUser(contextId, userId);
+        clientApi.forcedUser.setForcedUserModeEnabled(true);
 
         // Check if everything is set up ok
         System.out.println("Authentication config: " + clientApi.users.getUserById(contextId, userId).toString(0));
+        return userId;
     }
 
     private static void uploadScript(ClientApi clientApi) throws ClientApiException {
 
         String script_name = "authscript.js";
-        String script_type = "authentication";
+        String script_type = "HTTP Sender";
         String script_engine = "Oracle Nashorn";
-        String file_name = "/tmp/authscript.js";
-        String charset = "UTF-8";
-        clientApi.script.load(script_name, script_type, script_engine, file_name, null, charset);
+        String file_name = "/home/nirojans/Desktop/authscript.js";
+        
+        clientApi.script.load(script_name, script_type, script_engine, file_name, null);
+    }
+
+    private static void scanAsUser(ClientApi clientApi, String userId) throws ClientApiException {
+        clientApi.spider.scanAsUser(contextId, userId, target, null, "true", null);
     }
 
     private static String extractUserId(ApiResponse response) {
@@ -702,8 +721,8 @@ public class JSONAuth {
 
         uploadScript(clientApi);
         setJSONBasedAuthentication(clientApi);
-        System.out.println("-------------");
-        setUserAuthConfig(clientApi);
+        String userId = setUserAuthConfig(clientApi);
+        scanAsUser(clientApi, userId);
     }
 }
 ```
