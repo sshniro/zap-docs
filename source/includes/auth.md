@@ -756,10 +756,10 @@ public class JSONAuth {
 
     private static void uploadScript(ClientApi clientApi) throws ClientApiException {
 
-        String script_name = "authscript.js";
+        String script_name = "jwtScript.js";
         String script_type = "HTTP Sender";
         String script_engine = "Oracle Nashorn";
-        String file_name = "/home/nirojans/Desktop/authscript.js";
+        String file_name = "/tmp/authscript.js";
         
         clientApi.script.load(script_name, script_type, script_engine, file_name, null);
     }
@@ -846,6 +846,8 @@ Right-click on the post request, and select `Flag as Context -> Default Context 
 You can notice it has auto selected the JSON-based authentication, auto-filled the login URL and the post data.
 Select the correct JSON attribute as the username and password in the dropdown and click Ok. The following image shows the completed setup for the authentication tab of the context menu. 
 
+![json based authentication](../images/auth_json.png)
+
 Exit the context editor and go back to the login request. You will notice in the loging response headers there is no set cookie. In 
 the response body you will find the response data.
 
@@ -862,7 +864,9 @@ engine, we can easily add to or augment it's functionality.
 
 Now in the left sidebar next to the Sites click + to add Scripts. This will bring into focus in the sidebar. Drill into 
 `Scripting > Scripts > HTTP Sender`. Then right click on the HTTP Sender and with that context menu click New Script. Name 
-the script maintain-jwt.js & set the Script Engine to ECMAScript (do no check the box that says enable).
+the script jwtScript.js & set the Script Engine to ECMAScript (do no check the box that says enable).
+
+![json authentication script](../images/auth_json_script.png)
 
 Now that we have that script setup, let's test it out! Go ahead and visit the login page http://localhost:3000/#/login 
 with the browser launched with ZAP and use your test account to login. After you login, back in ZAP in the Script Console 
