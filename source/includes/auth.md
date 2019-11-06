@@ -637,6 +637,69 @@ on how to use the above APIs.
 
 ```python
 
+#!/usr/bin/env python
+import urllib.parse
+from zapv2 import ZAPv2
+
+context_id = 1
+apiKey = 'changeMe'
+context_name = 'Default Context'
+target_url = 'http://localhost:3000'
+
+# By default ZAP API client will connect to port 8080
+zap = ZAPv2(apikey=apiKey)
+
+# Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+
+def set_include_in_context():
+    include_url = 'http://localhost:3000.*'
+    zap.context.include_in_context(context_name, include_url, apiKey)
+    print('Configured include and exclude regex(s) in context')
+
+
+def set_logged_in_indicator():
+    logged_in_regex = '\Q<a href="logout.php">Logout</a>\E'
+    logged_out_regex = '(?:Location: [./]*login\.php)|(?:\Q<form action="login.php" method="post">\E)'
+
+    zap.authentication.set_logged_in_indicator(context_id, logged_in_regex, apiKey)
+    zap.authentication.set_logged_out_indicator(context_id, logged_out_regex, apiKey)
+    print('Configured logged in indicator regex: ')
+
+
+def set_form_based_auth():
+    login_url = "http://localhost:3000/rest/user/login"
+    login_request_data = 'email={%username%}&password={%password%}'
+
+    form_based_config = 'loginUrl=' + urllib.parse.quote(login_url) + '&loginRequestData=' + urllib.parse.quote(login_request_data)
+    zap.authentication.set_authentication_method(context_id, 'scriptBasedAuthentication', form_based_config, apiKey)
+    print('Configured form based authentication')
+
+
+def set_user_auth_config():
+    user = 'Test User'
+    username = 'test@example.com'
+    password = 'testtest'
+
+    user_id = zap.users.new_user(context_id, user, apiKey)
+    user_auth_config = 'username=' + urllib.parse.quote(username) + '&password=' + urllib.parse.quote(password)
+    zap.users.set_authentication_credentials(context_id, user_id, user_auth_config, apiKey)
+
+
+def upload_script():
+    script_name = 'jwtScript.js'
+    script_type = 'HTTP Sender'
+    script_engine = 'Oracle Nashorn'
+    file_name = '/tmp/jwtScript.js'
+    zap.script.load(script_name, script_type, script_engine, file_name)
+
+
+set_include_in_context()
+upload_script()
+set_form_based_auth()
+set_logged_in_indicator()
+set_user_auth_config()
 ```
 
 ```java
@@ -729,6 +792,31 @@ public class JSONAuth {
 
 ```shell
 
+# To add in default context
+
+# To upload the script
+curl 'http://localhost:8080/JSON/script/action/load/?scriptName=authscript.js&scriptType=authentication&scriptEngine=Oracle+Nashorn&fileName=%2Ftmp%2Fauthscript.js&scriptDescription=&charset=UTF-8`
+
+# To set up authentication information
+curl 'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&authMethodName=scriptBasedAuthentication&authMethodConfigParams=scriptName%3Dauthscript.js%26Login+URL%3Dhttp%3A%2F%2Flocalhost%3A3000%2Flogin.php%26CSRF+Field%3Duser_token%26POST+Data%3Dusername%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D%26Login%3DLogin%26user_token%3D%7B%25user_token%25%7D'
+
+# To set the login indicator
+curl 'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=1&loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'
+
+# To create a user (The first user id is: 0)
+curl 'http://localhost:8080/JSON/users/action/newUser/?contextId=1&name=Test+User'
+
+# To add the credentials for the user
+curl 'http://localhost:8080/JSON/users/action/setAuthenticationCredentials/?contextId=1&userId=0&authCredentialsConfigParams=username%3Dtest%40example.com%26password%3DweakPassword'
+
+# To enable the user
+curl 'http://localhost:8080/JSON/users/action/setUserEnabled/?contextId=1&userId=0&enabled=true'
+
+# To set forced user
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&userId=0'
+
+# To enable forced user mode
+curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'
 ```
 
 The following example performs a script based authentication for the OWASP Juice Shop. Juice Shop is a modern application and
