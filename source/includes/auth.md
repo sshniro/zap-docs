@@ -1,61 +1,63 @@
 # Getting Authenticated
 
-The target application for testing might have portion of the functionality which is only available for a logged in user.
-In order to get a full test coverage of the application you need to test the application with a logged in user as well.
-Therefore it's very important to understand how to perform authenticated scans with ZAP. ZAP has several means to authenticate to your 
-application and keep track of authentication state. The following are some of the options available for authentication with ZAP.
+The target application for testing might have a portion of the functionality that is only available for a logged-in user. 
+In order to get full test coverage of the application you need to test the application with a logged-in user as well. Therefore 
+it's very important to understand how to perform authenticated scans with ZAP. ZAP has several means to authenticate your 
+application and keep track of the authentication state. The following are some of the options available for authentication with ZAP.
 
 - Form-based authentication
 - Script-based authentication
 - JSON-based authentication
 - HTTP/NTLM based authentication
 
-The examples below show three authentication workflows. A simple form-based authentication is showcased with the use Bodgeit application.
-The second example shows the script-based authentication using the Damn Vulnerable Web Application(DVWA). The third example shows a more complicated authentication
-workflow using the JSON and script-based authentication using the OWASP Juice Shop. 
+The examples below show three authentication workflows. A simple form-based authentication is showcased with the use of the 
+Bodgeit application. The second example shows the script-based authentication using the Damn Vulnerable Web Application(DVWA). 
+The third example shows a more complicated authentication workflow using the JSON and script-based authentication using the OWASP Juice Shop.
 
 <aside class="info">
 It's recommended to configure the authentication using the desktop UI before automating it using the ZAP APIs. The examples
-belows shows how to perfom authentication with desktop and provides automation scripts on how to perform the similar using 
+below shows how to configure authentication with ZAP desktop and provides automation scripts on how to perform the similar using 
 ZAP APIs.
 </aside>
 
 ## General Steps
 
-The following are the general steps when configuring the authentication with ZAP.
+The following are the general steps when configuring the application authentication with ZAP.
 
 **Step 1. Define a context**
 
-Contexts are a way of relating a set of URLs together. The URLs are defined as a set of regular expressions (regexs). You should
-include the target application inside the context and excluded the unwanted URLs such as the logout page in the `exclude in cotext`
-section.
+Contexts are a way of relating a set of URLs together. The URLs are defined as a set of regular expressions (regex). 
+You should include the target application inside the context and excluded the unwanted URLs, such as the logout page, in 
+the exclude in the context section.
 
 **Step 2. Set the authentication mechanism**
 
-Choose the appropriate login mechanism for the application. If your application supports a simple form based login then choose
-the form-based authentication method. For complex login workflows you can use the script based login to define the workflow.
+Choose the appropriate login mechanism for your application. If your application supports a simple form-based login, then 
+choose the form-based authentication method. For complex login workflows, you can use the script-based login to define custom 
+authentication workflows.
 
 **Step 3. Define your auth parameters**
 
-In general you need to provide the parameters on how to communicate to the authentication such as the login url and payload format (username & password).
-The required parameters will be different for different authentication methods.
+In general, you need to provide the settings on how to communicate to the authentication service of your application. In general, 
+the settings would include the login URL and payload format (username & password). The required parameters will be different 
+for different authentication methods.
 
 **Step 4. Set relevant logged in/out indicators**
 
-ZAP additionally needs hints to identify whether the application is authenticated or not. To check authentication is working 
-correctly, ZAP supports logged in/out regexes. These are regex patterns that you should configure to match strings in the 
-responses which indicate if the user is logged in or logged out.
-
+ZAP additionally needs hints to identify whether the application is authenticated or not. To verify the authentication status, 
+ZAP supports logged in/out regexes. These are regex patterns that you should configure to match strings in the responses which 
+indicate if the user is logged in or logged out.
 
 **Step 5. Add a valid user and password**
 
-Create a user with valid credentials in ZAP, so it can use the credentials for authentication. Additionally
-you should also set a valid session management when configuring the authentication for your application. Currently, ZAP 
-supports cookie based session management and HTTP authentication based session management.
+Create a user account (an existing user in your application) with valid credentials in ZAP. You can create multiple users 
+if your application exposes different functionality based on user roles. Additionally, you should also set valid session 
+management when configuring the authentication for your application. Currently, ZAP supports cookie-based session management 
+and HTTP authentication based session management.
  
 **Step 6. Enable forced user mode (Optional)**
 
-Now enable the ![](https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png) "[Forced User Mode disabled - click to enable](https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off)" 
+Now enable the ![](https://github.com/sshniro/source/images/forcedUserOff.png) [Forced User Mode disabled - click to enable] 
 button. Pressing this button will cause ZAP to resend the authentication request whenever it detects that the user is no 
 longer logged in, ie by using the 'logged in' or 'logged out' indicator.
 
@@ -262,13 +264,13 @@ curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&us
 curl 'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'
 ```
 
-The following example performs a simple [form based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) using 
-the Bodgeit vulnerable application. Its recommended to configure the authentication via the desktop UI before attempting the APIs. 
+The following example performs a simple [form-based authentication]((https://github.com/zaproxy/zaproxy/wiki/FAQformauth)) using 
+the Bodgeit vulnerable application. It's recommended that you configure the authentication via the desktop UI before attempting the APIs.
 
 ### Setup Target Application
 
-Bodgeit uses a very simple form based authentication to authenticate the users to the application. Use the following command to start
-a docker instance of the Bodgeit application: `docker run --rm -p 8090:8080 -i -t psiinon/bodgeit` 
+Bodgeit uses a simple form-based authentication to authenticate the users to the application. Use the following command 
+to start a docker instance of the Bodgeit application: `docker run --rm -p 8090:8080 -i -t psiinon/bodgeit` 
 
 ### Register a User
 
@@ -280,44 +282,43 @@ For the purpose of this example, use the following credentials.
 
 ### Login
 
-After registering the user, browse (proxied via ZAP) to the following URL ([http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)) 
-and login to the application. When you login to the application the  request will be added to the `History` tab in ZAP. 
-Search for the POST request to the following URL: 
-[http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp). Right-click on the post request, and select 
-`Flag as Context -> Default Context : Form based Login Request` option. This will open the context authentication editor. 
-You can notice it has auto selected the form based authentication, auto-filled the login URL and the post data.
+After registering the user, browse (proxied via ZAP) to the following URL ([http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp)), 
+and log in to the application. When you log in to the application, the  request will be added to the `History` tab in ZAP. 
+Search for the POST request to the following URL: [http://localhost:8090/bodgeit/login.jsp](http://localhost:8090/bodgeit/login.jsp).
+Right-click on the post request, and select `Flag as Context -> Default Context : Form based Login Request` option. This will 
+open the context authentication editor. You can notice it has auto-selected the form-based authentication, auto-filled the login URL, and the post data.
 Select the correct JSON attribute as the username and password in the dropdown and click Ok.
 
-Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout url 
+Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout URL 
 `<a href="logout.jsp">Logout</a>` as the successful response. You can view this by navigating to the response tab of the login request.
 Highlight the text and right click  and select the `Flag as Context -> Default Context, Loggedin Indicator` option. This will autofill
-the regex needed for the login indicator. The following image shows the completed setup for the authentication tab of the context menu.
+the regex needed for the login indicator. The following image shows the completed set up for the authentication tab of the context menu.
 
 ![auth](../images/auth_bodgeit_form_settings.png)
 
-Now lets add the user credentials by going to the `context -> users -> Add` section. After this enable 
+Now let's add the user credentials by going to the `context -> users -> Add` section. After adding the credentials, enable 
 the ![](https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png) "[Forced User](https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off)"
-to mode in the UI to forcefully authenticate the user prior to the testing of the application. 
+mode in the desktop UI to forcefully authenticate the user prior to the testing of the application. 
 
-Now let's test the authentication by performing an authenticated Spidering with ZAP. To perform this go to the Spider and select the `default` 
-context and the test user to perform the authentication. After this you should see the Spider crawling all the protected resources.
+Now let's test the authentication by performing an authenticated Spidering with ZAP. To accomplish this, go to the Spider and select the `default` 
+context and the `test user` to perform the authentication. After this, you should see the Spider crawling all the protected resources.
 
 ### Steps to Reproduce via API
 
-If you have configured the authentication via the desktop UI, then export the context and import it via using the 
-[importContext](#contextactionimportcontext) API. Otherwise follow The steps below to configure the authentication setting for the context. 
+If you have configured the authentication via the desktop UI, then export the context and import it using the 
+[importContext](#contextactionimportcontext) API. Otherwise follow the steps below to configure the authentication setting for the context. 
 
 #### Include in Context
 
-Inorder to proceed with authentication the URL of the application should be added to the context. As the Bodgit is available
+Inorder to proceed with authentication, the URL of the application should be added to the context. As the Bodgit is available
 via [http://localhost:8090/bodgeit](http://localhost:8090/bodgeit) use the [includeInContext](#contextactionincludeincontext) API to add the
 URL to a context.
 
 #### Set Authentication Method
 
-Use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to setup the authentication method and 
+Use the [setAuthenticationMethod](#authenticationactionsetauthenticationmethod) to set up the authentication method and 
 the configuration parameters. The `setAuthenticationMethod` takes `contextId`, `authMethodName`, and `authMethodConfigParams` as
-parameters. As Bodgeit uses the form based authentication use `formBasedAuthentication` for the authMethodName and use the contextID
+parameters. As Bodgeit uses the form-based authentication, use `formBasedAuthentication` for the authMethodName and use the contextID
 from Step 1 as the `contextId` parameter. 
 
 The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore you should set the values to authMethodConfigParams in the following format:
