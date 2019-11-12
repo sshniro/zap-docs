@@ -57,7 +57,7 @@ and HTTP authentication based session management.
  
 **Step 6. Enable forced user mode (Optional)**
 
-Now enable the ![](https://github.com/sshniro/source/images/forcedUserOff.png) [Forced User Mode disabled - click to enable] 
+Now enable the ![](https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png) "[Forced User Mode disabled - click to enable](https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off)" 
 button. Pressing this button will cause ZAP to resend the authentication request whenever it detects that the user is no 
 longer logged in, ie by using the 'logged in' or 'logged out' indicator.
 
