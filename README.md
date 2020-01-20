@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/sshniro/zap-docs.svg?branch=master)](https://travis-ci.com/sshniro/zap-docs)
 
-#Introduction
+# Introduction
 
 Welcome to ZAP API Documentation! The [OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (**ZAP**) 
 is one of the world's most popular free security tools which lets you automatically find security vulnerabilities in your 
@@ -15,3 +15,16 @@ The live demo can be viewed in the following [URL](https://sshniro.github.io/zap
 The guidelines for contribution is available in the [following page](https://sshniro.github.io/zap-docs/#contributions-welcome).
 ZAP documentation is built using [Slate](https://github.com/tripit/slate). All documentation is in `includes` directory, 
 and uses Markdown text format. View the contribution guide on how to start contributing to the document.
+
+# Generate the OPEN API MD
+
+The Open API markdown is auto generated from the `openapi.yaml` file and the [Widdershins](https://github.com/Mermade/widdershins) 
+node package is used to auto generate the markdown file.
+
+```bash
+# To install the widdershins package
+npm i -g widdershins
+# To generate the markdown file
+widdershins --search false --language_tabs 'python:Python' 'java:Java' 'shell:Shell' --summary openapi.yaml source/includes/api.md
+```
+
